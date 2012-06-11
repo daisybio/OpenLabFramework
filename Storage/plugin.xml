@@ -1,0 +1,37 @@
+<plugin name='storage' version='0.1' grailsVersion='1.3.7 &gt; *'>
+  <author>Your name</author>
+  <title>Plugin summary/headline</title>
+  <description>\
+Brief description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/storage</documentation>
+  <resources>
+    <resource>BootStrap</resource>
+    <resource>BuildConfig</resource>
+    <resource>Config</resource>
+    <resource>DataSource</resource>
+    <resource>UrlMappings</resource>
+    <resource>spring.resources</resource>
+    <resource>org.openlab.storage.BoxController</resource>
+    <resource>org.openlab.storage.CompartmentController</resource>
+    <resource>org.openlab.storage.StorageController</resource>
+    <resource>org.openlab.storage.StorageElementController</resource>
+    <resource>org.openlab.storage.StorageLocationController</resource>
+    <resource>org.openlab.storage.StorageTypeController</resource>
+    <resource>org.openlab.storage.Box</resource>
+    <resource>org.openlab.storage.Compartment</resource>
+    <resource>org.openlab.storage.Freezer</resource>
+    <resource>org.openlab.storage.StorageElement</resource>
+    <resource>org.openlab.storage.StorageLocation</resource>
+    <resource>org.openlab.storage.StorageType</resource>
+    <resource>org.openlab.module.menu.StorageMenuModule</resource>
+    <resource>org.openlab.module.tab.StorageModule</resource>
+    <resource>org.openlab.storage.BoxCreationService</resource>
+    <resource>org.openlab.storage.BoxExportService</resource>
+    <resource>org.openlab.storage.StorageExportService</resource>
+    <resource>org.openlab.storage.BoxTagLib</resource>
+    <resource>org.openlab.storage.CoordinatesTagLib</resource>
+  </resources>
+  <dependencies />
+  <behavior />
+</plugin>

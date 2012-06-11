@@ -1,0 +1,29 @@
+<plugin name='open-lab-barcode' version='0.1' grailsVersion='1.3.7 &gt; *'>
+  <author>Your name</author>
+  <title>Plugin summary/headline</title>
+  <description>\
+Brief description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/open-lab-barcode</documentation>
+  <resources>
+    <resource>BuildConfig</resource>
+    <resource>Config</resource>
+    <resource>DataSource</resource>
+    <resource>UrlMappings</resource>
+    <resource>org.openlab.barcode.BarcodeController</resource>
+    <resource>org.openlab.barcode.BarcodeDataObjectController</resource>
+    <resource>org.openlab.barcode.BarcodeLabelController</resource>
+    <resource>org.openlab.barcode.BarcodeSiteController</resource>
+    <resource>org.openlab.barcode.Barcode</resource>
+    <resource>org.openlab.barcode.BarcodeDataObject</resource>
+    <resource>org.openlab.barcode.BarcodeLabel</resource>
+    <resource>org.openlab.barcode.BarcodeSite</resource>
+    <resource>org.openlab.module.addin.BarcodeCreationAddinModule</resource>
+    <resource>org.openlab.module.menu.barcodeMenuModule</resource>
+    <resource>org.openlab.module.operations.PrintBarcodeLabelOperationModule</resource>
+    <resource>org.openlab.barcode.BarcodeBuilderService</resource>
+    <resource>org.openlab.barcode.LabelPrinterService</resource>
+  </resources>
+  <dependencies />
+  <behavior />
+</plugin>

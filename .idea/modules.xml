@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GeneTracker/GeneTracker.iml" filepath="$PROJECT_DIR$/GeneTracker/GeneTracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpenLabAttachments/OpenLabAttachments.iml" filepath="$PROJECT_DIR$/OpenLabAttachments/OpenLabAttachments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpenLabBackend/OpenLabBackend.iml" filepath="$PROJECT_DIR$/OpenLabBackend/OpenLabBackend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpenLabBarcode/OpenLabBarcode.iml" filepath="$PROJECT_DIR$/OpenLabBarcode/OpenLabBarcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpenLabFrontend/OpenLabFrontend.iml" filepath="$PROJECT_DIR$/OpenLabFrontend/OpenLabFrontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpenLabFrontend/OpenLabFrontend-grailsPlugins.iml" filepath="$PROJECT_DIR$/OpenLabFrontend/OpenLabFrontend-grailsPlugins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpenLabTaqMan/OpenLabTaqMan.iml" filepath="$PROJECT_DIR$/OpenLabTaqMan/OpenLabTaqMan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Storage/Storage.iml" filepath="$PROJECT_DIR$/Storage/Storage.iml" />
+    </modules>
+  </component>
+</project>
+

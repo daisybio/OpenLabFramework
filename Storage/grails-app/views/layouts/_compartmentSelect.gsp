@@ -1,0 +1,1 @@
+<g:select from="${compartmentList}" name="compartmentSelect" value="" noSelection="['':'']" onchange="${remoteFunction(action:'updateBoxList', update:'boxListArea', params:'\'compartment=\'+this.value+\'&storageType=\'+document.getElementById(\'storageTypeSelect\').value')}"/>

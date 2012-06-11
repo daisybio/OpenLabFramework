@@ -1,0 +1,22 @@
+<plugin name='open-lab-attachments' version='0.1' grailsVersion='1.3.7 &gt; *'>
+  <author>Your name</author>
+  <title>Plugin summary/headline</title>
+  <description>\
+Brief description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/open-lab-attachments</documentation>
+  <resources>
+    <resource>BuildConfig</resource>
+    <resource>Config</resource>
+    <resource>DataSource</resource>
+    <resource>UrlMappings</resource>
+    <resource>openlab.attachments.DataObjectAttachmentController</resource>
+    <resource>openlab.attachments.DataObjectAttachment</resource>
+    <resource>org.openlab.module.addin.AttachmentAddinModule</resource>
+    <resource>org.openlab.module.menu.AttachmentsMenuModule</resource>
+    <resource>org.openlab.module.tab.AttachmentsTabModule</resource>
+    <resource>openlabattachments.AttachmentIconTagLib</resource>
+  </resources>
+  <dependencies />
+  <behavior />
+</plugin>

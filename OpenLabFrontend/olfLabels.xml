@@ -1,0 +1,5 @@
+<xml>
+	<label key="projects" value="Projects"/>
+	<label key="myprojects" value="My Projects"/>
+	<label key="otherprojects" value="Other Projects"/>
+</xml>
