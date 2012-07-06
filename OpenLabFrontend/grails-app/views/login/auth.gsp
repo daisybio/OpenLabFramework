@@ -81,10 +81,15 @@
 		height: 12px;
 	}
 	</style>
+
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"/>
 </head>
 
 <body>
 <div id='login'>
+    <div>
+        <img src="<g:resource dir="images" file="welcome_logo.png"/>"/>
+    </div>
 	<div class='inner'>
 		<div class='fheader'><g:message code="springSecurity.login.header"/></div>
 
