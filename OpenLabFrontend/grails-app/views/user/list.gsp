@@ -1,11 +1,18 @@
 <head>
-	<meta name="layout" content="main" />
+    <g:setProvider library="prototype"/>
+    <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
 	<title>User List</title>
 </head>
 
 <body>
 
 	<div class="body">
+        <div class="nav" role="navigation">
+            <ul>
+                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><g:remoteLink update="body" params="[bodyOnly:true]" class="create" action="create"><g:message code="default.new.label" args="['User']" /></g:remoteLink></li>
+            </ul>
+        </div>
 		<h1>User List</h1>
 		<g:if test="${flash.message}">
 		<div class="message">${flash.message}</div>
@@ -41,9 +48,8 @@
 			</table>
 		</div>
 
-		<div class="paginateButtons">
-			<g:paginate total="${org.openlab.security.User.count()}" />
-			<span class="menuButton"><g:remoteLink update="body" params="[bodyOnly:true]" class="create" action="create">New User</g:remoteLink></span>
+		<div class="pagination">
+			<g:remotePaginate total="${org.openlab.security.User.count()}" />
 		</div>
 
 	</div>

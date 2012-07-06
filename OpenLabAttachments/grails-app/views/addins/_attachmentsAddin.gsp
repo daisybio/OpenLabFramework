@@ -2,7 +2,7 @@
 
 <g:form enctype="multipart/form-data" name="uploadForm" action="createWithAddin" controller="dataObjectAttachment">
 
-<table><tr><td><div id="updateMe"><h2>Attachments</h2></div></td>
+<table><tr><td><div id="updateMe"><h2 style="font-weight:bold;">Attachments</h2></div></td>
 <td><g:submitButton name="submit" value="submit"/></td></tr></table>
 
 <g:hiddenField name="suggestQuery" value="true"/>

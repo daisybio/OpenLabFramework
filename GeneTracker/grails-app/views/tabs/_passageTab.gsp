@@ -1,4 +1,3 @@
-<gui:tab label="Passages" cacheData="true">
 	<div id="passageTab">
 	<gui:dataTable
 	    id="dtPassages"
@@ -27,5 +26,3 @@
 		 <g:remoteLink controller="passage" action="addTableRow" id="${params.id}" onSuccess="javascript:GRAILSUI.dtPassages.requery();">Add Passage</g:remoteLink>
 	</span>
 	 </div>
-</gui:tab>
-</div>

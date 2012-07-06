@@ -1,4 +1,3 @@
-<gui:tab label="Viability" cacheData="true">
   <g:if test="${cellLineDataNames}">
 	<div id="viabilityTab">
 	<gui:dataTable
@@ -36,5 +35,4 @@
 	 </div>
   </g:if>
   <g:else>Please add a CellLineData experiment first.</g:else>
-</gui:tab>
-</div>
+

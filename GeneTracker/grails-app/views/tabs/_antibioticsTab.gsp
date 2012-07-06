@@ -1,4 +1,3 @@
-<gui:tab label="Antibiotics" cacheData="true">
 	<div id="antibioticsTab">
 	<gui:dataTable
 	    id="dtAntibiotics"
@@ -22,6 +21,5 @@
 	  	<span class="buttons">
 		 <g:remoteLink controller="antibiotics" action="addTableRow" id="${params.id}" onSuccess="javascript:GRAILSUI.dtAntibiotics.requery();">Add Antibiotics</g:remoteLink>
 	</span>
-	 </div>
-</gui:tab>
-</div>
+	</div>
+

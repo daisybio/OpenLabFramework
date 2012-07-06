@@ -3,12 +3,12 @@ package org.openlab.barcode
 class BarcodeSite {
 
 	String name
-	String RepositoryName
+	String repositoryName
 	String description
-	String SiteLetter
+	String siteLetter
 	
 	static constraints = {
-		SiteLetter(maxSize: 2)
+		siteLetter(maxSize: 2)
 	}
 	
 	static mapping = {

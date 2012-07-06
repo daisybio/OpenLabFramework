@@ -1,4 +1,3 @@
-<gui:tab label="CellLineData" cacheData="true">
 	<div id="cellLineDataTab">
 	<gui:dataTable
 	    id="dtCellLineData"
@@ -28,6 +27,5 @@
 	 			Add CellLineData
  			</g:remoteLink>
 		</span>
-	</div>
-</gui:tab>
-</div>
+	 </div>
+

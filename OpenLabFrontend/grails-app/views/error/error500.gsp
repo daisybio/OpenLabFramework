@@ -1,7 +1,9 @@
 <html>
   <head>
 	  <title>Grails Runtime Exception</title>
-	  <style type="text/css">
+      <g:setProvider library="prototype"/>
+      <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
+      <style type="text/css">
 	  		.message {
 	  			border: 1px solid black;
 	  			padding: 5px;

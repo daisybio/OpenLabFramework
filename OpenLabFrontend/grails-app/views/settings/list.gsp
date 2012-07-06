@@ -1,8 +1,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="layout" content="main" />
-    
+    <g:setProvider library="prototype"/>
+    <r:require module="scriptaculous"/>
+    <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
+
     <title>Settings</title>
 </head>
 
@@ -33,8 +35,8 @@
 	  	<th colspan=2>Add new Setting</th>
 	  </tr>
 	  <tr>
-		<td><input onfocus="if(this.value=='key'){this.value='';}" type="text" name="key" value="key"></input></td>
-		<td><input onfocus="if(this.value=='value'){this.value='';}" type="text" name="value" value="value"></input></td>
+		<td><input onfocus="if(this.value=='key'){this.value='';}" type="text" name="key" value="key"/></td>
+		<td><input onfocus="if(this.value=='value'){this.value='';}" type="text" name="value" value="value"/></td>
 	  </tr>
 	</table>
 	<div class="buttons">
@@ -61,19 +63,19 @@
 						paramName="value">${setting.value.encodeAsHTML()}
 					</g:editInPlace>
 				</td>
-				<td><g:remoteLink before="if(!confirm('Are you sure?')) return false" method='post' action='delete' params="['offset': params.offset, 'max': params.max, 'key': setting.key]" update="[success:'body', failure:'body']">remove</g:remoteLink></td>				
+				<td><g:remoteLink before="if(!confirm('Are you sure?')) return false" action="deleteKey" params="${[offset: params.offset, max: params.max, keyToDelete: setting.key]}" update="[success:'body', failure:'body']">remove</g:remoteLink></td>
 			</tr>
 		</g:each>
 		</tbody>
 	</table>
-	<div class="paginateButtons">
-   		<g:paginate total="${settingsTotal}" />
+	<div class="pagination">
+   		<g:remotePaginate total="${settingsTotal}" />
 	</div>
 </div>
 
 <div>
 	<h1>Further options:</h1>
-	<g:remoteLink before="if(!confirm('Are you sure?')) return false" action="reindex" update="body" params="[bodyOnly:true]">Lucene: Recreate Index</g:remoteLink>
+	<p style="padding-left:20px;"><g:remoteLink before="if(!confirm('Are you sure?')) return false" action="reindex" update="body" params="${[bodyOnly:true]}">Lucene: Recreate Index</g:remoteLink></p>
 </div>
 
 </div>

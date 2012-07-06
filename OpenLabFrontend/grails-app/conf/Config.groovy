@@ -80,31 +80,8 @@ environments {
     }
 
 }
-
-//Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'org.openlab.security.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'org.openlab.security.UserRole'
-grails.plugins.springsecurity.authority.className = 'org.openlab.security.Role'
-grails.plugins.springsecurity.requestMap.className = 'org.openlab.security.Requestmap'
-grails.plugins.springsecurity.securityConfigType = grails.plugins.springsecurity.SecurityConfigType.Requestmap
-
 // log4j configuration
 log4j = {
-    // Example of changing the log pattern for the default console
-    // appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
-
-    /* appenders {
-     appender new SocketAppender(
-             name: "jdbcAppender",
-             remoteHost: "localhost",
-             port: 4445
-     )
- }   */
-
 
     error 'org.codehaus.groovy.grails.web.servlet',  //  controllers
             'org.codehaus.groovy.grails.web.pages', //  GSP
@@ -120,8 +97,7 @@ log4j = {
             'net.sf.ehcache.hibernate'
 
     warn 'org.openlab',
-            'org.grails.plugins.excelimport',
-            'org.mortbay.log'
+            'org.grails.plugins.excelimport'
 
     info 'org.codehaus.groovy.grails.web.servlet',
             'org.openlab',
@@ -131,15 +107,47 @@ log4j = {
     //all    'jdbc.sqltiming'
 }
 
-// Added by the Joda-Time plugin:
-grails.gorm.default.mapping = {
-    "user-type" type: org.joda.time.contrib.hibernate.PersistentDateTime, class: org.joda.time.DateTime
-    "user-type" type: org.joda.time.contrib.hibernate.PersistentDuration, class: org.joda.time.Duration
-    "user-type" type: org.joda.time.contrib.hibernate.PersistentInstant, class: org.joda.time.Instant
-    "user-type" type: org.joda.time.contrib.hibernate.PersistentInterval, class: org.joda.time.Interval
-    "user-type" type: org.joda.time.contrib.hibernate.PersistentLocalDate, class: org.joda.time.LocalDate
-    "user-type" type: org.joda.time.contrib.hibernate.PersistentLocalTimeAsString, class: org.joda.time.LocalTime
-    "user-type" type: org.joda.time.contrib.hibernate.PersistentLocalDateTime, class: org.joda.time.LocalDateTime
-    "user-type" type: org.joda.time.contrib.hibernate.PersistentPeriod, class: org.joda.time.Period
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'org.openlab.security.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'org.openlab.security.UserRole'
+grails.plugins.springsecurity.authority.className = 'org.openlab.security.Role'
+grails.plugins.springsecurity.requestMap.className = 'org.openlab.security.Requestmap'
+grails.plugins.springsecurity.securityConfigType = 'Requestmap'
+
+//resource plugin
+grails.resources.debug=true
+
+grails.resources.modules = {
+    labelPrinter{
+        resource url: '/js/DYMO.Label.Framework.latest.js', disposition: 'head'
+    }
+    myyui{
+        resource url: '/css/yui_fonts_min.css'
+        resource url: '/css/yui_override.css'
+        resource url: '/css/yui_reset_grid.css'
+    }
+    prototypeManual{
+        dependsOn 'scriptaculous'
+        defaultBundle "prototype"
+        resource url: [plugin: "prototype", dir:"js/prototype", file: "effects.js"], disposition: "head"
+        resource url: [plugin: "prototype", dir:"js/prototype", file: "controls.js"], disposition: "head"
+    }
+
 }
 
+//db migration
+grails.plugin.databasemigration.changelogFileName = 'changelog-1.0.groovy'
+
+//searchable plugin interfers with db migration, turn off for now.
+searchable {
+    mirrorChanges = false
+    bulkIndexOnStartup = false
+}
+
+//set default id column type to numeric(19,0) otherwise grails 2.0 introduces bigint which leads to FK conflicts
+grails.gorm.default.mapping = {
+   //id type: Long, sqlType: 'numeric(19,0)'
+}
+
+//define default javascript library
+grails.views.javascript.library="prototype"

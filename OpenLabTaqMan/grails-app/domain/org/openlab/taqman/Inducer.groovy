@@ -9,6 +9,10 @@ class Inducer {
         name unique: 'concentration'
         concentration nullable: false
     }
+
+    static mapping = {
+        table 'taqManInducer'
+    }
     
     String toString()
     {

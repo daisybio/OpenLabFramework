@@ -1,6 +1,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="layout" content="main" />
+    <g:setProvider library="prototype"/>
+    <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
     
     <title>Database Configuration</title>
 </head>

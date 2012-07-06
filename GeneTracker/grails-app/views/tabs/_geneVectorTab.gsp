@@ -1,4 +1,3 @@
-<gui:tab label="Vector Combinations" cacheData="true">
 	<g:if test="${vectors}">
 	<div id="geneVectorTab">
 	<div class="message">Keep in mind that changing a Vector Combination affects all associated CellLineData experiments.</div>
@@ -31,7 +30,6 @@
 	 </div>
 	 </g:if>
 	 <g:else>Please create a vector first.</g:else>
-</gui:tab>
-</div>
+
 
 

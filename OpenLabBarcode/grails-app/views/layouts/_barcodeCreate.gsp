@@ -1,4 +1,5 @@
-<div id="barcodeMessage" style="padding-bottom:10px;"><h1>Print Barcode Label</h1>
+<div id="barcodeMessage" style="padding-bottom:10px;">
+    <h2 style="font-weight: bold;">Print Barcode Label</h2>
 </div>
 <g:form method="post" >
 	<g:hiddenField name="dataObject.id" value="${dataObject?.id}"/>

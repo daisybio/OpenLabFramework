@@ -1,11 +1,20 @@
 <head>
-	<meta name="layout" content="main" />
+    <g:setProvider library="prototype"/>
+    <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
 	<title>Show User</title>
 </head>
 
 <body>
+    <g:set var="entityName" value="User"/>
 
 	<div class="body">
+        <div class="nav" role="navigation">
+            <ul>
+                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+            </ul>
+        </div>
 		<h1>Show User</h1>
 		<g:if test="${flash.message}">
 		<div class="message">${flash.message}</div>
@@ -59,8 +68,6 @@
 			<g:form>
 				<input type="hidden" name="bodyOnly" value="true" />
 				<input type="hidden" name="id" value="${person.id}" />
-				<span class="menuButton"><g:remoteLink update="body" params="[bodyOnly:true]" class="list" action="list">User List</g:remoteLink></span>
-				<span class="menuButton"><g:remoteLink update="body" params="[bodyOnly:true]" class="create" action="create">New User</g:remoteLink></span>
 				<span class="button"><g:submitToRemote action="edit" update="body" class="edit" value="Edit" /></span>
 				<span class="button"><g:submitToRemote action="delete" update="body" class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
 			</g:form>

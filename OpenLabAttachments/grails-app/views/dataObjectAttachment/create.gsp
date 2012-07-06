@@ -1,10 +1,9 @@
-
-
 <%@ page import="openlab.attachments.DataObjectAttachment" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main" />
+        <g:setProvider library="prototype"/>
+        <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
         <g:set var="entityName" value="${message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>

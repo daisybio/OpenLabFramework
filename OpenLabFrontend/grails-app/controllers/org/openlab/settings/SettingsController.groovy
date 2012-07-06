@@ -75,9 +75,9 @@ class SettingsController {
 	/**
 	 * Settings can be deleted.
 	 */
-	def delete = {
-		settingsService.deleteSetting(key: params.key)
-		params.remove "key"
+	def deleteKey = {
+		settingsService.deleteSetting(key: params.keyToDelete)
+        params.remove("keyToDelete")
 		params.bodyOnly = true
 		redirect action: list, params: params 
 	}

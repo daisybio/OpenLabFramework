@@ -4,7 +4,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main" />
+        <g:setProvider library="prototype"/>
+        <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
         <g:set var="entityName" value="${message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment')}" />
     </head>
     <body>
@@ -20,7 +21,7 @@
    				</span>
 			</div>
    		</g:if>
-            <h1>Edit file attachment</h1>
+            <h1 style="padding-left:20px;">Edit file attachment</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>

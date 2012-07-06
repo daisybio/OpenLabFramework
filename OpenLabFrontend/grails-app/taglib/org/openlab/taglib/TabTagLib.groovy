@@ -21,15 +21,30 @@ class TabTagLib {
 	def renderInterestedModules = { attrs ->
 		
 		def interestedModules = moduleHandlerService.getInterestedModules(domainClass: attrs.domainClass, type: "tab")
-		
+
+        out << "<script type='text/javascript'>"
+        out << "var tabView = new YAHOO.widget.TabView();"
+
 		interestedModules.each{ module ->
-			try{
-				out << render(template: '/tabs/'+module.getTemplateForDomainClass(attrs.domainClass), plugin: module.getPluginName(), 
-					model: module.getModelForDomainClass(attrs.domainClass, params.id))
+
+            try{
+                def template = module.getTemplateForDomainClass(attrs.domainClass)
+                def plugin = module.getPluginName()
+
+                out << "YAHOO.plugin.Dispatcher.delegate(new YAHOO.widget.Tab({"
+				out << "label: '${template.toString().replaceAll(/\B[A-Z]/){ " $it" }.capitalize()-"Tab"}',"
+                out << "dataSrc: '" + g.createLink(controller: "tabs", action: "renderTab",
+                        params: [template: template, plugin: plugin, domainClass: attrs.domainClass, id: attrs.id, module: module.getClass().getName()]) + "',"
+                out << "cacheData: true"
+                out << "}), tabView);"
 			}catch(Exception e)
 			{
 				log.error("Error rendering ${module} " + e.getMessage() + e.getStackTrace())
 			}		
 		}
+
+        out << "tabView.appendTo('tabs');"
+        out << "</script>"
+
 	}
 }

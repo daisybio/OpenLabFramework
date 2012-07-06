@@ -7,6 +7,10 @@ class ReverseTranscriptionKit {
     static constraints = {
     }
 
+    static mapping = {
+        table 'taqManReverseTranscriptionKit'
+    }
+
     String toString()
     {
         name

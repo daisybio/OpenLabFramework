@@ -2,9 +2,9 @@ import org.openlab.module.*;
 
 class OpenLabBackendGrailsPlugin {
     // the plugin version
-    def version = "0.1"
+    def version = "1.0"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "1.2.1 > *"
+    def grailsVersion = "2.0.4 > *"
     
 	/** @author markus.list
 	 *  Addition to make modules grails artefacts that are dynamically recognized 
@@ -71,7 +71,11 @@ Brief description of the plugin.
     }
 
     def doWithApplicationContext = { applicationContext ->
-        // TODO Implement post initialization spring config (optional)
+		/*SpringSecurity.securityConfig.userLookup.userDomainClassName = 'org.openlab.security.User'
+		SpringSecurity.securityConfig.userLookup.authorityJoinClassName = 'org.openlab.security.UserRole'
+		SpringSecurity.securityConfig.authority.className = 'org.openlab.security.Role'
+		SpringSecurity.securityConfig.requestMap.className = 'org.openlab.security.Requestmap'
+		SpringSecurity.securityConfig.securityConfigType = grails.plugins.springsecurity.SecurityConfigType.Requestmap*/
     }
 
     //def onChange = { event ->

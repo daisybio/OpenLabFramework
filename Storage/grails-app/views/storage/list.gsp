@@ -1,7 +1,8 @@
 <html>
     <head>
         <title>Storage Modul</title>
-		<meta name="layout" content="main" />
+        <g:setProvider library="prototype"/>
+		<meta name="layout" content="${params.bodyOnly?'body':'main'}" />
 	</head>
 <body>
 <div class="body" style="width:100%;">
@@ -26,6 +27,8 @@
 	 	</div>
 	 	
 	 	<div id="storageEditPanel"></div>
+
 </div>
-</body>        
+</body>
+</html>
          

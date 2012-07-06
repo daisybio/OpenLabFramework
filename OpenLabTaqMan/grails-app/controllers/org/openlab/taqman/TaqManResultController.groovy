@@ -1,12 +1,9 @@
 package org.openlab.taqman
 
-import openlab.attachments.DataObjectAttachment
 import org.apache.commons.lang.StringUtils
 import org.openlab.genetracker.CellLineData
 import org.apache.commons.collections.Predicate
-import org.springframework.util.ClassUtils
 import grails.converters.JSON
-import org.hibernate.TypeMismatchException
 
 class TaqManResultController {
 
@@ -17,7 +14,7 @@ class TaqManResultController {
 
     static scaffold = TaqManResult
 
-    def TaqManResultService
+    def taqManResultService
     def searchableService
 
     /**
@@ -96,7 +93,7 @@ class TaqManResultController {
 
         def taqManResultInstance = TaqManResult.get(params.taqManResultId)
 
-        def rows = TaqManResultService.getTaqManRows(params['attachment.id'])
+        def rows = taqManResultService.getTaqManRows(params['attachment.id'])
 
         def uniqueSet = new HashSet()
         
@@ -283,7 +280,7 @@ class TaqManResultController {
     read detectors from CSV file and compare Levenshtein distance between them and the available TaqManAssays in the DB.
      */
     def checkDetectors = {
-        List<String[]> rows = TaqManResultService.getTaqManRows(params['attachment.id'])
+        List<String[]> rows = taqManResultService.getTaqManRows(params['attachment.id'])
 
         def detectorMap = [:]
         def uniqueSet = new HashSet()        
@@ -313,7 +310,7 @@ class TaqManResultController {
         
         def taqManResultInstance = TaqManResult.get(params.taqManResultId)
 
-        FileInputStream inputFile = TaqManResultService.getFileStream(false, params['attachment.id'])
+        FileInputStream inputFile = taqManResultService.getFileStream(false, params['attachment.id'])
 
         def text = inputFile.text
 
@@ -329,7 +326,7 @@ class TaqManResultController {
 
         inputFile.close()
 
-        FileOutputStream outputFile = TaqManResultService.getFileStream(true, params['attachment.id'])
+        FileOutputStream outputFile = taqManResultService.getFileStream(true, params['attachment.id'])
         outputFile.write(text.getBytes())
         outputFile.close()
 

@@ -19,7 +19,7 @@ beans = {
      * @author: markus.list
      * Wrapping c3p0 connection pool around jdbc datasource using original configuration.
      */
-    dataSource(ComboPooledDataSource) { bean ->
+    /*dataSource(ComboPooledDataSource) { bean ->
         bean.destroyMethod = 'close'
         //use grails' datasource configuration for connection user, password, driver and JDBC url
         user = CH.config.dataSource.username
@@ -29,6 +29,6 @@ beans = {
         //connection test settings
         idleConnectionTestPeriod = 2 * 60 * 60 //2 hours
         testConnectionOnCheckin = true
-    }
+    }     */
 
 }

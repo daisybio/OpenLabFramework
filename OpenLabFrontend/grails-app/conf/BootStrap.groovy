@@ -1,5 +1,4 @@
 import grails.util.GrailsUtil
-import org.codehaus.groovy.grails.commons.ConfigurationHolder
 import org.openlab.barcode.BarcodeDataObject
 import org.openlab.barcode.BarcodeLabel
 import org.openlab.barcode.BarcodeSite
@@ -16,16 +15,17 @@ import org.openlab.storage.StorageLocation
 
 class BootStrap {
 
-    def moduleHandlerService
-    def applicationHandlerService
-    def addinHandlerService
-    def springSecurityService
+    //def moduleHandlerService
+    //def applicationHandlerService
+    //def addinHandlerService
     def settingsService
-    def dataSource
+    def grailsApplication
+    def springSecurityService
+    def searchableService
 
     def init = { servletContext ->
 
-        println "Database name: " + ConfigurationHolder.config.openlab.database.name
+        println "Database name: " + grailsApplication.config.openlab.database.name
 
         initSettings()
         initUserbase()
@@ -40,6 +40,8 @@ class BootStrap {
                 break
 
             case "production":
+
+                initSearchablePlugin()
 
                 break
         }
@@ -70,6 +72,15 @@ class BootStrap {
             //importer.createOnlyMasterData()*/
     }
 
+    def initSearchablePlugin() {
+        // We manually start the mirroring process to ensure that it comes after
+        // Autobase performs its migrations.
+        println "Performing bulk index"
+        searchableService.reindex()
+        println "Starting mirror service"
+        searchableService.startMirroring()
+    }
+
     def initUserbase() {
         /*check if users are in the database */
         def usersGiven = (User.list().size() > 0)
@@ -80,7 +91,8 @@ class BootStrap {
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
             def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
 
-            String password = springSecurityService.encodePassword('password')
+            def password= "password"
+
             def testUser = new User(userRealName: 'Administrator', email: '', username: 'admin', enabled: true, password: password)
             testUser.save(flush: true)
 

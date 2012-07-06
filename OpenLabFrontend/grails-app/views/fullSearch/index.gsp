@@ -5,7 +5,8 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="layout" content="main" />
+      <g:setProvider library="prototype"/>
+      <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
     <title><g:if test="${params.q && params.q?.trim() != ''}">${params.q} - </g:if>OpenLabFramework - Search</title>
     <style type="text/css">
       .result {

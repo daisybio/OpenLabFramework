@@ -1,4 +1,4 @@
-<h1>Label Preview</h1>
+<h2>Label Preview</h2>
 
 <select id="printersSelect"></select>
 

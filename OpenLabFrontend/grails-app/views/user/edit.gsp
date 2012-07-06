@@ -1,5 +1,6 @@
 <head>
-	<meta name="layout" content="main" />
+    <g:setProvider library="prototype"/>
+    <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
 	<title>Edit User</title>
 </head>
 

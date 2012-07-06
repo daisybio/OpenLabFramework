@@ -100,9 +100,10 @@
     background: #C2CCD9;
     border: 1px solid #808080;
 }
+
 /* Set the background color */
 .yui-skin-sam .yui-layout {
-    background-color: #EDF5FF;
+    background-color: #dce1e8;
 }
 /* Style the text in the header */
 .yui-skin-sam .yui-layout .yui-layout-unit div.yui-layout-hd h2 {
@@ -194,9 +195,9 @@
 
 	.yui-skin-sam .yuimenubar {
 	
-	    font-size: 93%;  /* 12px */
-	    line-height: 2;  /* ~24px */
-	    *line-height: 1.9; /* For IE */
+	    font-size: 100%;  /* 12px */
+	    line-height: 2.7;  /* ~24px */
+	    *line-height: 2.9; /* For IE */
 	    border: solid 1px #808080;
 	    background: #EDF5FF;
 	
@@ -245,8 +246,17 @@
 	.yui-skin-sam .yui-navset .yui-content,.yui-skin-sam .yui-navset .yui-navset-top .yui-content{border:1px solid #808080;border-top-color:#808080;padding:.25em .5em;}
 	
 	.yui-skin-sam .yui-navset .yui-nav,.yui-skin-sam .yui-navset .yui-navset-top .yui-nav{border:solid #aaa;border-width:0 0 2px;zoom:1;}
-	
 
-} 
+
+    .yui-navset div.loading div {
+         background:url(../images/loading.gif) no-repeat center center;
+         height: 15em; /* hold some space while loading */
+    }
+
+    .yui-navset div.loading div * {
+          display: none;
+    }
+
+
 
 

@@ -5,10 +5,11 @@ class UrlMappings {
                    // apply constraints here
               }
         }
-        "/"(controller:"dashboard")
+        "/"(controller:"dashboard", action: "dashboard")
         "403"(controller: "error", action: "error403")
-        "500"(controller: "error", action: "error500")
+        "500"(view: "error")
 		"404"(controller: "error", action: "error404")
+        "401"(controller: "login", action: "auth")
    }
 }
 

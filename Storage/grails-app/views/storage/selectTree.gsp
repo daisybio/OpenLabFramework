@@ -7,8 +7,8 @@
 	 				update:[success:'boxView', failure:'yui-main'])}
 		}"/>
 </g:if>
-<script type="text/javascript">"
+<r:script>
 var oElement = document.getElementById("storagetree");
 function fnCallback(e) { alert("animComplete"); }
 YAHOO.util.Event.addListener(oElement, "click", fnCallback);
-</script>
+</r:script>

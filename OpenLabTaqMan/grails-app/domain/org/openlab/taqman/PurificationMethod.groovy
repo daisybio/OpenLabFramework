@@ -6,7 +6,11 @@ class PurificationMethod {
 
     static constraints = {
     }
-    
+
+    static mapping = {
+        table 'taqManPurificationMethod'
+    }
+
     String toString()
     {
         name

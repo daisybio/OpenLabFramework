@@ -1,7 +1,8 @@
 <html>
     <head>
         <title>Storage</title>
-		<meta name="layout" content="main" />
+        <g:setProvider library="prototype"/>
+        <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
 	</head>
 <body>
 
