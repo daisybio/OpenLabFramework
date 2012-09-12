@@ -168,7 +168,7 @@
                 }
         );
 
-        ajaxLoadingPanel.setHeader("Loadin, please wait...");
+        ajaxLoadingPanel.setHeader("Loading, please wait...");
         ajaxLoadingPanel.setBody('<img src="<g:resource dir="images" file="loading.gif"/>"/>');
         ajaxLoadingPanel.render(document.body);
 

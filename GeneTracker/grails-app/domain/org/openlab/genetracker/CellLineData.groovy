@@ -23,8 +23,8 @@ class CellLineData extends DataObject {
 
     //make dataobjects target for searchable plugin
     static searchable = {
+        boost 5.0
         mapping {
-            boost 5.0
             firstRecombinant component: true
             secondRecombinant component: true
             cultureMedia component:true

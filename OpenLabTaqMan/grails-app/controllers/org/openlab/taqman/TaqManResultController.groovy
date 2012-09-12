@@ -243,6 +243,9 @@ class TaqManResultController {
     }
 
     def showDetails = {
+        println params
+        println "HALLO"
+        println TaqManResult.get(params.id as Long)
         [taqManResultInstance: TaqManResult.get(params.id as Long)]
     }
 
