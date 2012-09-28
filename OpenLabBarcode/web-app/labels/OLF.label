@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DieCutLabel Version="8.0" Units="twips">
 	<PaperOrientation>Portrait</PaperOrientation>
-	<Id>Small30334</Id>
-	<PaperName>30334 2-1/4 in x 1-1/4 in</PaperName>
+	<Id>DT Cryo-Tags 9138-2750 1.50" x 0.50"</Id>
+	<CustomPaper>
+		<Size Width="1500" Height="2160" />
+		<PrintableSize Width="1500" Height="2100" />
+		<PrintableOrigin X="0" Y="0" />
+		<Offset X="0" Y="0" />
+	</CustomPaper>
 	<DrawCommands>
-		<RoundRectangle X="0" Y="0" Width="3240" Height="1800" Rx="270" Ry="270" />
+		<RoundRectangle X="0" Y="0" Width="720" Height="2160" Rx="180" Ry="180" />
 	</DrawCommands>
 	<ObjectInfo>
 		<BarcodeObject>
@@ -26,7 +31,7 @@
 			<HorizontalAlignment>Center</HorizontalAlignment>
 			<QuietZonesPadding Left="0" Top="0" Right="0" Bottom="0" />
 		</BarcodeObject>
-		<Bounds X="144.25" Y="1177.25" Width="534.5" Height="535.75" />
+		<Bounds X="88" Y="1564.25" Width="534.5" Height="535.75" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
@@ -55,7 +60,7 @@ pPAR3
 				</Element>
 			</StyledText>
 		</TextObject>
-		<Bounds X="151.75" Y="89.75" Width="260.75" Height="1053.47497558594" />
+		<Bounds X="65.5" Y="74.75" Width="320.75" Height="1398.47497558594" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
@@ -81,7 +86,7 @@ pPAR3
 				</Element>
 			</StyledText>
 		</TextObject>
-		<Bounds X="485.5" Y="371" Width="120" Height="700.724975585938" />
+		<Bounds X="399.25" Y="67.25" Width="120" Height="1390.72497558594" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
@@ -107,7 +112,7 @@ pPAR3
 				</Element>
 			</StyledText>
 		</TextObject>
-		<Bounds X="534.25" Y="86" Width="120" Height="1053.47497558594" />
+		<Bounds X="556.75" Y="416" Width="120" Height="1053.47497558594" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<DateTimeObject>
@@ -130,6 +135,6 @@ pPAR3
 			<IncludeTime>False</IncludeTime>
 			<Use24HourFormat>False</Use24HourFormat>
 		</DateTimeObject>
-		<Bounds X="562.5" Y="86" Width="120" Height="228.75" />
+		<Bounds X="585" Y="123.5" Width="120" Height="228.75" />
 	</ObjectInfo>
 </DieCutLabel>

@@ -4,11 +4,9 @@
     <facet type="web" name="GrailsWeb">
       <configuration>
         <webroots>
-          <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-0.7/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/bubbling-2.1.4/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/joda-time-1.4/grails-app/views" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/filterpane-0.7/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/grails-ui-1.2.3/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/ofchart-0.6/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/ofchart-0.6/grails-app/views" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/modalbox-0.4/web-app" relative="/" />
@@ -19,6 +17,9 @@
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/searchable-0.6.3/grails-app/views" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/yui-2.8.2.1/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/database-migration-1.1/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/jquery-1.7.1/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-1.5/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/grails-ui-1.2.3/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -45,11 +46,10 @@
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/excel-import-0.3/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/excel-import-0.3/grails-app/i18n" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-0.7">
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-0.7/src/groovy" isTestSource="false" />
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-0.7/grails-app/i18n" isTestSource="false" />
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-0.7/grails-app/services" isTestSource="false" />
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-0.7/grails-app/taglib" isTestSource="false" />
+    <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-1.5">
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-1.5/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-1.5/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-1.5/grails-app/taglib" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/filterpane-0.7">
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/filterpane-0.7/grails-app/utils" isTestSource="false" />
@@ -69,6 +69,12 @@
     <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/joda-time-1.4">
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/joda-time-1.4/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/joda-time-1.4/grails-app/taglib" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/jquery-1.7.1">
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/jquery-1.7.1/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/jquery-1.7.1/grails-app/i18n" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/jquery-1.7.1/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/jquery-1.7.1/grails-app/taglib" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/modalbox-0.4">
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/modalbox-0.4/grails-app/taglib" isTestSource="false" />
@@ -98,12 +104,11 @@
     <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/remote-pagination-0.2.3">
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/remote-pagination-0.2.3/grails-app/taglib" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.0">
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.0/src/java" isTestSource="false" />
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.0/src/groovy" isTestSource="false" />
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.0/grails-app/i18n" isTestSource="false" />
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.0/grails-app/services" isTestSource="false" />
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.0/grails-app/taglib" isTestSource="false" />
+    <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.1.6">
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.1.6/src/java" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.1.6/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.1.6/grails-app/i18n" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/resources-1.1.6/grails-app/taglib" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/richui-0.8">
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/richui-0.8/src/groovy" isTestSource="false" />
@@ -117,6 +122,9 @@
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/searchable-0.6.3/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/searchable-0.6.3/grails-app/controllers" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/searchable-0.6.3/grails-app/services" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/spring-security-cas-1.0.5">
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/spring-security-cas-1.0.5/src/java" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/spring-security-core-1.2.7.3">
       <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/spring-security-core-1.2.7.3/src/java" isTestSource="false" />
@@ -143,9 +151,7 @@
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (OpenLabFrontend-grailsPlugins)">
         <CLASSES>
-          <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-0.7/lib" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/joda-time-1.4/lib" />
-          <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/grails-ui-1.2.3/lib" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/ofchart-0.6/lib" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/p6spy-0.4/lib" />
           <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/richui-0.8/lib" />
@@ -168,10 +174,14 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/com.lowagie/itext/jars/itext-2.1.7.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jrobin/jrobin/jars/jrobin-1.5.9.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/net.bull.javamelody/javamelody-core/jars/javamelody-core-1.37.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jasig.cas.client/cas-client-core/jars/cas-client-core-3.1.12.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.springframework.security/spring-security-cas-client/jars/spring-security-cas-client-3.0.7.RELEASE.jar!/" />
+          <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-1.5/lib" />
+          <root url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/grails-ui-1.2.3/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-0.7/lib" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/export-1.5/lib" recursive="false" />
         <jarDirectory url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/grails-ui-1.2.3/lib" recursive="false" />
         <jarDirectory url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/joda-time-1.4/lib" recursive="false" />
         <jarDirectory url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabFramework/plugins/ofchart-0.6/lib" recursive="false" />

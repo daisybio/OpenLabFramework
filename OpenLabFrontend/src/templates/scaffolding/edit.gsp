@@ -28,17 +28,21 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
+			<g:form name="edit${propertyName}Form" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
 				<g:hiddenField name="id" value="\${${propertyName}?.id}" />
 				<g:hiddenField name="version" value="\${${propertyName}?.version}" />
+                <g:hiddenField name="bodyOnly" value="\${true}"/>
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
-					<g:actionSubmit class="delete" action="delete" value="\${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('\${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:submitToRemote update="body" class="save" action="update" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:submitToRemote update="body" class="delete" action="delete" value="\${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('\${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>
+    <script type="text/javascript">
+        olfEvHandler.bodyContentChangedEvent.fire("\${${propertyName}?.toString()}");
+    </script>
 	</body>
 </html>

@@ -15,7 +15,7 @@ class Viability extends SubDataObject
 	Gene gene
 	Date date
 	Double percentage
-	User Researcher
+	User researcher
 	String notes
 	
 	static constraints = {

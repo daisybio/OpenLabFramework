@@ -12,6 +12,7 @@ class DashboardController {
 	}
 	
 	def dashboard = {
+
 		def lastModifiedMax = params.lastModifiedMax?:10
 		
 		//get last modified by anyone
@@ -21,11 +22,13 @@ class DashboardController {
 		def username = springSecurityService.getPrincipal().username
 		
 		//get last modified by user
-		def lastModifiedByUser = DataObject.findAllByLastModifier(User.findByUsername(username)).sort{it.lastUpdate}
-		
-		//shorten list if necessary
-		if(lastModifiedByUser.size() > lastModifiedMax) 
-			lastModifiedByUser = lastModifiedByUser[0..(lastModifiedMax-1)]
+		def lastModifiedByUser = DataObject.withCriteria{
+            lastModifier{
+                eq("username", username)
+            }
+            maxResults lastModifiedMax
+            order "lastUpdate", "desc"
+        }
 		
 		//return model
 		[lastModifiedByUser: lastModifiedByUser, lastModifiedByAny: lastModifiedByAny, lastModifiedMax: lastModifiedMax]

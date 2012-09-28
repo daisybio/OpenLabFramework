@@ -28,8 +28,10 @@ class ViabilityModule implements Module{
 		{
 			def userNames = org.openlab.security.User.list().collect{it.username}
 			def gene = Gene.get(id)
-			def cellLineData = CellLineData.list().findAll{ ((it.firstRecombinant.genes.contains(gene)) || (it.secondRecombinant?.genes?.contains(gene))) }
-			return [userNames: userNames, cellLineDataNames: cellLineData.collect{it.id + ":" + it.toString()}]
+			def viabilities = Viability.findAllByGene(gene)
+            def recombinantService = new org.openlab.genetracker.RecombinantsService()
+            def cellLineData = recombinantService.recombinantsWithGene(id)
+			return [viabilities: viabilities, gene:gene, userNames: userNames, cellLineData: cellLineData]
 		}
 	}
 }

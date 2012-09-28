@@ -31,7 +31,6 @@ class AttachmentsTabModule implements Module{
 			createAlias("dataObjects", "dos")
 			eq("dos.id", Long.valueOf(id))
 		}
-					
-		return [dataObjectAttachmentInstanceList: attachments, dataObjectAttachmentInstanceTotal: attachments.size()]
+		return [dataObjectAttachmentInstanceList: attachments, dataObjectAttachmentInstanceTotal: attachments?.size()?:0]
 	}
 }

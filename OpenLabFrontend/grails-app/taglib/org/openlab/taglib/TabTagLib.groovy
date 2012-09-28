@@ -19,7 +19,8 @@ class TabTagLib {
 	 * return a number of <gui:tab> elements that are filled with content from module specific templates
 	 */
 	def renderInterestedModules = { attrs ->
-		
+
+        println attrs
 		def interestedModules = moduleHandlerService.getInterestedModules(domainClass: attrs.domainClass, type: "tab")
 
         out << "<script type='text/javascript'>"

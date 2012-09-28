@@ -73,7 +73,7 @@ environments {
         grails.serverURL = "http://www.changeme.com"
     }
     development {
-        grails.serverURL = "http://localhost:8080/${appName}"
+        grails.serverURL = "http://10.84.12.130:8080/${appName}"
     }
     test {
         grails.serverURL = "http://localhost:8080/${appName}"
@@ -115,7 +115,7 @@ grails.plugins.springsecurity.requestMap.className = 'org.openlab.security.Reque
 grails.plugins.springsecurity.securityConfigType = 'Requestmap'
 
 //resource plugin
-grails.resources.debug=true
+//grails.resources.debug=true
 
 grails.resources.modules = {
     labelPrinter{
@@ -132,7 +132,14 @@ grails.resources.modules = {
         resource url: [plugin: "prototype", dir:"js/prototype", file: "effects.js"], disposition: "head"
         resource url: [plugin: "prototype", dir:"js/prototype", file: "controls.js"], disposition: "head"
     }
-
+    jstree {
+        dependsOn 'jquery'
+        resource url: 'js/jquery.jstree.js'
+        resource url: 'js/themes/default/d.gif'
+        resource url: 'js/themes/default/d.png'
+        resource url: 'js/themes/default/style.css'
+        resource url: 'js/themes/default/throbber.gif'
+    }
 }
 
 //db migration
@@ -151,3 +158,11 @@ grails.gorm.default.mapping = {
 
 //define default javascript library
 grails.views.javascript.library="prototype"
+
+//CAS configuration for single sign on
+grails.plugins.springsecurity.cas.loginUri = '/login'
+grails.plugins.springsecurity.cas.serviceUrl = grails.serverURL + '/j_spring_cas_security_check'
+grails.plugins.springsecurity.cas.serverUrlPrefix = 'https://sso.sdu.dk'
+//grails.plugins.springsecurity.cas.proxyCallbackUrl = grails.serverURL + '/secure/receptor'
+grails.plugins.springsecurity.cas.proxyReceptorUrl = '/secure/receptor'
+grails.plugins.springsecurity.logout.afterLogoutUrl = 'https://sso.sdu.dk/logout?url=' + grails.serverURL

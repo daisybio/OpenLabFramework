@@ -55,6 +55,21 @@ body {
     box-shadow: 3px 3px 4px #000;
 }
 
+.yui-dispatchable {
+    min-height: 400px;
+    padding: 10px;
+}
+
+.yui-content {
+    min-height: 400px;
+}
+
+#tabs{
+    min-width:550px;
+    padding:20px;
+    min-height:400px;
+}
+
 /* replace with .no-boxshadow body if you have modernizr available */
 .ie6 body,
 .ie7 body,
@@ -83,6 +98,12 @@ h1 {
 	margin: 0.8em 0 0.3em 0;
 }
 
+h2 {
+    color: #000000;
+    font-weight: bold;
+    font-size: 1.0em;
+}
+
 ul {
 	padding: 0;
 }
@@ -109,12 +130,19 @@ box-shadow: 0 0 5px 2px #aaaaaa;
 }
 
 .content {
+    margin: 2em 2em 2em 2em;
 }
 
 .content h1 {
 	border-bottom: 1px solid #CCCCCC;
 	margin: 0.8em 1em 0.3em;
 	padding: 0 0.25em;
+}
+
+.content h2 {
+    border-bottom: 1px solid #CCCCCC;
+    margin: 0.8em 1em 0.3em;
+    padding: 0 0.25em;
 }
 
 .scaffold-list h1 {
@@ -497,7 +525,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: rgb(223, 239, 255);
+	background: rgb(242, 248, 255);
 }
 
 /* PAGINATION */

@@ -1,7 +1,8 @@
 package org.openlab.storage
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
-import org.openlab.main.*;
+import org.openlab.main.*
+import org.springframework.dao.DataIntegrityViolationException;
 
 /**
  * Handles operations concerning the box. A box is 
@@ -14,6 +15,13 @@ import org.openlab.main.*;
 class BoxController {
 
     def scaffold = Box
+
+    def listBoxesInCompartment = {
+
+        def boxes = Box.findAllByCompartment(Compartment.get(params.id))
+
+        [boxInstanceList: boxes, boxInstanceTotal: boxes.size()]
+    }
     
     /**
      * Return a model of the given box id
@@ -29,6 +37,37 @@ class BoxController {
     	}
     		
     	[box: Box.get(id)]
+    }
+
+    def addBox = {
+
+        if(!new Box(params).save(flush:true, failOnError:true))
+        {
+            flash.message = "Could not create box"
+        }
+        render(template: "/layouts/listBoxes", model: [compartmentId: params["compartment.id"]])
+    }
+    
+    def deleteBox = {
+
+        def boxInstance = Box.get(params.id)
+        def compartment = boxInstance.compartmentId
+
+        if (!boxInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'box.label', default: 'Box'), params.id])
+            render(template: "/layouts/listBoxes", model:[compartmentId: compartment])
+        }
+
+        try {
+            boxInstance.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'box.label', default: 'Box'), params.id])
+
+            render(template: "/layouts/listBoxes", model:[compartmentId: compartment])
+        }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'box.label', default: 'Box'), params.id])
+            render(template: "/layouts/listBoxes", model:[compartmentId: compartment])
+        }
     }
     
     /**

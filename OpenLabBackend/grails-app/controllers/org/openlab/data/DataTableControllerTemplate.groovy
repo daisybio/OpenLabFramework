@@ -38,8 +38,8 @@ abstract class DataTableControllerTemplate {
 		    //there are elements, proceed
 		   else
 		   {
-	        def offset = Integer.parseInt(params.offset)
-	        def max = Integer.parseInt(params.max)
+	        def offset = params.integer("offset")
+	        def max = params.integer("max")
 	        def endRange = (offset + max -1) <= (list.size()-1) ? (offset + max -1) : list.size()-1
 	        def range = offset..endRange
 	        def result = list[range].sort{it."${params.sort}"}

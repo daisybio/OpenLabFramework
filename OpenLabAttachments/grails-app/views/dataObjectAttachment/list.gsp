@@ -18,10 +18,10 @@
                 <table>
                     <thead>
                         <tr>
-                            <g:sortableColumn property="fileName" title="${message(code: 'dataObjectAttachment.fileName.label', default: 'fileName')}" />
-							<g:sortableColumn property="fileUploadDate" title="${message(code: 'dataObjectAttachment.uploadDate.label', default: 'uploaded')}" />
-							<g:sortableColumn property="description" title="${message(code: 'dataObjectAttachment.description.label', default: 'description')}" />
-							<th>action</th>                
+                            <g:sortableColumn property="fileName" title="${message(code: 'dataObjectAttachment.fileName.label', default: 'Filename')}" />
+							<g:sortableColumn property="fileUploadDate" title="${message(code: 'dataObjectAttachment.uploadDate.label', default: 'Uploaded')}" />
+							<g:sortableColumn property="description" title="${message(code: 'dataObjectAttachment.description.label', default: 'Description')}" />
+							<th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +30,7 @@
                         
                             <td>
                             <g:attachmentIcon type="${dataObjectAttachmentInstance.fileType}"/>
-                            <g:link action="download" id="${dataObjectAttachmentInstance.id}">${fieldValue(bean: dataObjectAttachmentInstance, field: "fileName")}</g:link></td>
+                            <g:link action="download" id="${dataObjectAttachmentInstance.id}" title="Show ${dataObjectAttachmentInstance.toString()}">${fieldValue(bean: dataObjectAttachmentInstance, field: "fileName")}</g:link></td>
 
                             	<td valign="top" class="value">
                             		<g:formatDate date="${dataObjectAttachmentInstance.fileUploadDate}" />

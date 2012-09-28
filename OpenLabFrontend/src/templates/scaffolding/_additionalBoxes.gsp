@@ -2,7 +2,7 @@
 		<%=packageName%>
         <%	excludedProps = Event.allEvents.toList() << 'version' << 'attachable'  << 'id' << 'acl' %>
     	<% historyProps = [] << 'creator' << 'dateCreated' << 'lastModifier' << 'lastUpdate' %>
-        <div style="float: right; width: 30%;padding: 15px;">
+        <div style="padding-right:20px; padding-top: 20px; position:absolute; right:0;">
         	<% props = domainClass.properties.findAll { !excludedProps.contains(it.name) && historyProps.contains(it.name)}
         	if(props.size() > 0) { %>
         	<gui:expandablePanel title="History" expanded="true" closable="true">
@@ -35,15 +35,10 @@
                 </table>
 			</gui:expandablePanel>
 			<%}%>
-        	<div style="padding-top:10px;">
-				<gui:expandablePanel title="Access" expanded="false" closable="true">
-					<g:includeAccessListForObject id="\${${propertyName}?.id}"></g:includeAccessListForObject>
-				</gui:expandablePanel>
-			</div>
+
 			<div style="padding-top:10px;">
-				<gui:expandablePanel title="Operations" expanded="true" closable="true">
+				<gui:expandablePanel title="Operations" expanded="true" closable="false">
 				 <ul>
-					<g:includeBookmarkThisPageLink domainClass="\${${className}}" id="\${${propertyName}?.id}"/>
 					<g:includeOperationsForType domainClass="${domainClass.propertyName}" id="\${${propertyName}.id}"/>
 				 </ul>
 				</gui:expandablePanel>

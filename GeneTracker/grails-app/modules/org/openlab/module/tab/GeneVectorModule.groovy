@@ -28,10 +28,14 @@ class GeneVectorModule implements Module{
 		if(domainClass == "gene")
 		{
 			def gene = Gene.get(id)
-			def gvectors = Recombinant.list().findAll{it.genes?.contains(gene)}
-			def vectors = Vector.list().findAll{it.type != "Acceptor"}
+			def gvectors = Recombinant.withCriteria{
+                genes{
+                    eq("id", Long.valueOf(id))
+                }
+            }
+			def vectors = Vector.where{ type != "Acceptor"}.list(sort: "label")
 			
-			[gene: gene, geneVectors: gvectors, vectors: vectors.collect{it.toString()}]
+			[gene: gene, geneVectorList: gvectors, vectors: vectors]
 		}
 	}
 }

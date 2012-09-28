@@ -153,7 +153,7 @@ class BootStrap {
             def requestMap = new Requestmap(url: "/error/**", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
             requestMap.save()
 
-            requestMap = new Requestmap(url: "/", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
+            requestMap = new Requestmap(url: "/", configAttribute: "IS_AUTHENTICATED_FULLY")
             requestMap.save()
 
             requestMap = new Requestmap(url: "/login/auth", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")

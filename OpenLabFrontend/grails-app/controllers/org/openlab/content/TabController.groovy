@@ -7,6 +7,7 @@ class TabsController {
     def grailsApplication
 
     def renderTab = {
+        println params
         log.debug params
         Module module = grailsApplication.getArtefact("Module", params.module).referenceInstance
 

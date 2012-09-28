@@ -9,9 +9,22 @@
 
     <!-- Core + Skin CSS -->
     <g:loadIcon/>
-    <!-- <link rel="shortcut icon" href="${resource(dir: 'images', file: 'openlab_ico.gif')}" type="image/x-icon" /> -->
 
     <!-- JS resources -->
+    <r:require module="grailsui-autocomplete"/>
+    <r:require module="grailsui-rich-editor"/>
+    <r:require module="grailsui-dialog"/>
+    <r:require module="grailsui-tabview"/>
+    <r:require module="grailsui-menu"/>
+    <r:require module="grailsui-accordion"/>
+    <r:require module="grailsui-tooltips"/>
+    <r:require module="grailsui-expandable-panel"/>
+    <r:require module="export"/>
+    <!-- Additional YUI JS files: -->
+    <r:require modules="yui-layout, yui-history"/>
+    <r:require module="bubbling-dispatcher"/>
+    <!-- customized CSS files for yui -->
+    <r:require modules="myyui"/>
     <!-- custom event handling -->
     <r:script disposition="head">
 
@@ -27,24 +40,6 @@
 
     </r:script>
 
-    <r:require module="grailsui-autocomplete"/>
-    <r:require module="grailsui-rich-editor"/>
-    <r:require module="grailsui-dialog"/>
-    <r:require module="grailsui-tabview"/>
-    <r:require module="grailsui-data-table"/>
-    <r:require module="grailsui-menu"/>
-    <r:require module="grailsui-accordion"/>
-    <r:require module="grailsui-tooltips"/>
-    <r:require module="grailsui-expandable-panel"/>
-    <r:require module="grailsui-styles"/>
-    <r:require module="grailsui-core"/>
-
-    <!-- Additional YUI JS files: -->
-    <r:require module="bubbling-dispatcher"/>
-    <r:require modules="yui-calendar, yui-layout, yui-resize, yui-history, yui-event, yui-tabview, yui-treeview"/>
-    <!-- customized CSS files for yui -->
-    <r:require module="myyui"/>
-
     <!-- Layout head (Sitemesh) -->
     <g:layoutHead/>
 
@@ -55,7 +50,6 @@
     <r:require module="labelPrinter"/>
 
     <r:layoutResources/>
-
     <!-- Main CSS at the end to make sure it is effective -->
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"/>
 </head>
@@ -95,7 +89,8 @@
         <!-- LEFT: Project Tree -->
 
         <div id="left1">
-            <!-- include controller="projectTree" action="renderTree" params="[id: params.id]"-->
+             <g:include controller="projectTree" action="renderTree"/>
+            <!--old version: include controller="projectTree" action="renderTree" params="[id: params.id]"-->
         </div>
     </sec:ifLoggedIn>
 
@@ -186,7 +181,7 @@
 
     </r:script>
 
-<r:layoutResources/>
+    <r:layoutResources/>
 
 </body>
 

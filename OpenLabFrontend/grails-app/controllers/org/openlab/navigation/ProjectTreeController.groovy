@@ -3,12 +3,13 @@ package org.openlab.navigation;
 
 import org.openlab.model.*;
 
-
 import groovy.xml.MarkupBuilder
 import org.openlab.main.DataObject
 import org.openlab.main.Laboratory
 import org.openlab.main.Project
 import org.openlab.security.User
+import grails.converters.JSON
+import org.openlab.genetracker.Gene
 
 /**
  * Controller to deliver XML data to the YUI tree that is showing
@@ -20,17 +21,50 @@ public class ProjectTreeController {
 
     def index = { renderTree }
 
-    def springSecurityService
-    def settingsService
+    //def springSecurityService
+    //def settingsService
 
+    def renderTree(){
+        [:]
+    }
+
+    def projectTreeAsJSON() {
+
+        def nanocanLab = Laboratory.findByName("Odense")
+
+        if(params.int("id") == 0)
+        {
+            def projects = Project.findAllByLaboratory(nanocanLab)
+
+            def projectsAsJSON = projects.sort{it.name}.collect{
+                [
+                        "data" : it.name,
+                        "attr" : [ "id" : it.id , "rel":"project", "nodeType" : "project"],
+                        "state" : "closed"
+                ]
+            }
+            render projectsAsJSON as JSON
+        }
+
+        else{
+            def genesAsJSON = Gene.withCriteria{ projects { eq('id', params.long("id")) }}.sort{it.name}.collect{
+                [
+                        "data" : it.name,
+                        "attr" : [ "id" : it.id , "rel":"gene", "nodeType" : "gene"]
+                ]
+            }
+
+            render genesAsJSON as JSON
+        }
+    }
     /**
      * Create the XML data for the YUI treeview
      */
-    def renderTree = {
+    /*def renderTree = {
 
         /*
                * create tree data XML from projects
-               */
+               *
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
 
@@ -55,12 +89,12 @@ public class ProjectTreeController {
 
         /*
                * set params
-               */
+               *
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 
         /**
          * obtain dataobject types
-         */
+         *
         def types = DataObject.list().collect {it.type}.unique()
 
         render(template: "/layouts/renderTree", model: ["data": writer.toString(), objectTypes: types])
@@ -73,7 +107,7 @@ public class ProjectTreeController {
      * @param projName
      * @param projList
      * @return
-     */
+
     def findProjects(builder, projName, projList) {
         builder.projects(name: projName, id: projName, checked: false, expanded: false, selected: false)
                 {
@@ -96,7 +130,7 @@ public class ProjectTreeController {
      * of the BrowserHistoryFilter (grails-app/conf) is used.
      * @param p
      * @return
-     */
+     *
     def isExpanded(def project) {
         if (session.nextBackId && DataObject.findById(session.nextBackId)?.projects?.contains(project)) return true
 
@@ -109,7 +143,7 @@ public class ProjectTreeController {
      * of the BrowserHistoryFilter (grails-app/conf) is used.
      * @param obj
      * @return
-     */
+     *
     def isSelected(def obj) {
         if (!session.nextBackId) return false
 
@@ -122,7 +156,7 @@ public class ProjectTreeController {
     /**
      * Checks whether "MyProjects" or "OtherProjects" has been selected and
      * triggers the corresponding action in project controller.
-     */
+     *
     def listSubsetOfProjects = {
         def id = params.id
         params.remove("id")
@@ -132,5 +166,5 @@ public class ProjectTreeController {
 
         else if (id == (settingsService.getLabel(key: "otherprojects") ?: "Other Projects"))
             redirect(controller: "project", action: "listOtherProjects", params: params)
-    }
+    }    **/
 }

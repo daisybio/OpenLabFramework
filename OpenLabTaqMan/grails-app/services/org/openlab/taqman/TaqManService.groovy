@@ -296,20 +296,25 @@ calibrationSample=name.reference.sample,	housekeepingGene=name.reference.gene, w
     {
         def rConnection = RperationsService.getConnection();
 
+        def stringenize = { return (it.collect{ x -> ("\"" + x.toString() + "\"")})}
+        def vectorize = { String s = stringenize(it).toString(); return("c(" + s.substring(1, s.length()-1) + ")")}
+
         try{
         /* load each allResults.csv, combine them in one dataset and filter for rows with cellLineData != NA*/
         sets.eachWithIndex{ set, i->
             rConnection.voidEval("setwd('${rFolders[set]}')")
             rConnection.voidEval("txtData <- read.csv2('allResults.csv')")
             rConnection.voidEval("txtData\$taqManSet <- '${setNames[set]}'")
-            
+
             //filter for detector and cellLineData
-            rConnection.voidEval("txtData <- subset(txtData, Detector == '${setComparisonDetector}' & cellLineData %in% c(${selectedCellLineData.toString()[1..2]}))")
-            if(i == 0) rConnection.voidEval("combined <- txtData[!is.na(txtData\$cellLineData),]")
-            else rConnection.voidEval("combined <- rbind(combined, txtData[!is.na(txtData\$cellLineData),])")
+            rConnection.voidEval("selectedCellLineData <- ${vectorize(selectedCellLineData).toString()}")
+            if(setComparisonDetector)
+                rConnection.voidEval("txtData <- subset(txtData, Detector == '${setComparisonDetector}' & cellLineData %in% selectedCellLineData)")
+            else
+                rConnection.voidEval("txtData <- subset(txtData, cellLineData %in% selectedCellLineData)")
+            if(i == 0) rConnection.voidEval("combined <- txtData")
+            else rConnection.voidEval("combined <- rbind(combined, txtData)")
         }
-            
-        println selectedCellLineData.toString()[1..-2]
 
         //create temporary directory
         def tempDir = createTempDir(rConnection)
@@ -322,7 +327,10 @@ calibrationSample=name.reference.sample,	housekeepingGene=name.reference.gene, w
         //plot results
         rConnection.voidEval("limits <- aes(ymax = exprs + level.err, ymin = exprs - level.err)")
         rConnection.voidEval("q <- qplot(cellLineData, exprs, data=subset(combined, !is.na(exprs)), fill=inducer, color=taqManSet, geom='bar', position='dodge', stat='identity')")
-        
+
+        if(setComparisonDetector)
+            rConnection.voidEval("q <- q + facet_wrap(~Detector)")
+
         if (logarithmicScale == "log2") {
             rConnection.voidEval("q <- q + scale_y_log2()")
         }

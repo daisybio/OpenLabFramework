@@ -84,7 +84,7 @@ class GeneController extends DataObjectController{
 			redirect(action:"create", params: params)
 		}
 	}
-	
+
 	/**
 	 * Copies all persistent properties from one gene to another
 	 */

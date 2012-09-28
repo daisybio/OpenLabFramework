@@ -1,6 +1,7 @@
 package org.openlab.module.tab
 
-import org.openlab.module.*;
+import org.openlab.module.*
+import org.openlab.genetracker.CellLineData;
 
 class CellLineDataModule implements Module{
 
@@ -25,7 +26,23 @@ class CellLineDataModule implements Module{
 	{
 		if(domainClass == "gene")
 		{
-			return []
+            def cellLineDataList = CellLineData.withCriteria{
+                    firstRecombinant{
+                        genes{
+                            eq('id', Long.valueOf(id))
+                        }
+                    }
+            }
+
+            cellLineDataList.addAll(CellLineData.withCriteria{
+                    secondRecombinant{
+                        genes{
+                            eq('id', Long.valueOf(id))
+                        }
+                    }
+            })
+
+			return [cellLineDataList: cellLineDataList]
 		}
 	}
 }

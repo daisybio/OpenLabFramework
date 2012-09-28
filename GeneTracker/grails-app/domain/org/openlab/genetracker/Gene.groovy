@@ -11,7 +11,7 @@ public class Gene extends DataObject implements Serializable{
 		sequence type: 'text'
 		cache true
 	}
-	
+
 	static constraints = {
 		name([blank: false, unique:true])
 		description()

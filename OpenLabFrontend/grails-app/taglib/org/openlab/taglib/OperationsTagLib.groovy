@@ -8,8 +8,6 @@ public class OperationsTagLib {
 	
 	def includeOperationsForType = {attrs ->
 		
-		println attrs.domainClass
-		
 		def interestedModules = moduleHandlerService.getInterestedModules(domainClass: attrs.domainClass, type: "operations")
 		
 		interestedModules.each{ module ->

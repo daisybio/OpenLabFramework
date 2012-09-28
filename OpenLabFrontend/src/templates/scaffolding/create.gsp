@@ -12,7 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="\${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:remoteLink update="body" params="\${[bodyOnly: true]}" class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:remoteLink></li>
 			</ul>
 		</div>
 		<div id="create-${domainClass.propertyName}" class="content scaffold-create" role="main">
@@ -27,14 +27,18 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form action="save" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
-				<fieldset class="form">
+			<g:form name="create${propertyName}Form"<%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
+				<g:hiddenField name="bodyOnly" value="\${true}"/>
+                <fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="\${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitToRemote update="body" action="save" name="create" class="save" value="\${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
 			</g:form>
 		</div>
+    <script type="text/javascript">
+        olfEvHandler.bodyContentChangedEvent.fire("\${${propertyName}?.toString()}");
+    </script>
 	</body>
 </html>

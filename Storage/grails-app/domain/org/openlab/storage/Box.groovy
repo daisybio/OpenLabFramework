@@ -47,6 +47,9 @@ class Box {
 	{
 		lastUpdate = new Date()
 	}
+    def beforeUpdate(){
+        lastUpdate = new Date()
+    }
 }
 
 

@@ -1,32 +1,55 @@
 	<g:if test="${vectors}">
 	<div id="geneVectorTab">
 	<div class="message">Keep in mind that changing a Vector Combination affects all associated CellLineData experiments.</div>
-	<gui:dataTable
-	    id="dtGeneVectors"
-	    draggableColumns="true"
-	    columnDefs="[
-	       [key:'id', hidden: 'true'],
-		   [key:'gene', formatter:'text', sortable:true, resizeable: true, label:'Gene'],
-	       [key:'vector', formatter:'text', sortable:true, resizeable: true, label:'Vector',
-	       		editor:[type:'dropDown', controller: 'recombinant', action:'tableDataChange', config:[
-	       		dropdownOptions: vectors, disableBtns:true]]],
-	       [key:'notes', formatter:'text', sortable:true, resizeable: true, label:'Notes',
-	       		editor:[controller: 'recombinant', action:'tableDataChange', config:[disableBtns:true]]],
-	       [key:'modifyUrls', sortable:false, resizable:false, label:'']
-		]"
-		controller="recombinant" action="recombinantsAsJSON"
-		rowsPerPage="10"
-		params="[id: params.id]"
-		sortedBy="vector"
-		rowExpansion="false"
-		collapseOnExpansionClick="false"
-	 ></gui:dataTable>
-	 
-	 <div><span class="buttons">
-	 	<g:remoteLink controller="recombinant" action="addTableRow" id="${params.id}" onFailure="alert('Cannot add another vector! Define new vectors first.')" onSuccess="javascript:GRAILSUI.dtGeneVectors.requery();">
-	 		Add VectorCombination
- 		</g:remoteLink>
-	</span></div>
+
+     <div id="geneVectorList">
+         <table>
+             <thead>
+             <tr>
+                 <th>Name</th>
+                 <th>Gene</th>
+                 <th>Vector</th>
+                 <th>Notes</th>
+                 <th>Last Update</th>
+                 <th>&nbsp;</th>
+             </tr>
+             </thead>
+             <tbody>
+             <g:each in="${geneVectorList}" status="i" var="geneVectorInstance">
+                 <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                     <td>${geneVectorInstance}</td>
+                     <td>${geneVectorInstance.genes}</td>
+                     <td>${geneVectorInstance.vector}</td>
+                     <td><g:editInPlace id="notes_${geneVectorInstance.id}"
+                                        url="[controller: 'recombinant', action: 'editField', id: geneVectorInstance.id]"
+                                        rows="1"
+                                        cols="10"
+                                        paramName="notes">
+                        <g:if test="${geneVectorInstance.notes!=''}">
+                            ${geneVectorInstance.notes}
+                        </g:if>
+                        <g:else><img src="${resource(dir:'images/skin',file:'olf_tool_small.png')}"/></g:else>
+                     </g:editInPlace></td>
+                     <td><g:formatDate type="date" date="${geneVectorInstance.lastUpdate}" /></td>
+                     <td class="actionButtons">
+                         <span class="actionButton">
+                             <g:remoteLink controller="recombinant" action="show" params="[bodyOnly: true]" id="${geneVectorInstance.id}" update="[success:'body',failure:'body']">Show</g:remoteLink>
+                         </span>
+                     </td>
+                 </tr>
+             </g:each>
+             </tbody>
+         </table>
+     </div>
+
+	 <div>
+        Add a new recombinant:
+	 	<g:formRemote name="addVectorCombinationForm" update="geneVectorTab" url="[controller: 'recombinant', action:'addRecombinantInTab']">
+	 		 <g:hiddenField name="gene" value="${gene.id}"/>
+             <g:select name="vector" from="${vectors}" optionKey="id" optionValue="label"/>
+             <g:submitButton name="Add VectorCombination"/>
+ 		</g:formRemote>
+	</div>
 	 </div>
 	 </g:if>
 	 <g:else>Please create a vector first.</g:else>

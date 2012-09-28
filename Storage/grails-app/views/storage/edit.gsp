@@ -1,20 +1,19 @@
 <html>
     <head>
         <title>Storage</title>
-        <g:setProvider library="prototype"/>
         <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
 	</head>
 <body>
 
-<div class="body" style="width:80%;">
+<div class="body" style="padding:20px;">
 <h1>Storage Configuration</h1>
 <table width="200">
  <tr><th>Select StorageType</th><th>Select Compartment</th></tr>
  <tr>
   <td>
-  	<span id="storageTypeSelectDiv">
+  	<div id="storageTypeSelectDiv" style="padding:20px;">
 		<g:select from="${storageTypeList}" name="storageTypeSelect" value="" onchange="${remoteFunction(action:'updateCompartmentSelect', update:'compartmentSelectDiv', params:'\'selectedValue=\'+this.value')}"/>
-	</span>
+	</div>
         <div class="buttons">
             <g:form> 
                 <g:hiddenField name="bodyOnly" value="true" />
@@ -46,8 +45,8 @@
 	<g:link controller="storage" action="exportHierarchy">Export Storage Hierarchy to XLS</g:link>
 </div>
 
-<div id="boxListArea"></div>
-
-</body>
+<div id="boxListArea" style="padding-top: 30px;"></div>
+<div id="boxArea"/>
 </div>
+</body>
 </html>

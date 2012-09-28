@@ -4,6 +4,7 @@ import grails.converters.*
 import groovy.xml.MarkupBuilder;
 import org.openlab.data.*
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
+import org.openlab.main.Project
 
 class StorageController extends DataTableControllerTemplate {
 
@@ -37,16 +38,15 @@ class StorageController extends DataTableControllerTemplate {
 		def storageTypeList = StorageType.list()
 		def firstStorageType = null
 		if(storageTypeList.size() > 0) firstStorageType = storageTypeList.get(0)
-		def compartmentList = Compartment.list().findAll{it.storageType == firstStorageType}.collect{it.description}
+		def compartmentList = Compartment.findAllWhere(storageType: firstStorageType)
 		
 		[storageTypeList: storageTypeList, compartmentList: compartmentList]
 	}
 	
 	def updateCompartmentSelect = {
-		println params.selectedValue
-		
+
 		def storageType = StorageType.findByDescription(params.selectedValue)
-		def selectedCompartments = Compartment.findAllByStorageType(storageType).collect{it.description}
+		def selectedCompartments = Compartment.findAllByStorageType(storageType)
 		
 		render(template:"/layouts/compartmentSelect", plugin:"storage", model: [compartmentList: selectedCompartments])
 	}
@@ -54,95 +54,8 @@ class StorageController extends DataTableControllerTemplate {
 	def updateBoxList = {
 		def storageType = StorageType.findByDescription(params.storageType)
 		def compartment = Compartment.findByStorageTypeAndDescription(storageType, params.compartment)
-		if(!compartment) render ""
+		if(!compartment) render "Compartment not found."
 		else render(template:"/layouts/listBoxes", plugin:"storage", model: [storageType: storageType, compartment: compartment, compartmentId: compartment?.id])
-	}
-	
-	
-	/**
-	* List boxes belonging to a compartment as JSON
-	*/
-   def listBoxesAsJSON = {
-	
-	   def compInstance = Compartment.get(params.id)
-	   
-	   def boxes = Box.findAllByCompartment(compInstance)
-		  
-	   def list = []
-	   boxes.each{
-		   list << [
-			   id: it.id,
-			   description: it.description,
-			   xdim : it.xdim,
-			   ydim : it.ydim,
-			   lastUpdate : grailsUITagLibService.dateToJs(it.lastUpdate),
-			   modifyUrls: remoteLink(action:'removeTableRow', 
-				   before:"if(!confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}')) return false;", controller:'storage', id: it.id, onSuccess: "javascript:GRAILSUI.dtBoxes.requery();"){"<img src=${createLinkTo(dir:'images/skin',file:'olf_delete.png')} alt='Delete' />"}
-		   ]
-	   }
-	   render tableDataAsJSON(jsonList: list)
-   }
-   
-   def removeCompartment = {
-	   Compartment.get(params.id).delete()
-	   redirect(action: "edit", params: [bodyOnly: true])
-   }
-   
-   def tableDataChange = {
-   	        def box = Box.get(params.id)
-			if(box.elements.size()>0 && ((params.field == 'xdim') || (params.field== 'ydim')))
-			{
-				 render text: "Size of a box can only be changed when box is empty!", status: 503 
-			}
-			else {
-				
-				if((params.field == 'xdim') || (params.field == 'ydim'))
-				{
-					try{
-						int number = Integer.valueOf(params.newValue)
-						box."$params.field" = number
-					}catch(NumberFormatException e)
-					{
-						box."$params.field" = 10
-					}
-				}
-				else
-					box."$params.field" = params.newValue
-			
-				if(box.save(flush:true)) render ""
-			
-				else render text : "Could not save:${g.renderErrors()}", status: 503
-			} 
-	}
-   
-    def addTableRow = {
-	   
-		def xdim = settingsService.getDefaultSetting(key:"storage.xdim")?:10
-		def ydim = settingsService.getDefaultSetting(key:"storage.ydim")?:10
-		def compartment = Compartment.get(params.id)
-		
-		def newBox = new Box(xdim: xdim, ydim: ydim, description: "(unnamed probebox)", compartment: compartment)
-		newBox.save()
-		if(Box.findByDescriptionAndCompartment("(unnamed probebox)", compartment))
-		{
-			newBox.description += (":" +newBox.id)
-		}
-		newBox.save(flush:true)
-		
-		compartment.boxes.add(newBox)
-		compartment.save()
-		
-		flash.message = "Probebox added to ${compartment.description}"
-
-		render "success"
-	}
-   
-    def removeTableRow =  {
-	   def box = Box.get(params.id)
-	   def boxDescription = box.description
-	   box.delete()
-	   flash.message = "Probebox ${boxDescription} deleted"
-	   render "success"
 	}
 	
 	
@@ -163,9 +76,54 @@ class StorageController extends DataTableControllerTemplate {
 		}
 	}
     
-	def showTree = {
-			render(plugin: 'storage', template:'/layouts/storageTree', model: ["treedata": createTreeData().toString(), "dataObjId": params.id, "treeInTab": params.treeInTab, "controller": "box", "action": "showBox"])
-	}
+    def treeDataAsJSON = {
+        println params
+        if(params.nodeType == "root")
+        {
+            def locationsAsJSON = StorageLocation.list(sort: "description").collect{
+                [
+                        "data" : it.description,
+                        "attr" : [ "id" : it.id , "rel":"location", "nodeType" : "location"],
+                        "state" : "closed"
+                ]
+            }
+            render locationsAsJSON as JSON
+        }
+
+        else if(params.nodeType == "location") {
+            def storageTypes = StorageType.findAllByLocation(StorageLocation.get(params.id))
+
+            def storageTypesAsJSON = storageTypes.sort{it.description}.collect{
+                [
+                        "data" : it.description,
+                        "attr" : [ "id" : it.id , "rel":"storageType", "nodeType" : "storageType"],
+                        "state" : "closed"
+                ]
+            }
+            render storageTypesAsJSON as JSON
+        }
+
+        else if(params.nodeType == "storageType"){
+            def compartmentsAsJSON = Compartment.findAllByStorageType(StorageType.get(params.id)).sort{it.description}.collect{
+                [
+                        "data" : it.description,
+                        "attr" : [ "id" : it.id , "rel":"compartment", "nodeType" : "compartment"],
+                        "state": "closed"
+                ]
+            }
+
+            render compartmentsAsJSON as JSON
+        }
+        else if(params.nodeType == "compartment"){
+            def boxesAsJSON = Box.findAllByCompartment(Compartment.get(params.id)).sort{it.description}.collect{
+                [
+                        "data" : it.description,
+                        "attr" : [ "id" : it.id , "rel":"box", "nodeType" : "box"]
+                ]
+            }
+            render boxesAsJSON as JSON
+        }
+    }
 	
 	def storageExportService
 	

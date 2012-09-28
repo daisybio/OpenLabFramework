@@ -16,7 +16,7 @@
     If a detector is not presented in the selection you might want to add it to the database:
     <g:form name="addDectector" action="addDetector">
         <g:hiddenField name="attachment.id" value="${params['attachment.id']}"/>
-
+        <g:hiddenField name="taqManResultId" value="${params['taqManResultId']}"/>
         <g:textField name="name"/>
         <input type="submit" name="addDetectorButton" value="Add detector"/>
     </g:form><br/> <br/>
