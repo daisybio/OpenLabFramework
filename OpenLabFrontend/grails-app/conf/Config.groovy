@@ -70,7 +70,7 @@ grails.spring.bean.packages = []
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
-        grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://10.84.12.130:8080/${appName}"
     }
     development {
         grails.serverURL = "http://10.84.12.130:8080/${appName}"
@@ -135,10 +135,6 @@ grails.resources.modules = {
     jstree {
         dependsOn 'jquery'
         resource url: 'js/jquery.jstree.js'
-        resource url: 'js/themes/default/d.gif'
-        resource url: 'js/themes/default/d.png'
-        resource url: 'js/themes/default/style.css'
-        resource url: 'js/themes/default/throbber.gif'
     }
 }
 

@@ -35,36 +35,7 @@
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
-			<Name>barcodeText</Name>
-			<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
-			<BackColor Alpha="0" Red="255" Green="255" Blue="255" />
-			<LinkedObjectName></LinkedObjectName>
-			<Rotation>Rotation90</Rotation>
-			<IsMirrored>False</IsMirrored>
-			<IsVariable>False</IsVariable>
-			<HorizontalAlignment>Left</HorizontalAlignment>
-			<VerticalAlignment>Top</VerticalAlignment>
-			<TextFitMode>ShrinkToFit</TextFitMode>
-			<UseFullFontHeight>True</UseFullFontHeight>
-			<Verticalized>False</Verticalized>
-			<StyledText>
-				<Element>
-					<String>AGS
-pPAR3
-[BC007985]pDONR221
-[BC007985]pDONR223</String>
-					<Attributes>
-						<Font Family="Tahoma" Size="8.25" Bold="False" Italic="False" Underline="False" Strikeout="False" />
-						<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
-					</Attributes>
-				</Element>
-			</StyledText>
-		</TextObject>
-		<Bounds X="65.5" Y="74.75" Width="320.75" Height="1398.47497558594" />
-	</ObjectInfo>
-	<ObjectInfo>
-		<TextObject>
-			<Name>description</Name>
+			<Name>dataOne</Name>
 			<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
 			<BackColor Alpha="0" Red="255" Green="255" Blue="255" />
 			<LinkedObjectName></LinkedObjectName>
@@ -80,13 +51,39 @@ pPAR3
 				<Element>
 					<String>Hierhin kommt extra Beschreibung</String>
 					<Attributes>
-						<Font Family="Arial" Size="8" Bold="False" Italic="False" Underline="False" Strikeout="False" />
+						<Font Family="Tahoma" Size="5" Bold="False" Italic="False" Underline="False" Strikeout="False" />
 						<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
 					</Attributes>
 				</Element>
 			</StyledText>
 		</TextObject>
-		<Bounds X="399.25" Y="67.25" Width="120" Height="1390.72497558594" />
+		<Bounds X="65.5" Y="48.5" Width="120" Height="1469.72497558594" />
+	</ObjectInfo>
+	<ObjectInfo>
+		<TextObject>
+			<Name>dataThree</Name>
+			<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
+			<BackColor Alpha="0" Red="255" Green="255" Blue="255" />
+			<LinkedObjectName></LinkedObjectName>
+			<Rotation>Rotation90</Rotation>
+			<IsMirrored>False</IsMirrored>
+			<IsVariable>False</IsVariable>
+			<HorizontalAlignment>Left</HorizontalAlignment>
+			<VerticalAlignment>Top</VerticalAlignment>
+			<TextFitMode>ShrinkToFit</TextFitMode>
+			<UseFullFontHeight>True</UseFullFontHeight>
+			<Verticalized>False</Verticalized>
+			<StyledText>
+				<Element>
+					<String>Hierhin kommt extra Beschreibung</String>
+					<Attributes>
+						<Font Family="Tahoma" Size="8" Bold="False" Italic="False" Underline="False" Strikeout="False" />
+						<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
+					</Attributes>
+				</Element>
+			</StyledText>
+		</TextObject>
+		<Bounds X="298" Y="44.75" Width="120" Height="1473.22497558594" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
@@ -106,13 +103,13 @@ pPAR3
 				<Element>
 					<String>pxx/xx/xx/xx</String>
 					<Attributes>
-						<Font Family="Arial" Size="12" Bold="False" Italic="False" Underline="False" Strikeout="False" />
+						<Font Family="Tahoma" Size="12" Bold="False" Italic="False" Underline="False" Strikeout="False" />
 						<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
 					</Attributes>
 				</Element>
 			</StyledText>
 		</TextObject>
-		<Bounds X="556.75" Y="416" Width="120" Height="1053.47497558594" />
+		<Bounds X="549.25" Y="412.25" Width="120" Height="1053.47497558594" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<DateTimeObject>
@@ -136,5 +133,57 @@ pPAR3
 			<Use24HourFormat>False</Use24HourFormat>
 		</DateTimeObject>
 		<Bounds X="585" Y="123.5" Width="120" Height="228.75" />
+	</ObjectInfo>
+	<ObjectInfo>
+		<TextObject>
+			<Name>dataTwo</Name>
+			<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
+			<BackColor Alpha="0" Red="255" Green="255" Blue="255" />
+			<LinkedObjectName></LinkedObjectName>
+			<Rotation>Rotation90</Rotation>
+			<IsMirrored>False</IsMirrored>
+			<IsVariable>False</IsVariable>
+			<HorizontalAlignment>Left</HorizontalAlignment>
+			<VerticalAlignment>Top</VerticalAlignment>
+			<TextFitMode>ShrinkToFit</TextFitMode>
+			<UseFullFontHeight>True</UseFullFontHeight>
+			<Verticalized>False</Verticalized>
+			<StyledText>
+				<Element>
+					<String>Hierhin kommt extra Beschreibung</String>
+					<Attributes>
+						<Font Family="Tahoma" Size="5" Bold="False" Italic="False" Underline="False" Strikeout="False" />
+						<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
+					</Attributes>
+				</Element>
+			</StyledText>
+		</TextObject>
+		<Bounds X="185.5" Y="44.75" Width="120" Height="1473.47497558594" />
+	</ObjectInfo>
+	<ObjectInfo>
+		<TextObject>
+			<Name>barcodeText</Name>
+			<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
+			<BackColor Alpha="0" Red="255" Green="255" Blue="255" />
+			<LinkedObjectName></LinkedObjectName>
+			<Rotation>Rotation90</Rotation>
+			<IsMirrored>False</IsMirrored>
+			<IsVariable>False</IsVariable>
+			<HorizontalAlignment>Left</HorizontalAlignment>
+			<VerticalAlignment>Top</VerticalAlignment>
+			<TextFitMode>ShrinkToFit</TextFitMode>
+			<UseFullFontHeight>True</UseFullFontHeight>
+			<Verticalized>False</Verticalized>
+			<StyledText>
+				<Element>
+					<String>Hierhin kommt extra Beschreibung</String>
+					<Attributes>
+						<Font Family="Tahoma" Size="5" Bold="False" Italic="False" Underline="False" Strikeout="False" />
+						<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
+					</Attributes>
+				</Element>
+			</StyledText>
+		</TextObject>
+		<Bounds X="427.5" Y="52.25" Width="120" Height="1461.97497558594" />
 	</ObjectInfo>
 </DieCutLabel>

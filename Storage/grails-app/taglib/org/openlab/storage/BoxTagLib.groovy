@@ -26,7 +26,6 @@ public class BoxTagLib {
 			
 		def xdim = box.xdim
         def ydim = box.ydim
-        def elements = box.elements
 		def sortedElements = boxCreationService.getSortedBoxElements(attrs.id)
         
         //Problem is that we have nested scrollbars and divs otherwise
@@ -38,6 +37,8 @@ public class BoxTagLib {
         	//target for Ajax calls
         	out << "<div id='boxView' style='max-height:400px; overflow: scroll;'>"
         }
+        out << showCurrentBox(box: box)
+
         //build table and header
     	out << "<table border=1>"
         out << "<colgroup><col width=20/></colgroup>"
@@ -128,22 +129,22 @@ public class BoxTagLib {
     				}
     				else
     				{
-    					stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'addDataObject', params: [x: x, y: y, boxId: attrs.id], id: params.id, update:[success:'boxView', failure:'error'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
+    					stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'addDataObject', params: [x: x, y: y, boxId: attrs.id], id: params.id, update:[success:'boxView', failure:'boxView'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
     				}
     			}
 			}		
 		}
 		
 		out << stringBuffer
-		
+
 		out << "</tbody></table>"
-		
-		if(!attrs.update) 
+
+        //link to create XLS export
+        out << "<a href='${createLink(controller: "box", action: "export", id: attrs.id)}'>Export as XLS</a>"
+
+		if(!attrs.update)
 		{
 			out <<"</div>"
-		
-			//link to create XLS export
-			out << "<a href='${createLink(controller: "box", action: "export", id: attrs.id)}'>Export as XLS</a>"
 		}
 	}
 	
@@ -156,17 +157,16 @@ public class BoxTagLib {
 		def storageElts = StorageElement.findAllByDataObj(DataObject.get(params.id))
 		Set boxes = storageElts.collect { it.box }
 		boxes.unique()
-		
-		out << "<div id='storageTree'></div><div class='message' id='unitsLeft'>"
+        def leastRecentlyUpdatedBox = Box.find("FROM Box ORDER BY lastUpdate DESC")
+
+		out << "<div id='storageTree'>"
+        out << "</div><div class='message' id='unitsLeft'>"
 		out << numberOfEntitiesLeft()
 		out << "</div>"
-		
+
 		if(storageElts)
-		{ 
+		{
 			def storageElt = storageElts[0]
-			
-            //Show label of current box
-			out << "<div id='currentBoxLabel'>" +showCurrentBox(box: storageElt.box) + "</div>"
 			
 			//Link to other boxes with the same elt
 			if(boxes.size() > 1)
@@ -183,15 +183,13 @@ public class BoxTagLib {
 			out << g.createBoxTable(id: storageElt.box.id, addToCell:true)
 		}
 		//if element has not yet been stored use the box that was least recently used
-		else if(Box.list())
+		else if(Box.count() > 0)
 		{
 			//show box that has been modified least recently
-			def boxesOrderedByDate = Box.listOrderByLastUpdate(sort: 'asc')
-			def leastRecentlyUpdatedBox = boxesOrderedByDate.get(0)
-			
+
 			if(leastRecentlyUpdatedBox != null)
 			{
-				out << showCurrentBox(box: leastRecentlyUpdatedBox)
+
 				out << g.createBoxTable(id: leastRecentlyUpdatedBox.id, addToCell:true)
 			}
 		}
@@ -223,7 +221,7 @@ public class BoxTagLib {
 	}
 	
 	def showCurrentBox = { attrs ->
-			out << "You are here: <span style='padding:5px;'><b>" + attrs.box.toString().replace(' - ', ' >> ') + remoteLink(controller: 'storage', action: 'showTree', update: 'boxView', params: [id: params.id, treeInTab: true]){'(Change)'}+"</span> <br><br>"
+			out << "You are here: <span style='padding:5px;'><b>" + attrs.box.toString().replace(' - ', ' >> ') + remoteLink(controller: 'storage', action: 'showTree', update: 'storageTree', params: [id: params.id, treeInTab: true]){' (Change) '}+"</span> <br><br>"
 	}
 	
 	/**

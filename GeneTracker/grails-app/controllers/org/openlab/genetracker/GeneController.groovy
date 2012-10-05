@@ -159,4 +159,9 @@ class GeneController extends DataObjectController{
 		
 		render(template:"/layouts/variantList", plugin: "gene-tracker", model: [geneVariants: variants])
 	}
+
+
+    def stats = {
+       [:]
+    }
 }

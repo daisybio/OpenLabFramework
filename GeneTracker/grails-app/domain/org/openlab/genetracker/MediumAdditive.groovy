@@ -6,7 +6,8 @@ class MediumAdditive extends MasterDataObject {
 
 	static mapping = {
 		table 'gtMediumAdditives'
-		cache true}
+		cache true
+    }
 
 	String description
 }

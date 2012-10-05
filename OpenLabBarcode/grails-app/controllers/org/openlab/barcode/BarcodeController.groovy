@@ -92,8 +92,11 @@ class BarcodeController {
 	 * barcode object already exists or not.
 	 */
 	def renderBarcodeCreator = {
-		def barcodeDataObject
 		def className = null
+        def barcodeDataObject
+
+        if (params.dataObject) params.id = params["dataObject.id"]
+        if (params.barcodeDataObject) barcodeDataObject = BarcodeDataObject.get(params["barcodeDataObject.id"])
 
 		if(params.className)
 		{
@@ -123,7 +126,8 @@ class BarcodeController {
 				
 				def barcode
 				def model = [:]
-				
+				def template = "/layouts/barcodeCreate"
+
 				if(objectInstance instanceof org.openlab.genetracker.CellLineData)
 				{					
 					model.passages = org.openlab.genetracker.Passage.findAllByCellLineData(objectInstance)

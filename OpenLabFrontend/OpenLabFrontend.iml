@@ -90,6 +90,7 @@
     <orderEntry type="module" module-name="OpenLabAttachments" exported="" />
     <orderEntry type="module" module-name="GeneTracker" exported="" />
     <orderEntry type="library" name="grails-2.0.4" level="application" />
+    <orderEntry type="module" module-name="OpenLabTaqMan" exported="" />
   </component>
 </module>
 

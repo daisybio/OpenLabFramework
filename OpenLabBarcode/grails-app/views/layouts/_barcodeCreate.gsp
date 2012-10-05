@@ -5,6 +5,7 @@
 	<g:hiddenField name="dataObject.id" value="${dataObject?.id}"/>
 	<g:hiddenField name="subDataObject.id" value="${subDataObject?.id}"/>
 	<g:hiddenField name="barcodeDataObject.id" value="${barcodeDataObject?.id}"/>
+    <g:hiddenField name="site.id" value="${org.openlab.barcode.BarcodeSite.findByName("Odense").id}"/>
     <g:if test="${update==true}">
 	    <g:hiddenField name="id" value="${barcodeInstance?.id}" />
         <g:hiddenField name="version" value="${barcodeInstance?.version}" />
@@ -32,15 +33,6 @@
             
                 <tr class="prop">
                     <td valign="top" class="name">
-                        <label for="site"><g:message code="barcode.site.label" default="Site" /></label>
-                    </td>
-                    <td valign="top" class="value ${hasErrors(bean: barcodeInstance, field: 'site', 'errors')}">
-                        <g:select name="site.id" from="${org.openlab.barcode.BarcodeSite.list()}" optionKey="id" value="${barcodeInstance?.site?.id}"  />
-                    </td>
-                </tr>
-            
-                <tr class="prop">
-                    <td valign="top" class="name">
                         <label for="text"><g:message code="barcode.text.label" default="Text" /></label>
                     </td>
                     <td valign="top" class="value ${hasErrors(bean: barcodeInstance, field: 'text', 'errors')}">
@@ -56,11 +48,11 @@
         </table>
     </div>
     <div class="buttons">
-        <span class="button"><g:remoteLink controller="barcode" action="scannerAddin" update="barcodeCreator">Switch to Scan</g:remoteLink></span>
-         -<g:if test="${dataObject instanceof org.openlab.genetracker.CellLineData}">
+        <span class="button"><g:remoteLink controller="barcode" params="${[barcodeDataObject: barcodeDataObject, 'barcodeDataObject.id': barcodeDataObject.id, dataObject: dataObject, 'dataObject.id': dataObject.id]}" action="scannerAddin" update="barcodeCreator">Scan</g:remoteLink></span>
+         <g:if test="${dataObject instanceof org.openlab.genetracker.CellLineData}">
         	<span class="button">
-        		<g:remoteLink controller="barcode" params="${params << [bodyOnly:true, id: session.nextBackId, className: session.nextBackController]}" update="barcodeCreator" action="renderBarcodeCreator">
-	Refresh</g:remoteLink>
+        		<g:remoteLink controller="barcode" params="${[barcodeDataObject: barcodeDataObject, 'barcodeDataObject.id': barcodeDataObject.id, dataObject: dataObject, 'dataObject.id': dataObject.id]}" update="barcodeCreator" action="renderBarcodeCreator">
+	Passage</g:remoteLink>
 			</span>
 		</g:if>
         

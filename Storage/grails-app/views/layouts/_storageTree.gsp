@@ -1,32 +1,48 @@
-		<g:if test="${treedata}">
-	 		<g:if test="${treeInTab}">
-		 		<richui:treeView id="storagetree" showRoot="true" xml="${treedata}" onLabelClick="
-		 		if(node.node.depth==3){
-		 			${remoteFunction(controller: 'box', action: 'showBoxInTab',
-		 					onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire(node.node.additionalId)', 		 				
-		 					before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')',
-		 					id: dataObjId,
-		 					params: '\'boxId=\'+node.node.additionalId', 
-			 				update:[success:'boxView', failure:'yui-main'])}
-				}"/>	
-			</g:if>
-			<g:else>
-				<richui:treeView id="storagetree" showRoot="true" xml="${treedata}" onLabelClick="
-		 		if(node.node.depth==1){
-		 			${remoteFunction(controller: 'storageType', params: '\'bodyOnly=true&id=\'+node.node.additionalId', action: 'show', update:[success: 'boxView', failure: 'boxView'])}	
-		 		}
-		 		if(node.node.depth==2){
-		 			${remoteFunction(controller: 'compartment', params: '\'bodyOnly=true&id=\'+node.node.additionalId', action: 'show', update:[success: 'boxView', failure: 'boxView'])}	
-		 		}
-		 		if(node.node.depth==3){
-		 			${remoteFunction(controller: controller, action: action, 
-		 					before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')',
-		 					params: '\'id=\'+node.node.additionalId', 
-			 				update:[success:'boxView', failure:'yui-main'])}
-				}"/>		
-			</g:else>
-			<script type="text/javascript">
-			YAHOO.widget.TreeView.getTree('storagetree').expandAll();
-			</script>
-			<g:treeControls id="storagetree"></g:treeControls>
- 		</g:if>
+<script type="text/javascript">
+    jQuery.noConflict();
+
+    var myStorageTree = jQuery("#storageTree").jstree({
+        "json_data": {
+            "ajax": {
+                "url":  "<g:createLink controller="storage" action="treeDataAsJSON"/>",
+                "data" : function(n) { return { id: n.attr? n.attr("id") : 0, nodeType: n.attr? n.attr("nodeType") : "root" }; }
+            }
+        },
+        "themes" : {
+            "theme" : "default",
+            "url" : "<g:resource dir="themes" file="default/style.css"/>",
+            "icons" : false
+        },
+        "types" : {
+            "valid_children" : ["location"],
+            "types" : {
+                "location" : {
+                    "valid_children": ["storageType"]
+                },
+                "storageType" : {
+                    "hover_node": false,
+                    "valid_children": ["compartment"]
+                },
+                "compartment" : {
+                    "valid_children": ["box"]
+                } ,
+                "box": {
+
+                }
+            }
+        },
+        "plugins": ["themes", "ui", "json_data", "types"]
+    });
+
+    myStorageTree.bind("select_node.jstree", function(event, data){
+
+        if(data.inst.is_leaf(data.args[0]) && data.rslt.obj.attr("nodeType") == "box"){
+            <g:if test="${params.treeInTab}">
+                ${remoteFunction(action: 'showBoxInTab', controller: 'box', update: 'boxView', id: params.id, params: '\'boxId=\'+data.rslt.obj.attr("id")')}
+            </g:if>
+            <g:else>
+                ${remoteFunction(action: 'showBox', controller: 'box', update: 'boxView', params: '\'id=\'+data.rslt.obj.attr("id")')}
+            </g:else>
+        }
+    });
+</script>

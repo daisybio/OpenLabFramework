@@ -126,7 +126,7 @@
         var navigationFlag = false
 
         // If there is no bookmarked state, assign the default state:
-        var bodyContentInitialState = bodyContentBookmarkedState || "";
+        var bodyContentInitialState = bodyContentBookmarkedState || "/OpenLabFramework/dashboard/dashboard";
 
         YAHOO.util.History.register("bodyContent", bodyContentInitialState, function(state){
 

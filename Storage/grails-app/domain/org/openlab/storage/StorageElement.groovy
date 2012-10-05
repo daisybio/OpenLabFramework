@@ -28,6 +28,10 @@ class StorageElement {
 		
 		//description(unique:'box')
     }
+
+    def afterUpdate = {
+        box.lastUpdate = new Date()
+    }
 	
 	String toString()
 	{

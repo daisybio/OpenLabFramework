@@ -8,7 +8,7 @@ class DashboardController {
 	def springSecurityService
 	
 	def index = {
-		redirect action: "dashboard"
+		[:]
 	}
 	
 	def dashboard = {

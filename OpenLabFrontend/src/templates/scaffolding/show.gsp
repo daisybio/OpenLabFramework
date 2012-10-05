@@ -34,7 +34,7 @@
 				props.each { p -> %>
 
 				<li class="fieldcontain">
-					<span id="${p.name}-label" class="property-label"><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></span>
+                    <span id="${p.name}-label" class="property-label"><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></span>
 					<%  if (p.isEnum()) { %>
 						<span class="property-value" aria-labelledby="${p.name}-label"><g:fieldValue bean="\${${propertyName}}" field="${p.name}"/></span>
                     <%  } else if (p.name == "sequence") { %>
@@ -54,16 +54,40 @@
                     <%  } else if (p.oneToMany) { %>
                     <span class="property-value" aria-labelledby="${p.name}-label">
                         <ul>
+                            <g:if test="\${${propertyName}.${p.name}}">
                             <g:each in="\${${propertyName}.${p.name}}" var="${p.name[0]}">
-                                <li><g:remoteLink controller="${p.referencedDomainClass?.propertyName}" action="show" id="\${${p.name[0]}.id}" params="['bodyOnly':'true']" update="[success: 'body', failure: 'body']">\${${p.name[0]}?.encodeAsHTML()}</g:remoteLink></li>
+                                <g:form name="remove\${${p.name[0]}}Form">
+                                    <li>
+                                        <g:remoteLink controller="${p.referencedDomainClass?.propertyName}" action="show" id="\${${p.name[0]}.id}" params="['bodyOnly':'true']" update="[success: 'body', failure: 'body']">\${${p.name[0]}?.encodeAsHTML()}</g:remoteLink>
+
+                                        <g:hiddenField name="bodyOnly" value="\${true}"/>
+                                        <g:hiddenField name="id" value="\${${propertyName}?.id}"/>
+                                        <g:hiddenField name="associatedId" value="\${${p.name[0]}?.id}"/>
+                                        <g:hiddenField name="propertyName" value="${p.name}"/>
+                                        <g:hiddenField name="referencedClassName" value="${p.referencedDomainClass?.fullName}"/>
+                                        <g:hiddenField name="thisClassName" value="${className}"/>
+                                        <g:submitToRemote action="removeOneToMany" update="[success:'body',failure:'body']" value="Remove" />
+                                    </li>
+                                </g:form>
                             </g:each>
-                        </ul>
-                        <!-- <modalbox:createLink params="['property':'${p.name}','className':'${p.referencedDomainClass?.fullName}', 'controllerName':'${p.referencedDomainClass?.shortName}']" id="\${${propertyName}.id}" action="editMany" title="Edit ${p.name}" width="500"><img src="\${resource(dir:'images/skin',file:'olf_tool_small.png')}"/></modalbox:createLink> -->
-                        <!-- <span class="simpleButton"><g:remoteLink controller="${p.referencedDomainClass?.propertyName}" action="create" update="[success: 'body', failure: 'body']"><img src="\${resource(dir:'images/skin',file:'olf_add.png')}" /></g:remoteLink></span> -->
+                            </g:if>
+                            <g:else>
+                                <i>None added</i>
+                            </g:else>
+                        </ul><br/><br/>
+                            <g:form name="addOneToMany">
+                                <g:hiddenField name="bodyOnly" value="\${true}"/>
+                                <g:hiddenField name="propertyName" value="${p.name}"  />
+                                <g:hiddenField name="referencedClassName" value="${p.referencedDomainClass?.fullName}"/>
+                                <g:select from="\${${p.referencedDomainClass?.fullName}.list()}" name="selectAddTo" optionKey="id"/>
+                                <g:hiddenField name="id" value="\${${propertyName}?.id}"/>
+                                <g:submitToRemote action="addOneToMany" update="[success:'body',failure:'body']" value="Add" />
+                            </g:form>
                     </span>
                     <%  } else if (p.manyToMany) { %>
                     <span class="property-value" aria-labelledby="${p.name}-label">
                         <ul>
+                            <g:if test="\${${propertyName}.${p.name}.size() > 0}">
                             <g:each in="\${${propertyName}.${p.name}}" var="${p.name[0]}">
                                 <g:form name="remove\${${p.name[0]}}Form">
                                 <li>
@@ -79,32 +103,34 @@
                                 </li>
                                 </g:form>
                             </g:each>
+                            </g:if>
+                            <g:else>
+                                <i>None added</i>
+                            </g:else>
                         </ul><br/><br/>
                         <g:form name="addToProject">
                             <g:hiddenField name="bodyOnly" value="\${true}"/>
                             <g:hiddenField name="referencedClassName" value="${p.referencedDomainClass?.fullName}"/>
-                            <g:select from="\${${p.referencedDomainClass?.fullName}.list(sort: 'name')}" name="selectAddTo" optionKey="id"/>
+                            <g:select from="\${${p.referencedDomainClass?.fullName}.list()}" name="selectAddTo" optionKey="id"/>
                             <g:hiddenField name="id" value="\${${propertyName}?.id}"/>
                             <g:submitToRemote action="addManyToMany" update="[success:'body',failure:'body']" value="Add to" />
                         </g:form>
                     </span>
                     <%  } else if (p.manyToOne || p.oneToOne) { %>
                     <span class="property-value" aria-labelledby="${p.name}-label">
-                        <g:form>
-                            <g:hiddenField name="bodyOnly" value="true" />
-                            <g:editCollectionInPlace id="${p.name}"
-                                                     url="[action: 'editCollectionField', id:${propertyName}.id]"
-                                                     paramName="${p.name}"
-                                                     className="\${${className}}"
-                                                     referencedClassName="${p.referencedDomainClass?.fullName}">
-                                <g:hiddenField name="id" value="\${${propertyName}?.${p.name}?.id}"/>
-                                <g:if test="\${${propertyName}?.${p.name}}">\${${propertyName}?.${p.name}?.encodeAsHTML()}</g:if>
-                                <g:else><img src="\${resource(dir:'images/skin',file:'olf_tool_small.png')}"/></g:else>
-                            </g:editCollectionInPlace>
-                            <g:if test="\${fieldValue(bean: ${propertyName}, field: '${p.name}')}">
-                                <g:submitToRemote controller="${p.referencedDomainClass?.propertyName}" action="show" update="[success:'body',failure:'error']" value="Show" />
-                            </g:if>
-                        </g:form>
+                        <div id="${p.name}Editable">
+                            <div onclick="\${g.remoteFunction(action:'updateEditable',
+                                                       id: ${propertyName}?.id,
+                                                       params:[thisClassName: '${className}',
+                                                       referencedClassName: '${p.referencedDomainClass?.fullName}',
+                                                       propertyName: '${p.name}'],
+                                                       update:'${p.name}Editable')}"
+                        >
+                            <g:if test="\${${propertyName}?.${p.name}}">\${${propertyName}?.${p.name}?.encodeAsHTML()}</g:if>
+                            <g:else><img src="\${resource(dir:'images/skin',file:'olf_tool_small.png')}"/></g:else>
+
+                            </div>
+                        </div>
                     </span>
 					<%  } else if (p.type == Boolean || p.type == boolean) { %>
 						<span class="property-value" aria-labelledby="${p.name}-label"><g:checkBox name="${p.name}Checkbox" value="\${${propertyName}?.${p.name}}"

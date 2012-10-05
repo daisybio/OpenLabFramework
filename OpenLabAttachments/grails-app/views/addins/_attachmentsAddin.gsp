@@ -2,22 +2,18 @@
 
 <g:form enctype="multipart/form-data" name="uploadForm" action="createWithAddin" controller="dataObjectAttachment">
 
-<table><tr><td><div id="updateMe"><h2 style="font-weight:bold;">Attachments</h2></div></td>
-<td><g:submitButton name="submit" value="submit"/></td></tr></table>
+<div id="updateMe"><h2 style="float:left;">Attachments</h2></div>
+<div style="float:right;"><g:submitButton name="submit" value="submit"/></div>
 
 <g:hiddenField name="suggestQuery" value="true"/>
 <div>
 	<div id="files">
 		<input type="file" name="attachment"/>
 
-    Uploading TaqMan result? <g:checkBox name="taqMan" value="true"/>
+    <div style="background-color: #eeeeee;">Uploading TaqMan result? <g:checkBox name="taqMan" value="true"/></div>
     </div>
-	<div id="fileAddButton">
-		<!-- <a href="#" onClick="createAnotherFileInput();return false;">Add another file</a> 
-		<br/><br/>-->
-	</div>
-	<br/>
-	<h3>Attach to? Search and select!</h3>
+
+	 - Attach to? Search and select! -
 				<gui:autoComplete
 		   	        minQueryLength="3"
 			        queryDelay="0.5"

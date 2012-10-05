@@ -11,7 +11,7 @@ public class StorageModule implements Module{
 	
 	def getTemplateForDomainClass(def domainClass)
 	{
-		if(domainClass.startsWith("cellLineData")||domainClass.startsWith("recombinant")) return "storageForCellLineDataTab";
+		if(domainClass.startsWith("recombinant") || domainClass.startsWith("cellLineData")) return "storage";
 	}
 	
 	def isInterestedIn(def domainClass, def type)

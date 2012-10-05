@@ -8,11 +8,10 @@ class CellLineData extends DataObject {
 
     static constraints = {
         cellLine()
-        acceptor()
+        acceptor(nullable: true)
         firstRecombinant(nullable: true)
         secondRecombinant(nullable: true)
         cultureMedia(nullable: true)
-        antibiotics(nullable: true)
         mediumAdditives(nullable: true)
         plasmidNumber(nullable: true)
         colonyNumber(nullable: true)
@@ -30,7 +29,6 @@ class CellLineData extends DataObject {
             cultureMedia component:true
             cellLine component: true
             acceptor component: true
-            antibiotics: component: true
             mediumAdditives: component: true
             //needed for suggestions in searchable
             spellCheck "include"
@@ -41,9 +39,6 @@ class CellLineData extends DataObject {
     static mapping = {
         table 'gtCellLineData'
         cache true
-        mediumAdditives cache: true
-        antibiotics cache: true
-        projects cache: true
     }
 
     CellLine cellLine
@@ -55,7 +50,7 @@ class CellLineData extends DataObject {
     String colonyNumber
     String notes
 
-    static hasMany = [mediumAdditives: MediumAdditive, antibiotics: AntibioticsWithConcentration, projects: Project]
+    static hasMany = [mediumAdditives: MediumAdditive, projects: Project]
 
     String toString() {
         if (secondRecombinant != null)
@@ -63,6 +58,14 @@ class CellLineData extends DataObject {
         else if (firstRecombinant != null)
             "${cellLine} - ${acceptor} - ${firstRecombinant} - ${cultureMedia ?: ''}"
         else "${cellLine} - ${cultureMedia ?: ''}"
+    }
+
+    String toBarcode() {
+        if (secondRecombinant != null)
+            "${cultureMedia ?: ''} - ${cellLine} - ${acceptor}~${firstRecombinant}~${secondRecombinant}"
+        else if (firstRecombinant != null)
+            "${cultureMedia ?: ''} - ${cellLine} - ${acceptor}~${firstRecombinant}"
+        else "${cellLine}~${cultureMedia ?: ''}"
     }
 
     static String type = "cellLineData"

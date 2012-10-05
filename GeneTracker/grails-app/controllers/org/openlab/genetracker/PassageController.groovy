@@ -1,17 +1,17 @@
 package org.openlab.genetracker
 
 import grails.converters.*;
-import org.openlab.data.*;
+import org.openlab.data.*
+import org.springframework.dao.DataIntegrityViolationException;
 
 /**
  * DataTableController for _passageTab.gsp
  * @author markus.list
  *
  */
-class PassageController extends DataTableControllerTemplate{
+class PassageController{
 
 	def springSecurityService
-	def grailsUITagLibService
 	def settingsService
 	
 	def scaffold = Passage
@@ -19,60 +19,40 @@ class PassageController extends DataTableControllerTemplate{
 	def show = {
 		redirect(controller: "cellLineData", action: "show", id: Passage.get(params.id).cellLineData.id, params: params)
 	}
-	
-	def passagesAsJSON = {
-		    
-		    def list = []
-		                       
-		    Passage.findAllByCellLineData(CellLineData.get(params.id)).each {
-				list << [
-				    id: it.id,
-	                passageNr: it.passageNr,
-				    researcher: it.researcher.username,
-	                notes: it.notes,
-	                date: grailsUITagLibService.dateToJs(it.date),
-	                modifyUrls:
-	                	remoteLink(before:"if(!confirm('Are you sure?')) return false", action:'removeTableRow', controller:'passage', id: it.id, onSuccess: "javascript:GRAILSUI.dtPassages.requery();"){"<img src=${createLinkTo(dir:'images/skin',file:'olf_delete.png')} alt='Delete' />"}
-	            ]
-			}   	
-		    
-		    render tableDataAsJSON(jsonList: list)
-	}
-	
-    def tableDataChange = {
-	        def passage = Passage.findById(params.id)
 
-	        if(params.field == "researcher") passage.researcher = org.openlab.security.User.findByUsername(params.newValue)
-	        else if(params.field == "date")
-	        {
-	        	def simpleDateFormat = new java.text.SimpleDateFormat("E MMM dd yyyy HH:mm:ss ZZZZZZZ", Locale.ROOT);
+    def addPassageInCellLineDataTab = {
+        params.notes = ""
+        params.researcher = springSecurityService.currentUser
 
-	        	Date date = simpleDateFormat.parse(params.newValue)
-	        	passage.date = date
-	        }
-        	else passage."$params.field" = params.newValue
-	        
-        	passage.save()
-	        render "success"
+        if(!new Passage(params).save(flush: true, failOnError: true)){
+            response.sendError(404)
+        }
+        else{
+            def model = new org.openlab.module.tab.PassageModule().getModelForDomainClass("cellLineData", params["cellLineData.id"])
+            render(template: "/tabs/passageTab", model: model)
+        }
     }
-	
-	def addTableRow = {
-		def cellLineData = CellLineData.get(params.id)
-		
-		params.researcher = currentUser()
-		params.notes = ""
-		params.passageNr = settingsService.getSetting(key: "label.passageNr")?:"pxx/xx/xx/xx"
-	    params.date = dateNow()
-	    params.cellLineData = cellLineData
-	    
-    	def passage = new Passage(params)
-		passage.save(flush:true)
-    	render "success"
-	}
-	
-	def removeTableRow = {
-		Passage.get(params.id).delete()
-		render "success"			
-	}
+
+    def delete = {
+        def passageInstance = Passage.get(params.id)
+        def cellLineDataId = passageInstance.cellLineDataId
+
+        if (!passageInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'passage.label', default: 'Passage'), params.id])
+            response.sendError(404)
+        }
+
+        try {
+            passageInstance.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'passage.label', default: 'Passage'), params.id])
+
+            def model = new org.openlab.module.tab.PassageModule().getModelForDomainClass("cellLineData", cellLineDataId)
+            render(template: "/tabs/passageTab", model: model)
+        }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'passage.label', default: 'Passage'), params.id])
+            response.sendError(404)
+        }
+    }
 	
 }

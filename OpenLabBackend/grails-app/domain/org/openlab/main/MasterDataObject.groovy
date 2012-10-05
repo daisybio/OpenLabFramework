@@ -19,6 +19,7 @@ class MasterDataObject {
     }
 
     static mapping = {
+        sort "label"
         tablePerHierarchy false
         table 'olfMasterDataObject'
     }

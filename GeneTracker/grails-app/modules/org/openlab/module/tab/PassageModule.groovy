@@ -1,6 +1,8 @@
 package org.openlab.module.tab;
 
-import org.openlab.module.*;
+import org.openlab.module.*
+import org.openlab.genetracker.Passage
+import org.openlab.genetracker.CellLineData;
 
 public class PassageModule implements Module {
 
@@ -25,9 +27,9 @@ public class PassageModule implements Module {
 	{
 		if(domainClass.startsWith("cellLineData"))
 		{
-			def userNames = org.openlab.security.User.list().collect{it.username}
-			
-			return [userNames: userNames]
+			def cellLineData = CellLineData.get(id)
+
+			return [cellLineData: cellLineData, passages: Passage.findAllByCellLineData(cellLineData)]
 		}
 	}
 }

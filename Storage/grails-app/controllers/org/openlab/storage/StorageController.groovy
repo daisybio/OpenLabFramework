@@ -124,6 +124,10 @@ class StorageController extends DataTableControllerTemplate {
             render boxesAsJSON as JSON
         }
     }
+
+    def showTree = {
+        render template: "/layouts/storageTree"
+    }
 	
 	def storageExportService
 	

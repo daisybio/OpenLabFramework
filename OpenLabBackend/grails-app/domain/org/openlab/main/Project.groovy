@@ -19,6 +19,7 @@ class Project extends MainObject {
     static hasMany = [object: DataObject]
     static mapping =
         {
+            sort "name"
             table 'olfProject'
         }
 

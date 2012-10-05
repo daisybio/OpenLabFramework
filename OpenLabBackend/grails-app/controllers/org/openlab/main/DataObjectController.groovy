@@ -11,14 +11,8 @@ import grails.converters.*;
  */
 class DataObjectController extends MainController {
 	
-	//def scaffold = true
-	
-	/** causes strang behaviour **/
-	/*def show = {
-		if(!params.bodyOnly) params.bodyOnly = false
-		redirect action: "showSubClass", params: params
-	}*/
-	
+	def scaffold = true
+
 	/**
 	 * Can be called with id of an DataObject. The actual object
 	 * type is then determined and it is redirected to 

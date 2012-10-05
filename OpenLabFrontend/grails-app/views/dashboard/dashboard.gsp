@@ -1,9 +1,8 @@
 <html>
 	<head>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    	<meta name="layout" content="${params.bodyOnly?'body':'main'}" />
-        <g:setProvider library="prototype"/>
-    
+    	<meta name="layout" content="body" />
+
     	<title>Open Laboratory Framework</title>
 	</head>
     <body>
@@ -13,7 +12,7 @@
             	<div class="message">${flash.message}</div>
             </g:if>
 
-			<div style="max-width:700px; width: 100%;border: 1px solid; margin-left:20px;">
+			<div id="recentStuff">
 
             <div style="background: #f2f8ff; height:30px; text-align: left;"><h2>Recent changes by you</h2></div>
             <div class="list">
@@ -74,7 +73,5 @@
             </div>
         </div>
         </div>
-
-        <g:render template="/layouts/basicStats" plugin="gene-tracker"/>
     </body>
 </html>

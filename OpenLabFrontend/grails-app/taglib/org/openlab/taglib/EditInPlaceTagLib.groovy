@@ -36,9 +36,8 @@ class EditInPlaceTagLib {
 		out << "});"
 		out << "</script>"
 	}
-	
+
 	def editCollectionInPlace = { attrs, body ->
-		
 		def domainClass = grailsApplication.getDomainClass(attrs.referencedClassName)
 		
 		def collection = domainClass.newInstance().list()

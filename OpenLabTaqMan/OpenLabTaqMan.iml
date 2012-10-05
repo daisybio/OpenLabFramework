@@ -75,7 +75,7 @@
         <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="OpenLabTaqMan-grailsPlugins" />
+    <orderEntry type="module" module-name="OpenLabFrontend-grailsPlugins" />
   </component>
 </module>
 

@@ -39,7 +39,7 @@
                                     <label for="acceptor"><g:message code="cellLineData.acceptor.label" default="Acceptor" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: cellLineDataInstance, field: 'acceptor', 'errors')}">
-                                    <g:select name="acceptor.id" from="${org.openlab.genetracker.vector.Acceptor.list(sort:'label')}" optionKey="id" value="${cellLineDataInstance?.acceptor?.id}"  />
+                                    <g:select name="acceptor.id" from="${org.openlab.genetracker.vector.Acceptor.list(sort:'label')}" optionKey="id" noSelection="['':'']" value="${cellLineDataInstance?.acceptor?.id}"  />
                                 </td>
                             </tr>
                         

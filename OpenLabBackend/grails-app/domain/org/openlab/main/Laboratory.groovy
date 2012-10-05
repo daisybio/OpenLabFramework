@@ -18,6 +18,7 @@ class Laboratory extends MainObject{
 	}
 	
 	static mapping = {
+        sort "name"
 		tablePerHierarchy false
 		table 'olfLaboratory'
 	}

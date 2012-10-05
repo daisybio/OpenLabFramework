@@ -83,7 +83,8 @@ class ${className}Controller {
     def show() {
         def ${propertyName} = ${className}.get(params.id)
         if (!${propertyName}) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
+			flash.message = "Just click on a property to change it."
+			//flash.message = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
             redirect(action: "list")
             return
         }
@@ -236,7 +237,6 @@ class ${className}Controller {
     }
 
     def addManyToMany = {
-        println params
 
         def project = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.selectAddTo)
         def dataObj = ${className}.get(params.id)
@@ -260,6 +260,28 @@ class ${className}Controller {
        redirect(action: "show", id: params.id, params: [bodyOnly: params.bodyOnly?:false])
     }
 
+
+    def addOneToMany = {
+
+        println params
+        def associatedObj = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.selectAddTo)
+        def dataObj = ${className}.get(params.id)
+        dataObj.getProperty(params.propertyName).add(associatedObj)
+        dataObj.save(flush:true)
+
+        redirect(action: "show", id: params.id, params: [bodyOnly: params.bodyOnly?:false])
+    }
+
+    def removeOneToMany = {
+
+        def dataObj = ${className}.get(params.id)
+        def associatedObj = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.associatedId)
+        dataObj.getProperty(params.propertyName).remove(associatedObj)
+        dataObj.save(flush:true)
+
+        redirect(action: "show", id: params.id, params: [bodyOnly: params.bodyOnly?:false])
+    }
+
     /**
      * render modalbox to edit m:n associations
      */
@@ -267,7 +289,7 @@ class ${className}Controller {
         def property = params.property
         def ${propertyName} = ${className}.get(params.id)
 
-        def listAll = grailsApplication.getDomainClass(params.className).newInstance().list()
+        def listAll = grailsApplication.getDomainClass(params.className).newInstance().list().sort{it.toString()}
         def selected = ${propertyName}."\${property}"
 
         def controllerName = params.controllerName[0].toLowerCase()+params.controllerName.substring(1)
@@ -303,6 +325,31 @@ class ${className}Controller {
         }
         params.bodyOnly = true
         redirect(action: show, params: params)
+    }
+
+    def updateEditable = {
+        println params
+        def currentValue = ${className}.get(params.id)?."\${params.propertyName}"
+        println currentValue
+        def domainClassList = grailsApplication.getDomainClass(params.referencedClassName).newInstance().list().sort{it.toString()}
+
+        render(template: "/layouts/editCollection", model: [currentValue: currentValue, targetController: params.controllerName, targetUpdate: params.propertyName + "Editable", propertyName: params.propertyName,
+                thisClassName: params.thisClassName, referencedClassName: params.referencedClassName, id: params.id, domainClassList: domainClassList])
+    }
+
+    def saveEditable = {
+        println params
+        def dcInstance = ${className}.get(params.id)
+        def rcInstance = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.selected)
+        println rcInstance
+        println dcInstance
+
+        dcInstance."\${params.propertyName}" = rcInstance
+        dcInstance.save(flush:true, failOnError: true)
+
+        render template:  "/layouts/showCollection", model: [referencedClassName: params.referencedClassName,
+                id: params.id, propertyName: params.propertyName, newValue: rcInstance]
+
     }
 
     def updateLink = {

@@ -9,6 +9,7 @@ class AntibioticsWithConcentration {
     static belongsTo = [cellLineData: CellLineData]
 
     static mapping = {
+        antibiotics sort: 'label'
         table 'gtAntibioticsWithC'
         cache true
     }

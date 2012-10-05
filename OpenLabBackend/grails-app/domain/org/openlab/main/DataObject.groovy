@@ -21,4 +21,9 @@ class DataObject extends MainObject {
         //alter the default relation name
         table 'olfDataObject'
     }
+
+    String toBarcode()
+    {
+        toString()
+    }
 }

@@ -27,10 +27,9 @@ class AntibioticsModule implements Module{
 		if(domainClass.startsWith("cellLineData"))
 		{
 			def cellLineData = CellLineData.get(id)
-			def unusedAntibiotics = Antibiotics.list()
-			unusedAntibiotics.removeAll(cellLineData.antibiotics.collect{it.antibiotics}.toList())
-			
-			return [unusedAntibiotics: unusedAntibiotics.collect{it.toString()}]
+			def antibiotics = AntibioticsWithConcentration.findAllByCellLineData(cellLineData)
+
+            [cellLineData: cellLineData, antibiotics: antibiotics]
 		}
 	}
 }

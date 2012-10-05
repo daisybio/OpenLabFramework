@@ -76,15 +76,15 @@ class BoxController {
     def addDataObject = 
     {
     		//check for existing elements in same box at same coordinates 
-    		//TODO use a nicer sql statement to do this
-    		def oldElts = StorageElement.findAllByXcoordAndYcoord(params.x, params.y)
-    		oldElts.each{
-    			if (it.box.id == params.boxId) render "There is already an element at these coordinates!"
-    		}
-    		def storageElt = new StorageElement(description: "", xcoord: params.x, ycoord: params.y, dataObj: DataObject.get(params.id))
-    		Box.get(params.boxId).addToElements(storageElt).save(flush:true)
+    		def existsAlready = StorageElement.findWhere(xcoord: params.int("x"), ycoord: params.int("y"), box: Box.get(params.boxId))
+            if(existsAlready) render "There is already an element at these coordinates!"
+
+            else{
+                def storageElt = new StorageElement(description: "", xcoord: params.int("x"), ycoord: params.int("y"), dataObj: DataObject.get(params.id))
+    		    Box.get(params.boxId).addToElements(storageElt).save(flush:true, failOnError: true)
     		
-			render g.updateBoxTable(id: params.boxId, addToCell: true)
+			    render g.updateBoxTable(id: params.boxId, addToCell: true)
+            }
     }
     
     /**

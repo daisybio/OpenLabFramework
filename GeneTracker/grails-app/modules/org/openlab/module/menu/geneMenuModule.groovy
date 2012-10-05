@@ -23,6 +23,7 @@ class geneMenuModule implements MenuModule{
 				menuitem(controller: controller, action: 'create', label: 'Create Gene')
 				menuitem(controller: controller, action: 'list', label: 'List Genes')
 				menuitem(controller: "recombinant", action: 'list', label: 'List Vector Combinations')
+                menuitem(controller: controller, action: 'stats', label: 'Show Stats')
 			}
 		}
 		
