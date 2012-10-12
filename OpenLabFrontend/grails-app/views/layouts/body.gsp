@@ -2,13 +2,9 @@
     <!-- Main CSS at the end to make sure it is effective -->
     <r:require module="prototypeManual"/>
     <r:layoutResources/>
-</head>
-<body>
-    <g:layoutBody/>
-    <r:layoutResources/>
     <g:set var="historyURL" value="${request.forwardURI+params.toQueryString()}" />
 
-    <!-- update history -->
+<!-- update history -->
     <g:if test="${!params.moveInHistory}">
         <script type="text/javascript">
             document.getElementById("navigationFlagInput").value = "true";
@@ -21,4 +17,9 @@
 
         </script>
     </g:if>
+
+</head>
+<body>
+    <g:layoutBody/>
+    <r:layoutResources/>
 </body>

@@ -1,9 +1,8 @@
 package org.openlab.genetracker
 
-import org.openlab.genetracker.model.*;
 import grails.converters.*;
 import org.openlab.main.*;
-import org.codehaus.groovy.grails.commons.ApplicationHolder
+import org.openlab.module.*;
 
 /**
  * Scaffolded controller for Gene that is also housing methods for
@@ -162,6 +161,6 @@ class GeneController extends DataObjectController{
 
 
     def stats = {
-       [:]
+       [chartType: params.chartType?:"piechart"]
     }
 }

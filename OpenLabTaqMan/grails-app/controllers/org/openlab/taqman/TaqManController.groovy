@@ -14,14 +14,10 @@ class TaqManController {
     def TaqManService
 
     def index = {
-        session.backController = "taqMan"
-        session.backAction = "newTaqMan"
         redirect(action: "newTaqMan")
     }
 
     def ajaxLoad = {
-        session.backController = "taqMan"
-        session.backAction = "newTaqMan"
         redirect(action: "newTaqMan", params: [bodyOnly: true])
     }
 
@@ -43,7 +39,7 @@ class TaqManController {
         start {
             render(view: "selectGene")
             on("filesSelected") {
-
+                println params
                 def sampleSets = []
                 def newTaqManSet
                 def newTaqManResults
@@ -91,6 +87,7 @@ class TaqManController {
 
                 //reattach the attachments to the session
                 flow.sampleSets = sampleSets
+                params.bodyOnly = true
 
                 if (sampleSets.size() == 0) {
                     flash.message = "You need to select at least one sample set or TaqManResult!"

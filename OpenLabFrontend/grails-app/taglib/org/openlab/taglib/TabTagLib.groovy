@@ -20,7 +20,6 @@ class TabTagLib {
 	 */
 	def renderInterestedModules = { attrs ->
 
-        println attrs
 		def interestedModules = moduleHandlerService.getInterestedModules(domainClass: attrs.domainClass, type: "tab")
 
         out << "<script type='text/javascript'>"
@@ -34,7 +33,7 @@ class TabTagLib {
 
                 out << "YAHOO.plugin.Dispatcher.delegate(new YAHOO.widget.Tab({"
 				out << "label: '${template.toString().replaceAll(/\B[A-Z]/){ " $it" }.capitalize()-"Tab"}',"
-                out << "dataSrc: '" + g.createLink(controller: "tabs", action: "renderTab",
+                out << "dataSrc: '" + g.createLink(controller: "myTabs", action: "renderTab",
                         params: [template: template, plugin: plugin, domainClass: attrs.domainClass, id: attrs.id, module: module.getClass().getName()]) + "',"
                 out << "cacheData: true"
                 out << "}), tabView);"

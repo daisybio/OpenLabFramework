@@ -8,50 +8,53 @@
       <g:setProvider library="prototype"/>
       <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
     <title><g:if test="${params.q && params.q?.trim() != ''}">${params.q} - </g:if>OpenLabFramework - Search</title>
-    <style type="text/css">
-      .result {
-        margin-bottom: 1em;
-      }
-
-      .result .displayLink {
-        color: green;
-      }
-
-      .result .name {
-        font-size: larger;
-      }
-
-      .paging a.step {
-        padding: 0 .3em;
-      }
-
-      .paging span.currentStep {
-          font-weight: bold;
-      }
-
-      ul {
-        margin: 1em 2em;
-      }
-
-      li, p {
-        margin-bottom: 1em;
-      }
-    </style>
-    <script type="text/javascript">
-        var focusQueryInput = function() {
-            document.getElementById("q").focus();
-        }
-    </script>
   </head>
   
   <body onLoad="focusQueryInput();">
-  
-  <div class="body">
+
+  <style type="text/css">
+  .result {
+      margin-bottom: 1em;
+  }
+
+  .result .displayLink {
+      color: green;
+      padding: 10px;
+  }
+
+  .result .desc {
+      font-size: larger;
+  }
+
+  .paging a.step {
+      padding: 0 .3em;
+  }
+
+  .paging span.currentStep {
+      font-weight: bold;
+  }
+
+  ul {
+      margin: 1em 2em;
+  }
+
+  li, p {
+      margin-bottom: 1em;
+  }
+  </style>
+  <script type="text/javascript">
+      var focusQueryInput = function() {
+          document.getElementById("q").focus();
+      }
+  </script>
+
+  <div class="content">
   <div id="searchHeader">
     <h1><span>Search</span></h1>
-    <g:form url='[controller: "fullSearch", action: "index"]' id="searchableForm" name="searchableForm" method="get">
+    <g:formRemote update="body" url='[controller: "fullSearch", action: "index"]' id="searchableForm" name="searchableForm" method="get">
+        <g:hiddenField name="bodyOnly" value="${true}"/>
         <g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Search" />
-    </g:form>
+    </g:formRemote>
     <div style="clear: both;" class="hint">See <a target="_blank" href="http://lucene.apache.org/java/2_4_0/queryparsersyntax.html">Lucene query syntax</a> for advanced queries</div>
   </div>
   <div id="searchMain">

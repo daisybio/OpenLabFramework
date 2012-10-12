@@ -1,6 +1,5 @@
 <%@ page import="org.openlab.taqman.TaqManResult; org.openlab.taqman.TaqManAssay; org.openlab.taqman.TaqManSet; openlab.attachments.DataObjectAttachment" %>
 <html>
-<g:if test="${bodyOnly != 'true'}">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <g:setProvider library="prototype"/>
@@ -8,9 +7,7 @@
         <g:set var="entityName"
                value="${message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment')}"/>
         <title><g:message code="default.list.label" args="[entityName]"/></title>
-        <r:require module="prototype"/>
     </head>
-</g:if>
 <body>
 <div class="body">
     <h1>TaqMan Analysis</h1><br/>
@@ -53,7 +50,7 @@
         </table>
         </gui:accordionElement>
         </gui:accordion>
-        <g:form action="newTaqMan">
+        <g:form action="newTaqMan" method="post">
 
             <p>Skip lines at top of CSV files:
                 <g:select name="skipLines" noSelection="['': 'Select number of lines to skip']" from="${1..100}"
@@ -71,7 +68,7 @@
 
             </p><br/>
 
-            <g:submitButton name="filesSelected" value="Continue with reference selection"></g:submitButton>
+            <g:submitToRemote update="body" id="_eventId_filesSelected" value="Continue with reference selection"></g:submitToRemote>
         </g:form><br><br>
 
     </div><br>

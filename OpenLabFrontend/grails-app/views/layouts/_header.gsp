@@ -1,5 +1,5 @@
 <div id="header">
-  <g:buildMenu/>
+  <mygui:buildMenu/>
   <g:link class="header-main" controller="dashboard">
   <div style="float:left; width:180px;"><g:loadLogo/></div>
   </g:link>

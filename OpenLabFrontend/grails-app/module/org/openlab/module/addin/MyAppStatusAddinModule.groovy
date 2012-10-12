@@ -2,7 +2,7 @@ package org.openlab.module.addin
 
 import org.openlab.module.*;
 
-class appStatusAddinModule implements AddinModule{
+class MyAppStatusAddinModule implements AddinModule{
 
     def getName()
     {

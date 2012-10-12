@@ -239,15 +239,7 @@
 	
 	}
 	
-	/* tabview*/ 
-	
-	.yui-skin-sam .yui-navset .yui-nav .selected a,.yui-skin-sam .yui-navset .yui-nav .selected a:focus,.yui-skin-sam .yui-navset .yui-nav .selected a:hover{background:#c2ccd9; color:#000;}
-	
-	.yui-skin-sam .yui-navset .yui-content,.yui-skin-sam .yui-navset .yui-navset-top .yui-content{border:1px solid #808080;border-top-color:#808080;padding:.25em .5em;}
-	
-	.yui-skin-sam .yui-navset .yui-nav,.yui-skin-sam .yui-navset .yui-navset-top .yui-nav{border:solid #aaa;border-width:0 0 2px;zoom:1;}
-
-
+	/* tabview*/
     .yui-navset div.loading div {
          background:url(../images/loading.gif) no-repeat center center;
          height: 15em; /* hold some space while loading */

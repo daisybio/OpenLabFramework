@@ -24,10 +24,3 @@
 		</g:remoteLink>
 	</li>
 </g:if>
-
-	<li>
-		<g:remoteLink action="create" controller="primer" params="[bodyOnly: true, 'gene.id':geneInstance.id]" update="[success: 'body', failure:'body']">
-			<img src=${createLinkTo(dir:'images/skin',file:'olf_p.png')} />
-			Add Primer
-		</g:remoteLink>
-	</li>

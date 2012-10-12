@@ -18,7 +18,7 @@
                     <td>${passage.passageNr}</td>
                     <td>${passage.researcher}</td>
                     <td><g:editInPlace id="notes_${passage.id}"
-                                       url="[controller: 'viability', action: 'editField', id: passage.id]"
+                                       url="[controller: 'passage', action: 'editField', id: passage.id]"
                                        rows="1"
                                        cols="10"
                                        paramName="notes">

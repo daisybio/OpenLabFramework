@@ -8,6 +8,7 @@ class StorageType
 	String description
 	
     static hasMany = [compartments : Compartment]
+    static belongsTo = StorageLocation
     
 	static constraints = {
 		description(unique:true)

@@ -26,8 +26,12 @@ class ProjectTabModule implements Module{
 	{
 		if(domainClass == "project")
 		{
-			def project = org.openlab.main.Project.get(id)
-			[dataObjects: DataObject.list().findAll{it.projects.contains(project)}]
+			[dataObjects: DataObject.withCriteria{
+                    projects{
+                        eq("id", Long.valueOf(id))
+                    }
+                }.sort{it.toString()}
+            ]
 		}
 	}
 }

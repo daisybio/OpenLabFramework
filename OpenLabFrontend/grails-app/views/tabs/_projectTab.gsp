@@ -1,4 +1,3 @@
-<gui:tab label="DataObjects">
      <div class="list">
          <table>
              <thead>
@@ -25,4 +24,3 @@
              </tbody>
       </table>
 	</div>
-</gui:tab>

@@ -15,30 +15,29 @@ package org.grails.grailsui
 
 import org.codehaus.groovy.grails.plugins.grailsui.GrailsUIException
 
-class MenuTagLib {
+class MyMenuTagLib {
 
-    static namespace = 'gui'
+    static namespace = 'mygui'
 
     def grailsUITagLibService
-    def menuTagLibService
 
-    MenuItemList items
+    MyMenuItemList items
     def group
 
     // these two fields are static and thread-local because they need to be unique per session, but persist through
     // the tag recursion
     // submenuGroups contains a map
-    static submenuGroup = [initialValue: { return [] }] as ThreadLocal<List<SubMenu>>;
+    static mySubmenuGroup = [initialValue: { return [] }] as ThreadLocal<List<MySubMenu>>;
     static void addNewSubmenuGroup(map) {
-        submenuGroup.get() << map
+        mySubmenuGroup.get() << map
     }
     static def getCurrentSubmenuGroup() {
-        def currList = submenuGroup.get()
+        def currList = mySubmenuGroup.get()
         if (currList.size()) return currList[-1]
         null
     }
     static def clearCurrentSubmenuGroup() {
-        def list = submenuGroup.get()
+        def list = mySubmenuGroup.get()
         if (list.size() > 0) {
             list.remove(list[-1])
         }
@@ -63,12 +62,13 @@ class MenuTagLib {
 
         def id = attrs.remove('id')
         def renderTo = attrs.renderTo ? "'${attrs.remove('renderTo')}'" : 'document.body'
-        items = new MenuItemList(root:true)
+        items = new MyMenuItemList(root:true)
 
         body() // execute the body to process all inner workings of the menubar
 
         // we want to group all singles nodes in the top level list into list so they'll be properly wrapped in <ul>s
-        items = menuTagLibService.groupRootNodes(items)
+        items = items.groupRootNodes()
+
         out << """
 <div id="${id}_div" class="yuimenubar">
     <div class="bd">
@@ -99,19 +99,15 @@ class MenuTagLib {
                 attrs,
                 []
         )
-        // fail-fast if someone is trying to put a menu within a menu
-        if (items != null) {
-            throw new GrailsUIException("Cannot create a menu within a menu or menubar.  Try using a submenu.")
-        }
 
         def id = attrs.remove('id')
         def show = attrs.remove('show')
-        items = new MenuItemList(root:true)
+        items = new MyMenuItemList(root:true)
 
         body() // execute the body to process all inner workings of the menu
 
         // we want to group all singles nodes in the top level list into list so they'll be properly wrapped in <ul>s
-        items = menuTagLibService.groupRootNodes(items)
+        items = items.groupRootNodes()
         out << """
 <div id="${id}_div" class="yuimenu">
     <div class="bd">
@@ -142,7 +138,7 @@ class MenuTagLib {
         )
         def currentSubMenu = getCurrentSubmenuGroup()
         def id = attrs.remove('id')
-        def subMenu = new SubMenu(id: id, label: attrs.label)
+        def subMenu = new MySubMenu(id: id, label: attrs.label)
         addNewSubmenuGroup(subMenu)
         body()
         if (currentSubMenu) {
@@ -168,7 +164,7 @@ class MenuTagLib {
         )
 
         def id = attrs.remove('id')
-        group = new MenuGroup(id:id, title: attrs.title)
+        group = new MyMenuGroup(id:id, title: attrs.title)
         body()
         items << group
         group = null
@@ -189,7 +185,7 @@ class MenuTagLib {
         def id = attrs.remove('id')
         def url = createLink(attrs)
 
-        def menuItem = new MenuItem(id:id, url:url, helpText:attrs.helpText, text:body(), onClick: attrs.onclick)
+        def menuItem = new MyMenuItem(id:id, url:url, helpText:attrs.helpText, text:body(), onClick: attrs.onclick)
         def subMenuGroup = getCurrentSubmenuGroup()
         if (group) {
             group.items << menuItem
@@ -203,13 +199,34 @@ class MenuTagLib {
 
 /* Below are the units used internally for markup building */
 
-class MenuItemList extends ArrayList {
+class MyMenuItemList extends MenuItemList {
     def root
 
-    public MenuItemList() {}
+    public MyMenuItemList() {}
 
-    public MenuItemList(List input) {
+    public MyMenuItemList(List input) {
         input.each { this << it }
+    }
+
+    def groupRootNodes() {
+        def result = new MyMenuItemList(root:true)
+        def rootCache = new MyMenuItemList()
+        def list = this
+        list.each { node ->
+            if (node instanceof MyMenuItem || node instanceof MySubMenu) {
+                rootCache << node
+            } else {
+                if (rootCache.size()) {
+                    result << rootCache
+                    rootCache = new MyMenuItemList()
+                }
+                result << node
+            }
+        }
+        if (rootCache.size()) {
+            result << rootCache
+        }
+        result
     }
 
     def menuMarkup(count = 0) {
@@ -233,7 +250,7 @@ class MenuItemList extends ArrayList {
     }
 }
 
-class MenuItem {
+class MyMenuItem extends MenuItem{
     def id
     def url
     def text
@@ -257,12 +274,12 @@ class MenuItem {
     }
 }
 
-class SubMenu {
+class MySubMenu extends SubMenu{
     def parent
     def id
     def label
     def type
-    MenuItemList items = new MenuItemList()
+    MyMenuItemList items = new MyMenuItemList()
 
     def menuMarkup(count) {
         type = 'menu'
@@ -308,10 +325,10 @@ class SubMenu {
     }
 }
 
-class MenuGroup {
+class MyMenuGroup extends MenuGroup{
     def id
     def title
-    MenuItemList items = new MenuItemList()
+    MyMenuItemList items = new MyMenuItemList()
 
     def menuMarkup(count) { markup(count) }
     def menubarMarkup(count) { markup(count) }

@@ -8,7 +8,8 @@ grails.plugin.location.taqman = "../OpenLabTaqMan"
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir	= "target/test-reports"
-//grails.project.war.file = "target/${appName}-${appVersion}.war"
+grails.project.war.file = "target/${appName}.war"
+grails.tomcat.jvmArgs= ["-Xms512m",  "-Xmx1024m", "-XX:PermSize=512m", "-XX:MaxPermSize=512m"]
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits( "global" ) {

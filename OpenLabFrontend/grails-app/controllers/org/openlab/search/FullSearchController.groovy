@@ -22,6 +22,15 @@ class FullSearchController {
 		try {
             if(params.q.toString().contains("?") || params.q.toString().contains("*") && params?.suggestQuery)
 				params.remove("suggestQuery")
+            if(params.q.toString().contains(":"))
+            {
+                try{
+                    params.q = params.q.toString().substring(params.q.toString().indexOf(":")+1, params.q.toString().length())
+                } catch(Exception e)
+                {
+                    log.warn "Could not truncate search string: ${e.getMessage()}"
+                }
+            }
 			return [searchResult: searchableService.search(params.q, params)]
         } catch (SearchEngineQueryParseException ex) {
             return [parseException: true]

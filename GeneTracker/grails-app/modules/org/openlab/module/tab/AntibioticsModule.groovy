@@ -27,9 +27,11 @@ class AntibioticsModule implements Module{
 		if(domainClass.startsWith("cellLineData"))
 		{
 			def cellLineData = CellLineData.get(id)
-			def antibiotics = AntibioticsWithConcentration.findAllByCellLineData(cellLineData)
+			def antibioticsWithConc = AntibioticsWithConcentration.findAllByCellLineData(cellLineData)
+            def antibioticsList = Antibiotics.list()
 
-            [cellLineData: cellLineData, antibiotics: antibiotics]
+
+            [cellLineData: cellLineData, antibioticsList: antibioticsList, antibioticsWithConc: antibioticsWithConc]
 		}
 	}
 }

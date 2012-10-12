@@ -27,7 +27,6 @@ public class Gene extends DataObject implements Serializable{
 		length()
 		orfStart()
 		orfStop()
-		primers(nullable: true)
 	}
 	
 	String name
@@ -51,14 +50,13 @@ public class Gene extends DataObject implements Serializable{
 	
 	//make dataobjects target for searchable plugin
 	static searchable = {
-			primers component: true
 			wildTypeGene reference: true
 			projects reference:true
 	}
 	
 	static belongsTo = [Project]
 		
-	static hasMany = [projects: Project, primers: Primer]
+	static hasMany = [projects: Project]
 		
     String toString()
 	{

@@ -23,7 +23,7 @@
             <g:message code='default.button.delete.label' default='Delete'/></g:remoteLink></li>
     </ul>
 </div>
-<g:render template="additionalBoxoes" id="${projectInstance?.id}"/>
+<g:render template="additionalBoxes" id="${projectInstance?.id}"/>
 <div id="show-project" class="content scaffold-show" role="main">
     <h1><g:message code="default.show.label" args="[entityName]"/> ${projectInstance}</h1>
     <g:if test="${flash.message}">
@@ -83,52 +83,6 @@
             </span>
 
         </li>
-
-
-
-        <li class="fieldcontain">
-            <span id="object-label" class="property-label"><g:message code="project.object.label"
-                                                                      default="Object"/></span>
-
-            <span class="property-value" aria-labelledby="object-label">
-                <ul>
-                    <g:if test="${projectInstance.object.size() > 0}">
-                        <g:each in="${projectInstance.object}" var="o">
-                            <g:form name="remove${o}Form">
-                                <li>
-                                    <g:remoteLink controller="dataObject" action="show" id="${o.id}"
-                                                  params="['bodyOnly': 'true']"
-                                                  update="[success: 'body', failure: 'body']">${o?.encodeAsHTML()}</g:remoteLink>
-
-                                    <g:hiddenField name="bodyOnly" value="${true}"/>
-                                    <g:hiddenField name="id" value="${projectInstance?.id}"/>
-                                    <g:hiddenField name="associatedId" value="${o?.id}"/>
-                                    <g:hiddenField name="propertyName" value="dataObject"/>
-                                    <g:hiddenField name="referencedClassName" value="org.openlab.main.DataObject"/>
-                                    <g:hiddenField name="thisClassName" value="Project"/>
-                                    <g:submitToRemote action="removeManyToMany"
-                                                      update="[success: 'body', failure: 'body']" value="Remove"/>
-                                </li>
-                            </g:form>
-                        </g:each>
-                    </g:if>
-                    <g:else>
-                        <i>None added</i>
-                    </g:else>
-                </ul><br/><br/>
-                <g:form name="addToProject">
-                    <g:hiddenField name="bodyOnly" value="${true}"/>
-                    <g:hiddenField name="referencedClassName" value="org.openlab.main.DataObject"/>
-                    <g:select from="${org.openlab.main.DataObject.list(sort: 'name')}" name="selectAddTo"
-                              optionKey="id"/>
-                    <g:hiddenField name="id" value="${projectInstance?.id}"/>
-                    <g:submitToRemote action="addManyToMany" update="[success: 'body', failure: 'body']"
-                                      value="Add to"/>
-                </g:form>
-            </span>
-
-        </li>
-
 
 
         <li class="fieldcontain">

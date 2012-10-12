@@ -1,1 +1,1 @@
-<g:select onChange="${remoteFunction(action:"vectorSelected" }" noSelection="['':'']" name="firstGeneVector2.id" from="${geneVectors}", optionKey: "id"/>
+<g:select onChange="${remoteFunction(action:"vectorSelected")}" noSelection="['':'']" name="firstGeneVector2.id" from="${geneVectors}" optionKey="id"/>

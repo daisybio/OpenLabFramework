@@ -13,9 +13,9 @@
  */
 package org.grails.grailsui
 
-class TabTagLib {
+class MyTabTagLib {
 
-    static namespace = "gui"
+    static namespace = "mygui"
 
     def grailsUITagLibService
 

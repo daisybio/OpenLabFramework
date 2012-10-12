@@ -1,13 +1,6 @@
 package org.openlab.navigation;
 
-
-import org.openlab.model.*;
-
-import groovy.xml.MarkupBuilder
-import org.openlab.main.DataObject
-import org.openlab.main.Laboratory
 import org.openlab.main.Project
-import org.openlab.security.User
 import grails.converters.JSON
 import org.openlab.genetracker.Gene
 
@@ -30,13 +23,11 @@ public class ProjectTreeController {
 
     def projectTreeAsJSON() {
 
-        def nanocanLab = Laboratory.findByName("Odense")
-
         if(params.int("id") == 0)
         {
-            def projects = Project.findAllByLaboratory(nanocanLab)
+            def projects = Project.list(sort: "name")
 
-            def projectsAsJSON = projects.sort{it.name}.collect{
+            def projectsAsJSON = projects.collect{
                 [
                         "data" : it.name,
                         "attr" : [ "id" : it.id , "rel":"project", "nodeType" : "project"],

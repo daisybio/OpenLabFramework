@@ -1,0 +1,105 @@
+<plugin name='gene-tracker' version='1.0' grailsVersion='2.0.4 &gt; *'>
+  <author>Your name</author>
+  <title>Plugin summary/headline</title>
+  <description>\
+Brief description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/gene-tracker</documentation>
+  <type>GeneTrackerGrailsPlugin</type>
+  <resources>
+    <resource>org.openlab.genetracker.AntibioticsController</resource>
+    <resource>org.openlab.genetracker.AntibioticsWithConcentrationController</resource>
+    <resource>org.openlab.genetracker.CellLineController</resource>
+    <resource>org.openlab.genetracker.CellLineDataController</resource>
+    <resource>org.openlab.genetracker.CultureMediaController</resource>
+    <resource>org.openlab.genetracker.GeneController</resource>
+    <resource>org.openlab.genetracker.MediumAdditiveController</resource>
+    <resource>org.openlab.genetracker.OrganismController</resource>
+    <resource>org.openlab.genetracker.OriginController</resource>
+    <resource>org.openlab.genetracker.PassageController</resource>
+    <resource>org.openlab.genetracker.PrimerController</resource>
+    <resource>org.openlab.genetracker.RecombinantController</resource>
+    <resource>org.openlab.genetracker.StatsController</resource>
+    <resource>org.openlab.genetracker.VectorController</resource>
+    <resource>org.openlab.genetracker.ViabilityController</resource>
+    <resource>org.openlab.genetracker.Antibiotics</resource>
+    <resource>org.openlab.genetracker.AntibioticsWithConcentration</resource>
+    <resource>org.openlab.genetracker.CellLine</resource>
+    <resource>org.openlab.genetracker.CellLineData</resource>
+    <resource>org.openlab.genetracker.CultureMedia</resource>
+    <resource>org.openlab.genetracker.Gene</resource>
+    <resource>org.openlab.genetracker.MediumAdditive</resource>
+    <resource>org.openlab.genetracker.Organism</resource>
+    <resource>org.openlab.genetracker.Origin</resource>
+    <resource>org.openlab.genetracker.Passage</resource>
+    <resource>org.openlab.genetracker.Primer</resource>
+    <resource>org.openlab.genetracker.Recombinant</resource>
+    <resource>org.openlab.genetracker.Viability</resource>
+    <resource>org.openlab.genetracker.vector.Acceptor</resource>
+    <resource>org.openlab.genetracker.vector.CloningVector</resource>
+    <resource>org.openlab.genetracker.vector.IntegrationFirst</resource>
+    <resource>org.openlab.genetracker.vector.IntegrationSecond</resource>
+    <resource>org.openlab.genetracker.vector.Vector</resource>
+    <resource>org.openlab.module.addin.GeneLegendAddinModule</resource>
+    <resource>org.openlab.module.menu.CellLineMenuModule</resource>
+    <resource>org.openlab.module.menu.MasterDataMenuModule</resource>
+    <resource>org.openlab.module.menu.geneMenuModule</resource>
+    <resource>org.openlab.module.operations.GeneOperationsModule</resource>
+    <resource>org.openlab.module.tab.AntibioticsModule</resource>
+    <resource>org.openlab.module.tab.CellLineDataModule</resource>
+    <resource>org.openlab.module.tab.GeneVariantModule</resource>
+    <resource>org.openlab.module.tab.GeneVectorModule</resource>
+    <resource>org.openlab.module.tab.NCBISequenceViewerModule</resource>
+    <resource>org.openlab.module.tab.PassageModule</resource>
+    <resource>org.openlab.module.tab.PrimerModule</resource>
+    <resource>org.openlab.module.tab.ViabilityModule</resource>
+    <resource>org.openlab.genetracker.NCBIParserService</resource>
+    <resource>org.openlab.genetracker.RecombinantsService</resource>
+    <resource>org.openlab.genetracker.GenetrackerTagLib</resource>
+  </resources>
+  <repositories>
+    <repository name='grailsCentral' url='http://plugins.grails.org' />
+    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+    <repository name='http://m2repo.spockframework.org/releases/' url='http://m2repo.spockframework.org/releases/' />
+    <repository name='http://m2repo.spockframework.org/snapshots/' url='http://m2repo.spockframework.org/snapshots/' />
+    <repository name='http://repo.grails.org/grails/libs-releases' url='http://repo.grails.org/grails/libs-releases/' />
+    <repository name='http://m2repo.spockframework.org/ext/' url='http://m2repo.spockframework.org/ext/' />
+    <repository name='http://localhost:8081/artifactory/plugins-releases-local' url='http://localhost:8081/artifactory/plugins-releases-local/' />
+  </repositories>
+  <dependencies>
+    <runtime>
+      <dependency group='hsqldb' name='hsqldb' version='1.8.0.10' />
+    </runtime>
+  </dependencies>
+  <plugins>
+    <runtime>
+      <plugin group='org.grails.plugins' name='joda-time' version='1.4' />
+      <plugin group='org.grails.plugins' name='excel-import' version='0.3' />
+      <plugin group='org.grails.plugins' name='richui' version='0.8' />
+      <plugin group='org.grails.plugins' name='spring-security-cas' version='1.0.5' />
+      <plugin group='org.grails.plugins' name='grails-melody' version='1.14' />
+      <plugin group='org.grails.plugins' name='hibernate' version='2.0.4' />
+      <plugin group='org.grails.plugins' name='searchable' version='0.6.3' />
+      <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
+      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
+      <plugin group='org.grails.plugins' name='prototype' version='1.0' />
+      <plugin group='org.grails.plugins' name='p6spy' version='0.4' />
+      <plugin group='org.grails.plugins' name='database-migration' version='1.1' />
+      <plugin group='org.grails.plugins' name='webflow' version='2.0.0' />
+      <plugin group='org.grails.plugins' name='export' version='1.5' />
+      <plugin group='org.grails.plugins' name='grails-ui' version='1.2.3' />
+      <plugin group='org.grails.plugins' name='yui' version='2.8.2.1' />
+      <plugin group='org.grails.plugins' name='svn' version='1.0.0.M1' />
+      <plugin group='org.grails.plugins' name='quartz' version='0.4.2' />
+      <plugin group='org.grails.plugins' name='bubbling' version='2.1.4' />
+    </runtime>
+    <build>
+      <plugin group='org.grails.plugins' name='tomcat' version='2.0.4' />
+    </build>
+  </plugins>
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>

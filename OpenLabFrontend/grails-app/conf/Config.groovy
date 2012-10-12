@@ -70,7 +70,7 @@ grails.spring.bean.packages = []
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
-        grails.serverURL = "http://10.84.12.130:8080/${appName}"
+        grails.serverURL = "http://10.149.64.25:8080/${appName}"
     }
     development {
         grails.serverURL = "http://10.84.12.130:8080/${appName}"
@@ -104,7 +104,13 @@ log4j = {
             'org.openlab.dataimport',
             'grails.app'
 
-    //all    'jdbc.sqltiming'
+    appenders {
+        rollingFile  name:'infoLog', file:'/tomcat/log/info.log', threshold: org.apache.log4j.Level.INFO, maxFileSize:1024
+        rollingFile  name:'warnLog', file:'/tomcat/log/warn.log', threshold: org.apache.log4j.Level.WARN, maxFileSize:1024
+        rollingFile  name:'errorLog', file:'/tomcat/log/error.log', threshold: org.apache.log4j.Level.ERROR, maxFileSize:1024
+        rollingFile  name:'debugLog', file:'/tomcat/log/debug.log', threshold: org.apache.log4j.Level.DEBUG, maxFileSize:1024
+        console      name:'stdout', threshold: org.apache.log4j.Level.WARN
+    }
 }
 
 // Added by the Spring Security Core plugin:

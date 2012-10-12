@@ -12,6 +12,8 @@ import org.openlab.storage.Box
 import org.openlab.storage.Compartment
 import org.openlab.storage.Freezer
 import org.openlab.storage.StorageLocation
+import org.openlab.genetracker.Recombinant
+import org.openlab.genetracker.Gene
 
 class BootStrap {
 
