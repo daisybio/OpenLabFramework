@@ -16,3 +16,9 @@ stacktrace.log
 */upload
 RemoteSystemsTempFiles
 Servers
+/olfSettingsDB.script
+/olfSettingsDB.properties
+/olfSettingsDB.log
+/testDB.script
+/testDB.properties
+/testDB.log
