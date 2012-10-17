@@ -1,5 +1,5 @@
 dataSource {
-    properties {
+    /*properties {
         maxActive = -1
         minEvictableIdleTimeMillis=1800000
         timeBetweenEvictionRunsMillis=1800000
@@ -8,7 +8,7 @@ dataSource {
         testWhileIdle=true
         testOnReturn=true
         validationQuery="SELECT 1"
-    }
+    } */
     dbCreate = ""
 }
 

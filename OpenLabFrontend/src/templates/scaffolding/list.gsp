@@ -28,7 +28,7 @@
                 <div style="padding:15px;"/>
                 <g:formRemote update="body" name="filterList" url="[controller: '${domainClass.propertyName}', action:'list']">
                     <g:hiddenField name="bodyOnly" value="\${true}"/>
-                    Results per page: <g:select name="max" value="\${params.max?:10}" from="\${10..${propertyName}Total}" class="range"/>
+                    Results per page: <g:select name="max" value="\${params.max?:10}" from="\${10..100}" class="range"/>
                     <% if (domainClass.properties.find{ it.name == 'creator'}){%>
                     Creator: <g:select name="creatorFilter" from="\${org.openlab.security.User.list().collect{it.username}}"
                                        value="\${params.creatorFilter?:''}" noSelection="['':'']"/>
@@ -92,7 +92,7 @@
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:remotePaginate total="\${${propertyName}Total}" params="\${params}" />
+				<g:remotePaginate total="\${${propertyName}Total}?:0" params="\${params}" />
 			</div>
             <export:formats params="\${params}"/>
 		</div>

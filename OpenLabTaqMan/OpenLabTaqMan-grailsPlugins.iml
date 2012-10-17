@@ -9,12 +9,13 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabTaqMan/plugins/webxml-1.4.1">
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.4/projects/OpenLabTaqMan/plugins/webxml-1.4.1/src/groovy" isTestSource="false" />
+    <content url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabTaqMan/plugins/hibernate-2.1.1">
+      <sourceFolder url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabTaqMan/plugins/hibernate-2.1.1/grails-app/i18n" isTestSource="false" />
     </content>
+    <content url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabTaqMan/plugins/tomcat-2.1.1" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="grails-2.0.4" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.1.1" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (OpenLabTaqMan-grailsPlugins)">
         <CLASSES>

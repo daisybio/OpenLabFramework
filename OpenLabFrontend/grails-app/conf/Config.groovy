@@ -22,11 +22,6 @@ if (System.getenv(ENV_NAME)) {
 else if (System.getProperty(ENV_NAME)) {
     println "Including configuration file specified on command line: " + System.getProperty(ENV_NAME);
     grails.config.locations << "file:" + System.getProperty(ENV_NAME)
-
-}
-else {
-    println "No external configuration file defined for ${ENV_NAME}. Using local properties file instead (/WEB-INF/classes/openlabframework.properties)"
-    grails.config.locations << "classpath:openlabframework.properties"
 }
 
 /* */
@@ -70,10 +65,8 @@ grails.spring.bean.packages = []
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
-        grails.serverURL = "http://10.149.64.25:8080/${appName}"
     }
     development {
-        grails.serverURL = "http://10.84.12.130:8080/${appName}"
     }
     test {
         grails.serverURL = "http://localhost:8080/${appName}"
@@ -161,10 +154,5 @@ grails.gorm.default.mapping = {
 //define default javascript library
 grails.views.javascript.library="prototype"
 
-//CAS configuration for single sign on
-grails.plugins.springsecurity.cas.loginUri = '/login'
-grails.plugins.springsecurity.cas.serviceUrl = grails.serverURL + '/j_spring_cas_security_check'
-grails.plugins.springsecurity.cas.serverUrlPrefix = 'https://sso.sdu.dk'
-//grails.plugins.springsecurity.cas.proxyCallbackUrl = grails.serverURL + '/secure/receptor'
-grails.plugins.springsecurity.cas.proxyReceptorUrl = '/secure/receptor'
-grails.plugins.springsecurity.logout.afterLogoutUrl = 'https://sso.sdu.dk/logout?url=' + grails.serverURL
+
+

@@ -61,7 +61,7 @@ class ${className}Controller {
             exportService.export(params.format, response.outputStream, ${propertyName}List, fields?:[], [:], [:], [:])
         }
 
-        [${propertyName}List: ${propertyName}List, ${propertyName}Total: ${propertyName}Total, params: params]
+        [${propertyName}List: ${propertyName}List, ${propertyName}Total: ${propertyName}Total?:0, params: params]
     }
 
     def create() {

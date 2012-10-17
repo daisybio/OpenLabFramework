@@ -58,142 +58,62 @@
     <favorites_list name="OpenLabFramework" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49934983">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="index.gsp" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/views/fullSearch/index.gsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="19" column="20" selection-start="739" selection-end="739" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AddinController.groovy" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/controllers/org/openlab/addin/AddinController.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="6" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MyTabsController.groovy" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/controllers/org/openlab/content/MyTabsController.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="51" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Config.groovy" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/Config.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="139" column="22" selection-start="6023" selection-end="6023" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BuildConfig.groovy" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/BuildConfig.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="49" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.35771543">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="show.gsp" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/views/project/show.gsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="47" column="27" selection-start="2649" selection-end="2649" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="_projectTab.gsp" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/views/tabs/_projectTab.gsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="31" selection-start="224" selection-end="224" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PrimerController.groovy" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/GeneTracker/grails-app/controllers/org/openlab/genetracker/PrimerController.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="9" column="41" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="_primerTab.gsp" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/GeneTracker/grails-app/views/tabs/_primerTab.gsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="29" column="33" selection-start="1295" selection-end="1295" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="Primer.groovy" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/GeneTracker/grails-app/domain/org/openlab/genetracker/Primer.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="15" column="27" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ProjectTabModule.groovy" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/module/org/openlab/module/tab/ProjectTabModule.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="23" column="89" selection-start="425" selection-end="425" vertical-scroll-proportion="0.3627546">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DataObject.groovy" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/OpenLabBackend/grails-app/domain/org/openlab/main/DataObject.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="30" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MainObject.groovy" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/OpenLabBackend/grails-app/domain/org/openlab/main/MainObject.groovy">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="10" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-                <state />
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="application.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenLabFrontend/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="38" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/BootStrap.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="37" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataSource.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/DataSource.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="19" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenLabFrontend/src/templates/scaffolding/Controller.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="64" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.gsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/OpenLabFrontend/src/templates/scaffolding/list.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="94" column="68" selection-start="5385" selection-end="5385" vertical-scroll-proportion="0.50961536">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuildConfig.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/BuildConfig.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="63" selection-start="1718" selection-end="1718" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -203,11 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/OpenLabFrontend/grails-app/taglib/org/openlab/taglib/TabTagLib.groovy" />
-        <option value="$PROJECT_DIR$/OpenLabFrontend/grails-app/module/org/openlab/module/addin/appstatusAddinModule.groovy" />
-        <option value="$PROJECT_DIR$/GeneTracker/grails-app/domain/org/openlab/genetracker/Gene.groovy" />
-        <option value="$PROJECT_DIR$/GeneTracker/grails-app/views/tabs/_passageTab.gsp" />
-        <option value="$PROJECT_DIR$/GeneTracker/grails-app/views/operations/_geneOperations.gsp" />
         <option value="$PROJECT_DIR$/GeneTracker/grails-app/modules/org/openlab/module/tab/PrimerModule.groovy" />
         <option value="$PROJECT_DIR$/OpenLabFrontend/grails-app/controllers/org/openlab/search/FullSearchController.groovy" />
         <option value="$PROJECT_DIR$/GeneTracker/grails-app/views/addins/_geneLegendAddin.gsp" />
@@ -219,14 +134,22 @@
         <option value="$PROJECT_DIR$/OpenLabFrontend/grails-app/views/tabs/_projectTab.gsp" />
         <option value="$PROJECT_DIR$/OpenLabFrontend/grails-app/module/org/openlab/module/tab/ProjectTabModule.groovy" />
         <option value="$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/BuildConfig.groovy" />
+        <option value="$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/DataSource.groovy" />
+        <option value="$PROJECT_DIR$/OpenLabFrontend/application.properties" />
+        <option value="$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/Config.groovy" />
+        <option value="$PROJECT_DIR$/OpenLabFrontend/src/templates/scaffolding/Controller.groovy" />
+        <option value="$PROJECT_DIR$/OpenLabFrontend/src/templates/scaffolding/list.gsp" />
       </list>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_INTERNAL" />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1216" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -242,7 +165,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -253,15 +176,56 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenLabFramework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenLabFramework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenLabFrontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenLabFramework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="Groovy.Shell.LastModule" value="OpenLabFrontend" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -570,8 +534,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1216" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -581,9 +545,10 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29965752" sideWeight="0.52200305" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Grails View" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1784188" sideWeight="0.6998106" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29965752" sideWeight="0.47268587" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17830046" sideWeight="0.7003425" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -591,9 +556,8 @@
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21634616" sideWeight="0.6827651" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24679486" sideWeight="0.6998106" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24658574" sideWeight="0.7003425" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2964015" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3001894" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -665,107 +629,34 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/views/addins/_appstatusAddin.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="1257" vertical-scroll-proportion="-0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GeneTracker/grails-app/views/addins/_geneLegendAddin.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="29" selection-start="638" selection-end="638" vertical-scroll-proportion="-8.32653" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GeneTracker/grails-app/modules/org/openlab/module/tab/PrimerModule.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="47" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/views/fullSearch/index.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="20" selection-start="739" selection-end="739" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/controllers/org/openlab/addin/AddinController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="6" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/controllers/org/openlab/content/MyTabsController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="51" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/Config.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="22" selection-start="6023" selection-end="6023" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/BuildConfig.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="49" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.35771543">
-          <folding />
-        </state>
+        <state line="18" column="51" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/views/project/show.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="27" selection-start="2649" selection-end="2649" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="47" column="27" selection-start="2649" selection-end="2649" vertical-scroll-proportion="0.03601695" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/views/tabs/_projectTab.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="31" selection-start="224" selection-end="224" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="7" column="31" selection-start="224" selection-end="224" vertical-scroll-proportion="0.09957627" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GeneTracker/grails-app/controllers/org/openlab/genetracker/PrimerController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="41" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="9" column="41" selection-start="178" selection-end="178" vertical-scroll-proportion="0.034136545" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GeneTracker/grails-app/views/tabs/_primerTab.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="33" selection-start="1295" selection-end="1295" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="29" column="33" selection-start="1295" selection-end="1295" vertical-scroll-proportion="0.03601695" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GeneTracker/grails-app/domain/org/openlab/genetracker/Primer.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="27" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpenLabBackend/grails-app/domain/org/openlab/main/DataObject.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="30" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpenLabBackend/grails-app/domain/org/openlab/main/MainObject.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="15" column="27" selection-start="265" selection-end="265" vertical-scroll-proportion="-0.35416666" />
       </provider>
       <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
@@ -773,7 +664,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/module/org/openlab/module/tab/ProjectTabModule.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="89" selection-start="425" selection-end="425" vertical-scroll-proportion="0.3627546">
+        <state line="23" column="89" selection-start="425" selection-end="425" vertical-scroll-proportion="-8.24" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenLabBackend/grails-app/domain/org/openlab/main/DataObject.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="30" selection-start="234" selection-end="234" vertical-scroll-proportion="-0.8125" />
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenLabBackend/grails-app/domain/org/openlab/main/MainObject.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0332681" />
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/BuildConfig.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="63" selection-start="1718" selection-end="1718" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="38" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/BootStrap.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="37" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/Config.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="152" column="63" selection-start="6176" selection-end="6176" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/grails-app/conf/DataSource.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="19" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/src/templates/scaffolding/Controller.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="64" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenLabFrontend/src/templates/scaffolding/list.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="68" selection-start="5385" selection-end="5385" vertical-scroll-proportion="0.50961536">
           <folding />
         </state>
       </provider>
@@ -827,13 +781,13 @@
           <value>
             <GrailsSettings>
               <option name="buildConfigCrc" value="951986807" />
-              <option name="pluginDependenciesCrc" value="-1392547691" />
+              <option name="pluginDependenciesCrc" value="-1484912852" />
               <option name="properties">
                 <map>
-                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\global-plugins" />
-                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\projects\OpenLabBackend\plugins" />
-                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.0.4\projects\OpenLabBackend" />
-                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.0.4" />
+                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\global-plugins" />
+                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\projects\OpenLabBackend\plugins" />
+                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.1.1\projects\OpenLabBackend" />
+                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.1.1" />
                 </map>
               </option>
             </GrailsSettings>
@@ -843,13 +797,13 @@
           <value>
             <GrailsSettings>
               <option name="buildConfigCrc" value="-181248324" />
-              <option name="pluginDependenciesCrc" value="-367965939" />
+              <option name="pluginDependenciesCrc" value="-1484912852" />
               <option name="properties">
                 <map>
-                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\global-plugins" />
-                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\projects\OpenLabBarcode\plugins" />
-                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.0.4\projects\OpenLabBarcode" />
-                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.0.4" />
+                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\global-plugins" />
+                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\projects\OpenLabBarcode\plugins" />
+                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.1.1\projects\OpenLabBarcode" />
+                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.1.1" />
                 </map>
               </option>
               <option name="customPluginLocations">
@@ -865,13 +819,13 @@
           <value>
             <GrailsSettings>
               <option name="buildConfigCrc" value="-1936390826" />
-              <option name="pluginDependenciesCrc" value="-47312312" />
+              <option name="pluginDependenciesCrc" value="793411496" />
               <option name="properties">
                 <map>
-                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\global-plugins" />
-                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\projects\OpenLabFramework\plugins" />
-                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.0.4\projects\OpenLabFramework" />
-                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.0.4" />
+                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\global-plugins" />
+                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\projects\OpenLabFramework\plugins" />
+                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.1.1\projects\OpenLabFramework" />
+                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.1.1" />
                 </map>
               </option>
               <option name="customPluginLocations">
@@ -896,13 +850,13 @@
           <value>
             <GrailsSettings>
               <option name="buildConfigCrc" value="-2090941063" />
-              <option name="pluginDependenciesCrc" value="1424461857" />
+              <option name="pluginDependenciesCrc" value="-1484912852" />
               <option name="properties">
                 <map>
-                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\global-plugins" />
-                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\projects\OpenLabTaqMan\plugins" />
-                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.0.4\projects\OpenLabTaqMan" />
-                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.0.4" />
+                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\global-plugins" />
+                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\projects\OpenLabTaqMan\plugins" />
+                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.1.1\projects\OpenLabTaqMan" />
+                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.1.1" />
                 </map>
               </option>
               <option name="customPluginLocations">
@@ -919,13 +873,13 @@
           <value>
             <GrailsSettings>
               <option name="buildConfigCrc" value="511598629" />
-              <option name="pluginDependenciesCrc" value="-1392547691" />
+              <option name="pluginDependenciesCrc" value="-1484912852" />
               <option name="properties">
                 <map>
-                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\global-plugins" />
-                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.0.4\projects\Storage\plugins" />
-                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.0.4\projects\Storage" />
-                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.0.4" />
+                  <entry key="grails.global.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\global-plugins" />
+                  <entry key="grails.project.plugins.dir" value="C:\Users\mlist\.grails\2.1.1\projects\Storage\plugins" />
+                  <entry key="grails.project.work.dir" value="C:\Users\mlist\.grails\2.1.1\projects\Storage" />
+                  <entry key="grails.work.dir" value="C:\Users\mlist\.grails\2.1.1" />
                 </map>
               </option>
               <option name="customPluginLocations">
@@ -967,7 +921,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>grails-1.3.7</last-edited>
+          <last-edited>grails-2.1.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -996,6 +950,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

@@ -73,5 +73,6 @@
     </option>
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
+  <component name="WebServicesPlugin" addRequiredLibraries="true" />
 </project>
 
