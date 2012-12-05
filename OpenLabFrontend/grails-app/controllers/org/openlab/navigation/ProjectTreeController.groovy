@@ -3,6 +3,8 @@ package org.openlab.navigation;
 import org.openlab.main.Project
 import grails.converters.JSON
 import org.openlab.genetracker.Gene
+import org.openlab.genetracker.Recombinant
+import org.openlab.genetracker.CellLineData
 
 /**
  * Controller to deliver XML data to the YUI tree that is showing
@@ -37,15 +39,44 @@ public class ProjectTreeController {
             render projectsAsJSON as JSON
         }
 
-        else{
+        else if(params.nodeType == "project"){
             def genesAsJSON = Gene.withCriteria{ projects { eq('id', params.long("id")) }}.sort{it.name}.collect{
                 [
                         "data" : it.name,
-                        "attr" : [ "id" : it.id , "rel":"gene", "nodeType" : "gene"]
+                        "attr" : [ "id" : it.id , "rel":"gene", "nodeType" : "gene"],
+                        "state": "closed"
                 ]
             }
 
             render genesAsJSON as JSON
+        }
+
+        else if(params.nodeType == "gene"){
+            def geneVectorAsJSON = Recombinant.withCriteria{ gene { eq('id', params.long("id")) }}.sort{it.name}.collect{
+                [
+                        "data" : it.name,
+                        "attr" : [ "id" : it.id , "rel":"gene", "nodeType" : "geneVector"],
+                        "state": "closed"
+                ]
+            }
+
+            render geneVectorAsJSON as JSON
+        }
+
+        else if(params.nodeType == "geneVector"){
+            def firstRecombinants = CellLineData.withCriteria{ firstRecombinant{ eq('id', params.long("id")) }}
+            def secondRecombinants = CellLineData.withCriteria{ secondRecombinant{ eq('id', params.long("id")) }}
+            def recombinants = firstRecombinants
+            recombinants.addAll(secondRecombinants)
+
+            def cellLineDataAsJSON = recombinants.sort{it.name}.collect{
+                [
+                        "data" : it.name,
+                        "attr" : [ "id" : it.id , "rel":"gene", "nodeType" : "cellLineData"]
+                ]
+            }
+
+            render cellLineDataAsJSON as JSON
         }
     }
     /**

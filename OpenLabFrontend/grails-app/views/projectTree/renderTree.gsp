@@ -12,7 +12,7 @@
             "json_data": {
                 "ajax": {
                     "url":  "<g:createLink controller="projectTree" action="projectTreeAsJSON"/>",
-                    "data" : function(n) { return { id: n.attr? n.attr("id") : 0, nodeType: n.attr? n.attr("nodeType") : "project" }; }
+                    "data" : function(n) { return { id: n.attr? n.attr("id") : 0, nodeType: n.attr? n.attr("nodeType") : "root" }; }
                 }
             },
             "themes" : {
@@ -28,7 +28,10 @@
                         "valid_children": ["gene"]
                     },
                     "gene" : {
-                        "valid_children": ["recombinant"]
+                        "valid_children": ["cellLineData,geneVector"]
+                    },
+                    "geneVector" : {
+                        "valid_children": ["cellLineData"]
                     },
                     "default": {
                         "valid_children": ["default"]
@@ -39,11 +42,11 @@
         });
 
         myTree.bind("select_node.jstree", function(event, data){
-            if(data.inst.is_leaf(data.args[0])){
-                ${remoteFunction(action: 'showSubClass', controller: 'dataObject', update: 'body', params: '\'id=\'+data.rslt.obj.attr("id")')}
+            if(data.inst.is_root(data.args[0])){
+                ${remoteFunction(action: 'show', controller: 'project', update: 'body', params: '\'id=\'+data.rslt.obj.attr("id")+\'&bodyOnly=\'+true')}
             }
             else{
-                ${remoteFunction(action: 'show', controller: 'project', update: 'body', params: '\'id=\'+data.rslt.obj.attr("id")+\'&bodyOnly=\'+true')}
+                ${remoteFunction(action: 'showSubClass', controller: 'dataObject', update: 'body', params: '\'id=\'+data.rslt.obj.attr("id")')}
             }
     });
 </script>
