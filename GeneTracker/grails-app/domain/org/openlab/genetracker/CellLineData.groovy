@@ -53,11 +53,15 @@ class CellLineData extends DataObject {
     static hasMany = [mediumAdditives: MediumAdditive, projects: Project]
 
     String toString() {
+        def result
         if (secondRecombinant != null)
-            "${cellLine} - ${acceptor} - ${firstRecombinant} - ${secondRecombinant} - ${cultureMedia ?: ''}"
+            result = "${cellLine} - ${acceptor} - ${firstRecombinant} - ${secondRecombinant}"
         else if (firstRecombinant != null)
-            "${cellLine} - ${acceptor} - ${firstRecombinant} - ${cultureMedia ?: ''}"
-        else "${cellLine} - ${cultureMedia ?: ''}"
+            result = "${cellLine} - ${acceptor} - ${firstRecombinant}"
+        else "${cellLine}"
+
+        result += "${cultureMedia?' - '+cultureMedia:''}${colonyNumber?' - '+colonyNumber:''}"
+        return result
     }
 
     String toBarcode() {
@@ -65,7 +69,7 @@ class CellLineData extends DataObject {
             "${cultureMedia ?: ''} - ${cellLine} - ${acceptor}~${firstRecombinant}~${secondRecombinant}"
         else if (firstRecombinant != null)
             "${cultureMedia ?: ''} - ${cellLine} - ${acceptor}~${firstRecombinant}"
-        else "${cellLine}~${cultureMedia ?: ''}"
+        else "${cultureMedia ?: ''}~${cellLine}"
     }
 
     static String type = "cellLineData"

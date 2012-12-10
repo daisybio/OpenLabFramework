@@ -80,7 +80,7 @@ public class BoxTagLib {
 				}
 				else
 				{
-					stringBuffer << """<td onClick="${remoteFunction(controller:'box', action:'addDataObject', params: [x: x, y: y, boxId: attrs.id], id: params.id, update:[success:'boxView', failure:'error'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
+                    stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'addDataObject', params: '\'x=' + x +'&y=' + y + '&boxId=' + attrs.id + '&subDataObj=' + params.subDataObj + '\'', id: params.id, update:[success:'boxView', failure:'boxView'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
 				}
 			}
 		}
@@ -108,9 +108,14 @@ public class BoxTagLib {
         				stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'body\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', controller:'dataObject', action:'showSubClass',params: [backlink: params.backlink], id: element.dataObj.id, update:[success:'body', failure:'error'])}"
 			 				 height=20 width=100 style='background-color:#ffffaa;'>${gui.toolTip(text: 'Click to open'){element.toString()}}</td>"""
         			}
+                    //element is the one displayed above, but has a different sub object, e.g. different passage number
+                    else if(element.dataObj.id.toString() == params.id.toString() && params.subDataObj && params.subDataObj != "null" && element.subDataObj?.id?.toString() != params.subDataObj.toString())
+                        stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'subDataStorageTab\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', controller:'storage', action:'storageTabWithSubDataObj',params: '\'boxId=' + attrs.id + '&subDataObj=' + element?.subDataObj?.id + '\'', id: element.dataObj.id, update:[success:'subDataStorageTab', failure:'error'])}"
+			 				 height=20 width=100 style='background-color:#aaaaff;'>${gui.toolTip(text: 'Click to select'){element.toString()}}</td>"""
 	 				//element is the one displayed above and it shall be possible to REMOVE it
     				else{
-        				stringBuffer << """<td onClick="${remoteFunction(before: 'if(!confirm(\'Are you sure?\')) return false; \$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'removeDataObject',params: [x: x, y: y, boxId: attrs.id], id: params.id, update:[success:'boxView', failure:'boxView'])}"
+        				stringBuffer << """<td onClick="${remoteFunction(before: 'if(!confirm(\'Are you sure?\')) return false; \$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'removeDataObject',
+                                params: '\'x=' + x + '&y=' + y + '&boxId=' + attrs.id + '\'', id: params.id, update:[success:'boxView', failure:'boxView'])}"
 		 				 height=20 width=100 style='background-color:#aaffaa;'>${gui.toolTip(text: 'Click to remove'){element.toString()}}</td>"""    					
     				}
         			
@@ -129,7 +134,7 @@ public class BoxTagLib {
     				}
     				else
     				{
-    					stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'addDataObject', params: [x: x, y: y, boxId: attrs.id], id: params.id, update:[success:'boxView', failure:'boxView'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
+    					stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'addDataObject', params: '\'x=' + x +'&y=' + y + '&boxId=' + attrs.id + '&subDataObj=' + params.subDataObj + '\'', id: params.id, update:[success:'boxView', failure:'boxView'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
     				}
     			}
 			}		
@@ -154,10 +159,27 @@ public class BoxTagLib {
 	 */
 	def showBoxInTab = { attrs ->
 		out << "<div id='storageTab'>"
-		def storageElts = StorageElement.findAllByDataObj(DataObject.get(params.id))
-		Set boxes = storageElts.collect { it.box }
+
+        def storageElts
+
+        if(params.subDataObj) storageElts = StorageElement.findAllByDataObjAndSubDataObj(DataObject.get(params.id), SubDataObject.get(params.subDataObj))
+        else storageElts = StorageElement.findAllByDataObj(DataObject.get(params.id))
+
+		def boxes = []
+        def subDataObjs = [:]
+        storageElts.each {
+            boxes.add(it.box)
+            if(it.subDataObj){
+                if(!subDataObjs.get(it.box.id)) subDataObjs.put(it.box.id, [it.subDataObj])
+
+                else{
+                    def currentEntry = subDataObjs.get(it.box.id)
+                    currentEntry.add(it.subDataObj)
+                    subDataObjs.put(it.box.id, currentEntry)
+                }
+            }
+        }
 		boxes.unique()
-        def leastRecentlyUpdatedBox = Box.find("FROM Box ORDER BY lastUpdate DESC")
 
 		out << "<div id='storageTree'>"
         out << "</div><div class='message' id='unitsLeft'>"
@@ -172,25 +194,28 @@ public class BoxTagLib {
 			if(boxes.size() > 1)
 			{
 				out << "Entities can be found in the following boxes:<br>"
-				out << "<ul>"
+				out << "<ul style='margin-left:25px;'>"
 				boxes.each{box ->
-					out << "<li>${remoteLink(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'showBoxInTab', update:[success:'boxView', failure:'boxView'], id: params.id, params:[boxId: box.id]){box.toString().replace(' - ', ' >> ')}}</li>"					
+					out << "<li>${remoteLink(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'showBoxInTab', update:[success:'boxView', failure:'boxView'], id: params.id, params: '\'subDataObj='+ params.subDataObj + '&boxId=' + box.id + '\''){box.toString().replace(' - ', ' >> ')}}"
+                    if(subDataObjs.get(box.id)) out << " | " + subDataObjs.get(box.id).toString()
+                    out << "</li>"
 				}
 				out << "</ul><br><br>"
 			}
 			
 			//create the actual box
-			out << g.createBoxTable(id: storageElt.box.id, addToCell:true)
+			out << g.createBoxTable(id: params.boxId?:storageElt.box.id, addToCell:true)
 		}
 		//if element has not yet been stored use the box that was least recently used
 		else if(Box.count() > 0)
 		{
 			//show box that has been modified least recently
+            def leastRecentlyUpdatedBox = Box.find("FROM Box ORDER BY lastUpdate DESC")
 
-			if(leastRecentlyUpdatedBox != null)
+			if(leastRecentlyUpdatedBox)
 			{
 
-				out << g.createBoxTable(id: leastRecentlyUpdatedBox.id, addToCell:true)
+				out << g.createBoxTable(id: params.boxId?:leastRecentlyUpdatedBox.id, addToCell:true)
 			}
 		}
 		else out << "There are no boxes to show. Please edit your storage configuration."
@@ -221,14 +246,18 @@ public class BoxTagLib {
 	}
 	
 	def showCurrentBox = { attrs ->
-			out << "You are here: <span style='padding:5px;'><b>" + attrs.box.toString().replace(' - ', ' >> ') + remoteLink(controller: 'storage', action: 'showTree', update: 'storageTree', params: [id: params.id, treeInTab: true]){' (Change) '}+"</span> <br><br>"
+			out << "You are here: <span style='padding:5px;'><b>" + attrs.box.toString().replace(' - ', ' >> ') + remoteLink(controller: 'storage', action: 'showTree', update: 'storageTree', params: [id: params.id, subDataObj: params.subDataObj, treeInTab: true]){' (Change) '}+"</span> <br><br>"
 	}
 	
 	/**
 	 * Closure that calculates how many units are left and produces an output string
 	 */
 	def numberOfEntitiesLeft = {
-			def numberOfEntitiesLeft = StorageElement.countByDataObj(DataObject.get(params.id))
+
+			def numberOfEntitiesLeft
+
+            if(params.subDataObj) numberOfEntitiesLeft = StorageElement.countByDataObjAndSubDataObj(DataObject.get(params.id), SubDataObject.get(params.long("subDataObj")))
+            else numberOfEntitiesLeft = StorageElement.countByDataObj(DataObject.get(params.id))
 			
 			if(numberOfEntitiesLeft == 1)
 			{

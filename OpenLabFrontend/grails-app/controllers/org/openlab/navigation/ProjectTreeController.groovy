@@ -30,21 +30,26 @@ public class ProjectTreeController {
             def projects = Project.list(sort: "name")
 
             def projectsAsJSON = projects.collect{
+                def state = ""
+                if(it?.object?.size() > 0) state = "closed"
                 [
                         "data" : it.name,
                         "attr" : [ "id" : it.id , "rel":"project", "nodeType" : "project"],
-                        "state" : "closed"
+                        "state" : "${state}"
                 ]
             }
             render projectsAsJSON as JSON
         }
 
         else if(params.nodeType == "project"){
-            def genesAsJSON = Gene.withCriteria{ projects { eq('id', params.long("id")) }}.sort{it.name}.collect{
+            def genesAsJSON = Gene.withCriteria{ projects { eq('id', params.long("id")) }}.sort{it.name}.collect{ gene ->
+                def state = ""
+                if(Recombinant.withCriteria{ genes { eq('id', gene.id) }}) state = "closed"
+
                 [
-                        "data" : it.name,
-                        "attr" : [ "id" : it.id , "rel":"gene", "nodeType" : "gene"],
-                        "state": "closed"
+                        "data" : gene.name,
+                        "attr" : [ "id" : gene.id , "rel":"gene", "nodeType" : "gene"],
+                        "state": "${state}"
                 ]
             }
 
@@ -52,11 +57,15 @@ public class ProjectTreeController {
         }
 
         else if(params.nodeType == "gene"){
-            def geneVectorAsJSON = Recombinant.withCriteria{ gene { eq('id', params.long("id")) }}.sort{it.name}.collect{
+
+            def geneVectorAsJSON = Recombinant.withCriteria{ genes { eq('id', params.long("id")) }}.sort{it.toString()}.collect{ recombinant ->
+                def state = ""
+
+                if(CellLineData.withCriteria{ firstRecombinant{ eq('id', recombinant.id) } } || CellLineData.withCriteria{ secondRecombinant{ eq('id', recombinant.id) } }) state = "closed"
                 [
-                        "data" : it.name,
-                        "attr" : [ "id" : it.id , "rel":"gene", "nodeType" : "geneVector"],
-                        "state": "closed"
+                        "data" : recombinant.toString(),
+                        "attr" : [ "id" : recombinant.id , "rel":"gene", "nodeType" : "geneVector"],
+                        "state": "${state}"
                 ]
             }
 
@@ -69,9 +78,9 @@ public class ProjectTreeController {
             def recombinants = firstRecombinants
             recombinants.addAll(secondRecombinants)
 
-            def cellLineDataAsJSON = recombinants.sort{it.name}.collect{
+            def cellLineDataAsJSON = recombinants.sort{it.toString()}.collect{
                 [
-                        "data" : it.name,
+                        "data" : it.toString(),
                         "attr" : [ "id" : it.id , "rel":"gene", "nodeType" : "cellLineData"]
                 ]
             }

@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <g:setProvider library="prototype"/>
-    <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
+    <meta name="layout" content="${params.bodyOnly?'body':(bodyOnly?'body':'main')}" />
     <g:set var="entityName" value="${message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
@@ -16,14 +16,13 @@
         <div class="message">${message}</div>
     </g:if>
 
-    <h3>Evaluation settings (step 2 / 3)</h3><br>
+    <h3>Evaluation settings (step 3 / 4)</h3><br>
 
     <div class="list" style="border: 1px solid grey; padding:15px;">
 
+    <g:formRemote method="post" update="body" url="[controller: 'taqMan', action: 'newTaqMan', params: '']" name="secondStepForm">
+        <g:hiddenField name="execution" value="${request.flowExecutionKey}"/>
         <table border="0">
-            <g:form action="newTaqMan">
-
-                <g:submitButton name="startNewTaqMan" value="Start a new TaqMan analysis"></g:submitButton><br><br>
 
                 <tr><td>Select housekeeping genes:</td><td><g:select name="selectedHKgene" from="${detectorList.sort()}"
                                                                      value="${selectedHKgene}" multiple="yes"/></td>
@@ -31,8 +30,7 @@
 
                 <g:each in="${sampleSets}" var="sampleSet">
 
-                    <!--<tr><td>Select samples to include: </td><td> <g:submitButton name="filterSamples"
-                                                                                     value="Select samples"></g:submitButton></td></tr>    -->
+                    <tr><td>Select samples to include: </td><td> </td></tr>
                     <tr><td>Select a reference sample for ${sampleNames[sampleSet]}:</td><td><g:select
                             name="${sampleSet}_selectedRefSample" from="${samples[sampleSet]}" value="${selectedRefSamples?selectedRefSamples[sampleSet]:samples[sampleSet][1]}"/></td></tr>
 
@@ -74,8 +72,9 @@
                 <tr><td colspan="2" align="right">
                     <g:submitButton name="referencesSelected" value="Process TaqMan data in R"></g:submitButton>
                 </td></tr>
-            </g:form>
+
         </table>
+        </g:formRemote>
     </div>
 </body>
 </html>

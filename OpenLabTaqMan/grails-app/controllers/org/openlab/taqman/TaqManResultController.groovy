@@ -44,10 +44,11 @@ class TaqManResultController {
 
         def taqManResultInstance = TaqManResult.get(params.id)
 
+
         def taqManSets = TaqManSet.withCriteria{
             taqManResults
             {
-                'in' ("id", taqManResultInstance.id)
+                'in' ("id", taqManResultInstance?.id)
             }
         }
 

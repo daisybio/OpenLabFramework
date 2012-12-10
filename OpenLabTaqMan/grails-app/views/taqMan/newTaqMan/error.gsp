@@ -12,11 +12,11 @@
             </g:if>
             
             <h3>Something went wrong! Taqman analysis cannot be continued!</h3><br>
-                
-          	<g:form action="newTaqMan">
-            <g:hiddenField name="_eventId_startNewTaqMan" value="1"/>
-			<g:submitToRemote value="Start a new TaqMan analysis"></g:submitToRemote>
-			</g:form>
+
+            <g:formRemote update="body" url="[controller: 'taqMan', action: 'newTaqMan', params: '']" name="secondStepForm">
+            <g:hiddenField name="execution" value="${request.flowExecutionKey}"/>
+			<g:submitButton name="startNewTaqMan" value="Start a new TaqMan analysis"></g:submitButton>
+			</g:formRemote>
 			</div>
     </body>
 </html>

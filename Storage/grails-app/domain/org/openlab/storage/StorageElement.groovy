@@ -9,6 +9,7 @@ class StorageElement {
 	int ycoord
 	
 	DataObject dataObj
+    SubDataObject subDataObj
 	Box box
 	
 	static belongsTo = Box
@@ -17,6 +18,7 @@ class StorageElement {
 	
 	//check if cell free or identity
     static constraints = {
+        subDataObj nullable:  true
 		box(validator: { val, obj ->
 			def element = val.elements.find{e -> e.xcoord == obj.xcoord && e.ycoord == obj.ycoord}
 			if(!element) return true
@@ -35,6 +37,7 @@ class StorageElement {
 	
 	String toString()
 	{
-		dataObj.toString()
+		if(!subDataObj) dataObj.toString()
+        else dataObj.toString() + " - " + subDataObj.toString()
 	}
 }

@@ -42,7 +42,7 @@
         });
 
         myTree.bind("select_node.jstree", function(event, data){
-            if(data.inst.is_root(data.args[0])){
+            if(data.rslt.obj.attr("nodeType") == "project"){
                 ${remoteFunction(action: 'show', controller: 'project', update: 'body', params: '\'id=\'+data.rslt.obj.attr("id")+\'&bodyOnly=\'+true')}
             }
             else{

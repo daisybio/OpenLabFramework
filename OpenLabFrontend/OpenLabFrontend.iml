@@ -115,10 +115,9 @@
     <orderEntry type="module" module-name="OpenLabBackend" exported="" />
     <orderEntry type="module" module-name="OpenLabAttachments" exported="" />
     <orderEntry type="module" module-name="GeneTracker" exported="" />
-    <orderEntry type="library" name="grails-2.0.4" level="application" />
     <orderEntry type="module" module-name="OpenLabTaqMan" exported="" />
-    <orderEntry type="library" name="grails-2.1.1" level="application" />
     <orderEntry type="module" module-name="OpenLabFrontend-grailsPlugins" />
+    <orderEntry type="library" name="grails-2.1.1" level="application" />
   </component>
 </module>
 

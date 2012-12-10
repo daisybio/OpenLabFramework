@@ -126,8 +126,8 @@ grails.resources.modules = {
         resource url: '/css/yui_reset_grid.css'
     }
     prototypeManual{
-        dependsOn 'scriptaculous'
-        defaultBundle "prototype"
+        resource url: [plugin: "prototype", dir: "js/prototype", file: "prototype.js"], disposition: "head"
+        resource url: [plugin: "prototype", dir: "js/prototype", file: "scriptaculous.js"], disposition: "head"
         resource url: [plugin: "prototype", dir:"js/prototype", file: "effects.js"], disposition: "head"
         resource url: [plugin: "prototype", dir:"js/prototype", file: "controls.js"], disposition: "head"
     }

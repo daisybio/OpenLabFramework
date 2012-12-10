@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <g:setProvider library="prototype"/>
-    <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
+    <meta name="layout" content="${params.bodyOnly?'body':(bodyOnly?'body':'main')}" />
 </head>
 
 <body>
@@ -13,7 +13,7 @@
         <div class="message">${message}</div>
     </g:if>
 
-    <h3>Results: (step 3 / 3)</h3><br>
+    <h3>Results: (step 4 / 4)</h3><br>
 
     <g:form action="newTaqMan">
         <g:submitButton name="changeSettings" value="Change settings"/>

@@ -10,6 +10,15 @@ class StorageController extends DataTableControllerTemplate {
 
 	def index = { redirect(action: list) }
 
+    def storageTabForPassage()
+    {
+        render template: "/tabs/storage", plugin: "storage"
+    }
+
+    def storageTabWithSubDataObj(){
+        render template: "/tabs/cellLineDataStorage", plugin: "storage", params: params
+    }
+
 	def createTreeData()
 	{
 			//prepare XML

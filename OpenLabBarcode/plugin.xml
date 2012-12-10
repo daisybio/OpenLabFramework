@@ -1,4 +1,4 @@
-<plugin name='open-lab-barcode' version='1.0' grailsVersion='2.0.4 &gt; *'>
+<plugin name='open-lab-barcode' version='1.0' grailsVersion='2.1.1 &gt; *'>
   <author>Your name</author>
   <title>Plugin summary/headline</title>
   <description>\
@@ -23,10 +23,8 @@ Brief description of the plugin.
     <resource>org.openlab.barcode.LabelPrinterService</resource>
   </resources>
   <repositories>
-    <repository name='grailsCentral' url='http://plugins.grails.org' />
-    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='grailsCentral' url='http://grails.org/plugins' />
     <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
-    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
     <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
     <repository name='http://m2repo.spockframework.org/releases/' url='http://m2repo.spockframework.org/releases/' />
     <repository name='http://m2repo.spockframework.org/snapshots/' url='http://m2repo.spockframework.org/snapshots/' />
@@ -41,28 +39,28 @@ Brief description of the plugin.
   </dependencies>
   <plugins>
     <runtime>
-      <plugin group='org.grails.plugins' name='joda-time' version='1.4' />
-      <plugin group='org.grails.plugins' name='excel-import' version='0.3' />
-      <plugin group='org.grails.plugins' name='richui' version='0.8' />
-      <plugin group='org.grails.plugins' name='spring-security-cas' version='1.0.5' />
-      <plugin group='org.grails.plugins' name='grails-melody' version='1.14' />
-      <plugin group='org.grails.plugins' name='hibernate' version='2.0.4' />
-      <plugin group='org.grails.plugins' name='searchable' version='0.6.3' />
-      <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
-      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
-      <plugin group='org.grails.plugins' name='prototype' version='1.0' />
-      <plugin group='org.grails.plugins' name='p6spy' version='0.4' />
-      <plugin group='org.grails.plugins' name='database-migration' version='1.1' />
       <plugin group='org.grails.plugins' name='webflow' version='2.0.0' />
-      <plugin group='org.grails.plugins' name='export' version='1.5' />
-      <plugin group='org.grails.plugins' name='grails-ui' version='1.2.3' />
+      <plugin group='org.grails.plugins' name='hibernate' version='2.1.1' />
+      <plugin group='org.grails.plugins' name='database-migration' version='1.1' />
+      <plugin group='org.grails.plugins' name='p6spy' version='0.4' />
       <plugin group='org.grails.plugins' name='yui' version='2.8.2.1' />
       <plugin group='org.grails.plugins' name='svn' version='1.0.0.M1' />
+      <plugin group='org.grails.plugins' name='excel-import' version='0.3' />
       <plugin group='org.grails.plugins' name='quartz' version='0.4.2' />
+      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
+      <plugin group='org.grails.plugins' name='joda-time' version='1.4' />
+      <plugin group='org.grails.plugins' name='richui' version='0.8' />
+      <plugin group='org.grails.plugins' name='grails-ui' version='1.2.3' />
+      <plugin group='org.grails.plugins' name='prototype' version='1.0' />
+      <plugin group='org.grails.plugins' name='spring-security-cas' version='1.0.5' />
+      <plugin group='org.grails.plugins' name='searchable' version='0.6.3' />
       <plugin group='org.grails.plugins' name='bubbling' version='2.1.4' />
+      <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
+      <plugin group='org.grails.plugins' name='grails-melody' version='1.14' />
+      <plugin group='org.grails.plugins' name='export' version='1.5' />
     </runtime>
     <build>
-      <plugin group='org.grails.plugins' name='tomcat' version='2.0.4' />
+      <plugin group='org.grails.plugins' name='tomcat' version='2.1.1' />
     </build>
   </plugins>
   <runtimePluginRequirements />

@@ -4,16 +4,16 @@
     <facet type="web" name="GrailsWeb">
       <configuration>
         <webroots>
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/searchable-0.6.3/grails-app/views" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/prototype-1.0/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/joda-time-1.4/grails-app/views" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/jquery-1.7.1/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/yui-2.8.2.1/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/export-1.5/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/grails-ui-1.2.3/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/bubbling-2.1.4/web-app" relative="/" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/database-migration-1.1/grails-app/views" relative="/" />
           <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/richui-0.8/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/database-migration-1.1/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/yui-2.8.2.1/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/joda-time-1.4/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/searchable-0.6.3/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/bubbling-2.1.4/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/jquery-1.7.1/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/grails-ui-1.2.3/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/prototype-1.0/web-app" relative="/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/export-1.5/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -147,14 +147,14 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/javax.servlet/servlet-api/jars/servlet-api-2.3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/avalon-framework/avalon-framework/jars/avalon-framework-4.1.3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/logkit/logkit/jars/logkit-1.0.1.jar!/" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/richui-0.8/lib" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/joda-time-1.4/lib" />
           <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/searchable-0.6.3/lib" />
           <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/quartz-0.4.2/lib" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/p6spy-0.4/lib" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/joda-time-1.4/lib" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/svn-1.0.0.M1/lib" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/export-1.5/lib" />
           <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/grails-ui-1.2.3/lib" />
-          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/richui-0.8/lib" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/p6spy-0.4/lib" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/export-1.5/lib" />
+          <root url="file://$USER_HOME$/.grails/2.1.1/projects/OpenLabFramework/plugins/svn-1.0.0.M1/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

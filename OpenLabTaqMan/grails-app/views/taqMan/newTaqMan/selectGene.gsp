@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <g:setProvider library="prototype"/>
-        <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
+        <meta name="layout" content="${params.bodyOnly?'body':(bodyOnly?'body':'main')}" />
         <g:set var="entityName"
                value="${message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment')}"/>
         <title><g:message code="default.list.label" args="[entityName]"/></title>
@@ -15,7 +15,7 @@
         <div class="message">${message}</div>
     </g:if>
 
-    <h3>Input settings (step 1 / 3)</h3><br>
+    <h3>Input settings (step 1 / 4)</h3><br>
 
     <div class="list" style="border: 1px solid grey; padding:15px;">
         
@@ -50,7 +50,8 @@
         </table>
         </gui:accordionElement>
         </gui:accordion>
-        <g:form action="newTaqMan" method="post">
+        <g:formRemote method="post" update="body" url="[controller: 'taqMan', action: 'newTaqMan', params: 'bodyOnly=true']" name="firstStepForm">
+            <g:hiddenField name="execution" value="${request.flowExecutionKey}"/>
 
             <p>Skip lines at top of CSV files:
                 <g:select name="skipLines" noSelection="['': 'Select number of lines to skip']" from="${1..100}"
@@ -67,9 +68,8 @@
             </div>
 
             </p><br/>
-
-            <g:submitToRemote update="body" id="_eventId_filesSelected" value="Continue with reference selection"></g:submitToRemote>
-        </g:form><br><br>
+            <g:submitButton name="filesSelected" value="Continue with reference selection"></g:submitButton>
+        </g:formRemote><br><br>
 
     </div><br>
 

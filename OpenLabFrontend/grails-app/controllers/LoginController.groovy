@@ -59,10 +59,13 @@ class LoginController {
      */
     def authAjax = {
         // CAS redirect
-        //redirect(controller: "login", action: "auth", params: params)
+        println "authAjax"
+        def newParams = params
+        newParams.bodyOnly = true
+        redirect(controller: "login", action: "auth", params: newParams)
 
-        response.setHeader 'Location', SpringSecurityUtils.securityConfig.auth.ajaxLoginFormUrl
-        response.sendError HttpServletResponse.SC_UNAUTHORIZED
+        //response.setHeader 'Location', SpringSecurityUtils.securityConfig.auth.ajaxLoginFormUrl
+        //response.sendError HttpServletResponse.SC_UNAUTHORIZED
     }
 
     /**
@@ -131,6 +134,8 @@ class LoginController {
      * The Ajax denied redirect url.
      */
     def ajaxDenied = {
-        render([error: 'access denied'] as JSON)
+        println "auth"
+
+        redirect action: 'authAjax', params: params
     }
 }

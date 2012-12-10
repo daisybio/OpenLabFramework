@@ -155,16 +155,7 @@ class BootStrap {
             def requestMap = new Requestmap(url: "/error/**", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
             requestMap.save()
 
-            requestMap = new Requestmap(url: "/", configAttribute: "IS_AUTHENTICATED_FULLY")
-            requestMap.save()
-
-            requestMap = new Requestmap(url: "/login/auth", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
-            requestMap.save()
-
-            requestMap = new Requestmap(url: "/login/authAjax", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
-            requestMap.save()
-
-            requestMap = new Requestmap(url: "/login/authfail", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
+            requestMap = new Requestmap(url: "/*", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
             requestMap.save()
 
             requestMap = new Requestmap(url: "/js/**", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
@@ -185,7 +176,7 @@ class BootStrap {
             requestMap = new Requestmap(url: "/register/**", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
             requestMap.save()
 
-            requestMap = new Requestmap(url: "/**", configAttribute: "IS_AUTHENTICATED_FULLY")
+            requestMap = new Requestmap(url: "/**", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
             requestMap.save()
 
             requestMap = new Requestmap(url: "/user/**", configAttribute: "ROLE_ADMIN")

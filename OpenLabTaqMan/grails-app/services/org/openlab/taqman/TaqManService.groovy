@@ -7,7 +7,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 class TaqManService {
 
-    def RperationsService
+    def rperationsService
 
     static transactional = true
 
@@ -59,7 +59,7 @@ class TaqManService {
             flow.filtered = true
 
             //connect to Rserve
-            def rConnection = RperationsService.getConnection()
+            def rConnection = rperationsService.getConnection()
 
             //set working directory to folder of last connection
             setWorkingDirectoryInR(rConnection, flow)
@@ -98,19 +98,19 @@ class TaqManService {
      * @param flow
      * @return
      */
-    def ddCt(def rFolder, def params, def referenceSample, def graphicsResolution, boolean filtered, def attachmentIds, def sampleLegend)
+    def ddCt(def rFolder, def params, String[] hkGenes, def referenceSample, def graphicsResolution, boolean filtered, def attachmentIds, def sampleLegend)
     {
         try{
             //connect to Rserve
-            def rConnection = RperationsService.getConnection()
-            
+            def rConnection = rperationsService.getConnection()
+
             //set working directory to folder of last connection
             setWorkingDirectoryInR(rConnection, rFolder)
 
             listInputFiles(attachmentIds, filtered, rConnection)
 
             //perform operations via Rserve (apply ddCt algorithm)
-            ddCtStuffInR(rConnection, referenceSample, params, graphicsResolution, sampleLegend)
+            ddCtStuffInR(rConnection, hkGenes, referenceSample, params, graphicsResolution, sampleLegend)
 
             String fileName = transferFiles(rConnection)
 
@@ -147,11 +147,11 @@ class TaqManService {
         String fileName = createFileName()
 
         //transfer result files to web server
-        RperationsService.transferToClient(rConnection, fileName + ".png", "errBarchart.png")
-        RperationsService.transferToClient(rConnection, fileName + ".pdf", "errBarchart.pdf")
-        RperationsService.transferToClient(rConnection, fileName + ".txt", "allResults.txt")
-        RperationsService.transferToClient(rConnection, fileName + ".csv", "allResults.csv")
-        RperationsService.transferToClient(rConnection, fileName + "_warnings.txt", "warningFile.txt")
+        rperationsService.transferToClient(rConnection, fileName + ".png", "errBarchart.png")
+        rperationsService.transferToClient(rConnection, fileName + ".pdf", "errBarchart.pdf")
+        rperationsService.transferToClient(rConnection, fileName + ".txt", "allResults.txt")
+        rperationsService.transferToClient(rConnection, fileName + ".csv", "allResults.csv")
+        rperationsService.transferToClient(rConnection, fileName + "_warnings.txt", "warningFile.txt")
         return fileName
     }
 
@@ -181,11 +181,9 @@ class TaqManService {
      * @param height
      * @return
      */
-    private ddCtStuffInR(def rConnection, def referenceSample, Map params, def graphicsResolution, def sampleLegend) {
+    private ddCtStuffInR(def rConnection, String[] hkGenes, def referenceSample, Map params, def graphicsResolution, def sampleLegend) {
 
         //assign selected housekeeping genes and samples in R
-
-        String[] hkGenes = params.list("selectedHKgene").toArray()
 
         REngine rEngine = (REngine) rConnection
         rEngine.assign("name.reference.gene", hkGenes)
@@ -286,7 +284,7 @@ calibrationSample=name.reference.sample,	housekeepingGene=name.reference.gene, w
             {
                 rConnection.voidEval("txtData[txtData\$Sample=='${sampleName}',]\$inducer <- '${inducer}'")
             }
-            
+
         }
         rConnection.voidEval("write.csv2(txtData, 'allResults.csv')")
     }
@@ -294,7 +292,7 @@ calibrationSample=name.reference.sample,	housekeepingGene=name.reference.gene, w
 
     def produceCombinedPlot(def sets, def setNames, def rFolders, def selectedCellLineData, def setComparisonDetector, def graphicsResolution, def logarithmicScale)
     {
-        def rConnection = RperationsService.getConnection();
+        def rConnection = rperationsService.getConnection();
 
         def stringenize = { return (it.collect{ x -> ("\"" + x.toString() + "\"")})}
         def vectorize = { String s = stringenize(it).toString(); return("c(" + s.substring(1, s.length()-1) + ")")}
@@ -340,15 +338,15 @@ calibrationSample=name.reference.sample,	housekeepingGene=name.reference.gene, w
         }
 
         plotResults("compareResults", graphicsResolution, rConnection)
-        
+
         def fileName = createFileName()
 
-        RperationsService.transferToClient(rConnection, fileName + ".png", "compareResults.png")
-        RperationsService.transferToClient(rConnection, fileName + ".csv", "compareResults.csv")
-        RperationsService.transferToClient(rConnection, fileName + ".pdf", "compareResults.pdf")
+        rperationsService.transferToClient(rConnection, fileName + ".png", "compareResults.png")
+        rperationsService.transferToClient(rConnection, fileName + ".csv", "compareResults.csv")
+        rperationsService.transferToClient(rConnection, fileName + ".pdf", "compareResults.pdf")
 
         return fileName
-            
+
         }catch(org.rosuda.REngine.Rserve.RserveException e){
             log.error rConnection.lastError
             return null
@@ -380,7 +378,7 @@ calibrationSample=name.reference.sample,	housekeepingGene=name.reference.gene, w
      */
     def getReferencesFromCSVfiles(def attachmentIds, def skipLines, def rFolder)
     {
-        def rConnection = RperationsService.getConnection();
+        def rConnection = rperationsService.getConnection();
         def sampleList = []
         def detectorList = []
 
@@ -394,7 +392,7 @@ calibrationSample=name.reference.sample,	housekeepingGene=name.reference.gene, w
             def fileName = dao.fileName
 
             //transfer this file to server (ends up in /tmp/Rserv/conn???)
-            RperationsService.transferToServer(rConnection, pathToFile, fileName);
+            rperationsService.transferToServer(rConnection, pathToFile, fileName);
 
             //read in files
             rConnection.voidEval("require(ddCt)")

@@ -75,13 +75,15 @@ class BoxController {
      */
     def addDataObject = 
     {
+        println params
     		//check for existing elements in same box at same coordinates 
-    		def existsAlready = StorageElement.findWhere(xcoord: params.int("x"), ycoord: params.int("y"), box: Box.get(params.boxId))
+    		def existsAlready = StorageElement.findWhere(xcoord: params.int("x"), ycoord: params.int("y"), box: Box.get(params.long("boxId")))
             if(existsAlready) render "There is already an element at these coordinates!"
 
             else{
-                def storageElt = new StorageElement(description: "", xcoord: params.int("x"), ycoord: params.int("y"), dataObj: DataObject.get(params.id))
-    		    Box.get(params.boxId).addToElements(storageElt).save(flush:true, failOnError: true)
+                def storageElt = new StorageElement(description: "", xcoord: params.int("x"), ycoord: params.int("y"), dataObj: DataObject.get(params.id), subDataObj: params.subDataObj?SubDataObject.get(params.long("subDataObj")):null)
+    		    println storageElt
+                Box.get(params.long("boxId")).addToElements(storageElt).save(flush:true, failOnError: true)
     		
 			    render g.updateBoxTable(id: params.boxId, addToCell: true)
             }
@@ -92,7 +94,8 @@ class BoxController {
      */
     def removeDataObject =
     {
-		def box = Box.findById(params.boxId)
+        println params
+		def box = Box.get(params.long("boxId"))
 		def storageElt = box.elements.find{it.xcoord.toString() == params.x && it.ycoord.toString() == params.y}
     		
 		//need to remove elt from box, otherwise exception: elt would be re-saved by cascade

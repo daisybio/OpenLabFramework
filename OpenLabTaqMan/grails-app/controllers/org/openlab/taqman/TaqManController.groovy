@@ -11,7 +11,7 @@ import org.openlab.genetracker.CellLineData
 class TaqManController {
 
     def RperationsService
-    def TaqManService
+    def taqManService
 
     def index = {
         redirect(action: "newTaqMan")
@@ -39,15 +39,18 @@ class TaqManController {
         start {
             render(view: "selectGene")
             on("filesSelected") {
-                println params
+                println "filesSelected:" + params
                 def sampleSets = []
                 def newTaqManSet
                 def newTaqManResults
 
+                //needed for ajax webflowing
+                flow.bodyOnly = true
+
                 //summarize selected single results as temporary sample set
                 if (params.taqManResultSelection)
                 {
-                     if(!params.newSet)
+                    if(!params.newSet)
                     {
                         flash.message = "Please specify a name for the new set"
                         return error()
@@ -73,11 +76,11 @@ class TaqManController {
 
                 if(params.newSet)
                 {
-                    newTaqManSet = new TaqManSet(name: params.newSet).save(flush: true)
+                    newTaqManSet = new TaqManSet(name: params.newSet)
 
                     newTaqManResults.each { newTaqManSet.addToTaqManResults(TaqManResult.get(it as Long))}
                 
-                   if(newTaqManSet.save(flush:true))
+                   if(newTaqManSet.save(flush:true, failOnError: true))
                    {
                         sampleSets.add(newTaqManSet.id)
                    }
@@ -91,7 +94,6 @@ class TaqManController {
 
                 if (sampleSets.size() == 0) {
                     flash.message = "You need to select at least one sample set or TaqManResult!"
-
                     return error()
                 }
 
@@ -100,7 +102,6 @@ class TaqManController {
             }.to "fetchSampleNames"
             on("return").to "start"
             on(Exception).to "handleException"
-            //on("error").to "start"
         }
 
         /**
@@ -124,7 +125,7 @@ class TaqManController {
                     def attachmentIds = [:]
                     def sampleLegend = [:]
                     def samplesIntersection
-                    
+
                     //iterate each taqman set
                     for (def sampleSetId in flow.sampleSets) {
 
@@ -132,7 +133,7 @@ class TaqManController {
 
                         def selectedAttachmentsIds = sampleSet.taqManResults.collect{it.attachment.id}
 
-                        def resultMap = TaqManService.getReferencesFromCSVfiles(selectedAttachmentsIds, params.skipLines, rFolders[sampleSetId])
+                        def resultMap = taqManService.getReferencesFromCSVfiles(selectedAttachmentsIds, params.skipLines, rFolders[sampleSetId])
                         sampleNames[sampleSetId] = sampleSet.name
 
                         def myCellLineData = [:]
@@ -185,44 +186,12 @@ class TaqManController {
             on(Exception).to "handleException"
         }
 
+        /**
+         *  VIEW STATE
+         *  Show execption
+         */
         handleException {
             render(view: "error")
-            on("startNewTaqMan").to "start"
-        }
-
-        /**
-         * VIEW STATE
-         * This action is called to render a view with housekeeping genes, reference samples and other options
-         * to select. It can continue either to a sample filter or to the processing of the data using the given
-         * options.
-         */
-        selectReferences {
-            on("referencesSelected") {
-                flow.selectedHKgene = params.list("selectedHKgene")
-                
-                if(params.list("selectedHKgene").size() == 0)
-                {
-                    flash.message = "At least one detector (housekeeping gene) must be selected for normalization!"
-                    return error()
-                }
-
-                def selectedRefSamples = [:]
-
-                for (sampleSet in flow.sampleSets) {
-                    selectedRefSamples[sampleSet] = params[sampleSet.toString() + "_selectedRefSample"]
-                }
-
-                flow.selectedRefSamples = selectedRefSamples
-                flow.graphicsGroupBy = params.graphicsGroupBy
-                flow.graphicsResolution = params.graphicsResolution
-                flow.robustStatistics = params.robustStatistics
-                flow.logarithmicScale = params.logarithmicScale
-                flow.selectedCellLineData = params.list("selectedCellLineData")
-                flow.setComparisonDetector = params.setComparisonDetector
-
-            }.to "filterSamples"
-            on("filterSamples").to "sampleFilter"
-            on(Exception).to "handleException"
             on("startNewTaqMan").to "start"
         }
 
@@ -249,15 +218,52 @@ class TaqManController {
             action {
 
                 try {
-                    TaqManService.filterSampleList(flow)
+                    taqManService.filterSampleList(flow)
                 } catch (org.rosuda.REngine.Rserve.RserveException rse) {
                     log.error rse.getMessage()
+                    flash.message = rse.getMessage()
                     return error()
                 }
 
                 success()
             }
             on("success").to "processTaqMan"
+            on("error").to "sampleFilter"
+            on(Exception).to "handleException"
+        }
+
+        /**
+         * VIEW STATE
+         * This action is called to render a view with housekeeping genes, reference samples and other options
+         * to select. It can continue either to a sample filter or to the processing of the data using the given
+         * options.
+         */
+        selectReferences {
+            on("referencesSelected"){
+                println "selectReferences" + params
+                flow.selectedHKgene = params.list("selectedHKgene")
+                
+                if(params.list("selectedHKgene").size() == 0)
+                {
+                    flash.message = "At least one detector (housekeeping gene) must be selected for normalization!"
+                    return error()
+                }
+
+                def selectedRefSamples = [:]
+
+                for (sampleSet in flow.sampleSets) {
+                    selectedRefSamples[sampleSet] = params[sampleSet.toString() + "_selectedRefSample"]
+                }
+
+                flow.selectedRefSamples = selectedRefSamples
+                flow.graphicsGroupBy = params.graphicsGroupBy
+                flow.graphicsResolution = params.graphicsResolution
+                flow.robustStatistics = params.robustStatistics
+                flow.logarithmicScale = params.logarithmicScale
+                flow.selectedCellLineData = params.list("selectedCellLineData")
+                flow.setComparisonDetector = params.setComparisonDetector
+
+            }.to "filterSamples"
             on(Exception).to "handleException"
         }
 
@@ -273,9 +279,10 @@ class TaqManController {
                 def warnings = [:]
 
                 for (def sampleSetId in flow.sampleSets) {
+                    String[] hkGenes = params.get("selectedHKgene").split(",")
 
                     //call the submethod that facilitates ddCt in R, returns the filename stem of all files.
-                    def fileName = TaqManService.ddCt(flow.rFolders[sampleSetId], params, params[sampleSetId.toString() + "_selectedRefSample"],
+                    def fileName = taqManService.ddCt(flow.rFolders[sampleSetId], params, hkGenes, params[sampleSetId.toString() + "_selectedRefSample"],
                             flow.graphicsResolution, flow.filtered, flow.attachmentIds[sampleSetId], flow.sampleLegend[sampleSetId])
 
                     //if something went wrong this is indicated by the return value
@@ -290,7 +297,7 @@ class TaqManController {
 
                         //read in warnings from the corresponding file
                         if ((new File(fileName + "_warnings.txt")).exists()) {
-                            warnings[sampleSetId] = TaqManService.readFileToMap(fileName + "_warnings.txt")
+                            warnings[sampleSetId] = taqManService.readFileToMap(fileName + "_warnings.txt")
                         }
                         else {
                             warnings[sampleSetId] = ["no warnings": 0]
@@ -298,7 +305,7 @@ class TaqManController {
                     }
                 }
 
-                def combinedFileName = TaqManService.produceCombinedPlot(flow.sampleSets, flow.sampleNames, flow.rFolders, flow.selectedCellLineData, flow.setComparisonDetector, flow.graphicsResolution, flow.logarithmicScale)
+                def combinedFileName = taqManService.produceCombinedPlot(flow.sampleSets, flow.sampleNames, flow.rFolders, flow.selectedCellLineData, flow.setComparisonDetector, flow.graphicsResolution, flow.logarithmicScale)
 
                 //sessionFactory.getCurrentSession().clear()
 
@@ -312,7 +319,7 @@ class TaqManController {
 
             on("success").to "showResults"
             on(Exception).to "handleException"
-            on("error").to "start"
+            on("error").to "selectReferences"
         }
 
         /**

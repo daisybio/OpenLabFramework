@@ -38,7 +38,7 @@
 
         if(data.inst.is_leaf(data.args[0]) && data.rslt.obj.attr("nodeType") == "box"){
             <g:if test="${params.treeInTab}">
-                ${remoteFunction(action: 'showBoxInTab', controller: 'box', update: 'boxView', id: params.id, params: '\'boxId=\'+data.rslt.obj.attr("id")')}
+                ${remoteFunction(action: 'showBoxInTab', controller: 'box', update: 'boxView', id: params.id, params: '\'subDataObj=' + params.subDataObj[0] + '&boxId=\'+data.rslt.obj.attr("id")')}
             </g:if>
             <g:else>
                 ${remoteFunction(action: 'showBox', controller: 'box', update: 'boxView', params: '\'id=\'+data.rslt.obj.attr("id")')}

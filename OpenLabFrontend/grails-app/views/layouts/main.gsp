@@ -52,7 +52,7 @@
     <r:layoutResources/>
     <!-- Main CSS at the end to make sure it is effective -->
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}"/>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" defer async src="https://www.google.com/jsapi"></script>
 </head>
 
 <!-- BODY -->
