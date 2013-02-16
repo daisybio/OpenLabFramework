@@ -1,6 +1,6 @@
 package org.openlab.dataimport
 
-import org.grails.plugins.excelimport.ExcelImportUtils
+import org.grails.plugins.excelimport.ExcelImportService;
 import org.grails.plugins.excelimport.*
 import org.openlab.security.*;
 import org.openlab.main.*;

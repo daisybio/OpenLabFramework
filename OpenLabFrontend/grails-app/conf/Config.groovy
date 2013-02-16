@@ -23,6 +23,17 @@ else if (System.getProperty(ENV_NAME)) {
     println "Including configuration file specified on command line: " + System.getProperty(ENV_NAME);
     grails.config.locations << "file:" + System.getProperty(ENV_NAME)
 }
+else {
+    println "Using default settings (local file SQL)"
+    dataSource.driverClassName = 'org.hsqldb.jdbcDriver'
+    dataSource.url = 'jdbc:hsqldb:file:testDB'
+    dataSource.username = 'sa'
+    dataSource.password = ''
+    dataSource.dbCreate = 'update'
+    grails.plugins.springsecurity.cas.active = false
+    openlab.database.name = 'fileHSQLDB'
+    grails.serverURL = 'http://localhost:8080/OpenLabFramework'
+}
 
 /* */
 cgrails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format

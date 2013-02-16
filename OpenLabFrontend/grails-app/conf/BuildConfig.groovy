@@ -34,9 +34,10 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.jboss.com/maven2/"
     }
     dependencies {
+        compile "org.grails:grails-webflow:$grailsVersion"
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         runtime "hsqldb:hsqldb:1.8.0.10"
-        // runtime 'mysql:mysql-connector-java:5.1.5'
+        runtime 'mysql:mysql-connector-java:5.1.16'
     }
 
     plugins{
@@ -44,6 +45,16 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.7.1"
         runtime ":resources:1.1.6"
         build ":tomcat:$grailsVersion"
+
+        compile ":searchable:0.6.4"
+        compile(":webflow:2.0.0") {
+            exclude 'grails-webflow'
+        }
+
+        compile ":excel-import:1.0.0"
+        compile ":spring-security-core:1.2.7.3"
+        //compile ":spring-security-acl:1.1.1"
+        compile ":spring-security-cas:1.0.5"
     }
 
 }

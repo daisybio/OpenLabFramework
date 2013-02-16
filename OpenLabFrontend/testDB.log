@@ -1,130 +1,14 @@
-/*C4*/SET SCHEMA PUBLIC
+/*C3*/SET SCHEMA PUBLIC
 CONNECT USER SA
 DISCONNECT
-/*C5*/SET SCHEMA PUBLIC
+/*C4*/SET SCHEMA PUBLIC
 CONNECT USER SA
-alter table box drop constraint FK17DCBB7E941F2
-alter table compartment drop constraint FKE84AB852BBF03849
-alter table gtAntibioticsWithC drop constraint FKAA7EA8FF709D9982
-alter table gtAntibioticsWithC drop constraint FKAA7EA8FF8DAB59DA
-alter table gtCellLine drop constraint FK45B46083ED0B259D
-alter table gtCellLineData drop constraint FK9BDACACDE7F6CE25
-alter table gtCellLineData drop constraint FK9BDACACDF3058069
-alter table gtCellLineData drop constraint FK9BDACACDB6BCC665
-alter table gtCellLineData drop constraint FK9BDACACDED0B259D
-alter table gtCellLineData drop constraint FK9BDACACDA321FDF
-alter table gtCellLineData_gtMediumAdditives drop constraint FKFBDBF0939AB95B05
-alter table gtCellLineData_gtMediumAdditives drop constraint FKFBDBF09355558FB6
-alter table gtCellLine_gtAntibiotics drop constraint FK4BF7DB22F2C54A93
-alter table gtCellLine_gtAntibiotics drop constraint FK4BF7DB228DAB59DA
-alter table gtCellLine_gtMediumAdditives drop constraint FKA37BC4C99AB95B05
-alter table gtCellLine_gtMediumAdditives drop constraint FKA37BC4C962F5EAA5
-alter table gtGene drop constraint FKB6479DA2940EA3EA
-alter table gtGene drop constraint FKB6479DA274D4E07A
-alter table gtGene drop constraint FKB6479DA22EA24FFA
-alter table gtPassage drop constraint FKED93E5A1709D9982
-alter table gtPassage drop constraint FKED93E5A1665407D6
-alter table gtPrimer drop constraint FK52E771202229159A
-alter table gtRecombinant drop constraint FK19C818416FC96E25
-alter table gtRecombinant_gtGene drop constraint FKA950E760DBE4B61B
-alter table gtRecombinant_gtGene drop constraint FKA950E7602229159A
-alter table gtViability drop constraint FKBC1594AA709D9982
-alter table gtViability drop constraint FKBC1594AA665407D6
-alter table gtViability drop constraint FKBC1594AA2229159A
-alter table olfAttachment_olfDataObject drop constraint FK75D25BBF989024CF
-alter table olfAttachment_olfDataObject drop constraint FK75D25BBF37E9551F
-alter table olfBarcode drop constraint FK2BC54217989024CF
-alter table olfBarcode drop constraint FK2BC5421737093FCB
-alter table olfBarcode drop constraint FK2BC5421732702C0E
-alter table olfBarcode drop constraint FK2BC542175F59C4F7
-alter table olfBarcode drop constraint FK2BC54217EE6CC43D
-alter table olfMainObject drop constraint FK87945161854B21FE
-alter table olfMainObject drop constraint FK8794516198EC68B2
-alter table olfProject drop constraint FK2D37A4B0D1698E5A
-alter table olfProject_object drop constraint FKE6E755AE989024CF
-alter table olfProject_object drop constraint FKE6E755AEF914C19A
-alter table olfUserGroup_olfUser drop constraint FK8B010EA053DE09A1
-alter table olfUserGroup_olfUser drop constraint FK8B010EA03DF064B3
-alter table olfUserRole drop constraint FKA560DC2A98C5A0D3
-alter table olfUserRole drop constraint FKA560DC2A3DF064B3
-alter table storage_element drop constraint FKEAA25D3871983CA1
-alter table storage_element drop constraint FKEAA25D386BEB1B52
-alter table storage_type drop constraint FK357E5A7E325162AD
-alter table taqManResult drop constraint FKFD1926D36204606C
-alter table taqManResult drop constraint FKFD1926D3523478C0
-alter table taqManResult drop constraint FKFD1926D3EB9AB051
-alter table taqManResult drop constraint FKFD1926D3ED5F5323
-alter table taqManResult_olfDataObject drop constraint FKC8404E26989024CF
-alter table taqManResult_olfDataObject drop constraint FKC8404E26E1FB28EF
-alter table taqManResult_taq_man_assay drop constraint FK4E33900DECFDD345
-alter table taqManResult_taq_man_assay drop constraint FK4E33900DD7F616E1
-alter table taqManSet_taqManResult drop constraint FK679476C6A739D0EA
-alter table taqManSet_taqManResult drop constraint FK679476C68EB835B3
-alter table taq_man_sample drop constraint FK9D991BAA9B893537
-alter table taq_man_sample drop constraint FK9D991BAA709D9982
-alter table taq_man_sample drop constraint FK9D991BAA8EB835B3
-drop table box if exists
-drop table compartment if exists
-drop table gtAntibiotics if exists
-drop table gtAntibioticsWithC if exists
-drop table gtCellLine if exists
-drop table gtCellLineData if exists
-drop table gtCellLineData_gtMediumAdditives if exists
-drop table gtCellLine_gtAntibiotics if exists
-drop table gtCellLine_gtMediumAdditives if exists
-drop table gtCultureMedia if exists
-drop table gtGene if exists
-drop table gtMediumAdditives if exists
-drop table gtOrganism if exists
-drop table gtOrigin if exists
-drop table gtPassage if exists
-drop table gtPrimer if exists
-drop table gtRecombinant if exists
-drop table gtRecombinant_gtGene if exists
-drop table gtVector if exists
-drop table gtViability if exists
-drop table olfAttachment if exists
-drop table olfAttachment_olfDataObject if exists
-drop table olfBarcode if exists
-drop table olfBarcodeDO if exists
-drop table olfBarcodeLabel if exists
-drop table olfBarcodeSite if exists
-drop table olfDataObject if exists
-drop table olfLaboratory if exists
-drop table olfMainObject if exists
-drop table olfMasterDataObject if exists
-drop table olfProject if exists
-drop table olfProject_object if exists
-drop table olfRequestmap if exists
-drop table olfRole if exists
-drop table olfSubDataObject if exists
-drop table olfUser if exists
-drop table olfUserGroup if exists
-drop table olfUserGroup_olfUser if exists
-drop table olfUserRole if exists
-drop table storage_element if exists
-drop table storage_location if exists
-drop table storage_type if exists
-drop table taqManInducer if exists
-drop table taqManPurificationMethod if exists
-drop table taqManResult if exists
-drop table taqManResult_olfDataObject if exists
-drop table taqManResult_taq_man_assay if exists
-drop table taqManReverseTranscriptionKit if exists
-drop table taqManReverseTranscriptionPrimer if exists
-drop table taqManSet if exists
-drop table taqManSet_taqManResult if exists
-drop table taq_man_assay if exists
-drop table taq_man_sample if exists
 create table box (id bigint generated by default as identity (start with 1), version bigint not null, compartment_id bigint not null, description varchar(255) not null, last_update timestamp, xdim integer not null, ydim integer not null, primary key (id), unique (compartment_id, description))
 create table compartment (id bigint generated by default as identity (start with 1), version bigint not null, description varchar(255) not null, storage_type_id bigint not null, primary key (id))
 create table gtAntibiotics (id bigint not null, primary key (id))
 create table gtAntibioticsWithC (id bigint generated by default as identity (start with 1), version bigint not null, antibiotics_id bigint not null, cell_line_data_id bigint not null, concentration varchar(255) not null, notes varchar(255) not null, primary key (id))
 create table gtCellLine (id bigint not null, culture_media_id bigint, notes varchar(255), primary key (id))
 create table gtCellLineData (id bigint not null, acceptor_id bigint, cell_line_id bigint, colony_number varchar(255), culture_media_id bigint, first_recombinant_id bigint, notes varchar(255), plasmid_number varchar(255), second_recombinant_id bigint, primary key (id))
-create table gtCellLineData_gtMediumAdditives (cell_line_data_medium_additives_id bigint, medium_additive_id bigint)
-create table gtCellLine_gtAntibiotics (cell_line_antibiotics_id bigint, antibiotics_id bigint)
-create table gtCellLine_gtMediumAdditives (cell_line_medium_additives_id bigint, medium_additive_id bigint)
 create table gtCultureMedia (id bigint not null, primary key (id))
 create table gtGene (id bigint not null, accession_number varchar(255), alternative_splicing bit, description varchar(255), gene_type varchar(12), length integer, mutation bit, name varchar(255), notes varchar(255), orf_start integer, orf_stop integer, organism_id bigint, origin_id bigint, origin_description varchar(255), sequence longvarchar, wild_type_gene_id bigint, primary key (id), unique (name))
 create table gtMediumAdditives (id bigint not null, description varchar(255), primary key (id))
@@ -133,11 +17,13 @@ create table gtOrigin (id bigint not null, primary key (id))
 create table gtPassage (id bigint not null, cell_line_data_id bigint, date timestamp, notes varchar(255), passage_nr varchar(255), researcher_id bigint, primary key (id))
 create table gtPrimer (id bigint not null, direction varchar(3), gene_id bigint, label varchar(255), sequence longvarchar, primary key (id))
 create table gtRecombinant (id bigint not null, notes varchar(255), vector_id bigint, primary key (id))
-create table gtRecombinant_gtGene (recombinant_genes_id bigint, gene_id bigint)
 create table gtVector (id bigint generated by default as identity (start with 1), version bigint not null, description varchar(255) not null, label varchar(255) not null, type varchar(20) not null, vectorType varchar(50) not null, primary key (id), unique (label))
 create table gtViability (id bigint not null, cell_line_data_id bigint, date timestamp, gene_id bigint, notes varchar(255), percentage double, researcher_id bigint, primary key (id))
+create table gt_cell_line_data_gt_medium_additives (cell_line_data_medium_additives_id bigint, medium_additive_id bigint)
+create table gt_cell_line_gt_antibiotics (cell_line_antibiotics_id bigint, antibiotics_id bigint)
+create table gt_cell_line_gt_medium_additives (cell_line_medium_additives_id bigint, medium_additive_id bigint)
+create table gt_recombinant_gt_gene (recombinant_genes_id bigint, gene_id bigint)
 create table olfAttachment (id bigint generated by default as identity (start with 1), version bigint not null, description varchar(255) not null, file_name varchar(255) not null, file_type varchar(255) not null, file_upload_date timestamp not null, path_to_file varchar(255) not null, primary key (id))
-create table olfAttachment_olfDataObject (data_object_attachment_data_objects_id bigint, data_object_id bigint)
 create table olfBarcode (id bigint generated by default as identity (start with 1), version bigint not null, barcode_data_object_id bigint not null, data_object_id bigint not null, description varchar(255) not null, label_id bigint not null, site_id bigint not null, sub_data_object_id bigint, text varchar(255) not null, primary key (id), unique (sub_data_object_id, data_object_id))
 create table olfBarcodeDO (id bigint generated by default as identity (start with 1), version bigint not null, default_description varchar(255) not null, default_text varchar(255) not null, full_name varchar(255) not null, short_name varchar(255) not null, type_letter varchar(2) not null, primary key (id))
 create table olfBarcodeLabel (id bigint generated by default as identity (start with 1), version bigint not null, barcode_type varchar(255) not null, name varchar(255) not null, parameters varchar(255) not null, xml longvarchar not null, primary key (id))
@@ -147,28 +33,29 @@ create table olfLaboratory (id bigint not null, description varchar(255) not nul
 create table olfMainObject (id bigint generated by default as identity (start with 1), version bigint not null, creator_id bigint, date_created timestamp not null, last_modifier_id bigint, last_update timestamp, primary key (id))
 create table olfMasterDataObject (id bigint generated by default as identity (start with 1), version bigint not null, label varchar(255) not null, primary key (id))
 create table olfProject (id bigint not null, description varchar(255), laboratory_id bigint, name varchar(255), primary key (id), unique (name))
-create table olfProject_object (project_id bigint, data_object_id bigint)
 create table olfRequestmap (id bigint generated by default as identity (start with 1), version bigint not null, config_attribute varchar(255) not null, url varchar(255) not null, primary key (id), unique (url))
 create table olfRole (id bigint generated by default as identity (start with 1), version bigint not null, authority varchar(255) not null, primary key (id), unique (authority))
 create table olfSubDataObject (id bigint not null, primary key (id))
 create table olfUser (id bigint generated by default as identity (start with 1), version bigint not null, account_expired bit not null, account_locked bit not null, email varchar(255) not null, enabled bit not null, "password" varchar(255) not null, password_expired bit not null, user_real_name varchar(255) not null, username varchar(255) not null, primary key (id), unique (username))
 create table olfUserGroup (id bigint generated by default as identity (start with 1), version bigint not null, description varchar(255) not null, primary key (id))
-create table olfUserGroup_olfUser (user_group_users_id bigint, user_id bigint)
 create table olfUserRole (role_id bigint not null, user_id bigint not null, primary key (role_id, user_id))
-create table storage_element (id bigint generated by default as identity (start with 1), version bigint not null, box_id bigint not null, data_obj_id bigint not null, description varchar(255) not null, xcoord integer not null, ycoord integer not null, primary key (id))
+create table olf_attachment_olf_data_object (data_object_attachment_data_objects_id bigint, data_object_id bigint)
+create table olf_project_object (project_id bigint, data_object_id bigint)
+create table olf_user_group_olf_user (user_group_users_id bigint, user_id bigint)
+create table storage_element (id bigint generated by default as identity (start with 1), version bigint not null, box_id bigint not null, data_obj_id bigint not null, description varchar(255) not null, sub_data_obj_id bigint, xcoord integer not null, ycoord integer not null, primary key (id))
 create table storage_location (id bigint generated by default as identity (start with 1), version bigint not null, city varchar(255), country varchar(255), description varchar(255) not null, floor integer not null, number integer not null, room integer not null, street varchar(255), zip integer not null, primary key (id))
 create table storage_type (id bigint generated by default as identity (start with 1), version bigint not null, description varchar(255) not null, location_id bigint not null, class varchar(255) not null, temp integer, primary key (id), unique (description))
 create table taqManInducer (id bigint generated by default as identity (start with 1), version bigint not null, concentration integer not null, name varchar(255) not null, primary key (id), unique (concentration, name))
 create table taqManPurificationMethod (id bigint generated by default as identity (start with 1), version bigint not null, name varchar(255) not null, primary key (id))
 create table taqManResult (id bigint not null, annealing_temperature integer, attachment_id bigint, cdnatemplate varchar(5), cycle_number integer, detectors_assigned bit, purification_method_id bigint, reference_result bit, reverse_transcription_kit_id bigint, reverse_transcription_primer_id bigint, samples_assigned bit, primary key (id))
-create table taqManResult_olfDataObject (taq_man_result_data_objects_id bigint, data_object_id bigint)
-create table taqManResult_taq_man_assay (taq_man_result_detectors_id bigint, taq_man_assay_id bigint)
 create table taqManReverseTranscriptionKit (id bigint generated by default as identity (start with 1), version bigint not null, name varchar(255) not null, primary key (id))
 create table taqManReverseTranscriptionPrimer (id bigint generated by default as identity (start with 1), version bigint not null, name varchar(255) not null, primary key (id))
 create table taqManSet (id bigint not null, name varchar(255), primary key (id))
-create table taqManSet_taqManResult (taq_man_set_taq_man_results_id bigint, taq_man_result_id bigint)
 create table taq_man_assay (id bigint generated by default as identity (start with 1), version bigint not null, name varchar(255) not null, primary key (id), unique (name))
+create table taq_man_result_olf_data_object (taq_man_result_data_objects_id bigint, data_object_id bigint)
+create table taq_man_result_taq_man_assay (taq_man_result_detectors_id bigint, taq_man_assay_id bigint)
 create table taq_man_sample (id bigint generated by default as identity (start with 1), version bigint not null, cell_line_data_id bigint, inducer_id bigint, sample_name varchar(255) not null, sample_type varchar(6) not null, taq_man_result_id bigint not null, primary key (id))
+create table taq_man_set_taq_man_result (taq_man_set_taq_man_results_id bigint, taq_man_result_id bigint)
 alter table box add constraint FK17DCBB7E941F2 foreign key (compartment_id) references compartment
 alter table compartment add constraint FKE84AB852BBF03849 foreign key (storage_type_id) references storage_type
 alter table gtAntibioticsWithC add constraint FKAA7EA8FF709D9982 foreign key (cell_line_data_id) references gtCellLineData
@@ -179,12 +66,6 @@ alter table gtCellLineData add constraint FK9BDACACDF3058069 foreign key (first_
 alter table gtCellLineData add constraint FK9BDACACDB6BCC665 foreign key (acceptor_id) references gtVector
 alter table gtCellLineData add constraint FK9BDACACDED0B259D foreign key (culture_media_id) references gtCultureMedia
 alter table gtCellLineData add constraint FK9BDACACDA321FDF foreign key (cell_line_id) references gtCellLine
-alter table gtCellLineData_gtMediumAdditives add constraint FKFBDBF0939AB95B05 foreign key (medium_additive_id) references gtMediumAdditives
-alter table gtCellLineData_gtMediumAdditives add constraint FKFBDBF09355558FB6 foreign key (cell_line_data_medium_additives_id) references gtCellLineData
-alter table gtCellLine_gtAntibiotics add constraint FK4BF7DB22F2C54A93 foreign key (cell_line_antibiotics_id) references gtCellLine
-alter table gtCellLine_gtAntibiotics add constraint FK4BF7DB228DAB59DA foreign key (antibiotics_id) references gtAntibiotics
-alter table gtCellLine_gtMediumAdditives add constraint FKA37BC4C99AB95B05 foreign key (medium_additive_id) references gtMediumAdditives
-alter table gtCellLine_gtMediumAdditives add constraint FKA37BC4C962F5EAA5 foreign key (cell_line_medium_additives_id) references gtCellLine
 alter table gtGene add constraint FKB6479DA2940EA3EA foreign key (wild_type_gene_id) references gtGene
 alter table gtGene add constraint FKB6479DA274D4E07A foreign key (organism_id) references gtOrganism
 alter table gtGene add constraint FKB6479DA22EA24FFA foreign key (origin_id) references gtOrigin
@@ -192,13 +73,17 @@ alter table gtPassage add constraint FKED93E5A1709D9982 foreign key (cell_line_d
 alter table gtPassage add constraint FKED93E5A1665407D6 foreign key (researcher_id) references olfUser
 alter table gtPrimer add constraint FK52E771202229159A foreign key (gene_id) references gtGene
 alter table gtRecombinant add constraint FK19C818416FC96E25 foreign key (vector_id) references gtVector
-alter table gtRecombinant_gtGene add constraint FKA950E760DBE4B61B foreign key (recombinant_genes_id) references gtRecombinant
-alter table gtRecombinant_gtGene add constraint FKA950E7602229159A foreign key (gene_id) references gtGene
 alter table gtViability add constraint FKBC1594AA709D9982 foreign key (cell_line_data_id) references gtCellLineData
 alter table gtViability add constraint FKBC1594AA665407D6 foreign key (researcher_id) references olfUser
 alter table gtViability add constraint FKBC1594AA2229159A foreign key (gene_id) references gtGene
-alter table olfAttachment_olfDataObject add constraint FK75D25BBF989024CF foreign key (data_object_id) references olfDataObject
-alter table olfAttachment_olfDataObject add constraint FK75D25BBF37E9551F foreign key (data_object_attachment_data_objects_id) references olfAttachment
+alter table gt_cell_line_data_gt_medium_additives add constraint FK6DBA573A9AB95B05 foreign key (medium_additive_id) references gtMediumAdditives
+alter table gt_cell_line_data_gt_medium_additives add constraint FK6DBA573A55558FB6 foreign key (cell_line_data_medium_additives_id) references gtCellLineData
+alter table gt_cell_line_gt_antibiotics add constraint FKC9B6919F2C54A93 foreign key (cell_line_antibiotics_id) references gtCellLine
+alter table gt_cell_line_gt_antibiotics add constraint FKC9B69198DAB59DA foreign key (antibiotics_id) references gtAntibiotics
+alter table gt_cell_line_gt_medium_additives add constraint FK3253E8F9AB95B05 foreign key (medium_additive_id) references gtMediumAdditives
+alter table gt_cell_line_gt_medium_additives add constraint FK3253E8F62F5EAA5 foreign key (cell_line_medium_additives_id) references gtCellLine
+alter table gt_recombinant_gt_gene add constraint FKFAB73104DBE4B61B foreign key (recombinant_genes_id) references gtRecombinant
+alter table gt_recombinant_gt_gene add constraint FKFAB731042229159A foreign key (gene_id) references gtGene
 alter table olfBarcode add constraint FK2BC54217989024CF foreign key (data_object_id) references olfDataObject
 alter table olfBarcode add constraint FK2BC5421737093FCB foreign key (barcode_data_object_id) references olfBarcodeDO
 alter table olfBarcode add constraint FK2BC5421732702C0E foreign key (sub_data_object_id) references olfSubDataObject
@@ -207,12 +92,15 @@ alter table olfBarcode add constraint FK2BC54217EE6CC43D foreign key (label_id) 
 alter table olfMainObject add constraint FK87945161854B21FE foreign key (last_modifier_id) references olfUser
 alter table olfMainObject add constraint FK8794516198EC68B2 foreign key (creator_id) references olfUser
 alter table olfProject add constraint FK2D37A4B0D1698E5A foreign key (laboratory_id) references olfLaboratory
-alter table olfProject_object add constraint FKE6E755AE989024CF foreign key (data_object_id) references olfDataObject
-alter table olfProject_object add constraint FKE6E755AEF914C19A foreign key (project_id) references olfProject
-alter table olfUserGroup_olfUser add constraint FK8B010EA053DE09A1 foreign key (user_group_users_id) references olfUserGroup
-alter table olfUserGroup_olfUser add constraint FK8B010EA03DF064B3 foreign key (user_id) references olfUser
 alter table olfUserRole add constraint FKA560DC2A98C5A0D3 foreign key (role_id) references olfRole
 alter table olfUserRole add constraint FKA560DC2A3DF064B3 foreign key (user_id) references olfUser
+alter table olf_attachment_olf_data_object add constraint FK4434B518989024CF foreign key (data_object_id) references olfDataObject
+alter table olf_attachment_olf_data_object add constraint FK4434B51837E9551F foreign key (data_object_attachment_data_objects_id) references olfAttachment
+alter table olf_project_object add constraint FKAD78DFFB989024CF foreign key (data_object_id) references olfDataObject
+alter table olf_project_object add constraint FKAD78DFFBF914C19A foreign key (project_id) references olfProject
+alter table olf_user_group_olf_user add constraint FK3EA521BF53DE09A1 foreign key (user_group_users_id) references olfUserGroup
+alter table olf_user_group_olf_user add constraint FK3EA521BF3DF064B3 foreign key (user_id) references olfUser
+alter table storage_element add constraint FKEAA25D38EF0C9882 foreign key (sub_data_obj_id) references olfSubDataObject
 alter table storage_element add constraint FKEAA25D3871983CA1 foreign key (data_obj_id) references olfDataObject
 alter table storage_element add constraint FKEAA25D386BEB1B52 foreign key (box_id) references box
 alter table storage_type add constraint FK357E5A7E325162AD foreign key (location_id) references storage_location
@@ -220,15 +108,15 @@ alter table taqManResult add constraint FKFD1926D36204606C foreign key (attachme
 alter table taqManResult add constraint FKFD1926D3523478C0 foreign key (purification_method_id) references taqManPurificationMethod
 alter table taqManResult add constraint FKFD1926D3EB9AB051 foreign key (reverse_transcription_kit_id) references taqManReverseTranscriptionKit
 alter table taqManResult add constraint FKFD1926D3ED5F5323 foreign key (reverse_transcription_primer_id) references taqManReverseTranscriptionPrimer
-alter table taqManResult_olfDataObject add constraint FKC8404E26989024CF foreign key (data_object_id) references olfDataObject
-alter table taqManResult_olfDataObject add constraint FKC8404E26E1FB28EF foreign key (taq_man_result_data_objects_id) references taqManResult
-alter table taqManResult_taq_man_assay add constraint FK4E33900DECFDD345 foreign key (taq_man_result_detectors_id) references taqManResult
-alter table taqManResult_taq_man_assay add constraint FK4E33900DD7F616E1 foreign key (taq_man_assay_id) references taq_man_assay
-alter table taqManSet_taqManResult add constraint FK679476C6A739D0EA foreign key (taq_man_set_taq_man_results_id) references taqManSet
-alter table taqManSet_taqManResult add constraint FK679476C68EB835B3 foreign key (taq_man_result_id) references taqManResult
+alter table taq_man_result_olf_data_object add constraint FK1FA69E3C989024CF foreign key (data_object_id) references olfDataObject
+alter table taq_man_result_olf_data_object add constraint FK1FA69E3CE1FB28EF foreign key (taq_man_result_data_objects_id) references taqManResult
+alter table taq_man_result_taq_man_assay add constraint FKFE9E4DD7ECFDD345 foreign key (taq_man_result_detectors_id) references taqManResult
+alter table taq_man_result_taq_man_assay add constraint FKFE9E4DD7D7F616E1 foreign key (taq_man_assay_id) references taq_man_assay
 alter table taq_man_sample add constraint FK9D991BAA9B893537 foreign key (inducer_id) references taqManInducer
 alter table taq_man_sample add constraint FK9D991BAA709D9982 foreign key (cell_line_data_id) references gtCellLineData
 alter table taq_man_sample add constraint FK9D991BAA8EB835B3 foreign key (taq_man_result_id) references taqManResult
+alter table taq_man_set_taq_man_result add constraint FKE3BA359AA739D0EA foreign key (taq_man_set_taq_man_results_id) references taqManSet
+alter table taq_man_set_taq_man_result add constraint FKE3BA359A8EB835B3 foreign key (taq_man_result_id) references taqManResult
 INSERT INTO OLFROLE VALUES(1,0,'ROLE_ADMIN')
 INSERT INTO OLFROLE VALUES(2,0,'ROLE_USER')
 INSERT INTO OLFUSER VALUES(1,0,FALSE,FALSE,'',TRUE,'5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8',FALSE,'Administrator','admin')
@@ -242,25 +130,16 @@ INSERT INTO OLFBARCODEDO VALUES(2,0,'','','org.openlab.genetracker.CellLineData'
 INSERT INTO OLFBARCODEDO VALUES(3,0,'','','org.openlab.genetracker.Recombinant','recombinant','RE')
 INSERT INTO OLFBARCODELABEL VALUES(1,0,'QR','Label','','')
 INSERT INTO OLFREQUESTMAP VALUES(1,0,'IS_AUTHENTICATED_ANONYMOUSLY','/error/**')
-INSERT INTO OLFREQUESTMAP VALUES(2,0,'IS_AUTHENTICATED_FULLY','/')
-INSERT INTO OLFREQUESTMAP VALUES(3,0,'IS_AUTHENTICATED_ANONYMOUSLY','/login/auth')
-INSERT INTO OLFREQUESTMAP VALUES(4,0,'IS_AUTHENTICATED_ANONYMOUSLY','/login/authAjax')
-INSERT INTO OLFREQUESTMAP VALUES(5,0,'IS_AUTHENTICATED_ANONYMOUSLY','/login/authfail')
-INSERT INTO OLFREQUESTMAP VALUES(6,0,'IS_AUTHENTICATED_ANONYMOUSLY','/js/**')
-INSERT INTO OLFREQUESTMAP VALUES(7,0,'IS_AUTHENTICATED_ANONYMOUSLY','/css/**')
-INSERT INTO OLFREQUESTMAP VALUES(8,0,'IS_AUTHENTICATED_ANONYMOUSLY','/images/**')
-INSERT INTO OLFREQUESTMAP VALUES(9,0,'IS_AUTHENTICATED_ANONYMOUSLY','/plugins/**')
-INSERT INTO OLFREQUESTMAP VALUES(10,0,'IS_AUTHENTICATED_ANONYMOUSLY','/captcha/**')
-INSERT INTO OLFREQUESTMAP VALUES(11,0,'IS_AUTHENTICATED_ANONYMOUSLY','/register/**')
-INSERT INTO OLFREQUESTMAP VALUES(12,0,'IS_AUTHENTICATED_FULLY','/**')
-INSERT INTO OLFREQUESTMAP VALUES(13,0,'ROLE_ADMIN','/user/**')
-INSERT INTO OLFREQUESTMAP VALUES(14,0,'ROLE_ADMIN','/application/**')
-INSERT INTO OLFREQUESTMAP VALUES(15,0,'ROLE_ADMIN','/admin/**')
-INSERT INTO OLFREQUESTMAP VALUES(16,0,'ROLE_ADMIN','/dataSource/**')
-INSERT INTO OLFREQUESTMAP VALUES(17,0,'ROLE_ADMIN','/settings/**')
-SET AUTOCOMMIT FALSE
-SET AUTOCOMMIT TRUE
-SET AUTOCOMMIT FALSE
-SET AUTOCOMMIT TRUE
-/*C6*/SET SCHEMA PUBLIC
-CONNECT USER SA
+INSERT INTO OLFREQUESTMAP VALUES(2,0,'IS_AUTHENTICATED_ANONYMOUSLY','/*')
+INSERT INTO OLFREQUESTMAP VALUES(3,0,'IS_AUTHENTICATED_ANONYMOUSLY','/js/**')
+INSERT INTO OLFREQUESTMAP VALUES(4,0,'IS_AUTHENTICATED_ANONYMOUSLY','/css/**')
+INSERT INTO OLFREQUESTMAP VALUES(5,0,'IS_AUTHENTICATED_ANONYMOUSLY','/images/**')
+INSERT INTO OLFREQUESTMAP VALUES(6,0,'IS_AUTHENTICATED_ANONYMOUSLY','/plugins/**')
+INSERT INTO OLFREQUESTMAP VALUES(7,0,'IS_AUTHENTICATED_ANONYMOUSLY','/captcha/**')
+INSERT INTO OLFREQUESTMAP VALUES(8,0,'IS_AUTHENTICATED_ANONYMOUSLY','/register/**')
+INSERT INTO OLFREQUESTMAP VALUES(9,0,'IS_AUTHENTICATED_ANONYMOUSLY','/**')
+INSERT INTO OLFREQUESTMAP VALUES(10,0,'ROLE_ADMIN','/user/**')
+INSERT INTO OLFREQUESTMAP VALUES(11,0,'ROLE_ADMIN','/application/**')
+INSERT INTO OLFREQUESTMAP VALUES(12,0,'ROLE_ADMIN','/admin/**')
+INSERT INTO OLFREQUESTMAP VALUES(13,0,'ROLE_ADMIN','/dataSource/**')
+INSERT INTO OLFREQUESTMAP VALUES(14,0,'ROLE_ADMIN','/settings/**')
