@@ -46,6 +46,7 @@
     <orderEntry type="module" module-name="OpenLabBackend" exported="" />
     <orderEntry type="module" module-name="OpenLabFrontend-grailsPlugins" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.1.1" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.2.0" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (Storage)">
         <CLASSES>
@@ -57,23 +58,18 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.springframework.webflow/spring-webflow/jars/spring-webflow-2.0.8.RELEASE.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.liquibase/liquibase-core/jars/liquibase-core-2.0.5.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/jboss/javassist/jars/javassist-3.7.ga.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-logging/commons-logging/jars/commons-logging-1.1.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi/jars/poi-3.6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/com.lowagie/itext/jars/itext-2.1.7.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jrobin/jrobin/jars/jrobin-1.5.9.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/net.bull.javamelody/javamelody-core/jars/javamelody-core-1.37.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jasig.cas.client/cas-client-core/jars/cas-client-core-3.1.12.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.springframework.security/spring-security-cas-client/jars/spring-security-cas-client-3.0.7.RELEASE.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.geronimo.specs/geronimo-stax-api_1.0_spec/jars/geronimo-stax-api_1.0_spec-1.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/stax/stax-api/jars/stax-api-1.0.1.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.xmlbeans/xmlbeans/jars/xmlbeans-2.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi-ooxml-schemas/jars/poi-ooxml-schemas-3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi-ooxml/jars/poi-ooxml-3.7.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi/jars/poi-3.7.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.antlr/stringtemplate/jars/stringtemplate-3.2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.antlr/antlr-runtime/jars/antlr-runtime-3.1.3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.tmatesoft.sqljet/sqljet/jars/sqljet-1.0.4.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.tmatesoft.svnkit/trilead-ssh2/jars/trilead-ssh2-build213-svnkit-1.3-patch.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.tmatesoft.svnkit/svnkit/jars/svnkit-1.3.5.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jasig.cas.client/cas-client-core/jars/cas-client-core-3.1.12.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.springframework.security/spring-security-cas-client/jars/spring-security-cas-client-3.0.7.RELEASE.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi-scratchpad/jars/poi-scratchpad-3.6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi-contrib/jars/poi-contrib-3.6.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/javax.servlet/servlet-api/jars/servlet-api-2.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/avalon-framework/avalon-framework/jars/avalon-framework-4.1.3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/logkit/logkit/jars/logkit-1.0.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
