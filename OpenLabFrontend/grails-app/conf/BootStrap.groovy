@@ -46,6 +46,12 @@ class BootStrap {
                 initSearchablePlugin()
 
                 break
+
+            case "demo":
+
+                initSearchablePlugin()
+
+                break
         }
     }
 
@@ -93,7 +99,7 @@ class BootStrap {
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
             def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
 
-            def password= "password"
+            def password= "demo0815"
 
             def testUser = new User(userRealName: 'Administrator', email: '', username: 'admin', enabled: true, password: password)
             testUser.save(flush: true)
@@ -109,21 +115,16 @@ class BootStrap {
     }
 
     def initSettings() {
-        //Prepare Settings database if necessary
-        settingsService.prepareDatabase()
 
         println "Create default settings..."
         /**
          * Default Settings
          */
         if (!settingsService.exists(key: "default.language"))
-            settingsService.setDefaultSetting(key: "language", value: "DE")
+            settingsService.setDefaultSetting(key: "language", value: "EN")
 
-        def key = "default.barcode.baseurl"
-        if (!settingsService.exists(key: key))
-            settingsService.setSetting(key: key, value: "http://localhost:8282/BarcodeREST/")
 
-        key = "genetracker.ncbi.baseurl"
+        def key = "genetracker.ncbi.baseurl"
         if (!settingsService.exists(key: key))
             settingsService.setSetting(key: key, value: "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?")
 
@@ -150,7 +151,6 @@ class BootStrap {
 
     def initSecurity() {
         /* create requestmaps to enable url security */
-        //TODO think about another mechanism for requests, because violates separation of concerns (wrong database)
         if (Requestmap.list().size() == 0) {
             def requestMap = new Requestmap(url: "/error/**", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
             requestMap.save()
@@ -226,7 +226,7 @@ class BootStrap {
         def box3 = new Box(xdim: 20, ydim: 20, description: "Huge box", compartment: comp1)
         box3.save()
 
-        def box4 = new Box(xdim: 10, ydim: 10, description: "96 Well", compartment: comp2)
+        def box4 = new Box(xdim: 12, ydim: 8, description: "96 Well", compartment: comp2)
         box4.save()
 
         comp2.boxes = [box2, box1, box4]

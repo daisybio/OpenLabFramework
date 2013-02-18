@@ -12,6 +12,12 @@ class DashboardController {
 	}
 	
 	def dashboard = {
+        println springSecurityService.isLoggedIn()
+        if(!springSecurityService.isLoggedIn()){
+            println "redirect"
+            redirect(action: "auth", controller: "login", params: [bodyOnly:false])
+            return
+        }
 
 		def lastModifiedMax = params.lastModifiedMax?:10
 		
@@ -19,7 +25,7 @@ class DashboardController {
 		def lastModifiedByAny = DataObject.list(max: lastModifiedMax, sort: "lastUpdate", order: "desc")
 		
 		//get user
-		def username = springSecurityService.getPrincipal().username
+		def username = springSecurityService?.getPrincipal().username
 		
 		//get last modified by user
 		def lastModifiedByUser = DataObject.withCriteria{

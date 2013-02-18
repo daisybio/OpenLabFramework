@@ -3,13 +3,13 @@ grails.plugin.location.geneTracker = "../GeneTracker"
 grails.plugin.location.storage = "../Storage"
 grails.plugin.location.barcode = "../OpenLabBarcode"
 grails.plugin.location.attachments = "../OpenLabAttachments"
-grails.plugin.location.taqman = "../OpenLabTaqMan"
+//grails.plugin.location.taqman = "../OpenLabTaqMan"
 //grails.plugin.location.documents = "../OpenLabDocuments"
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir	= "target/test-reports"
 grails.project.war.file = "target/${appName}.war"
-grails.tomcat.jvmArgs= ["-Xms512m",  "-Xmx1024m", "-XX:PermSize=512m", "-XX:MaxPermSize=512m"]
+//grails.tomcat.jvmArgs= ["-Xms512m",  "-Xmx1024m", "-XX:PermSize=512m", "-XX:MaxPermSize=512m"]
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits( "global" ) {
@@ -44,6 +44,7 @@ grails.project.dependency.resolution = {
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.7.1"
         runtime ":resources:1.1.6"
+        runtime ":database-migration:1.3.2"
         build ":tomcat:$grailsVersion"
 
         compile ":searchable:0.6.4"
@@ -55,6 +56,7 @@ grails.project.dependency.resolution = {
         compile ":spring-security-core:1.2.7.3"
         //compile ":spring-security-acl:1.1.1"
         compile ":spring-security-cas:1.0.5"
+        compile ':webxml:1.4.1'
     }
 
 }

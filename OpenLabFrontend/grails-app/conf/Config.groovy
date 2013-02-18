@@ -10,6 +10,8 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
+grails.tomcat.jvmArgs= ["-Xms256m",  "-Xmx1024m", "-XX:PermSize=512m", "-XX:MaxPermSize=512m"]
+
 /* Search for external config files */
 def ENV_NAME = "OPENLABFRAMEWORK_CONFIG"
 if (!grails.config.locations || !(grails.config.locations instanceof List)) {
@@ -24,7 +26,7 @@ else if (System.getProperty(ENV_NAME)) {
     grails.config.locations << "file:" + System.getProperty(ENV_NAME)
 }
 else {
-    println "Using default settings (local file SQL)"
+    println "Using default settings..."
     dataSource.driverClassName = 'org.hsqldb.jdbcDriver'
     dataSource.url = 'jdbc:hsqldb:file:testDB'
     dataSource.username = 'sa'
@@ -73,6 +75,8 @@ grails.logging.jul.usebridge = true
 // packages to include in Spring bean scanning
 grails.spring.bean.packages = []
 
+grails.plugins.springsecurity.successHandler.defaultTargetUrl = '/dashboard/index'
+
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
@@ -81,6 +85,18 @@ environments {
     }
     test {
         grails.serverURL = "http://localhost:8080/${appName}"
+    }
+    cloud {
+        dataSource {
+            driverClassName = "com.mysql.jdbc.Driver"
+            dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+            url = "jdbc:mysql://localhost/olfdb?useUnicode=yes&characterEncoding=UTF-8"
+            username = "na"
+            password = "na"
+            dbCreate = "update"
+        }
+        openlab.database.name = 'cloud mySQL instance'
+        grails.serverURL = "http://openlabframework.cloudfoundry.com"
     }
 
 }
@@ -109,10 +125,10 @@ log4j = {
             'grails.app'
 
     appenders {
-        rollingFile  name:'infoLog', file:'/tomcat/log/info.log', threshold: org.apache.log4j.Level.INFO, maxFileSize:1024
-        rollingFile  name:'warnLog', file:'/tomcat/log/warn.log', threshold: org.apache.log4j.Level.WARN, maxFileSize:1024
-        rollingFile  name:'errorLog', file:'/tomcat/log/error.log', threshold: org.apache.log4j.Level.ERROR, maxFileSize:1024
-        rollingFile  name:'debugLog', file:'/tomcat/log/debug.log', threshold: org.apache.log4j.Level.DEBUG, maxFileSize:1024
+        /*rollingFile  name:'infoLog', file:'info.log', threshold: org.apache.log4j.Level.INFO, maxFileSize:1024
+        rollingFile  name:'warnLog', file:'warn.log', threshold: org.apache.log4j.Level.WARN, maxFileSize:1024
+        rollingFile  name:'errorLog', file:'error.log', threshold: org.apache.log4j.Level.ERROR, maxFileSize:1024
+        rollingFile  name:'debugLog', file:'debug.log', threshold: org.apache.log4j.Level.DEBUG, maxFileSize:1024*/
         console      name:'stdout', threshold: org.apache.log4j.Level.WARN
     }
 }

@@ -9,37 +9,17 @@ import groovy.sql.Sql
  */
 class SettingsService {
 
-	def settingsDataSource	
 	def springSecurityService
 	
 	static transactional = false
-	
-	/**
-	 * Databae manipulation
-	 */
-	def prepareDatabase = { attrs ->
-		def sql = new Sql(settingsDataSource)
-		try{
-			sql.execute("create table olfSettings(key varchar not null primary key, value varchar); ")
-		} catch(java.sql.SQLException e){
-			//Table probably already exists
-			println "Creation of table olfSettings failed. Probably it already exists."
-		}
-	}
-	
-	//TODO
-	def recreateDatabase = {
-		
-	}
-	
-	
+
 	/**
 	 * Dataset representation of settings datatable for easy iteration
-	 */
-	def getSettingsDataSet = { 
-		def sql = new Sql(settingsDataSource)
+	 *
+	def getSettingsDataSet = {
+
 		sql.dataSet("olfSettings")
-	}
+	}  */
 
 	/**
 	 * Get and set default settings
@@ -87,8 +67,9 @@ class SettingsService {
 		//prepare key
 		def lowerCaseKey = attrs.key.toLowerCase()
 		
-		def sql = new Sql(settingsDataSource)
-		def result = sql.firstRow("select * from olfSettings where key= ?;", [lowerCaseKey])
+		//def sql = new Sql(settingsDataSource)
+		def result = UserSetting.get(lowerCaseKey)
+		//sql.firstRow("select * from olfSettings where key= ?;", [lowerCaseKey])
 		if(!result) return null
 		else return result.value
 	}
@@ -97,27 +78,30 @@ class SettingsService {
 		
 		if(!attrs.value) return false
 		
-		def sql = new Sql(settingsDataSource)
+		//def sql = new Sql(settingsDataSource)
 		def lowerCaseKey = attrs.key.toLowerCase()
 		
 		if(exists(key: lowerCaseKey))
 		{
-			sql.execute("update olfSettings set value = ? where key= ?;", [attrs.value, lowerCaseKey])
+			UserSetting.get(lowerCaseKey).value = attrs.value
+			//sql.execute("update olfSettings set value = ? where key= ?;", [attrs.value, lowerCaseKey])
 		}
 		else
 		{
-			sql.execute("insert into olfSettings values(?, ?);", [lowerCaseKey, attrs.value])
+			new UserSetting(key: lowerCaseKey, value: attrs.value).save(flush: true)
+			//sql.execute("insert into olfSettings values(?, ?);", [lowerCaseKey, attrs.value])
 		}
 	}
 	
 	def deleteSetting = { attrs ->
-		def sql = new Sql(settingsDataSource)
+		//def sql = new Sql(settingsDataSource)
 		
 		def lowerCaseKey = attrs.key.toLowerCase()
 		
 		if(exists(key: attrs.key))
 		{
-			sql.execute("delete from olfSettings where key=?;", [lowerCaseKey])
+			//sql.execute("delete from olfSettings where key=?;", [lowerCaseKey])
+            UserSetting.get(lowerCaseKey).delete()
 		}
 	}
 	

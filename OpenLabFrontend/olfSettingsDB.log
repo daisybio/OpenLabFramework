@@ -1,9 +1,0 @@
-/*C3*/SET SCHEMA PUBLIC
-CONNECT USER SA
-DISCONNECT
-/*C4*/SET SCHEMA PUBLIC
-CONNECT USER SA
-INSERT INTO OLFSETTINGS VALUES('user.admin.addins.slot.1','barcode')
-INSERT INTO OLFSETTINGS VALUES('user.admin.addins.slot.2','attachments')
-INSERT INTO OLFSETTINGS VALUES('user.admin.addins.slot.4','App Status')
-INSERT INTO OLFSETTINGS VALUES('user.admin.addins.slot.3','gene legend')

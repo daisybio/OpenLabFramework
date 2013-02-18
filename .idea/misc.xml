@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="IdProvider" IDEtalkID="E8F4043182A5FACC388888F89574C94F" />
+  <component name="ProjectResources">
+    <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$/GeneTracker">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://openlaboratory.svn.sourceforge.net/svnroot/openlaboratory/GeneTracker" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/OpenLabAttachments">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://openlaboratory.svn.sourceforge.net/svnroot/openlaboratory/OpenLabAttachments" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/OpenLabBackend">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://openlaboratory.svn.sourceforge.net/svnroot/openlaboratory/OpenLabBackend" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/OpenLabBarcode">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://openlaboratory.svn.sourceforge.net/svnroot/openlaboratory/OpenLabBarcode" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/OpenLabFrontend">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://openlaboratory.svn.sourceforge.net/svnroot/openlaboratory/OpenLabFrontend" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/OpenLabTaqMan">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://openlaboratory.svn.sourceforge.net/svnroot/openlaboratory/OpenLabTaqMan" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Storage">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://openlaboratory.svn.sourceforge.net/svnroot/openlaboratory/Storage" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+  <component name="WebServicesPlugin" addRequiredLibraries="true" />
+</project>
+
