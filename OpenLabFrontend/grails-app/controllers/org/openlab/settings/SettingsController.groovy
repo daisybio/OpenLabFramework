@@ -41,14 +41,8 @@ class SettingsController {
 	 * Get all settings and filter for pagination and obey namespace restriction (e.g. filter for default)
 	 */
 	def list = {
-		def dataset = settingsService.getSettingsDataSet()
-
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		
-		def startRange = Math.min(dataset.rows().size()-1, params.offset? params.int('offset') : 0)
-		def endRange = Math.min(dataset.rows().size()-1, startRange + params.max) 
-        
-		[settingsList: dataset.rows()[startRange..endRange], settingsTotal: dataset.rows().size()]	
+        params.max = Math.min(params.max?params.int('max'):10, 100)
+		[settingsList: UserSetting.list(params), settingsTotal: UserSetting.count()]
 	}
 	
 	/**
