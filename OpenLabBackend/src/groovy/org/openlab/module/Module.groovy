@@ -8,8 +8,12 @@ interface Module
 	def getPluginName()
 	
 	def getTemplateForDomainClass(def domainClass)
+
+    def getMobileTemplateForDomainClass(def domainClass)
 	
 	def isInterestedIn(def domainClass, def type)
 	
 	def getModelForDomainClass(def domainClass, def id)
+
+    def isMobile()
 }

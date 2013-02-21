@@ -162,6 +162,13 @@ grails.resources.modules = {
         dependsOn 'jquery'
         resource url: 'js/jquery.jstree.js'
     }
+    jquerymobileaddons {
+        dependsOn 'jquery-mobile'
+        resource url: 'js/jquery.mobile.pagination.js'
+        resource url: '/css/jquery.mobile.pagination.css'
+        resource url: 'js/jquery.mobile.autocomplete.js'
+        resource url: '/js/jquery.tinyscrollbar.min.js'
+    }
 }
 
 //db migration

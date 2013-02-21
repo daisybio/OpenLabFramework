@@ -14,8 +14,13 @@ class PrintBarcodeLabelOperationModule implements Module{
 	{
 		return "printBarcodeLabelOperations"
 	}
-	
-	def isInterestedIn(def domainClass, def type)
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
 	{
 		if((type == "operations") && (BarcodeDataObject.list().find{it.shortName == domainClass})) return true
 		return false
@@ -32,5 +37,9 @@ class PrintBarcodeLabelOperationModule implements Module{
 		}
 		else [:]
 	}
-	
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }

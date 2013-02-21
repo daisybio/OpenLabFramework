@@ -34,4 +34,16 @@ class ProjectTabModule implements Module{
             ]
 		}
 	}
+
+    def isMobile(){
+        return true;
+
+    }
+
+    def getMobileTemplateForDomainClass(def domainClass)
+    {
+        if(domainClass == "project") return "projectTab"
+
+        else return null
+    }
 }

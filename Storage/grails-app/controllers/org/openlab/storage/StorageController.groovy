@@ -2,11 +2,10 @@ package org.openlab.storage
 
 import grails.converters.*
 import groovy.xml.MarkupBuilder;
-import org.openlab.data.*
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 import org.openlab.main.Project
 
-class StorageController extends DataTableControllerTemplate {
+class StorageController {
 
 	def index = { redirect(action: list) }
 
@@ -42,6 +41,11 @@ class StorageController extends DataTableControllerTemplate {
 	def list = {	
 	    	model: [ "treedata": createTreeData().toString(), "controller": "box", "action": "showBox"]
 	}
+
+    def removeWithMobile = {
+        StorageElement.get(params.id).delete()
+        render "<div class='message'>Object successfully removed from storage</div>"
+    }
 	
 	def edit = {
 		def storageTypeList = StorageType.list()
@@ -86,7 +90,6 @@ class StorageController extends DataTableControllerTemplate {
 	}
     
     def treeDataAsJSON = {
-        println params
         if(params.nodeType == "root")
         {
             def locationsAsJSON = StorageLocation.list(sort: "description").collect{

@@ -16,7 +16,12 @@ class AttachmentsTabModule implements Module{
 	{
 		return "attachmentsTab"
 	}
-	
+
+    def getMobileTemplateForDomainClass(def domainClass)
+    {
+        return "attachmentsTab"
+    }
+
 	def isInterestedIn(def domainClass, def type)
 	{
 		if((type == "tab") && grailsApplication.getArtefactByLogicalPropertyName("Domain", domainClass)?.getClazz().superclass == org.openlab.main.DataObject) return true
@@ -33,4 +38,9 @@ class AttachmentsTabModule implements Module{
 		}
 		return [dataObjectAttachmentInstanceList: attachments, dataObjectAttachmentInstanceTotal: attachments?.size()?:0]
 	}
+
+    def isMobile()
+    {
+        return true
+    }
 }

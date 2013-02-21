@@ -52,11 +52,13 @@ grails.project.dependency.resolution = {
             exclude 'grails-webflow'
         }
 
+        compile ":jquery-mobile:1.1.0.5"
         compile ":excel-import:1.0.0"
         compile ":spring-security-core:1.2.7.3"
         //compile ":spring-security-acl:1.1.1"
         compile ":spring-security-cas:1.0.5"
         compile ':webxml:1.4.1'
+        compile ":spring-mobile:0.4"
     }
 
 }

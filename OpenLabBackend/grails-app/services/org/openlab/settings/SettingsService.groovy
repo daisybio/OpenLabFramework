@@ -15,11 +15,12 @@ class SettingsService {
 
 	/**
 	 * Dataset representation of settings datatable for easy iteration
-	 *
+	 */
 	def getSettingsDataSet = {
 
-		sql.dataSet("olfSettings")
-	}  */
+		UserSetting.list()
+		//sql.dataSet("olfSettings")
+	}
 
 	/**
 	 * Get and set default settings

@@ -15,8 +15,13 @@ class AntibioticsModule implements Module{
 		
 		else return null
 	}
-	
-	def isInterestedIn(def domainClass, def type)
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
 	{
 		if((type == "tab") && domainClass.startsWith("cellLineData")) return true
 		return false
@@ -34,4 +39,9 @@ class AntibioticsModule implements Module{
             [cellLineData: cellLineData, antibioticsList: antibioticsList, antibioticsWithConc: antibioticsWithConc]
 		}
 	}
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }

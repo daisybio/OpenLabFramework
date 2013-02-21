@@ -15,8 +15,13 @@ class ViabilityModule implements Module{
 		
 		else return null
 	}
-	
-	def isInterestedIn(def domainClass, def type)
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
 	{
 		if((type == "tab") && domainClass == "gene") return true
 		return false
@@ -34,4 +39,9 @@ class ViabilityModule implements Module{
 			return [viabilities: viabilities, gene:gene, userNames: userNames, cellLineData: cellLineData]
 		}
 	}
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }

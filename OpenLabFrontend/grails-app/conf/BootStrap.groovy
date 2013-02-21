@@ -38,6 +38,7 @@ class BootStrap {
             case "development":
 
                 //initDummyData()
+                //initSearchablePlugin()
 
                 break
 

@@ -15,8 +15,13 @@ class CellLineDataModule implements Module{
 		
 		else return null
 	}
-	
-	def isInterestedIn(def domainClass, def type)
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
 	{
 		if((type == "tab") && (domainClass == "gene")) return true
 		return false
@@ -45,4 +50,9 @@ class CellLineDataModule implements Module{
 			return [cellLineDataList: cellLineDataList]
 		}
 	}
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }

@@ -1,12 +1,9 @@
 package org.openlab.genetracker
 
-import org.openlab.data.DataTableControllerTemplate;
 import org.openlab.genetracker.vector.*;
-import org.openlab.genetracker.*;
-import org.openlab.data.*
 import org.springframework.dao.DataIntegrityViolationException;
 
-class RecombinantController extends DataTableControllerTemplate{
+class RecombinantController{
 
 	def scaffold = Recombinant
 

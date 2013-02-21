@@ -1,7 +1,12 @@
 /* Styles for mobile devices */
 
-@media screen and (max-width: 480px) {
-	.nav {
+@media screen and (max-width: 320px) {
+
+    html {
+        width: 100% !important;
+        text-align: center;
+    }
+    .nav {
 		padding: 0.5em;
 	}
 
@@ -27,6 +32,10 @@
 	.pagination {
 		overflow: hidden;
 	}
+
+    table {
+        border: 1px #c0c0c0 solid;
+    }
 
 	/* slightly smaller margin around content body */
 	fieldset,
@@ -79,4 +88,30 @@
 	.error ul {
 		margin-left: 0;
 	}
+
+    .errors,
+    .message {
+        font-size: 1.0em;
+        line-height: 2;
+        margin: 1em 2em;
+        padding: 0.5em;
+    }
+
+    .message {
+        background: #f3f3ff;
+        border: 1px solid #b2d1ff;
+        color: #006dba;
+        -moz-box-shadow: 0 0 0.25em #b2d1ff;
+        -webkit-box-shadow: 0 0 0.25em #b2d1ff;
+        box-shadow: 0 0 0.25em #b2d1ff;
+    }
+
+    .errors {
+        background: #fff3f3;
+        border: 1px solid #ffaaaa;
+        color: #cc0000;
+        -moz-box-shadow: 0 0 0.25em #ff8888;
+        -webkit-box-shadow: 0 0 0.25em #ff8888;
+        box-shadow: 0 0 0.25em #ff8888;
+    }
 }

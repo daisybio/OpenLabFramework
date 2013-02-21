@@ -21,6 +21,11 @@ class PrimerModule implements Module {
         else return null
     }
 
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
     def isInterestedIn(def domainClass, def type)
     {
         if((type == "tab") && domainClass.startsWith("gene")) return true
@@ -35,5 +40,10 @@ class PrimerModule implements Module {
 
             return [gene: gene, primers: Primer.findAllByGene(gene)]
         }
+    }
+
+    @Override
+    def isMobile() {
+        return false
     }
 }

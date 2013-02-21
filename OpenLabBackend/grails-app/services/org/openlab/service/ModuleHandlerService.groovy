@@ -27,8 +27,19 @@ public class ModuleHandlerService {
 		
 		modules.findAll { it.isInterestedIn(attrs.domainClass, attrs.type) }
 	}
-	
-	def getMenuModules = {
+
+    def getInterestedMobileModules = { attrs ->
+        def modules = grailsApplication.getModuleClasses().collect {
+            it.referenceInstance
+        }
+
+        modules = modules.findAll { it instanceof Module}
+
+        modules.findAll { it.isInterestedIn(attrs.domainClass, attrs.type) && it.isMobile() }
+    }
+
+
+    def getMenuModules = {
 		def modules = grailsApplication.getModuleClasses().collect { 
 			it.referenceInstance
 		}

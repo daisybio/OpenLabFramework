@@ -16,8 +16,13 @@ public class PassageModule implements Module {
 		
 		else return null
 	}
-	
-	def isInterestedIn(def domainClass, def type)
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
 	{
 		if((type == "tab") && domainClass.startsWith("cellLineData")) return true
 		return false
@@ -32,4 +37,9 @@ public class PassageModule implements Module {
 			return [cellLineData: cellLineData, passages: Passage.findAllByCellLineData(cellLineData)]
 		}
 	}
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }

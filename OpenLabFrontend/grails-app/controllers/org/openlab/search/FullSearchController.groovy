@@ -2,15 +2,38 @@ package org.openlab.search
 
 import org.compass.core.engine.SearchEngineQueryParseException
 import org.apache.lucene.queryParser.ParseException
+import org.openlab.main.DataObject
+import grails.converters.JSON
 
 class FullSearchController {
 	
     def searchableService
+    def barcodeBuilderService
+
 
     /**
      * Index page with search form and results
      */
     def index = {
+        //first try barcode search
+        if(barcodeBuilderService && params.q.toString().length() == 16)
+        {
+            def barcode
+            try{
+                barcode = barcodeBuilderService.buildBarcodeFromId(params.q)
+                flash.message = "Scanned: " + barcode.text + " (" + barcode.description + ")"
+            }catch(Exception e){
+                log.error e.getMessage()
+            }
+            if(barcode)
+            {
+                def controllerName = DataObject.get(barcode.dataObject.id).getType().toString()
+                redirect(controller: controllerName, action: "show", id: barcode.dataObjectId, params: ['bodyOnly':true])
+                return
+            }
+
+        }
+
         if (!params.q?.trim()) {
 			if(session.lastQuery && params.backLink)
 				params.q = session.lastQuery

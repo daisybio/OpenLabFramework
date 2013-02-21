@@ -16,8 +16,13 @@ class GeneVectorModule implements Module{
 		
 		else return null
 	}
-	
-	def isInterestedIn(def domainClass, def type)
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
 	{
 		if((type == "tab") && (domainClass == "gene")) return true
 		return false
@@ -38,4 +43,9 @@ class GeneVectorModule implements Module{
 			[gene: gene, geneVectorList: gvectors, vectors: vectors]
 		}
 	}
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }

@@ -75,8 +75,7 @@ class BoxController {
      */
     def addDataObject = 
     {
-        println params
-    		//check for existing elements in same box at same coordinates 
+    		//check for existing elements in same box at same coordinates
     		def existsAlready = StorageElement.findWhere(xcoord: params.int("x"), ycoord: params.int("y"), box: Box.get(params.long("boxId")))
             if(existsAlready) render "There is already an element at these coordinates!"
 
@@ -94,7 +93,6 @@ class BoxController {
      */
     def removeDataObject =
     {
-        println params
 		def box = Box.get(params.long("boxId"))
 		def storageElt = box.elements.find{it.xcoord.toString() == params.x && it.ycoord.toString() == params.y}
     		
@@ -103,7 +101,7 @@ class BoxController {
 		
 		render g.updateBoxTable(id: params.boxId, addToCell:true)
     }
-    
+
     /**
      * Renders how many elements of an entity are left
      */

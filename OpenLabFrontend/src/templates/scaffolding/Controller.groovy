@@ -81,6 +81,7 @@ class ${className}Controller {
     }
 
     def show() {
+
         def ${propertyName} = ${className}.get(params.id)
         if (!${propertyName}) {
 			flash.message = "Just click on a property to change it."

@@ -3,7 +3,6 @@ package org.openlab.barcode
 import org.openlab.main.*;
 
 class Barcode {
-
 	
 	static mapping = {
 		//id generator:'foreign', params:[property:DataObject]

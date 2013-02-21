@@ -13,8 +13,13 @@ class NCBISequenceViewerModule implements Module{
 		//if(domainClass == "gene") return "ncbiSequenceViewer"
 		return false;
 	}
-	
-	def isInterestedIn(def domainClass, def type)
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
 	{
 		//if((type == "tab") && (domainClass == "gene")) return true
 		return false
@@ -29,4 +34,9 @@ class NCBISequenceViewerModule implements Module{
 			[geneId: id, accessionNumber: gene.accessionNumber, originalGene: (gene.geneType == "Wildtype")]
 		}
 	}
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }

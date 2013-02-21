@@ -13,8 +13,13 @@ class GeneOperationsModule implements Module{
 	{
 		if(domainClass == "gene") return "geneOperations"
 	}
-	
-	def isInterestedIn(def domainClass, def type)
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
 	{
 		if((type == "operations") && (domainClass == "gene")) return true
 		return false
@@ -28,4 +33,9 @@ class GeneOperationsModule implements Module{
 			[geneInstance: gene]
 		}
 	}
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }

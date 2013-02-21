@@ -11,8 +11,22 @@ class TabTagLib {
 	/*
 	 * return [] of interested modules
 	 */
-	def getInterestedModules = { attrs ->
-		moduleHandlerService.getInterestedModules(domainClass: attrs.domainClass, type: "tab").collect{it.getPluginName()}
+	def getInterestedMobileModules = { attrs ->
+		def interestedModules = moduleHandlerService.getInterestedMobileModules(domainClass: attrs.domainClass, type: "tab")
+
+        interestedModules.collect{
+            def template = it.getMobileTemplateForDomainClass(attrs.domainClass)
+            def name = template.toString().replace("mobile_", "").replaceAll(/\B[A-Z]/){ " $it" }.capitalize()-"Tab"
+            def plugin = it.getPluginName()
+
+            def targetLink = g.createLink(controller: "myTabs", action: "renderMobileTab",
+                    params: [template: template, plugin: plugin, domainClass: attrs.domainClass, id: attrs.id, module: it.getClass().getName()])
+            out << """<li data-theme="c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">
+            <a href="${targetLink}" data-transition="slide" class="ui-link-inherit">
+                    ${name}
+            </a>
+                </div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>"""
+        }
 	}
 	
 	/*

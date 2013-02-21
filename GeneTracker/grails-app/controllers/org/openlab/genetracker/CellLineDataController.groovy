@@ -9,7 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
  * @author markus.list
  *
  */
-class CellLineDataController extends DataTableControllerTemplate{
+class CellLineDataController{
 
 	def scaffold = CellLineData
 	def RecombinantsService

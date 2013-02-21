@@ -17,6 +17,11 @@ class TaqManResultTabModule implements Module{
         else return null
     }
 
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
     def isInterestedIn(def domainClass, def type)
     {
         if((type == "tab") && domainClass == "taqManResult") return true
@@ -29,5 +34,10 @@ class TaqManResultTabModule implements Module{
         {
             [taqManResultInstance: TaqManResult.get(id)]
         }
+    }
+
+    @Override
+    def isMobile() {
+        return false
     }
 }

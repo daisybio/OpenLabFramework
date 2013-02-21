@@ -8,14 +8,23 @@ class DashboardController {
 	def springSecurityService
 	
 	def index = {
+
+        withMobileDevice {
+            redirect(action: "mobile_index")
+            return
+        }
+
 		[:]
 	}
 	
 	def dashboard = {
-        println springSecurityService.isLoggedIn()
         if(!springSecurityService.isLoggedIn()){
-            println "redirect"
             redirect(action: "auth", controller: "login", params: [bodyOnly:false])
+            return
+        }
+
+        withMobileDevice {
+            redirect(action: "mobile")
             return
         }
 
@@ -39,5 +48,13 @@ class DashboardController {
 		//return model
 		[lastModifiedByUser: lastModifiedByUser, lastModifiedByAny: lastModifiedByAny, lastModifiedMax: lastModifiedMax]
 	}
+
+    def mobile = {
+        [:]
+    }
+
+    def mobile_index = {
+        [:]
+    }
 	
 }

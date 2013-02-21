@@ -32,7 +32,7 @@ public class BoxTagLib {
         if(!attrs.update)
         {
         	//Register custom event for changes to boxView
-        	out << "<script>olfEvHandler.boxViewChangedEvent = new YAHOO.util.CustomEvent('boxViewChangedEvent', this);</script>"
+        	out << "<script>if(olfEvHandler) olfEvHandler.boxViewChangedEvent = new YAHOO.util.CustomEvent('boxViewChangedEvent', this);</script>"
         	
         	//target for Ajax calls
         	out << "<div id='boxView' style='max-height:400px; overflow: scroll;'>"
@@ -80,7 +80,7 @@ public class BoxTagLib {
 				}
 				else
 				{
-                    stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'addDataObject', params: '\'x=' + x +'&y=' + y + '&boxId=' + attrs.id + '&subDataObj=' + params.subDataObj + '\'', id: params.id, update:[success:'boxView', failure:'boxView'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
+                    stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:if(olfEvHandler)olfEvHandler.boxViewChangedEvent.fire();', controller:'box', action:'addDataObject', params: '\'x=' + x +'&y=' + y + '&boxId=' + attrs.id + '&subDataObj=' + params.subDataObj + '\'', id: params.id, update:[success:'boxView', failure:'boxView'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
 				}
 			}
 		}
@@ -114,7 +114,7 @@ public class BoxTagLib {
 			 				 height=20 width=100 style='background-color:#aaaaff;'>${gui.toolTip(text: 'Click to select'){element.toString()}}</td>"""
 	 				//element is the one displayed above and it shall be possible to REMOVE it
     				else{
-        				stringBuffer << """<td onClick="${remoteFunction(before: 'if(!confirm(\'Are you sure?\')) return false; \$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'removeDataObject',
+        				stringBuffer << """<td onClick="${remoteFunction(before: 'if(!confirm(\'Are you sure?\')) return false; \$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:if(olfEvHandler)olfEvHandler.boxViewChangedEvent.fire();', controller:'box', action:'removeDataObject',
                                 params: '\'x=' + x + '&y=' + y + '&boxId=' + attrs.id + '\'', id: params.id, update:[success:'boxView', failure:'boxView'])}"
 		 				 height=20 width=100 style='background-color:#aaffaa;'>${gui.toolTip(text: 'Click to remove'){element.toString()}}</td>"""    					
     				}
@@ -134,7 +134,7 @@ public class BoxTagLib {
     				}
     				else
     				{
-    					stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'addDataObject', params: '\'x=' + x +'&y=' + y + '&boxId=' + attrs.id + '&subDataObj=' + params.subDataObj + '\'', id: params.id, update:[success:'boxView', failure:'boxView'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
+    					stringBuffer << """<td onClick="${remoteFunction(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:if(olfEvHandler)olfEvHandler.boxViewChangedEvent.fire();', controller:'box', action:'addDataObject', params: '\'x=' + x +'&y=' + y + '&boxId=' + attrs.id + '&subDataObj=' + params.subDataObj + '\'', id: params.id, update:[success:'boxView', failure:'boxView'])}" height=20 width=100 style='background-color:#ffaaaa;'>${gui.toolTip(text: 'Click to add'){'Click to add'}}</td>"""
     				}
     			}
 			}		
@@ -196,7 +196,7 @@ public class BoxTagLib {
 				out << "Entities can be found in the following boxes:<br>"
 				out << "<ul style='margin-left:25px;'>"
 				boxes.each{box ->
-					out << "<li>${remoteLink(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:olfEvHandler.boxViewChangedEvent.fire()', controller:'box', action:'showBoxInTab', update:[success:'boxView', failure:'boxView'], id: params.id, params: '\'subDataObj='+ params.subDataObj + '&boxId=' + box.id + '\''){box.toString().replace(' - ', ' >> ')}}"
+					out << "<li>${remoteLink(before: '\$(\'boxView\').update(\'<img src='+createLinkTo(dir:'/images',file:'spinner.gif')+' border=0 width=16 height=16/>\')', onSuccess: 'javascript:if(olfEvHandler)olfEvHandler.boxViewChangedEvent.fire();', controller:'box', action:'showBoxInTab', update:[success:'boxView', failure:'boxView'], id: params.id, params: '\'subDataObj='+ params.subDataObj + '&boxId=' + box.id + '\''){box.toString().replace(' - ', ' >> ')}}"
                     if(subDataObjs.get(box.id)) out << " | " + subDataObjs.get(box.id).toString()
                     out << "</li>"
 				}
@@ -239,9 +239,10 @@ public class BoxTagLib {
 			var updateShowCurrentBoxLabel = function(type, args, me) {
 				if(args.length > 0)	${remoteFunction(controller:'box', action:'currentBox', params: '\'boxId=\'+args[0]', update:[success: 'currentBoxLabel', error: 'currentBoxLabel'])}
 			}
-			
-			olfEvHandler.boxViewChangedEvent.subscribe(updateEntitiesLeft, this);
-			olfEvHandler.boxViewChangedEvent.subscribe(updateShowCurrentBoxLabel, this);
+			if(olfEvHandler){
+			    olfEvHandler.boxViewChangedEvent.subscribe(updateEntitiesLeft, this);
+			    olfEvHandler.boxViewChangedEvent.subscribe(updateShowCurrentBoxLabel, this);
+            }
 			</script>"""
 	}
 	
