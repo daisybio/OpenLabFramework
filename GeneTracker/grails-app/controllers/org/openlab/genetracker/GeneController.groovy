@@ -14,7 +14,6 @@ class GeneController extends DataObjectController{
 	
 	def scaffold = Gene
 	def NCBIParserService
-    
 	/**
 	 * Show NCBI JSON output for a accession number
 	 */
@@ -91,7 +90,7 @@ class GeneController extends DataObjectController{
 		
 		def newGene = new Gene()
 		
-		def domainClass = ApplicationHolder.application.getDomainClass(oldGene.getClass().name)
+		def domainClass = grailsApplication.getDomainClass(oldGene.getClass().name)
 		
 		domainClass?.persistentProperties.each{prop ->
 			if((!prop.association || prop.oneToOne) && (prop.name != "id"))

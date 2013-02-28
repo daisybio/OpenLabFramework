@@ -4,7 +4,8 @@
                             <th>CellLine</th>
                             <th>Acceptor</th>
                             <th>First Recombinant</th>
-                            <th>Second Recombinant</th>
+                            <th>Second Recombinant
+                            <th>Colony Number</th>
                             <th>Last Update</th>
                  		    <th>&nbsp;</th>
                         </tr>
@@ -16,6 +17,7 @@
                             <td>${cellLineDataInstance.acceptor}</td>
                             <td>${cellLineDataInstance.firstRecombinant}</td>
                             <td>${cellLineDataInstance.secondRecombinant}</td>
+                            <td>${cellLineDataInstance.colonyNumber}</td>
                             <td><g:formatDate type="date" date="${cellLineDataInstance.lastUpdate}" /></td>
            					<td class="actionButtons">
 								<span class="actionButton">
