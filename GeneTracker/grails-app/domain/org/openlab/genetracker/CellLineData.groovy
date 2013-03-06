@@ -66,10 +66,10 @@ class CellLineData extends DataObject {
 
     String toBarcode() {
         if (secondRecombinant != null)
-            "${cultureMedia ?: ''} - ${cellLine} - ${acceptor}~${firstRecombinant}~${secondRecombinant}"
+            "${cultureMedia ?: ''} - ${cellLine} - ${acceptor}~${firstRecombinant}~${secondRecombinant} - ${colonyNumber?:''}"
         else if (firstRecombinant != null)
-            "${cultureMedia ?: ''} - ${cellLine} - ${acceptor}~${firstRecombinant}"
-        else "${cultureMedia ?: ''}~${cellLine}"
+            "${cultureMedia ?: ''} - ${cellLine} - ${acceptor}~${firstRecombinant} - ${colonyNumber?:''}"
+        else "${cultureMedia ?: ''}~${cellLine}~${colonyNumber?:''}"
     }
 
     static String type = "cellLineData"

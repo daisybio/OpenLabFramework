@@ -29,7 +29,7 @@ Back to print dialog</g:remoteLink></span>
             var printers = dymo.label.framework.getPrinters();
             if (printers.length == 0)
             {
-                alert("No DYMO printers are installed. Install DYMO printers.");
+                alert("No DYMO printers are installed. Install a DYMO printer to print.");
                 return;
             }
 

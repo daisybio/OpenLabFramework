@@ -22,4 +22,5 @@ Servers
 /testDB.script
 /testDB.properties
 /testDB.log
-*/.idea
+.idea/*
+
