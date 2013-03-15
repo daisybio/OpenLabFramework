@@ -44,7 +44,7 @@ grails.project.dependency.resolution = {
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.7.1"
         runtime ":resources:1.1.6"
-        runtime ":database-migration:1.3.2"
+        //runtime ":database-migration:1.3.2"
         build ":tomcat:$grailsVersion"
 
         compile ":searchable:0.6.4"
@@ -59,6 +59,7 @@ grails.project.dependency.resolution = {
         compile ":spring-security-cas:1.0.5"
         compile ':webxml:1.4.1'
         compile ":spring-mobile:0.4"
+        //compile ":standalone:1.1.1"
     }
 
 }

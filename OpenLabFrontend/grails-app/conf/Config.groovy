@@ -98,6 +98,17 @@ environments {
         openlab.database.name = 'cloud mySQL instance'
         grails.serverURL = "http://openlabframework.cloudfoundry.com"
     }
+    standalone {
+        dataSource {
+            pooled = true
+            driverClassName = "org.h2.Driver"
+            username = "sa"
+            password = ""
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:h2:file:olfDB;MVCC=TRUE"
+        }
+        openlab.upload.dir = "upload/"
+    }
 
 }
 // log4j configuration
@@ -172,7 +183,7 @@ grails.resources.modules = {
 }
 
 //db migration
-grails.plugin.databasemigration.changelogFileName = 'changelog-1.0.groovy'
+//grails.plugin.databasemigration.changelogFileName = 'changelog-1.0.groovy'
 
 //searchable plugin interfers with db migration, turn off for now.
 searchable {
