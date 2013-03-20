@@ -25,6 +25,7 @@
     <r:require module="bubbling-dispatcher"/>
     <!-- customized CSS files for yui -->
     <r:require modules="myyui"/>
+    <r:require module="fileuploader" />
     <!-- custom event handling -->
     <r:script disposition="head">
 

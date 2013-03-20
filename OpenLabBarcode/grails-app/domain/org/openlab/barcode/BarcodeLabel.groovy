@@ -4,7 +4,6 @@ class BarcodeLabel {
 
 	String name
 	String barcodeType
-	String parameters
 	String xml
 	
 	static mapping = {

@@ -31,7 +31,6 @@ class barcodeMenuModule implements MenuModule{
 					menuitem(controller: 'barcodeLabel', action: action, label: 'Labels')
 					menuitem(controller: 'barcodeDataObject', action: action, label: 'Supported Types')
 					menuitem(controller: 'barcode', action: action, label: 'Barcodes')
-					menuitem(controller: 'barcode', action: "printerSettings", label: 'Printer Settings')
 				}
 			}
 		

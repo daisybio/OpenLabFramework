@@ -8,7 +8,7 @@ class BarcodeSite {
 	String siteLetter
 	
 	static constraints = {
-		siteLetter(maxSize: 2)
+		siteLetter(maxSize: 2, unique: true)
 	}
 	
 	static mapping = {

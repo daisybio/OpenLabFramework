@@ -1,19 +1,29 @@
 <div id='attachments_${slot}' style="oveflow:hidden;" onmouseover="attachQ.select();">
 
-<g:form enctype="multipart/form-data" name="uploadForm" action="createWithAddin" controller="dataObjectAttachment">
+<g:formRemote update="updateMe" name="uploadForm" url="[action:'createWithAddin', controller:'dataObjectAttachment']">
 
-<div id="updateMe"><h2 style="float:left;">Attachments</h2></div>
-<div style="float:right;"><g:submitButton name="submit" value="submit"/></div>
+<div id="updateMe"><h2>Attachments</h2></div>
 
 <g:hiddenField name="suggestQuery" value="true"/>
+<g:hiddenField id="fileNameInput" name="fileName" value=""/>
+<g:hiddenField id="tempFileInput" name="tempFile" value=""/>
+
 <div>
-	<div id="files">
-		<input type="file" name="attachment"/>
+	<div id="files" style="float:right;">
+		<!--<input type="file" name="attachment"/>-->
+        <uploader:uploader id="attachment" url="${[controller:'dataObjectAttachment', action:'uploadFile']}">
+            <uploader:onComplete>
+               alert(responseJSON.success);
+               document.getElementById('fileNameInput').value = fileName;
+               document.getElementById('tempFileInput').value = responseJSON.tempFile;
+               document.getElementById('selectDataObjectDiv').style.display = "block";
+            </uploader:onComplete>
+        </uploader:uploader>
 
-    <div style="background-color: #eeeeee;">Uploading TaqMan result? <g:checkBox name="taqMan" value="true"/></div>
+    <!--<div style="background-color: #eeeeee;">Uploading TaqMan result? <g:checkBox name="taqMan" value="true"/></div>-->
     </div>
-
-	 - Attach to? Search and select! -
+    <div id="selectDataObjectDiv" style="display: none; float:left;">
+	 Select something to attach the file to:
 				<gui:autoComplete
 		   	        minQueryLength="3"
 			        queryDelay="0.5"
@@ -24,29 +34,17 @@
 		        	controller="dataObjectAttachment"
 		        	action="searchResultsAsJSON"
 				/>
+    </div>
 </div>
 <div id="selection">
 	<br/><br/>
 </div>
-</g:form>
+    <g:submitButton name="Submit"/>
+</g:formRemote>
 </div>
 </div>
 
 <script>
-function createAnotherFileInput(){
-
-	var yafile = document.createElement('input');
-	yafile.setAttribute('type', 'file');
-	yafile.setAttribute('name', 'attachment');
-
-	var files = document.getElementById('files');
-	files.appendChild(yafile);
-
-	var button = document.getElementById("fileAddButton")
-	if(files.getElementsByTagName("input").length == 3)
-		button.parentNode.removeChild(button);
-	
-}
 
 YAHOO.util.Event.onDOMReady(function() {
 	
@@ -58,6 +56,7 @@ YAHOO.util.Event.onDOMReady(function() {
 		var listElId = YAHOO.util.Dom.generateId(listEl, 'attachmentLink_')
 		listEl.setAttribute('name', 'attachmentLink_'+elItem[2][1])
 		listEl.setAttribute('type', 'text');
+        listEl.setAttribute('readonly');
 		listEl.setAttribute('value', elItem[2][0]);
 		divSurround.appendChild(listEl);
 

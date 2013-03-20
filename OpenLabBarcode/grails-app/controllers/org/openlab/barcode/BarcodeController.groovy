@@ -232,36 +232,4 @@ class BarcodeController {
 			render(template: "/layouts/barcodeCreate", plugin: "open-lab-barcode", model: [update: true, barcodeDataObject: barcode.barcodeDataObject, dataObject: barcode.dataObject, barcodeInstance: barcode])
 		
 	}
-	
-	def printerSettings = {
-		[baseUrl : settingsService.getDefaultSetting(key: "barcode.baseUrl")]
-	}
-	
-	def changeBaseUrl = {
-		if(params.baseUrl)
-		{
-			settingsService.setDefaultSetting(key: "barcode.baseUrl", value: params.baseUrl)
-		}
-		
-		redirect action: "printerSettings"
-	}
-	
-	def testBaseUrl = {
-		def url = new URL(params.baseUrl + "ping?name=" + sec.loggedInUserInfo(field:'username'))
-		
-		def connection
-		
-		try{
-			connection = url.openConnection()
-			
-			if (connection?.responseCode != 200)
-				render ("<span class='message'>Could not connect: response cod ${connection.responseCode}</span>")
-			
-			else 
-				render ("<span class='message'>Printer Webservice says: " + connection.content.text.toString() + "</span>")
-		}catch(Exception e)
-		{
-			render ("<span class='message'>Could not connect: "+ e.getMessage() + "</span>")
-		} 
-	}
 }

@@ -1,15 +1,20 @@
 package openlab.attachments
 
-import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
-
 import grails.converters.JSON
 import org.apache.commons.collections.Predicate
 import org.springframework.util.ClassUtils
+import uk.co.desirableobjects.ajaxuploader.AjaxUploaderService
+import uk.co.desirableobjects.ajaxuploader.exception.FileUploadException
+import javax.servlet.http.HttpServletRequest
+import org.springframework.web.multipart.MultipartHttpServletRequest
+import org.springframework.web.multipart.MultipartFile
 
 class DataObjectAttachmentController {
 
     def searchableService
     def attachmentableService
+    def ajaxUploaderService
+    def grailsApplication
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -65,12 +70,37 @@ class DataObjectAttachmentController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [dataObjectAttachmentInstanceList: DataObjectAttachment.list(params), dataObjectAttachmentInstanceTotal: DataObjectAttachment.count()]
+        [dataObjectAttachmentInstanceList: DataObjectAttachment.list(params), dataObjectAttachmentInstanceTotal: DataObjectAttachment.count(), bodyOnly: false]
     }
 
     /**
      * Allows to create new file attachment using an addin. Currently supports only one file at a time, but could do with more in theory.
      */
+
+    def uploadFile = {
+        def timestamp = new java.util.Date().time
+
+        def uploadedTempFile = new File(grailsApplication.config.openlab?.upload?.dir?:"" + "upload" + timestamp + ".tmp")
+
+        println uploadedTempFile
+        if(!uploadedTempFile.canWrite()){
+            return render(text: [success: false] as JSON, contentType: 'text/json')
+        }
+
+        try{
+            if (request instanceof MultipartHttpServletRequest) {
+                MultipartFile uploadedFile = ((MultipartHttpServletRequest) request).getFile('qqfile')
+                ajaxUploaderService.upload(uploadedFile.inputStream, uploadedTempFile)
+            }
+        } catch(Exception e){
+            log.error("Failed to upload file.", e)
+            return render(text: [success:false] as JSON, contentType:'text/json')
+        }
+
+        return render(text: [success:true, tempFile: uploadedTempFile.path] as JSON, contentType:'text/json')
+
+    }
+
     def createWithAddin = {
 
         def doaInstance = new DataObjectAttachment();
@@ -93,54 +123,41 @@ class DataObjectAttachmentController {
 
                 def domainInstance = grailsApplication.getArtefactByLogicalPropertyName("Domain", domainName.toString())?.getClazz()?.get(id)
 
-                /*if(domainInstance == null)
-                    {
-                         render(controller:'dataObjectAttachment', action: 'edit', id: doaInstance.id)
-                    }*/
-
                 if (domainInstance)
                     doaInstance.addToDataObjects(domainInstance)
             }
         }
 
-        //get files from request
-        def fileIterator = request.getFileNames()
 
         //create attachments for these files using the dataObjects extracted above.
-        while (fileIterator.hasNext()) {
-            def f = request.getFile(fileIterator.next())
+        def f = new File(params.tempFile)
 
-            if (!f.empty) {
-                def timestamp = new java.util.Date()
+        if (f.canRead()) {
+            def timestamp = new java.util.Date()
 
-                doaInstance.setFileUploadDate(timestamp)
+            doaInstance.setFileUploadDate(timestamp)
 
-                String folder = CH?.config?.openlab?.upload?.dir ?: ""
-                String newPath = folder + timestamp.getTime().toString() + "_" + f.getOriginalFilename()
-                doaInstance.setFileName(f.getOriginalFilename())
-                def fileArray = f.getOriginalFilename().split("\\.")
-                doaInstance.setFileType(fileArray[fileArray.length - 1].toUpperCase())
-                doaInstance.setPathToFile(newPath)
-                doaInstance.setDescription("")
+            String folder = grailsApplication.config.openlab?.upload?.dir?: ""
+            String newPath = folder + timestamp.getTime().toString() + "_" + params.fileName
+            doaInstance.setFileName(params.fileName)
+            def fileArray = params.fileName.toString().split("\\.")
+            doaInstance.setFileType(fileArray[fileArray.length - 1].toUpperCase())
+            doaInstance.setPathToFile(newPath)
+            doaInstance.setDescription("")
 
-                f.transferTo(new File(newPath))
-            }
+            f.renameTo(new File(newPath))
+        }
+        else{
+            render "<div class='message'>Failed to read file</div>"
+            return
         }
 
         if (!doaInstance.save(flush: true)) {
-            flash.message = "Upload failed"
-            redirect(controller: 'dataObjectAttachment', action: 'edit', id: doaInstance.id)
+            render "<div class='message'>Save failed</div>"
+            return
         }
 
-        flash.message = "Upload successful!"
-
-        if (params.taqMan) {
-            redirect(controller: 'taqManResult', action: 'create', params: ['attachment.id': doaInstance.id])
-        }
-
-        else {
-            redirect(controller: 'dataObjectAttachment', action: 'edit', id: doaInstance.id)
-        }
+        render  "<div class='message'>Save successful!</div>"
     }
 
     /**
@@ -253,7 +270,7 @@ class DataObjectAttachmentController {
                     }
                     else {
                         flash.message = "Could not write on file!"
-                        redirect(action: "list")
+                        redirect(action: "show", id: params.id)
                     }
 
                     dataObjectAttachmentInstance.delete(flush: true)

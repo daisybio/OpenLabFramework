@@ -15,7 +15,7 @@ class BarcodeDataObject {
 	}
 	
 	static constraints = {
-		typeLetter(maxSize: 2)
+		typeLetter(maxSize: 2, unique: true)
 		fullName validator: { val, obj ->
 			if(org.codehaus.groovy.grails.commons.ApplicationHolder.application.mainContext.getBean("grailsApplication").getDomainClass(val.toString()))
 				return true

@@ -13,6 +13,8 @@ class DataObjectAttachment implements Serializable {
 
     static hasMany = [dataObjects: DataObject]
 
+    static searchable = true
+
     static constraints = {
     }
 

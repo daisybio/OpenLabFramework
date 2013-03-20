@@ -5,14 +5,22 @@
 	<g:hiddenField name="dataObject.id" value="${dataObject?.id}"/>
 	<g:hiddenField name="subDataObject.id" value="${subDataObject?.id}"/>
 	<g:hiddenField name="barcodeDataObject.id" value="${barcodeDataObject?.id}"/>
-    <g:hiddenField name="site.id" value="${org.openlab.barcode.BarcodeSite.findByName("Odense").id}"/>
     <g:if test="${update==true}">
 	    <g:hiddenField name="id" value="${barcodeInstance?.id}" />
         <g:hiddenField name="version" value="${barcodeInstance?.version}" />
     </g:if>
     <div class="dialog">
         <table>
-            <tbody>            
+            <tbody>
+                <tr class="prop">
+                    <td valign="top" class="name">
+                        <label for="description"><g:message code="barcode.site.label" default="Site" /></label><g:select name="site.id" from="${org.openlab.barcode.BarcodeSite.list()}" optionKey="id" value="${barcodeInstance?.site?.id}"  />
+                    </td>
+                    <td valign="top" class="value ${hasErrors(bean: barcodeInstance, field: 'site', 'errors')}">
+                        <label for="label"><g:message code="barcode.label.label" default="Label" /></label><g:select name="label.id" from="${org.openlab.barcode.BarcodeLabel.list()}" optionKey="id" value="${barcodeInstance?.label?.id}"  />
+                    </td>
+            </tr>
+
                 <tr class="prop">
                     <td valign="top" class="name">
                         <label for="description"><g:message code="barcode.description.label" default="Description" /></label>
@@ -21,16 +29,7 @@
                         <g:textField onmouseover="this.select();" name="description" value="${barcodeInstance?.description}" />
                     </td>
                 </tr>
-            
-                <tr class="prop">
-                    <td valign="top" class="name">
-                        <label for="label"><g:message code="barcode.label.label" default="Label" /></label>
-                    </td>
-                    <td valign="top" class="value ${hasErrors(bean: barcodeInstance, field: 'label', 'errors')}">
-                        <g:select name="label.id" from="${org.openlab.barcode.BarcodeLabel.list()}" optionKey="id" value="${barcodeInstance?.label?.id}"  />
-                    </td>
-                </tr>
-            
+
                 <tr class="prop">
                     <td valign="top" class="name">
                         <label for="text"><g:message code="barcode.text.label" default="Text" /></label>
