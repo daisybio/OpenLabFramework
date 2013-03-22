@@ -40,9 +40,17 @@
             					<g:form controller="dataObjectAttachment" method="post" >
                 					<g:hiddenField name="id" value="${dataObjectAttachmentInstance?.id}" />
                 					<g:hiddenField name="version" value="${dataObjectAttachmentInstance?.version}" />
+                                    <g:hiddenField name="bodyOnly" value="${true}"/>
 									<g:link controller="dataObjectAttachment" action="download" id="${dataObjectAttachmentInstance.id}"><g:attachmentIcon type="download"/></g:link> |
-									<g:actionSubmit class="edit" action="edit" value="edit"/>								
-									<g:actionSubmit class="delete" action="delete" value="delete" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+									<g:submitToRemote class="edit" update="body" action="show" controller="dataObjectAttachment" value="show"/>
+									<g:remoteLink class="delete"
+                                                      onSuccess="${remoteFunction(controller: 'dataObjectAttachment', action: 'renderAttachmentsTab', id: dataObject.id, update: 'attachmentsTab')}"
+                                                      id = "${dataObjectAttachmentInstance?.id}"
+                                                      controller="dataObjectAttachment"
+                                                      action="deleteWithinTab"
+                                                      value="delete"
+                                                      before="if(!confirm('Are you sure?')) return false"
+                                    >delete</g:remoteLink>
 								</g:form>
 							</td>
                         </tr>
@@ -50,12 +58,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="paginateButtons">
-                <g:paginate total="${dataObjectAttachmentInstanceTotal}" />
-            </div>
         </g:if>
         <g:else>
-            There are not files attached to this object instance
+            There are no files attached to this object instance
         </g:else>
         </div>
 

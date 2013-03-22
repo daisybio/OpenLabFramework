@@ -181,6 +181,11 @@ grails.resources.modules = {
         resource url: 'js/jquery.mobile.autocomplete.js'
         resource url: '/js/jquery.tinyscrollbar.min.js'
     }
+    overrides{
+        fileuploader{
+            resource id: '/css/uploader.css', url: '/css/custom_uploader.css'
+        }
+    }
 }
 
 //db migration

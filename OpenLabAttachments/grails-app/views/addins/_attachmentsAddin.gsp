@@ -1,21 +1,35 @@
+<html>
 <div id='attachments_${slot}' style="oveflow:hidden;" onmouseover="attachQ.select();">
 
-<g:formRemote update="updateMe" name="uploadForm" url="[action:'createWithAddin', controller:'dataObjectAttachment']">
+<g:formRemote update="attachments_${slot}" name="uploadForm" id="uploadForm" url="[action:'createWithAddin', controller:'dataObjectAttachment']">
 
-<div id="updateMe"><h2>Attachments</h2></div>
+<div id="updateMe">
+    <h2>Attachments</h2>
+</div>
 
 <g:hiddenField name="suggestQuery" value="true"/>
-<g:hiddenField id="fileNameInput" name="fileName" value=""/>
-<g:hiddenField id="tempFileInput" name="tempFile" value=""/>
+<g:hiddenField id="filesUploaded" name="filesUploaded" value=""/>
 
-<div>
-	<div id="files" style="float:right;">
+	<div id="files">
 		<!--<input type="file" name="attachment"/>-->
-        <uploader:uploader id="attachment" url="${[controller:'dataObjectAttachment', action:'uploadFile']}">
+        <uploader:uploader id="attachment" multiple="false" url="${[controller:'dataObjectAttachment', action:'uploadFile']}">
+
             <uploader:onComplete>
-               alert(responseJSON.success);
-               document.getElementById('fileNameInput').value = fileName;
-               document.getElementById('tempFileInput').value = responseJSON.tempFile;
+               document.getElementById('updateMe').innerHTML="<div class='message'>Upload successful</div>"
+
+               var pathElt = document.createElement("input");
+               pathElt.type = "hidden";
+               pathElt.name = "filePath_" + id;
+               pathElt.value = responseJSON.tempFile;
+
+               var nameElt = document.createElement("input");
+               nameElt.type = "hidden";
+               nameElt.name = "fileName_" + id;
+               nameElt.value = fileName;
+
+               jQuery('#uploadForm').append(pathElt);
+               jQuery('#uploadForm').append(nameElt);
+               document.getElementById('filesUploaded').value = id;
                document.getElementById('selectDataObjectDiv').style.display = "block";
             </uploader:onComplete>
         </uploader:uploader>
@@ -34,15 +48,16 @@
 		        	controller="dataObjectAttachment"
 		        	action="searchResultsAsJSON"
 				/>
-    </div>
-</div>
-<div id="selection">
+
+    <div id="selection" style="height:100px; scroll:overflow;">
 	<br/><br/>
-</div>
+
+    </div>
     <g:submitButton name="Submit"/>
+    </div>
 </g:formRemote>
 </div>
-</div>
+
 
 <script>
 
@@ -75,3 +90,4 @@ YAHOO.util.Event.onDOMReady(function() {
 	  });
 	});
 </script>
+</html>

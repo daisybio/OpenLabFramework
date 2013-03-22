@@ -1,11 +1,6 @@
 package org.openlab.genetracker
 
-import java.util.Date;
-import org.openlab.security.User;
-import grails.converters.*;
-import org.openlab.data.*;
-import org.openlab.genetracker.*
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DataIntegrityViolationException
 
 /**
  * DataTableController for _viabilityTab.gsp
@@ -31,7 +26,6 @@ class ViabilityController{
         }
         else{
             def model = new org.openlab.module.tab.ViabilityModule().getModelForDomainClass("gene", params["gene.id"])
-            println model
             render(template: "/tabs/viabilityTab", model: model)
         }
     }

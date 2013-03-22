@@ -36,7 +36,7 @@ class AttachmentsTabModule implements Module{
 			createAlias("dataObjects", "dos")
 			eq("dos.id", Long.valueOf(id))
 		}
-		return [dataObjectAttachmentInstanceList: attachments, dataObjectAttachmentInstanceTotal: attachments?.size()?:0]
+		return [dataObjectAttachmentInstanceList: attachments, dataObject: dataObject, dataObjectAttachmentInstanceTotal: attachments?.size()?:0]
 	}
 
     def isMobile()

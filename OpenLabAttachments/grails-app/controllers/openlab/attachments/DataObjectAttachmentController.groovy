@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile
 class DataObjectAttachmentController {
 
     def searchableService
-    def attachmentableService
+    def fileUploadHelperService
     def ajaxUploaderService
     def grailsApplication
 
@@ -78,21 +78,17 @@ class DataObjectAttachmentController {
      */
 
     def uploadFile = {
+        //create temporary file
         def timestamp = new java.util.Date().time
-
-        def uploadedTempFile = new File(grailsApplication.config.openlab?.upload?.dir?:"" + "upload" + timestamp + ".tmp")
-
-        println uploadedTempFile
-        if(!uploadedTempFile.canWrite()){
-            return render(text: [success: false] as JSON, contentType: 'text/json')
-        }
+        def uploadedTempFile = new File(((grailsApplication.config.openlab?.upload?.dir?:"") + "upload" + timestamp + ".tmp"))
 
         try{
-            if (request instanceof MultipartHttpServletRequest) {
-                MultipartFile uploadedFile = ((MultipartHttpServletRequest) request).getFile('qqfile')
-                ajaxUploaderService.upload(uploadedFile.inputStream, uploadedTempFile)
-            }
-        } catch(Exception e){
+                if(!new File(grailsApplication.config.openlab?.upload?.dir?:"").canWrite()){
+                    return render(text: [success: false] as JSON, contentType: 'text/json')
+                }
+
+                ajaxUploaderService.upload((InputStream) fileUploadHelperService.selectInputStream(request), uploadedTempFile)
+        } catch(FileUploadException e){
             log.error("Failed to upload file.", e)
             return render(text: [success:false] as JSON, contentType:'text/json')
         }
@@ -103,61 +99,31 @@ class DataObjectAttachmentController {
 
     def createWithAddin = {
 
-        def doaInstance = new DataObjectAttachment();
+        //create one dataobjectattachment for each file that has been uploaded
+        for(int currentFile = 0; currentFile <= params.int("filesUploaded"); currentFile++){
+            println params."fileName_${currentFile}"
 
-        //extract attachmentLink_* from params. it contains necessary information about which dataObject to attach to.
-        for (String key in params.keySet()) {
-            if (key.startsWith("attachmentLink_")) {
+            //fill a dataobject attachment instance with linked data object
+            DataObjectAttachment doaInstance = fileUploadHelperService.createDataObjectAttachmentInstance(params)
 
-                def keySplitArray = key.split("_")
-                def geneAndId = keySplitArray[1]
+            //rename the temporary uploaded file to a permanent file and link it to the doaInstance
+            doaInstance = fileUploadHelperService.processTempFile(params."filePath_${currentFile}", params."fileName_${currentFile}", doaInstance)
+            if(!doaInstance){
+                flash.message = "Failed to process uploaded file"
+                render template: "../addins/attachmentsAddin", layout: "body"
+                return
+            }
 
-                def geneAndIdSplitArray = geneAndId.split(":")
-                def id = Long.valueOf(geneAndIdSplitArray[1])
-                def domainName = geneAndIdSplitArray[0]
-
-                def splitArray = params[key].split(":")
-
-                //def domainName = splitArray[0]
-                def name = splitArray[1]
-
-                def domainInstance = grailsApplication.getArtefactByLogicalPropertyName("Domain", domainName.toString())?.getClazz()?.get(id)
-
-                if (domainInstance)
-                    doaInstance.addToDataObjects(domainInstance)
+            //save it
+            else if (!doaInstance.save(flush: true)) {
+                flash.message = "Save failed"
+                render template: "../addins/attachmentsAddin", layout: "body"
+                return
             }
         }
 
-
-        //create attachments for these files using the dataObjects extracted above.
-        def f = new File(params.tempFile)
-
-        if (f.canRead()) {
-            def timestamp = new java.util.Date()
-
-            doaInstance.setFileUploadDate(timestamp)
-
-            String folder = grailsApplication.config.openlab?.upload?.dir?: ""
-            String newPath = folder + timestamp.getTime().toString() + "_" + params.fileName
-            doaInstance.setFileName(params.fileName)
-            def fileArray = params.fileName.toString().split("\\.")
-            doaInstance.setFileType(fileArray[fileArray.length - 1].toUpperCase())
-            doaInstance.setPathToFile(newPath)
-            doaInstance.setDescription("")
-
-            f.renameTo(new File(newPath))
-        }
-        else{
-            render "<div class='message'>Failed to read file</div>"
-            return
-        }
-
-        if (!doaInstance.save(flush: true)) {
-            render "<div class='message'>Save failed</div>"
-            return
-        }
-
-        render  "<div class='message'>Save successful!</div>"
+        flash.message = "Save successful"
+        render template: "../addins/attachmentsAddin", layout: "body"
     }
 
     /**
@@ -296,5 +262,50 @@ class DataObjectAttachmentController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment'), params.id])}"
             redirect(action: "list")
         }
+    }
+
+    def deleteWithinTab = {
+        println params
+        def dataObjectAttachmentInstance = DataObjectAttachment.get(params.id)
+        if (dataObjectAttachmentInstance) {
+            try {
+                File file = new File(dataObjectAttachmentInstance.getPathToFile());
+
+                if (file.exists()) {
+                    if (file.canWrite()) {
+                        file.delete();
+                    }
+                    else {
+                        render (text: [success: false, message: "Could not write on file!"] as JSON, contentType:'text/json')
+                    }
+
+                    dataObjectAttachmentInstance.delete(flush: true)
+                    flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment'), params.id])}"
+                }
+                else {
+                    dataObjectAttachmentInstance.delete(flush: true)
+                }
+
+                render (text: [success: false, message: "File does not exist, deleted only the database entry."] as JSON, contentType:'text/json')
+            }
+            catch (org.springframework.dao.DataIntegrityViolationException e) {
+                def message = "${message(code: 'default.not.deleted.message', args: [message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment'), params.id])}"
+                render (text: [success: false, message: message] as JSON, contentType:'text/json')
+            }
+            catch (IOException ioe) {
+                def message = "${message(code: 'default.not.deleted.message', args: [message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment'), params.id])}"
+                render (text: [success: false, message: message] as JSON , contentType:'text/json')
+            }
+        }
+        else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'dataObjectAttachment.label', default: 'DataObjectAttachment'), params.id])}"
+            render (text: [success: true] as JSON, contentType:'text/json')
+        }
+    }
+
+    def renderAttachmentsTab = {
+        def module = new org.openlab.module.tab.AttachmentsTabModule()
+        def model = module.getModelForDomainClass("", params.id)
+        render template: "../tabs/attachmentsTab", model: model
     }
 }
