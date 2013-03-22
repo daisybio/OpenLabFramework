@@ -19,12 +19,9 @@ class ${className}Controller {
         def ${propertyName}Total
         def ${propertyName}Criteria
 
-        if(params.format)
-        {
-            def exportParams = params
-            exportParams.offset = 0
-            exportParams.max = ${className}.count()
-        }
+        def exportParams = params.clone()
+        exportParams.offset = 0
+        exportParams.max = ${className}.count()
 
         if(params.Filter == "Filter"){
            ${propertyName}List = ${className}.list()
@@ -47,11 +44,14 @@ class ${className}Controller {
            ${propertyName}Total = ${propertyName}List.totalCount
         }
         else{
-            ${propertyName}List = ${className}.list(params.format?exportParams:params)
+            ${propertyName}List = ${className}.list(params)
             ${propertyName}Total = ${className}.count()
         }
 
         if(params?.format && params.format != "html"){
+            ${propertyName}List = ${className}.list(exportParams)
+            ${propertyName}Total = ${className}.count()
+
             response.contentType = grailsApplication.config.grails.mime.types[params.format]
             response.setHeader("Content-disposition", "attachment; filename=${propertyName}.\${params.extension}")
 

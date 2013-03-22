@@ -81,10 +81,9 @@
     <!-- RIGHT: Addins -->
     <sec:ifLoggedIn>
         <div id='right1' align="center">
-            <richui:portlet views='[1, 2, 3, 4, 5]' controller="addin" action="swapPositions" readOnly='true'>
+            <richui:portlet views='[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]' controller="addin" action="swapPositions" readOnly='true'>
                 <!-- Taglib providing addins -->
-                <addin:layoutAddins controller="${session.bodyController ? params.bodyController : params.controller}"
-                                    numberOfViews="${numberOfAddins ? numberOfAddins : 4}"/>
+                <addin:layoutAddins controller="${session.bodyController ? params.bodyController : params.controller}"/>
             </richui:portlet>
         </div>
 
@@ -109,7 +108,7 @@
             var layout = new YAHOO.widget.Layout({
                 units:[
                     { position:'top', height:100, body:'top1', zIndex:1, scroll:null },
-                    { position:'right', header:'Addins', width:300, resize:false, collapse:true, scroll:true, body:'right1', animate:true, gutter:'5' },
+                    { position:'right', header:'Addins', width:300, resize:false, collapse: true, scroll:true, body:'right1', animate:true, gutter:'5' },
                     { position:'bottom', height:28, body:'bottom1' },
                     { position:'left', header:'Project Tree', width:200, body:'left1', gutter:'5', resize:true, scroll:true, animate:true, collapse:true},
                     { position:'center', body:'center1', gutter:'5 0', scroll:true }
@@ -117,6 +116,34 @@
             });
 
             layout.render();
+
+            var right = layout.getUnitByPosition('right');
+            var left = layout.getUnitByPosition('left');
+            if(${g.userSetting(key:"left.column.collapse")?:false})
+            {
+                left.collapse();
+            }
+
+            if(${g.userSetting(key:"right.column.collapse")?:false})
+            {
+                right.collapse();
+            }
+
+            left.on('collapse', function() {
+                ${remoteFunction(controller: 'usersettings', action: 'collapseLeftColumn')}
+            });
+
+            left.on('expand', function() {
+                ${remoteFunction(controller: 'usersettings', action: 'expandLeftColumn')}
+            });
+
+            right.on('collapse', function() {
+                ${remoteFunction(controller: 'usersettings', action: 'collapseRightColumn')}
+            });
+
+            left.on('expand', function() {
+                ${remoteFunction(controller: 'usersettings', action: 'expandRightColumn')}
+            });
         });
 
     </r:script>

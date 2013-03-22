@@ -26,10 +26,10 @@
         	idField="KEY"
         	controller="settings"
         	action="settingsAsJSON"
-	/></td><td><div id="showResult">&nbsp;<br></br></div></td></tr></table>
+	/></td><td><div id="showResult">&nbsp;</div></td></tr></table>
 	</div>
 	<div>
-	<g:form name="addSetting" action="add">
+	<g:formRemote onSuccess="alert('setting added');" name="addSetting" url="${[action:'add']}">
 	<table>
 	  <tr>
 	  	<th colspan=2>Add new Setting</th>
@@ -42,7 +42,7 @@
 	<div class="buttons">
    		<span class="button"><g:actionSubmit class="create" action="add" value="Add"/></span>
 	 </div>
-	 </g:form>
+	 </g:formRemote>
 	</div>
   </div>
 
@@ -79,12 +79,12 @@
 </div>
 
 </div>
-<script>
+<r:script>
 YAHOO.util.Event.onDOMReady(function() {
 	  GRAILSUI.settingsAutoComplete.itemSelectEvent.subscribe(function(type, args) {
-	     ${remoteFunction(action:"updateShowResult", params: '\'key=\'+GRAILSUI.settingsAutoComplete.getInputEl().getValue()', update: [success:'showResult',failure:'showResult'])};
+          ${remoteFunction(action:"updateShowResult", params: '\'key=\'+GRAILSUI.settingsAutoComplete.getInputEl().getValue()', update: [success:'showResult',failure:'showResult'])};
 	  });
 	});
-</script>	
+</r:script>
 </body>
 </html>

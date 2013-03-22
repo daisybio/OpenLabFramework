@@ -56,4 +56,25 @@ class UsersettingsController {
 		else render "Could not change language setting."
 		
 	}
+
+    def collapseLeftColumn(){
+        settingsService.setUserSetting(key: "left.column.collapse", value: "true")
+        render "ok"
+    }
+
+    def collapseRightColumn(){
+        settingsService.setUserSetting(key: "right.column.collapse", value: "true")
+        render "ok"
+    }
+
+    def expandLeftColumn(){
+        settingsService.setUserSetting(key: "left.column.collapse", value: "false")
+        render "ok"
+    }
+
+    def expandRightColumn(){
+        settingsService.setUserSetting(key: "right.column.collapse", value: "false")
+        render "ok"
+    }
+
 }

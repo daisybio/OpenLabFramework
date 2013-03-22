@@ -29,7 +29,8 @@ class SettingsController {
 	 * the corresponding result
 	 */
 	def updateShowResult = {
-		def value = settingsService.getSetting(key: params.key)
+		println params
+        def value = settingsService.getSetting(key: params.key)
 		
 		render (g.editInPlace(id: params.key, url: [action: 'editField', id: params.key], rows: 1, cols: 10, paramName: "value")
 		{
@@ -50,7 +51,7 @@ class SettingsController {
 	 * autocomplete box with choices.
 	 */
 	def settingsAsJSON = {
-	    def jsonList = settingsService.getSettingsDataSet().rows().findAll{it.key.startsWith(params.query)}
+	    def jsonList = UserSetting.findAllByKeyIlikeOrValueIlike("%${params.query}%", "%${params.query}%").collect{["KEY": it.key]}
 	    def jsonResult = [
 	        settings: jsonList
 	    ]

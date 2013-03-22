@@ -84,7 +84,7 @@
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:remotePaginate total="${dataObjectAttachmentInstanceTotal}?:0" params="${params}" />
+				<g:remotePaginate total="${dataObjectAttachmentInstanceTotal?:0}" params="${params}" />
 			</div>
 		</div>
     <script type="text/javascript">
