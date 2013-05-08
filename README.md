@@ -14,6 +14,13 @@ little developmental effort. Features currently included are among others:
 * Dynamic web-interface with heavy use of java-script and Ajax with the goal of being more responsive,
   intuitive, and interactive.
 
+For more information please have a look at the github WIKI where you can find more information for users, 
+administrators, and software developers:
+
+https://github.com/NanoCAN/OpenLabFramework/wiki
+
+For more information about our center, as well as for contact details: http://www.nanocan.org
+
 Release Notes:
 
 v. 1.1 First public release
