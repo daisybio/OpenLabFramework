@@ -77,11 +77,12 @@ class BootStrap {
 
                 break
 
-            case "demo":
+            case "cloud":
 
                 initSearchablePlugin()
 
                 break
+
         }
     }
 

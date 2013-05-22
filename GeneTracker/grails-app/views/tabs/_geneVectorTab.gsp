@@ -12,6 +12,7 @@
                  <th>Notes</th>
                  <th>Last Update</th>
                  <th>&nbsp;</th>
+                 <th>&nbsp;</th>
              </tr>
              </thead>
              <tbody>
@@ -35,6 +36,17 @@
                          <span class="actionButton">
                              <g:remoteLink controller="recombinant" action="show" params="[bodyOnly: true]" id="${geneVectorInstance.id}" update="[success:'body',failure:'body']">Show</g:remoteLink>
                          </span>
+                     </td>
+                     <g:if test="${geneVectorInstance.vector.type=='Integration (First)'}"><td class="actionButtons">
+                         <span class="actionButton">
+                             <g:remoteLink controller="cellLineData" action="create" params="${['firstRecombinant.id': geneVectorInstance.id, 'bodyOnly': true]}"  update="[success:'body',failure:'body']">Add cell line recombinant</g:remoteLink>
+                         </span>
+                     </g:if>
+                     <g:if test="${geneVectorInstance.vector.type=='Integration (Second)'}"><td class="actionButtons">
+                         <span class="actionButton">
+                         <g:remoteLink controller="cellLineData" action="create" params="${['secondRecombinant.id': geneVectorInstance.id, 'bodyOnly': true]}"  update="[success:'body',failure:'body']">Add cell line recombinant</g:remoteLink>
+                         </span>
+                     </g:if>
                      </td>
                  </tr>
              </g:each>

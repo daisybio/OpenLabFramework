@@ -27,37 +27,45 @@
  *
  * ############################################################################
  */
-package org.openlab.module.menu
+package org.openlab.module.operations
 
-import org.openlab.module.*;
-import groovy.xml.MarkupBuilder
+import org.openlab.genetracker.Gene
+import org.openlab.module.Module
+import org.openlab.genetracker.Recombinant
 
-class MasterDataMenuModule implements MenuModule{
-	
-	def getPriority()
-	{
-		-10
+class RecombinantOperationsModule implements Module{
+
+	def getPluginName() {
+		"gene-tracker"
 	}
-	
-	def getMenu()
+
+	def getTemplateForDomainClass(def domainClass)
 	{
-		def writer = new StringWriter()
-		def xml = new MarkupBuilder(writer)
+		if(domainClass == "recombinant") return "recombinantOperations"
+	}
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
+	{
+		if((type == "operations") && (domainClass == "recombinant")) return true
+		return false
+	}
 		
-		xml.root
+	def getModelForDomainClass(def domainClass, def id)
+	{
+		if(domainClass == "recombinant")
 		{
-			submenu(label: 'Master Data')
-			{
-				menuitem(controller: 'organism', action: 'list', label: 'Organisms')
-				menuitem(controller: 'mediumAdditive', action: 'list', label: 'Medium Additives')
-				menuitem(controller: 'origin', action: 'list', label: 'Origins')
-				menuitem(controller: 'cellLine', action: 'list', label: 'Cell Lines')
-				menuitem(controller: 'cultureMedia', action: 'list', label: 'Culture Media')
-				menuitem(controller: 'antibiotics', action: 'list', label: 'Antibiotics')
-				menuitem(controller: 'vector', action: 'list', label: 'Vectors')
-			}
+			def recombinant = Recombinant.get(id)
+			[recombinantInstance: recombinant]
 		}
-		
-		return writer.toString()
 	}
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }

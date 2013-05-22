@@ -48,8 +48,14 @@
                                     <label for="firstRecombinant"><g:message code="cellLineData.firstRecombinant.label" default="First Vector Combination" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: cellLineDataInstance, field: 'firstRecombinant', 'errors')}">
-                                    <g:select noSelection="['':'']" onChange="${remoteFunction(action: 'updateFirstVector', update: 'firstVectorSpan', params:'\'firstGene=\'+this.value')}" name="firstRecombinantGene.id" from="${org.openlab.genetracker.Gene.list(sort:'name')}" optionKey="id" value="${cellLineDataInstance?.firstRecombinant?.gene?.id}"  />
-                                    <span id="firstVectorSpan">${cellLineDataInstance?.firstRecombinant?.vector?:"Select a gene"}</span>
+                                    <g:if test="${cellLineDataInstance.firstRecombinant}">
+                                        <g:hiddenField name="firstRecombinant.id" value="${cellLineDataInstance.firstRecombinant.id}"/>
+                                        ${cellLineDataInstance.firstRecombinant}
+                                    </g:if>
+                                    <g:else>
+                                        <g:select noSelection="['':'']" onChange="${remoteFunction(action: 'updateFirstVector', update: 'firstVectorSpan', params:'\'firstGene=\'+this.value')}" name="firstRecombinantGene.id" from="${org.openlab.genetracker.Gene.list(sort:'name')}" optionKey="id" />
+                                        <span id="firstVectorSpan">${cellLineDataInstance?.firstRecombinant?.vector?:"Select a gene"}</span>
+                                    </g:else>
                                 </td>
                             </tr>
                         
@@ -58,8 +64,14 @@
                                     <label for="secondRecombinant"><g:message code="cellLineData.secondRecombinant.label" default="Second Vector Combination" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: cellLineDataInstance, field: 'secondRecombinant', 'errors')}">
-                                    <g:select noSelection="['':'']" onChange="${remoteFunction(action: 'updateSecondVector', update: 'secondVectorSpan', params:'\'secondGene=\'+this.value')}" name="firstRecombinantGene.id" from="${org.openlab.genetracker.Gene.list(sort:'name')}" optionKey="id" value="${cellLineDataInstance?.secondRecombinant?.gene?.id}"  />
-                                    <span id="secondVectorSpan">${cellLineDataInstance?.secondRecombinant?.vector?:"Select a gene"}</span>
+                                    <g:if test="${cellLineDataInstance.secondRecombinant}">
+                                        <g:hiddenField name="firstRecombinant.id" value="${cellLineDataInstance.secondRecombinant.id}"/>
+                                        ${cellLineDataInstance.secondRecombinant}
+                                    </g:if>
+                                    <g:else>
+                                        <g:select noSelection="['':'']" onChange="${remoteFunction(action: 'updateSecondVector', update: 'secondVectorSpan', params:'\'secondGene=\'+this.value')}" name="firstRecombinantGene.id" from="${org.openlab.genetracker.Gene.list(sort:'name')}" optionKey="id" value="${cellLineDataInstance?.secondRecombinant?.gene?.id}"  />
+                                        <span id="secondVectorSpan">${cellLineDataInstance?.secondRecombinant?.vector?:"Select a gene"}</span>
+                                    </g:else>
                                 </td>
                             </tr>
                         

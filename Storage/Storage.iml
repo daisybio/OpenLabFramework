@@ -47,6 +47,7 @@
     <orderEntry type="module" module-name="OpenLabFrontend-grailsPlugins" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.1.1" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.1" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.2.2" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (Storage)">
         <CLASSES>
@@ -79,6 +80,7 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.springframework.mobile/spring-mobile-device/jars/spring-mobile-device-1.0.0.M3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.gmock/gmock/jars/gmock-0.8.2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jdt.core.compiler/ecj/jars/ecj-3.7.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

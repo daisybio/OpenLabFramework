@@ -43,7 +43,7 @@ class ${className}Controller {
 
     def list() {
 
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        params.max = Math.min(params.max?params.int('max'):10, 100)
         def ${propertyName}List
         def ${propertyName}Total
         def ${propertyName}Criteria
