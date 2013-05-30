@@ -46,6 +46,7 @@
     <orderEntry type="module" module-name="OpenLabFrontend-grailsPlugins" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.1.1" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.1" level="application" />
+    <orderEntry type="module" module-name="OpenLabTaqMan-grailsPlugins" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.2" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (OpenLabBackend)">

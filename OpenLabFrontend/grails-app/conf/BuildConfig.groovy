@@ -88,7 +88,7 @@ grails.project.dependency.resolution = {
         compile ":spring-security-cas:1.0.5"
         compile ':webxml:1.4.1'
         compile ":spring-mobile:0.4"
-        //compile ":standalone:1.1.1"
+        //compile ":standalone:1.2.1"
     }
 
 }

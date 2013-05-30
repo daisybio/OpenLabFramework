@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/OpenLabFrontend/OpenLabFrontend.iml" filepath="$PROJECT_DIR$/OpenLabFrontend/OpenLabFrontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/OpenLabFrontend/OpenLabFrontend-grailsPlugins.iml" filepath="$PROJECT_DIR$/OpenLabFrontend/OpenLabFrontend-grailsPlugins.iml" />
       <module fileurl="file://$PROJECT_DIR$/OpenLabTaqMan/OpenLabTaqMan.iml" filepath="$PROJECT_DIR$/OpenLabTaqMan/OpenLabTaqMan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpenLabTaqMan/OpenLabTaqMan-grailsPlugins.iml" filepath="$PROJECT_DIR$/OpenLabTaqMan/OpenLabTaqMan-grailsPlugins.iml" />
       <module fileurl="file://$PROJECT_DIR$/Storage/Storage.iml" filepath="$PROJECT_DIR$/Storage/Storage.iml" />
     </modules>
   </component>

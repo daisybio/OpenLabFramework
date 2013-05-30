@@ -87,7 +87,7 @@ class CellLineData extends DataObject {
             result = "${cellLine} - ${acceptor} - ${firstRecombinant} - ${secondRecombinant}"
         else if (firstRecombinant != null)
             result = "${cellLine} - ${acceptor} - ${firstRecombinant}"
-        else "${cellLine}"
+        else result = "${cellLine}"
 
         result += "${cultureMedia?' - '+cultureMedia:''}${colonyNumber?' - '+colonyNumber:''}"
         return result
