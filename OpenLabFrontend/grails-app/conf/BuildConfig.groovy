@@ -38,7 +38,7 @@ grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir	= "target/test-reports"
 grails.project.war.file = "target/${appName}.war"
-//grails.tomcat.jvmArgs= ["-Xms512m",  "-Xmx1024m", "-XX:PermSize=512m", "-XX:MaxPermSize=512m"]
+grails.tomcat.jvmArgs= ["-Xms512m",  "-Xmx1024m", "-XX:PermSize=512m", "-XX:MaxPermSize=512m"]
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits( "global" ) {
@@ -89,6 +89,14 @@ grails.project.dependency.resolution = {
         compile ':webxml:1.4.1'
         compile ":spring-mobile:0.4"
         //compile ":standalone:1.2.1"
+
+        compile ":yui:2.8.2.1"
+        compile (":grails-ui:1.2.3") {
+            excludes 'yui'
+        }
+        compile (":richui:0.8"){
+            excludes 'yui'
+        }
     }
 
 }

@@ -141,7 +141,7 @@
                 ${remoteFunction(controller: 'usersettings', action: 'collapseRightColumn')}
             });
 
-            left.on('expand', function() {
+            right.on('expand', function() {
                 ${remoteFunction(controller: 'usersettings', action: 'expandRightColumn')}
             });
         });

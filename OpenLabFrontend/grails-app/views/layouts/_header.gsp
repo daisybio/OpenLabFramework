@@ -9,13 +9,13 @@
     </g:link>
   </span>
   
-  <span style="float:right; width: 470px; display: inline-block; margin-top: 20px;" id="loginHeader">
+  <span style="float:right; width: 570px; display: inline-block; margin-top: 20px;" id="loginHeader">
     <g:form controller="fullSearch" action="index">
     <g:hiddenField name="bodyOnly" value="true"/>
     <g:hiddenField name="suggestQuery" value="true"/>
 
-   <span style="width:270px; float:left;">
-    <span style="float:left; width:200px; display: inline"><gui:autoComplete
+   <span style="width:370px; float:left;">
+    <span style="float:left; width:300px; display: inline"><gui:autoComplete
         minQueryLength="3"
         queryDelay="0.5"
         id="q"
@@ -34,8 +34,10 @@
     <span style="float:right;"><g:loginControl /></span>
   </span>
 </div>
+
 <r:script>
 YAHOO.util.Event.onDOMReady(function() {
+
 	  GRAILSUI.q.itemSelectEvent.subscribe(function(oSelf , elItem , oData) {
 	     ${remoteFunction(controller:"quickSearch", action:"showResult", params: '\'name=\'+elItem[2][0]+\'&id=\'+elItem[2][1]', update: [success:'body',failure:'body'])};
 	  });
