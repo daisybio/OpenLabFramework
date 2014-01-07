@@ -24,4 +24,6 @@ For more information about our center, as well as for contact details: http://ww
 Release Notes:
 
 v. 1.1 First public release
+v. 1.2 Several bug fixes
+v. 1.2.1 Upgrade to grails 2.2.4, smaller bug fixes, code cleaning, wiki updates
 
