@@ -21,6 +21,10 @@ https://github.com/NanoCAN/OpenLabFramework/wiki
 
 For more information about our center, as well as for contact details: http://www.nanocan.org
 
+Download links:
+WAR file for server deployment: http://nanocan.dk/files/OpenLabFramework_LATEST.war
+JAR file for standalone usage: http://nanocan.dk/files/OpenLabFramework_LATEST.jar
+
 Release Notes:
 
 * v. 1.1 First public release
