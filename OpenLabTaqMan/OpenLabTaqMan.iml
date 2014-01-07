@@ -23,6 +23,7 @@
           <unit-entry name="Gorm" />
           <unit-entry name="sessionFactory" />
         </datasource-map>
+        <naming-strategy-map />
       </configuration>
     </facet>
   </component>
@@ -61,6 +62,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="grails-2.2.2" level="application" />
+    <orderEntry type="library" name="grails-2.2.4" level="application" />
     <orderEntry type="module" module-name="OpenLabTaqMan-grailsPlugins" />
   </component>
 </module>

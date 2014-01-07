@@ -31,7 +31,6 @@ package org.openlab.genetracker
 
 import grails.converters.*;
 import org.openlab.main.*;
-import org.openlab.module.*;
 
 /**
  * Scaffolded controller for Gene that is also housing methods for

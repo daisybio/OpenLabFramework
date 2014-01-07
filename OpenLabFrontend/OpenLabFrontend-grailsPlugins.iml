@@ -28,6 +28,7 @@
           <unit-entry name="Gorm" />
           <unit-entry name="sessionFactory" />
         </datasource-map>
+        <naming-strategy-map />
       </configuration>
     </facet>
   </component>
@@ -127,8 +128,6 @@
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/spring-security-core-1.2.7.3/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/spring-security-core-1.2.7.3/grails-app/taglib" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/tomcat-2.2.2" />
-    <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/webflow-2.0.0" />
     <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/webxml-1.4.1">
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/webxml-1.4.1/src/groovy" isTestSource="false" />
     </content>
@@ -141,6 +140,7 @@
     <orderEntry type="library" scope="PROVIDED" name="grails-2.1.1" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.1" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.2" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.2.4" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (OpenLabFrontend-grailsPlugins)">
         <CLASSES>
@@ -177,6 +177,7 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.springframework.mobile/spring-mobile-device/jars/spring-mobile-device-1.0.0.M3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.gmock/gmock/jars/gmock-0.8.2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jdt.core.compiler/ecj/jars/ecj-3.7.2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.cloudfoundry/cloudfoundry-runtime/jars/cloudfoundry-runtime-0.8.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -53,6 +53,7 @@ class BootStrap {
     def grailsApplication
     def springSecurityService
     def searchableService
+    def dataSource
 
     def init = { servletContext ->
 
@@ -79,7 +80,7 @@ class BootStrap {
 
             case "cloud":
 
-                initSearchablePlugin()
+                //initSearchablePlugin()
 
                 break
 

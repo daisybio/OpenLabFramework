@@ -1,0 +1,15 @@
+---
+applications:
+- name: OpenLabFramework
+  memory: 2G
+  instances: 1
+  host: OpenLabFramework
+  domain: cfapps.io
+  path: target/OpenLabFramework.war
+  services:
+    cleardb-94aee:
+      label: cleardb
+      provider: cleardb
+      version: n/a
+      plan: spark
+  buildpack: https://github.com/mlist/java-buildpack

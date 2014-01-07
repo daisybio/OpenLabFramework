@@ -1,0 +1,49 @@
+Using manifest file manifest.yml
+
+TMPDIR=/home/vcap/tmp
+VCAP_APP_PORT=63737
+VCAP_CONSOLE_IP=0.0.0.0
+USER=vcap
+JAVA_OPTS=-XX:MaxPermSize=512m -Xmx2048m -Xms768m -Dhttp.port=63737
+VCAP_APPLICATION={"application_users":[],"instance_id":"efb6275ed1a3a80067f6fd4fdcafebbf","instance_index":0,"application_version":"0b717d0f-c03c-41b1-ac64-d14e42cdf2c8","application_name":"OpenLabFramework","application_uris":["OpenLabFramework.cfapps.io"],"started_at":"2013-06-28 10:51:36 +0000","started_at_timestamp":1372416696,"host":"0.0.0.0","port":63737,"limits":{"mem":2048,"disk":1024,"fds":16384},"version":"0b717d0f-c03c-41b1-ac64-d14e42cdf2c8","name":"OpenLabFramework","uris":["OpenLabFramework.cfapps.io"],"users":[],"start":"2013-06-28 10:51:36 +0000","state_timestamp":1372416696}
+PATH=/bin:/usr/bin
+PWD=/home/vcap
+VCAP_SERVICES={"cleardb-n/a":[{"name":"cleardb-94aee","label":"cleardb-n/a","plan":"spark","credentials":{"jdbcUrl":"jdbc:mysql://b2b607b271d99e:adde1932@us-cdbr-east-04.cleardb.com:3306/ad_08fc40faf37cc76","uri":"mysql://b2b607b271d99e:adde1932@us-cdbr-east-04.cleardb.com:3306/ad_08fc40faf37cc76?reconnect=true","name":"ad_08fc40faf37cc76","hostname":"us-cdbr-east-04.cleardb.com","port":"3306","username":"b2b607b271d99e","password":"adde1932"}},{"name":"cleardb-4cb7f","label":"cleardb-n/a","plan":"spark","credentials":{"jdbcUrl":"jdbc:mysql://bc0d174138719f:6b1d75c8@us-cdbr-east-04.cleardb.com:3306/ad_fa3485c183a6073","uri":"mysql://bc0d174138719f:6b1d75c8@us-cdbr-east-04.cleardb.com:3306/ad_fa3485c183a6073?reconnect=true","name":"ad_fa3485c183a6073","hostname":"us-cdbr-east-04.cleardb.com","port":"3306","username":"bc0d174138719f","password":"6b1d75c8"}}]}
+HOME=/home/vcap/app
+SHLVL=2
+PORT=63737
+VCAP_APP_HOST=0.0.0.0
+MEMORY_LIMIT=2048m
+VCAP_CONSOLE_PORT=63738
+_=/usr/bin/env
+
+
+-----> Downloaded app package (71M)
+-----> Downloaded app buildpack cache (38M)
+Initialized empty Git repository in /tmp/buildpacks/java-buildpack/.git/
+Installing java-buildpack.
+-----> Downloading OpenJDK 1.7.0_25 JRE from http://download.pivotal.io.s3.amazonaws.com/openjdk/lucid/x86_64/openjdk-1.7.0_25.tar.gz (0.0s)
+-----> Expanding JRE to .java (1.1s)
+-----> Downloading Tomcat 7.0.41 from http://download.pivotal.io.s3.amazonaws.com/tomcat/lucid/x86_64/apache-tomcat-7.0.41.tar.gz (0.0s)
+-----> Expanding Tomcat to .tomcat (0.1s)
+-----> Downloading Buildpack Tomcat Support 1.1.1 from http://download.pivotal.io.s3.amazonaws.com/tomcat-buildpack-support/lucid/x86_64/tomcat-buildpack-support-1.1.1.jar (0.0s)
+
+
+Jun 28, 2013 10:58:42 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-64163"]
+Jun 28, 2013 10:58:42 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 556 ms
+Jun 28, 2013 10:58:42 AM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Jun 28, 2013 10:58:42 AM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.41
+Jun 28, 2013 10:58:42 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /home/vcap/app/.tomcat/webapps/ROOT
+
+
+Using default settings...
+detected cloud environment, trying to extract DB settings.
+Using default settings...
+detected cloud environment, trying to extract DB settings.
+
+

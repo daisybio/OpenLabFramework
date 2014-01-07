@@ -17,7 +17,6 @@
     <r:require module="grailsui-tabview"/>
     <r:require module="grailsui-menu"/>
     <r:require module="grailsui-accordion"/>
-    <r:require module="grailsui-tooltips"/>
     <r:require module="grailsui-expandable-panel"/>
     <r:require module="export"/>
     <!-- Additional YUI JS files: -->

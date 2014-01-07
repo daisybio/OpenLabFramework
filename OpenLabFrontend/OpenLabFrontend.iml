@@ -34,6 +34,7 @@
           <unit-entry name="Gorm" />
           <unit-entry name="sessionFactory" />
         </datasource-map>
+        <naming-strategy-map />
       </configuration>
     </facet>
     <facet type="web" name="Web2">
@@ -105,6 +106,7 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.springframework.mobile/spring-mobile-device/jars/spring-mobile-device-1.0.0.M3.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.gmock/gmock/jars/gmock-0.8.2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jdt.core.compiler/ecj/jars/ecj-3.7.2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.cloudfoundry/cloudfoundry-runtime/jars/cloudfoundry-runtime-0.8.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -120,6 +122,7 @@
     <orderEntry type="library" name="grails-2.1.1" level="application" />
     <orderEntry type="library" name="grails-2.2.1" level="application" />
     <orderEntry type="library" name="grails-2.2.2" level="application" />
+    <orderEntry type="library" name="grails-2.2.4" level="application" />
   </component>
 </module>
 

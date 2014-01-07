@@ -55,7 +55,7 @@
         <g:hiddenField name="bodyOnly" value="${true}"/>
         <g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Search" />
     </g:formRemote>
-    <div style="clear: both;" class="hint">See <a target="_blank" href="http://lucene.apache.org/java/2_4_0/queryparsersyntax.html">Lucene query syntax</a> for advanced queries</div>
+    <div style="clear: both;" class="hint">See <a target="_blank" href="http://lucene.apache.org/core/2_9_4/queryparsersyntax.html">Lucene query syntax</a> for advanced queries</div>
   </div>
   <div id="searchMain">
     <g:set var="haveQuery" value="${params.q?.trim()}" />
@@ -77,28 +77,28 @@
       <g:if test="${!params.suggestQuery}">
         <p>Suggestions:</p>
         <ul>
-          <li>Try a suggested query: <g:link controller="fullSearch" action="index" params="[q: params.q, suggestQuery: true]">Search again with the <strong>suggestQuery</strong> option</g:link><br />
+          <li>Try a suggested query: <g:remoteLink controller="fullSearch" update="body" action="index" params="[bodyOnly: true, q: params.q, suggestQuery: true]">Search again with the <strong>suggestQuery</strong> option</g:remoteLink><br />
           </li>
         </ul>
       </g:if>
     </g:if>
 
     <g:if test="${searchResult?.suggestedQuery}">
-      <p>Did you mean <g:link controller="fullSearch" action="index" params="[q: searchResult.suggestedQuery]">${StringQueryUtils.highlightTermDiffs(params.q.trim(), searchResult.suggestedQuery)}</g:link>?</p>
+      <p>Did you mean <g:remoteLink update="body" controller="fullSearch" action="index" params="[bodyOnly: true, q: searchResult.suggestedQuery]">${StringQueryUtils.highlightTermDiffs(params.q.trim(), searchResult.suggestedQuery)}</g:remoteLink>?</p>
     </g:if>
 
     <g:if test="${parseException}">
       <p>Your query - <strong>${params.q}</strong> - is not valid.</p>
       <p>Suggestions:</p>
       <ul>
-        <li>Fix the query: see <a href="http://lucene.apache.org/java/2_4_0/queryparsersyntax.html">Lucene query syntax</a> for examples</li>
+        <li>Fix the query: see <a href="http://lucene.apache.org/core/2_9_4/queryparsersyntax.html">Lucene query syntax</a> for examples</li>
         <g:if test="${LuceneUtils.queryHasSpecialCharacters(params.q)}">
           <li>Remove special characters like <strong>" - [ ]</strong>, before searching, eg, <em><strong>${LuceneUtils.cleanQuery(params.q)}</strong></em><br />
-              <g:link controller="fullSearch" action="index" params="[q: LuceneUtils.cleanQuery(params.q)]">Search again with special characters removed</g:link></em>
+              <g:remoteLink update="body" controller="fullSearch" action="index" params="[bodyOnly: true, q: LuceneUtils.cleanQuery(params.q)]">Search again with special characters removed</g:remoteLink></em>
           </li>
           <li>Escape special characters like <strong>" - [ ]</strong> with <strong>\</strong>, eg, <em><strong>${LuceneUtils.escapeQuery(params.q)}</strong></em><br />
-              <em><g:link controller="fullSearch" action="index" params="[q: LuceneUtils.escapeQuery(params.q)]">Search again with special characters escaped</g:link></em><br />
-              <em><g:link controller="fullSearch" action="index" params="[q: params.q, escape: true]">Search again with the <strong>escape</strong> option enabled</g:link></em>
+              <em><g:remoteLink update="body" controller="fullSearch" action="index" params="[bodyOnly: true, q: LuceneUtils.escapeQuery(params.q)]">Search again with special characters escaped</g:remoteLink></em><br />
+              <em><g:remoteLink update="body" controller="fullSearch" action="index" params="[bodyOnly: true, q: params.q, escape: true]">Search again with the <strong>escape</strong> option enabled</g:remoteLink></em>
           </li>
         </g:if>
       </ul>

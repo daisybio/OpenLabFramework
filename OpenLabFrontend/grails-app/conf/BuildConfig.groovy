@@ -67,6 +67,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         runtime "hsqldb:hsqldb:1.8.0.10"
         runtime 'mysql:mysql-connector-java:5.1.16'
+        compile "org.cloudfoundry:cloudfoundry-runtime:0.8.4"
     }
 
     plugins{

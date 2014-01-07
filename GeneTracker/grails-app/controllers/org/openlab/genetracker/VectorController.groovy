@@ -34,8 +34,7 @@ import org.openlab.genetracker.vector.*;
 class VectorController {
 
 	def scaffold = Vector
-	def grailsApplication
-	
+
     def save = {  	
 		
 		def className = "Vector"

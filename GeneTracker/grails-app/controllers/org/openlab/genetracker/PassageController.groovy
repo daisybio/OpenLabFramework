@@ -29,7 +29,6 @@
  */
 package org.openlab.genetracker
 
-import grails.converters.*;
 import org.springframework.dao.DataIntegrityViolationException;
 
 /**

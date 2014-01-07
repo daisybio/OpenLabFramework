@@ -45,6 +45,7 @@ Brief description of the plugin.
   </repositories>
   <dependencies>
     <compile>
+      <dependency group='org.cloudfoundry' name='cloudfoundry-runtime' version='0.8.4' />
       <dependency group='org.grails' name='grails-webflow' version='2.2.2' />
     </compile>
     <runtime>
@@ -54,30 +55,30 @@ Brief description of the plugin.
   </dependencies>
   <plugins>
     <compile>
-      <plugin group='org.grails.plugins' name='spring-mobile' version='0.4' />
-      <plugin group='org.grails.plugins' name='jquery-mobile' version='1.1.0.5' />
-      <plugin group='org.grails.plugins' name='excel-import' version='1.0.0' />
-      <plugin group='org.grails.plugins' name='richui' version='0.8' />
       <plugin group='org.grails.plugins' name='spring-security-core' version='1.2.7.3' />
       <plugin group='org.grails.plugins' name='grails-ui' version='1.2.3' />
-      <plugin group='org.grails.plugins' name='spring-security-cas' version='1.0.5' />
+      <plugin group='org.grails.plugins' name='excel-import' version='1.0.0' />
       <plugin group='org.grails.plugins' name='yui' version='2.8.2.1' />
+      <plugin group='org.grails.plugins' name='jquery-mobile' version='1.1.0.5' />
+      <plugin group='org.grails.plugins' name='spring-security-cas' version='1.0.5' />
       <plugin group='org.grails.plugins' name='webflow' version='2.0.0' />
-      <plugin group='org.grails.plugins' name='searchable' version='0.6.4' />
       <plugin group='org.grails.plugins' name='webxml' version='1.4.1' />
+      <plugin group='org.grails.plugins' name='richui' version='0.8' />
+      <plugin group='org.grails.plugins' name='spring-mobile' version='0.4' />
+      <plugin group='org.grails.plugins' name='searchable' version='0.6.4' />
     </compile>
     <runtime>
-      <plugin group='org.grails.plugins' name='export' version='1.5' />
-      <plugin group='org.grails.plugins' name='hibernate' version='2.2.2' />
-      <plugin group='org.grails.plugins' name='joda-time' version='1.4' />
       <plugin group='org.grails.plugins' name='prototype' version='1.0' />
+      <plugin group='org.grails.plugins' name='bubbling' version='2.1.4' />
+      <plugin group='org.grails.plugins' name='export' version='1.5' />
+      <plugin group='org.grails.plugins' name='quartz' version='0.4.2' />
+      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
       <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
       <plugin group='org.grails.plugins' name='ajax-uploader' version='1.1' />
-      <plugin group='org.grails.plugins' name='quartz' version='0.4.2' />
       <plugin group='org.grails.plugins' name='cloud-foundry' version='1.2.3' />
-      <plugin group='org.grails.plugins' name='bubbling' version='2.1.4' />
+      <plugin group='org.grails.plugins' name='hibernate' version='2.2.2' />
       <plugin group='org.grails.plugins' name='p6spy' version='0.4' />
-      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
+      <plugin group='org.grails.plugins' name='joda-time' version='1.4' />
     </runtime>
     <build>
       <plugin group='org.grails.plugins' name='tomcat' version='2.2.2' />
