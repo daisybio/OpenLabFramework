@@ -21,9 +21,13 @@ https://github.com/NanoCAN/OpenLabFramework/wiki
 
 For more information about our center, as well as for contact details: http://www.nanocan.org
 
+Browser compatibility: OLF should work on all modern browsers that support javascript, but has only been tested on 
+* Chrome (31.0.1650.63)
+* Firefox (26.0)
+
 Download links:
-WAR file for server deployment: http://nanocan.dk/files/OpenLabFramework_LATEST.war
-JAR file for standalone usage: http://nanocan.dk/files/OpenLabFramework_LATEST.jar
+* WAR file for server deployment: http://nanocan.dk/files/OpenLabFramework_LATEST.war
+* JAR file for standalone usage: http://nanocan.dk/files/OpenLabFramework_LATEST.jar
 
 Release Notes:
 
