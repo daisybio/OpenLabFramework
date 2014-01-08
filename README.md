@@ -25,13 +25,9 @@ Browser compatibility: OLF should work on all modern browsers that support javas
 * Chrome (31.0.1650.63)
 * Firefox (26.0)
 
-Download links:
-* WAR file for server deployment: http://nanocan.dk/files/OpenLabFramework_LATEST.war
-* JAR file for standalone usage: http://nanocan.dk/files/OpenLabFramework_LATEST.jar
-
 Release Notes:
 
 * v. 1.1 First public release
 * v. 1.2 Several bug fixes
-* v. 1.2.1 Upgrade to grails 2.2.4, smaller bug fixes, code cleaning, wiki updates
+* v. 1.2.1 Upgrade to grails 2.2.4, smaller bug fixes, code cleaning, wiki updates und enhanced select
 
