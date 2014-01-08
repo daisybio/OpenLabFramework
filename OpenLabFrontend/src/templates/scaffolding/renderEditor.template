@@ -33,7 +33,7 @@
 
     private renderEnumEditor(domainClass, property) {
 		def sb = new StringBuilder("")
-        sb << '<g:select name="' << property.name << '"'
+        sb << '<g:select class="select2" name="' << property.name << '"'
  		sb << ' from="${' << "${property.type.name}?.values()" << '}"'
  		sb << ' keys="${' << property.type.name << '.values()*.name()}"'
 		if (isRequired()) sb << ' required=""'
@@ -56,7 +56,7 @@
  				sb << ' value="${' << "${domainInstance}?.${property.name}" << '}"'
 				sb << '/>'
             } else if (cp.inList) {
-				sb << '<g:select name="' << property.name << '"'
+				sb << '<g:select class="select2" name="' << property.name << '"'
 				sb << ' from="${' << "${domainInstance}.constraints.${property.name}.inList" << '}"'
 				if (isRequired()) sb << ' required=""'
 				sb << ' value="${' << "${domainInstance}?.${property.name}" << '}"'
@@ -100,7 +100,7 @@
  			sb << ' optionKey="id"'
 			if (isRequired()) sb << ' required=""'
  			sb << ' value="${' << "${domainInstance}?.${property.name}" << '?.id}"'
- 			sb << ' class="many-to-one"'
+ 			sb << ' class="select2 many-to-one"'
  			sb << renderNoSelection(property)
  			sb << '/>'
 			sb as String
@@ -124,7 +124,7 @@
             sb << ' size="5"'
             if (isRequired()) sb << ' required=""'
             sb << ' value="${' << "${domainInstance}?.${property.name}" << '*.id}"'
-            sb << ' class="many-to-many"'
+            sb << ' class="select2 many-to-many"'
             sb << '/>'
             sb as String
 
@@ -157,7 +157,7 @@
         } else {
 	        def sb = new StringBuilder()
             if (cp.range) {
-                sb << '<g:select name="' << property.name << '"'
+                sb << '<g:select class="select2" name="' << property.name << '"'
  				sb << ' from="${' << "${cp.range.from}..${cp.range.to}" << '}"'
  				sb << ' class="range"'
 				if (isRequired()) sb << ' required=""'
@@ -165,7 +165,7 @@
 				sb << renderNoSelection(property)
 				sb << '/>'
             } else if (cp.inList) {
-                sb << '<g:select name="' << property.name << '"'
+                sb << '<g:select class="select2" name="' << property.name << '"'
  				sb << ' from="${' << "${domainInstance}.constraints.${property.name}.inList" << '}"'
 				if (isRequired()) sb << ' required=""'
 				sb << ' value="${' << "fieldValue(bean: ${domainInstance}, field: '${property.name}')" << '}"'

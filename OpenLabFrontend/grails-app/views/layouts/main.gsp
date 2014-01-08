@@ -25,6 +25,7 @@
     <!-- customized CSS files for yui -->
     <r:require modules="myyui"/>
     <r:require module="fileuploader" />
+    <r:require module="select2"/>
     <!-- custom event handling -->
     <r:script disposition="head">
 

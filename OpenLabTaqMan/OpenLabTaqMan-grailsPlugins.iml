@@ -3,7 +3,10 @@
   <component name="FacetManager">
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="Gorm" />
+          <unit-entry name="sessionFactory" />
+        </datasource-map>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -13,7 +16,6 @@
     <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabTaqMan/plugins/hibernate-2.2.2">
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabTaqMan/plugins/hibernate-2.2.2/grails-app/i18n" isTestSource="false" />
     </content>
-    <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabTaqMan/plugins/tomcat-2.2.2" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.4" level="application" />

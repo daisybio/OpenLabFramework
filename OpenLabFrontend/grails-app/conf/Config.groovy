@@ -212,6 +212,10 @@ grails.resources.modules = {
         dependsOn 'jquery'
         resource url: 'js/jquery.jstree.js'
     }
+    select2{
+        dependsOn 'jquery'
+        resource url: 'js/select2/select2.min.js'
+    }
     jquerymobileaddons {
         dependsOn 'jquery-mobile'
         resource url: 'js/jquery.mobile.pagination.js'

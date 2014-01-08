@@ -1,6 +1,8 @@
 <head>
     <!-- Main CSS at the end to make sure it is effective -->
     <r:require module="prototypeManual"/>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}"/>
+
     <r:layoutResources/>
     <g:set var="historyURL" value="${request.forwardURI+params.toQueryString()}" />
 
@@ -21,5 +23,11 @@
 </head>
 <body>
     <g:layoutBody/>
+
+    <!-- init select boxes -->
+    <script type="text/javascript">
+        YAHOO.util.Event.onDOMReady(function () { jQuery(".select2").select2({width:165}); });
+    </script>
+
     <r:layoutResources/>
 </body>

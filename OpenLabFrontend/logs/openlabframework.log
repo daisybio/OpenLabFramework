@@ -1,47 +1,382 @@
-2014-01-07/12:08:47.421 [localhost-startStop-1]  ERROR context.GrailsContextLoader - Error initializing the application: Cannot execute null+null
-java.lang.NullPointerException: Cannot execute null+null
-	at SpringSecurityCasGrailsPlugin$_closure2_closure9.doCall(SpringSecurityCasGrailsPlugin.groovy:129)
-	at grails.spring.BeanBuilder.invokeBeanDefiningMethod(BeanBuilder.java:706)
-	at grails.spring.BeanBuilder.invokeMethod(BeanBuilder.java:561)
-	at SpringSecurityCasGrailsPlugin$_closure2.doCall(SpringSecurityCasGrailsPlugin.groovy:127)
-	at grails.spring.BeanBuilder.invokeBeanDefiningClosure(BeanBuilder.java:757)
-	at grails.spring.BeanBuilder.beans(BeanBuilder.java:584)
-	at grails.spring.BeanBuilder.invokeMethod(BeanBuilder.java:527)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+2014-01-08/10:26:36.765 [http-bio-8080-exec-6]  ERROR resource.ResourceMeta - While processing /css/select2.css, a resource was required but not found: /css/spinner.gif
+2014-01-08/10:26:36.932 [http-bio-8080-exec-6]  ERROR resource.ResourceMeta - While processing /css/select2.css, a resource was required but not found: /css/spinner.gif
+2014-01-08/10:26:36.952 [http-bio-8080-exec-6]  ERROR resource.ResourceMeta - While processing /css/select2.css, a resource was required but not found: /css/spinner.gif
+2014-01-08/10:26:36.974 [http-bio-8080-exec-6]  ERROR resource.ResourceMeta - While processing /css/select2.css, a resource was required but not found: /css/spinner.gif
+2014-01-08/10:26:36.994 [http-bio-8080-exec-6]  ERROR resource.ResourceMeta - While processing /css/select2.css, a resource was required but not found: /css/spinner.gif
+2014-01-08/10:26:37.017 [http-bio-8080-exec-6]  ERROR resource.ResourceMeta - While processing /css/select2.css, a resource was required but not found: /css/spinner.gif
+2014-01-08/10:26:37.032 [http-bio-8080-exec-6]  ERROR resource.ResourceMeta - While processing /css/select2.css, a resource was required but not found: /css/spinner.gif
+2014-01-08/10:26:37.050 [http-bio-8080-exec-6]  ERROR resource.ResourceMeta - While processing /css/select2.css, a resource was required but not found: /css/spinner.gif
+2014-01-08/10:43:42.325 [http-bio-8080-exec-3]  ERROR pages.GroovyPagesTemplateEngine - Compilation error compiling GSP [gene_show]:startup failed:
+gene_show: 222: expecting ')', found 'onComplete' @ line 222, column 56.
+                                 onComplete
+                                 ^
+
+1 error
+
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+gene_show: 222: expecting ')', found 'onComplete' @ line 222, column 56.
+                                 onComplete
+                                 ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.ErrorCollector.addFatalError(ErrorCollector.java:149)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:119)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:131)
+	at org.codehaus.groovy.control.SourceUnit.addError(SourceUnit.java:359)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.transformCSTIntoAST(AntlrParserPlugin.java:142)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.parseCST(AntlrParserPlugin.java:108)
+	at org.codehaus.groovy.control.SourceUnit.parse(SourceUnit.java:236)
+	at org.codehaus.groovy.control.CompilationUnit$1.call(CompilationUnit.java:162)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:903)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:542)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:519)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:744)
-2014-01-07/12:17:26.209 [http-bio-8080-exec-7]  ERROR richui.PortletTagLib - de.andreasschmitt.richui.taglib.renderer.RenderException: Error rendering with attrs: [id:4, slotStyle:width: 250px; height: 200px;, playerStyle:width: 250px; height: 200px;, page:1]
-2014-01-07/12:17:57.476 [http-bio-8080-exec-5]  ERROR richui.PortletTagLib - de.andreasschmitt.richui.taglib.renderer.RenderException: Error rendering with attrs: [id:4, slotStyle:width: 250px; height: 200px;, playerStyle:width: 250px; height: 200px;, page:1]
-2014-01-07/12:18:01.195 [http-bio-8080-exec-7]  ERROR richui.PortletTagLib - de.andreasschmitt.richui.taglib.renderer.RenderException: Error rendering with attrs: [id:4, slotStyle:width: 250px; height: 200px;, playerStyle:width: 250px; height: 200px;, page:1]
-2014-01-07/12:23:46.733 [http-bio-8080-exec-9]  ERROR richui.PortletTagLib - de.andreasschmitt.richui.taglib.renderer.RenderException: Error rendering with attrs: [id:4, slotStyle:width: 250px; height: 200px;, playerStyle:width: 250px; height: 200px;, page:1]
-2014-01-07/12:25:30.146 [http-bio-8080-exec-5]  ERROR richui.PortletTagLib - de.andreasschmitt.richui.taglib.renderer.RenderException: Error rendering with attrs: [id:4, slotStyle:width: 250px; height: 200px;, playerStyle:width: 250px; height: 200px;, page:1]
-2014-01-07/12:26:01.269 [http-bio-8080-exec-5]  ERROR richui.PortletTagLib - de.andreasschmitt.richui.taglib.renderer.RenderException: Error rendering with attrs: [id:4, slotStyle:width: 250px; height: 200px;, playerStyle:width: 250px; height: 200px;, page:1]
-2014-01-07/12:33:39.998 [http-bio-8080-exec-9]  ERROR errors.GrailsExceptionResolver - MissingMethodException occurred when processing request: [POST] /OpenLabFramework/fullSearch/index - parameters:
-q: test
-q: test
+2014-01-08/10:43:42.345 [http-bio-8080-exec-3]  ERROR errors.GrailsExceptionResolver - MultipleCompilationErrorsException occurred when processing request: [GET] /OpenLabFramework/gene/show/30 - parameters:
 bodyOnly: true
+lang: EN
+startup failed:
+gene_show: 222: expecting ')', found 'onComplete' @ line 222, column 56.
+                                 onComplete
+                                 ^
+
+1 error
+. Stacktrace follows:
+org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Could not parse script [/gene/show]: startup failed:
+gene_show: 222: expecting ')', found 'onComplete' @ line 222, column 56.
+                                 onComplete
+                                 ^
+
+1 error
+
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+gene_show: 222: expecting ')', found 'onComplete' @ line 222, column 56.
+                                 onComplete
+                                 ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.ErrorCollector.addFatalError(ErrorCollector.java:149)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:119)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:131)
+	at org.codehaus.groovy.control.SourceUnit.addError(SourceUnit.java:359)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.transformCSTIntoAST(AntlrParserPlugin.java:142)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.parseCST(AntlrParserPlugin.java:108)
+	at org.codehaus.groovy.control.SourceUnit.parse(SourceUnit.java:236)
+	at org.codehaus.groovy.control.CompilationUnit$1.call(CompilationUnit.java:162)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:903)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:542)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:519)
+	... 3 more
+2014-01-08/10:43:46.627 [http-bio-8080-exec-3]  ERROR [/OpenLabFramework].[default] - Servlet.service() for servlet [default] in context with path [/OpenLabFramework] threw exception
+org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Error applying layout : gene/show
+	at org.codehaus.groovy.grails.web.sitemesh.SpringMVCViewDecorator.render(SpringMVCViewDecorator.java:74)
+	at org.codehaus.groovy.grails.web.sitemesh.SpringMVCViewDecorator.render(SpringMVCViewDecorator.java:52)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.doFilter(GrailsPageFilter.java:161)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at javax.servlet.FilterChain$doFilter.call(Unknown Source)
+	at org.grails.plugin.resource.DevModeSanityFilter.doFilter(DevModeSanityFilter.groovy:44)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:369)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:109)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:97)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:78)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:54)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:187)
+	at org.codehaus.groovy.grails.plugins.springsecurity.RequestHolderAuthenticationFilter.doFilter(RequestHolderAuthenticationFilter.java:40)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.codehaus.groovy.grails.plugins.springsecurity.MutableLogoutFilter.doFilter(MutableLogoutFilter.java:79)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:79)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:168)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:259)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.servlet.mvc.GrailsWebRequestFilter.doFilterInternal(GrailsWebRequestFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.filters.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:259)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:99)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1023)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:589)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:312)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Could not parse script [/gene/show]: startup failed:
+gene_show: 222: expecting ')', found 'onComplete' @ line 222, column 56.
+                                 onComplete
+                                 ^
+
+1 error
+
+	... 3 more
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+gene_show: 222: expecting ')', found 'onComplete' @ line 222, column 56.
+                                 onComplete
+                                 ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.ErrorCollector.addFatalError(ErrorCollector.java:149)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:119)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:131)
+	at org.codehaus.groovy.control.SourceUnit.addError(SourceUnit.java:359)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.transformCSTIntoAST(AntlrParserPlugin.java:142)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.parseCST(AntlrParserPlugin.java:108)
+	at org.codehaus.groovy.control.SourceUnit.parse(SourceUnit.java:236)
+	at org.codehaus.groovy.control.CompilationUnit$1.call(CompilationUnit.java:162)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:903)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:542)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:519)
+	... 3 more
+2014-01-08/10:51:31.695 [http-bio-8080-exec-1]  ERROR pages.GroovyPagesTemplateEngine - Compilation error compiling GSP [gene_show]:startup failed:
+gene_show: 222: expecting ')', found ').select2(); });' @ line 222, column 127.
+   function () { jQuery('.select2').select2
+                                 ^
+
+1 error
+
+org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+gene_show: 222: expecting ')', found ').select2(); });' @ line 222, column 127.
+   function () { jQuery('.select2').select2
+                                 ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.ErrorCollector.addFatalError(ErrorCollector.java:149)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:119)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:131)
+	at org.codehaus.groovy.control.SourceUnit.addError(SourceUnit.java:359)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.transformCSTIntoAST(AntlrParserPlugin.java:142)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.parseCST(AntlrParserPlugin.java:108)
+	at org.codehaus.groovy.control.SourceUnit.parse(SourceUnit.java:236)
+	at org.codehaus.groovy.control.CompilationUnit$1.call(CompilationUnit.java:162)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:903)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:542)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:519)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+2014-01-08/10:51:31.721 [http-bio-8080-exec-1]  ERROR errors.GrailsExceptionResolver - MultipleCompilationErrorsException occurred when processing request: [GET] /OpenLabFramework/gene/show/30 - parameters:
 bodyOnly: true
-No signature of method: [Ljava.lang.String;.trim() is applicable for argument types: () values: []
-Possible solutions: tail(), wait(), min(), grep(), sum(), grep(). Stacktrace follows:
-groovy.lang.MissingMethodException: No signature of method: [Ljava.lang.String;.trim() is applicable for argument types: () values: []
-Possible solutions: tail(), wait(), min(), grep(), sum(), grep()
-	at org.openlab.search.FullSearchController$_closure1.doCall(FullSearchController.groovy:66)
+lang: EN
+startup failed:
+gene_show: 222: expecting ')', found ').select2(); });' @ line 222, column 127.
+   function () { jQuery('.select2').select2
+                                 ^
+
+1 error
+. Stacktrace follows:
+org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Could not parse script [/gene/show]: startup failed:
+gene_show: 222: expecting ')', found ').select2(); });' @ line 222, column 127.
+   function () { jQuery('.select2').select2
+                                 ^
+
+1 error
+
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:744)
-2014-01-07/12:40:16.067 [http-bio-8080-exec-1]  ERROR errors.GrailsExceptionResolver - MissingPropertyException occurred when processing request: [POST] /OpenLabFramework/cellLineData/updateEditable/971 - parameters:
-id: 971
-propertyName: cultureMedia
-propertyName: cultureMedia
-thisClassName: CellLineData
-thisClassName: CellLineData
-referencedClassName: org.openlab.genetracker.CultureMedia
-referencedClassName: org.openlab.genetracker.CultureMedia
-No such property: [cultureMedia, cultureMedia] for class: org.openlab.genetracker.CellLineData. Stacktrace follows:
-groovy.lang.MissingPropertyException: No such property: [cultureMedia, cultureMedia] for class: org.openlab.genetracker.CellLineData
-	at org.openlab.genetracker.CellLineDataController$_closure12.doCall(script1389094116050477083282.groovy:364)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+gene_show: 222: expecting ')', found ').select2(); });' @ line 222, column 127.
+   function () { jQuery('.select2').select2
+                                 ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.ErrorCollector.addFatalError(ErrorCollector.java:149)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:119)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:131)
+	at org.codehaus.groovy.control.SourceUnit.addError(SourceUnit.java:359)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.transformCSTIntoAST(AntlrParserPlugin.java:142)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.parseCST(AntlrParserPlugin.java:108)
+	at org.codehaus.groovy.control.SourceUnit.parse(SourceUnit.java:236)
+	at org.codehaus.groovy.control.CompilationUnit$1.call(CompilationUnit.java:162)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:903)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:542)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:519)
+	... 3 more
+2014-01-08/10:51:35.892 [http-bio-8080-exec-1]  ERROR [/OpenLabFramework].[default] - Servlet.service() for servlet [default] in context with path [/OpenLabFramework] threw exception
+org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Error applying layout : gene/show
+	at org.codehaus.groovy.grails.web.sitemesh.SpringMVCViewDecorator.render(SpringMVCViewDecorator.java:74)
+	at org.codehaus.groovy.grails.web.sitemesh.SpringMVCViewDecorator.render(SpringMVCViewDecorator.java:52)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.doFilter(GrailsPageFilter.java:161)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at javax.servlet.FilterChain$doFilter.call(Unknown Source)
+	at org.grails.plugin.resource.DevModeSanityFilter.doFilter(DevModeSanityFilter.groovy:44)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:369)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:109)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:97)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:78)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:54)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:187)
+	at org.codehaus.groovy.grails.plugins.springsecurity.RequestHolderAuthenticationFilter.doFilter(RequestHolderAuthenticationFilter.java:40)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.codehaus.groovy.grails.plugins.springsecurity.MutableLogoutFilter.doFilter(MutableLogoutFilter.java:79)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:79)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:381)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:168)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:259)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.servlet.mvc.GrailsWebRequestFilter.doFilterInternal(GrailsWebRequestFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.filters.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:259)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:99)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1023)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:589)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:312)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:744)
-2014-01-07/12:47:48.311 [FileSystemWatcher: files=#1652 cl=java.net.URLClassLoader@69eeaa65]  ERROR loaded.CurrentLiveVersion - Unexpected exception whilst trying to call the static initializer on grails.plugin.prototype.PrototypeProvider
+Caused by: org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Could not parse script [/gene/show]: startup failed:
+gene_show: 222: expecting ')', found ').select2(); });' @ line 222, column 127.
+   function () { jQuery('.select2').select2
+                                 ^
+
+1 error
+
+	... 3 more
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+gene_show: 222: expecting ')', found ').select2(); });' @ line 222, column 127.
+   function () { jQuery('.select2').select2
+                                 ^
+
+1 error
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:309)
+	at org.codehaus.groovy.control.ErrorCollector.addFatalError(ErrorCollector.java:149)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:119)
+	at org.codehaus.groovy.control.ErrorCollector.addError(ErrorCollector.java:131)
+	at org.codehaus.groovy.control.SourceUnit.addError(SourceUnit.java:359)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.transformCSTIntoAST(AntlrParserPlugin.java:142)
+	at org.codehaus.groovy.antlr.AntlrParserPlugin.parseCST(AntlrParserPlugin.java:108)
+	at org.codehaus.groovy.control.SourceUnit.parse(SourceUnit.java:236)
+	at org.codehaus.groovy.control.CompilationUnit$1.call(CompilationUnit.java:162)
+	at org.codehaus.groovy.control.CompilationUnit.applyToSourceUnits(CompilationUnit.java:903)
+	at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:566)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:542)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:519)
+	... 3 more
+2014-01-08/11:14:35.346 [Thread-10]  ERROR plugins.DefaultGrailsPlugin - Error configuration scaffolding: Failed to parse template script (your template may contain an error or be trying to use expressions not currently supported): Failed to create Script instance for class: class SimpleTemplateScript25. Reason: java.lang.NullPointerException
+groovy.lang.GroovyRuntimeException: Failed to parse template script (your template may contain an error or be trying to use expressions not currently supported): Failed to create Script instance for class: class SimpleTemplateScript25. Reason: java.lang.NullPointerException
+	at java.lang.Thread.run(Thread.java:744)
+2014-01-08/11:43:16.434 [http-bio-8080-exec-10]  ERROR errors.GrailsExceptionResolver - GroovyRuntimeException occurred when processing request: [GET] /OpenLabFramework/gene/create - parameters:
+bodyOnly: true
+Failed to parse template script (your template may contain an error or be trying to use expressions not currently supported): startup failed:
+SimpleTemplateScript31.groovy: 153: expecting '}', found 'select2' @ line 153, column 42.
+        return "<g:select class="select2" n
+                                 ^
+
+1 error
+. Stacktrace follows:
+org.codehaus.groovy.grails.web.pages.exceptions.GroovyPagesException: Error processing GroovyPageView: Error executing tag <g:form>: Error executing tag <g:render>: Failed to parse template script (your template may contain an error or be trying to use expressions not currently supported): startup failed:
+SimpleTemplateScript31.groovy: 153: expecting '}', found 'select2' @ line 153, column 42.
+        return "<g:select class="select2" n
+                                 ^
+
+1 error
+
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: org.codehaus.groovy.grails.web.taglib.exceptions.GrailsTagException: Error executing tag <g:form>: Error executing tag <g:render>: Failed to parse template script (your template may contain an error or be trying to use expressions not currently supported): startup failed:
+SimpleTemplateScript31.groovy: 153: expecting '}', found 'select2' @ line 153, column 42.
+        return "<g:select class="select2" n
+                                 ^
+
+1 error
+
+	at gene_create$_run_closure2.doCall(gene_create:83)
+	at gene_create.run(gene_create:88)
+	... 3 more
+Caused by: org.codehaus.groovy.grails.web.taglib.exceptions.GrailsTagException: Error executing tag <g:render>: Failed to parse template script (your template may contain an error or be trying to use expressions not currently supported): startup failed:
+SimpleTemplateScript31.groovy: 153: expecting '}', found 'select2' @ line 153, column 42.
+        return "<g:select class="select2" n
+                                 ^
+
+1 error
+
+	at gene_create$_run_closure2_closure27.doCall(gene_create:78)
+	... 5 more
+Caused by: groovy.lang.GroovyRuntimeException: Failed to parse template script (your template may contain an error or be trying to use expressions not currently supported): startup failed:
+SimpleTemplateScript31.groovy: 153: expecting '}', found 'select2' @ line 153, column 42.
+        return "<g:select class="select2" n
+                                 ^
+
+1 error
+
+	at SimpleTemplateScript30.renderFieldForProperty(SimpleTemplateScript30.groovy:50)
+	at SimpleTemplateScript30.run(SimpleTemplateScript30.groovy:28)
+	... 6 more
+2014-01-08/12:03:49.355 [localhost-startStop-1]  ERROR resource.ResourceMeta - Resource not found: /js/select2.min.js

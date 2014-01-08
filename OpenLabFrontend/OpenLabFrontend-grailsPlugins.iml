@@ -128,6 +128,8 @@
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/spring-security-core-1.2.7.3/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/spring-security-core-1.2.7.3/grails-app/taglib" isTestSource="false" />
     </content>
+    <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/tomcat-2.2.2" />
+    <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/webflow-2.0.0" />
     <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/webxml-1.4.1">
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabFramework/plugins/webxml-1.4.1/src/groovy" isTestSource="false" />
     </content>

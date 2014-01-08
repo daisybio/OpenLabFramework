@@ -19,15 +19,6 @@
     <g:textField name="description" value="${projectInstance?.description}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'object', 'error')} ">
-    <label for="object">
-        <g:message code="project.object.label" default="Object"/>
-
-    </label>
-    <g:select name="object" from="${org.openlab.main.DataObject.list()}" multiple="multiple" optionKey="id" size="5"
-              value="${projectInstance?.object*.id}" class="many-to-many"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'laboratory', 'error')} required">
     <label for="laboratory">
         <g:message code="project.laboratory.label" default="Laboratory"/>

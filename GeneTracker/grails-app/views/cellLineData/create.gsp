@@ -30,7 +30,7 @@
                                     <label for="cellLine"><g:message code="cellLineData.cellLine.label" default="Cell Line" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: cellLineDataInstance, field: 'cellLine', 'errors')}">
-                                    <g:select name="cellLine.id" from="${org.openlab.genetracker.CellLine.list(sort:'label')}" optionKey="id" value="${cellLineDataInstance?.cellLine?.id}"  />
+                                    <g:select class="select2" name="cellLine.id" from="${org.openlab.genetracker.CellLine.list(sort:'label')}" optionKey="id" value="${cellLineDataInstance?.cellLine?.id}"  />
                                 </td>
                             </tr>
                         
@@ -39,7 +39,7 @@
                                     <label for="acceptor"><g:message code="cellLineData.acceptor.label" default="Acceptor" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: cellLineDataInstance, field: 'acceptor', 'errors')}">
-                                    <g:select name="acceptor.id" from="${org.openlab.genetracker.vector.Acceptor.list(sort:'label')}" optionKey="id" noSelection="['':'']" value="${cellLineDataInstance?.acceptor?.id}"  />
+                                    <g:select class="select2" name="acceptor.id" from="${org.openlab.genetracker.vector.Acceptor.list(sort:'label')}" optionKey="id" noSelection="['':'']" value="${cellLineDataInstance?.acceptor?.id}"  />
                                 </td>
                             </tr>
                         
@@ -53,7 +53,7 @@
                                         ${cellLineDataInstance.firstRecombinant}
                                     </g:if>
                                     <g:else>
-                                        <g:select noSelection="['':'']" onChange="${remoteFunction(action: 'updateFirstVector', update: 'firstVectorSpan', params:'\'firstGene=\'+this.value')}" name="firstRecombinantGene.id" from="${org.openlab.genetracker.Gene.list(sort:'name')}" optionKey="id" />
+                                        <g:select class="select2" noSelection="['':'']" onChange="${remoteFunction(action: 'updateFirstVector', update: 'firstVectorSpan', params:'\'firstGene=\'+this.value')}" name="firstRecombinantGene.id" from="${org.openlab.genetracker.Gene.list(sort:'name')}" optionKey="id" />
                                         <span id="firstVectorSpan">${cellLineDataInstance?.firstRecombinant?.vector?:"Select a gene"}</span>
                                     </g:else>
                                 </td>
@@ -69,7 +69,7 @@
                                         ${cellLineDataInstance.secondRecombinant}
                                     </g:if>
                                     <g:else>
-                                        <g:select noSelection="['':'']" onChange="${remoteFunction(action: 'updateSecondVector', update: 'secondVectorSpan', params:'\'secondGene=\'+this.value')}" name="firstRecombinantGene.id" from="${org.openlab.genetracker.Gene.list(sort:'name')}" optionKey="id" value="${cellLineDataInstance?.secondRecombinant?.gene?.id}"  />
+                                        <g:select class="select2" noSelection="['':'']" onChange="${remoteFunction(action: 'updateSecondVector', update: 'secondVectorSpan', params:'\'secondGene=\'+this.value')}" name="firstRecombinantGene.id" from="${org.openlab.genetracker.Gene.list(sort:'name')}" optionKey="id" value="${cellLineDataInstance?.secondRecombinant?.gene?.id}"  />
                                         <span id="secondVectorSpan">${cellLineDataInstance?.secondRecombinant?.vector?:"Select a gene"}</span>
                                     </g:else>
                                 </td>
@@ -80,7 +80,7 @@
                                     <label for="cultureMedia"><g:message code="cellLineData.cultureMedia.label" default="Culture Media" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: cellLineDataInstance, field: 'cultureMedia', 'errors')}">
-                                    <g:select name="cultureMedia.id" from="${org.openlab.genetracker.CultureMedia.list(sort:'label')}" optionKey="id" value="${cellLineDataInstance?.cultureMedia?.id}" noSelection="['null': '']" />
+                                    <g:select class="select2" name="cultureMedia.id" from="${org.openlab.genetracker.CultureMedia.list(sort:'label')}" optionKey="id" value="${cellLineDataInstance?.cultureMedia?.id}" noSelection="['null': '']" />
                                 </td>
                             </tr>
                         
