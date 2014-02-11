@@ -52,6 +52,7 @@ grails.project.dependency.resolution = {
         grailsHome()
         grailsCentral()
         mavenCentral()
+        mavenRepo "http://maven.springframework.org/milestone/"
 
         // uncomment the below to enable remote dependency resolution
         // from public Maven repositories
@@ -89,7 +90,7 @@ grails.project.dependency.resolution = {
         compile ":spring-security-cas:1.0.5"
         compile ':webxml:1.4.1'
         compile ":spring-mobile:0.4"
-        //compile ":standalone:1.2.1"
+        compile ":standalone:1.2.3"
 
         compile ":yui:2.8.2.1"
         compile (":grails-ui:1.2.3") {

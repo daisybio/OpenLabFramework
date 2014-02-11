@@ -95,6 +95,7 @@ environments {
             url = "jdbc:h2:file:olfDB;MVCC=TRUE"
         }
         openlab.upload.dir = "upload/"
+        openlab.database.name = 'H2 SQL instance'
     }
 
 }

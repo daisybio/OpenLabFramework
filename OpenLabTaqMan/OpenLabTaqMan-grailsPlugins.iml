@@ -16,6 +16,7 @@
     <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabTaqMan/plugins/hibernate-2.2.2">
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabTaqMan/plugins/hibernate-2.2.2/grails-app/i18n" isTestSource="false" />
     </content>
+    <content url="file://$USER_HOME$/.grails/2.2.2/projects/OpenLabTaqMan/plugins/tomcat-2.2.2" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.2.4" level="application" />

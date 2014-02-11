@@ -84,6 +84,10 @@ class BootStrap {
 
                 break
 
+            case "standalone":
+
+                break
+
         }
     }
 

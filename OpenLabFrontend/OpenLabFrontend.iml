@@ -97,16 +97,32 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.poi/poi/jars/poi-3.7.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.jackson/jackson-core-asl/jars/jackson-core-asl-1.6.2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.codehaus.jackson/jackson-mapper-asl/jars/jackson-mapper-asl-1.6.2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.cloudfoundry/cloudfoundry-client-lib/jars/cloudfoundry-client-lib-0.7.5.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.cloudfoundry/cloudfoundry-caldecott-lib/jars/cloudfoundry-caldecott-lib-0.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/mysql/mysql-connector-java/jars/mysql-connector-java-5.1.16.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jdt.core.compiler/ecj/jars/ecj-3.7.2.jar!/" />
+          <root url="jar:///media/sf_D/Projects/Grails/OpenLabFramework/OpenLabFrontend/lib/sqljdbc4.jar!/" />
+          <root url="jar:///media/sf_D/Projects/Grails/OpenLabFramework/OpenLabFrontend/lib/mysql-connector-java-5.1.10-bin.jar!/" />
+          <root url="jar:///media/sf_D/Projects/Grails/OpenLabFramework/OpenLabFrontend/lib/log4jdbc4-1.2.jar!/" />
+          <root url="jar:///media/sf_D/Projects/Grails/OpenLabFramework/OpenLabFrontend/lib/jtds-1.2.5.jar!/" />
+          <root url="jar:///media/sf_D/Projects/Grails/OpenLabFramework/OpenLabFrontend/lib/c3p0-0.9.1.2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat.embed/tomcat-embed-jasper/jars/tomcat-embed-jasper-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat.embed/tomcat-embed-logging-juli/jars/tomcat-embed-logging-juli-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat/tomcat-catalina-ant/jars/tomcat-catalina-ant-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat.embed/tomcat-embed-logging-log4j/jars/tomcat-embed-logging-log4j-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat.embed/tomcat-embed-core/jars/tomcat-embed-core-7.0.42.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/backport-util-concurrent/backport-util-concurrent/jars/backport-util-concurrent-3.0.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/net.sourceforge.wurfl/wurfl/jars/wurfl-1.2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.springframework.mobile/spring-mobile-device/jars/spring-mobile-device-1.0.0.M3.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.gmock/gmock/jars/gmock-0.8.2.jar!/" />
-          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.eclipse.jdt.core.compiler/ecj/jars/ecj-3.7.2.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.cloudfoundry/cloudfoundry-runtime/jars/cloudfoundry-runtime-0.8.4.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.cloudfoundry/cloudfoundry-client-lib/jars/cloudfoundry-client-lib-0.7.5.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.cloudfoundry/cloudfoundry-caldecott-lib/jars/cloudfoundry-caldecott-lib-0.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat/tomcat-annotations-api/jars/tomcat-annotations-api-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat/tomcat-catalina/jars/tomcat-catalina-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat/tomcat-servlet-api/jars/tomcat-servlet-api-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat/tomcat-api/jars/tomcat-api-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat/tomcat-util/jars/tomcat-util-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat/tomcat-juli/jars/tomcat-juli-7.0.42.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.tomcat/tomcat-coyote/jars/tomcat-coyote-7.0.42.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
