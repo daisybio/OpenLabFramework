@@ -23,4 +23,4 @@ Servers
 /testDB.properties
 /testDB.log
 .idea/*
-
+*.iml

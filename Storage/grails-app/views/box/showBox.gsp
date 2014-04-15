@@ -1,1 +1,0 @@
-<g:createBoxTable id="${params.id}"></g:createBoxTable>
