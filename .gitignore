@@ -9,7 +9,7 @@ stacktrace.log
 /*DB.*
 */cobertura.ser
 .DS_Store
-*/target/
+target/*
 */out/
 */web-app/plugins
 */web-app/WEB-INF/classes
@@ -19,8 +19,8 @@ Servers
 /olfSettingsDB.script
 /olfSettingsDB.properties
 /olfSettingsDB.log
-/testDB.script
-/testDB.properties
-/testDB.log
+*.script
+*.properties
+*.log
 .idea/*
 *.iml
