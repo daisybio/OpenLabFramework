@@ -1,15 +1,20 @@
 [submodule "modules/OpenLabBackend"]
 	path = modules/OpenLabBackend
 	url = git@github.com:NanoCAN/OpenLabBackend.git
+	branch = master
 [submodule "modules/OpenLabStorage"]
 	path = modules/OpenLabStorage
 	url = git@github.com:NanoCAN/OpenLabStorage.git
+	branch = master
 [submodule "modules/OpenLabGeneTracker"]
 	path = modules/OpenLabGeneTracker
 	url = git@github.com:NanoCAN/OpenLabGeneTracker.git
+	branch = master
 [submodule "modules/OpenLabBarcode"]
 	path = modules/OpenLabBarcode
 	url = git@github.com:NanoCAN/OpenLabBarcode.git
+	branch = master
 [submodule "modules/OpenLabAttachments"]
 	path = modules/OpenLabAttachments
 	url = git@github.com:NanoCAN/OpenLabAttachments.git
+	branch = master
