@@ -78,12 +78,6 @@ class BootStrap {
 
                 break
 
-            case "cloud":
-
-                //initSearchablePlugin()
-
-                break
-
             case "standalone":
 
                 break

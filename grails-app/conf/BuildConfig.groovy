@@ -32,13 +32,6 @@ def pluginDir = new File('modules')
 pluginDir.eachDir {
   grails.plugin.location."$it.name" = it.path
 }
-//grails.plugin.location.backend = "../OpenLabBackend"
-//grails.plugin.location.geneTracker = "../GeneTracker"
-//grails.plugin.location.storage = "../Storage"
-//grails.plugin.location.barcode = "../OpenLabBarcode"
-//grails.plugin.location.attachments = "../OpenLabAttachments"
-//grails.plugin.location.taqman = "../OpenLabTaqMan"
-//grails.plugin.location.documents = "../OpenLabDocuments"
 
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
@@ -74,7 +67,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         runtime "hsqldb:hsqldb:1.8.0.10"
         runtime 'mysql:mysql-connector-java:5.1.16'
-        //compile "org.cloudfoundry:cloudfoundry-runtime:0.8.4"
+        compile "org.cloudfoundry:cloudfoundry-runtime:0.8.4"
     }
 
     plugins{
