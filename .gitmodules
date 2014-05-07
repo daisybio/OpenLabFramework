@@ -18,3 +18,10 @@
 	path = modules/OpenLabAttachments
 	url = git@github.com:NanoCAN/OpenLabAttachments.git
 	branch = master
+[submodule "modules/OpenLabNotes"]
+	path = modules/OpenLabNotes
+	url = git@github.com:NanoCAN/OpenLabNotes.git
+	branch = master
+[submodule "prototype"]
+	path = prototype
+	url = git@github.com:mlist/grails-prototype.git

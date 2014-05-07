@@ -1,2 +1,0 @@
-2014-04-15/17:09:25.172 [http-bio-8080-exec-5]  ERROR richui.PortletTagLib - de.andreasschmitt.richui.taglib.renderer.RenderException: Error rendering with attrs: [views:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], controller:addin, action:/OpenLabFramework/addin/swapPositions, readOnly:true, page:1]
-2014-04-15/17:10:06.837 [http-bio-8080-exec-10]  ERROR richui.PortletTagLib - de.andreasschmitt.richui.taglib.renderer.RenderException: Error rendering with attrs: [views:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], controller:addin, action:/OpenLabFramework/addin/swapPositions, readOnly:true, page:1]
