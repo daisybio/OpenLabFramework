@@ -228,6 +228,17 @@ grails.resources.modules = {
             resource id: '/css/uploader.css', url: '/css/custom_uploader.css'
         }
     }
+    tinymce{
+		dependsOn 'jquery'
+		resource url: 'js/tinymce/tinymce.min.js'
+		resource url: 'js/tinymce/themes/modern/theme.js'
+		resource url: 'js/tinymce/plugins/table/plugin.min.js'
+		resource url: 'js/tinymce/plugins/textcolor/plugin.min.js'
+		resource url: 'js/tinymce/plugins/code/plugin.min.js'
+		resource url: 'js/tinymce/skins/lightgray/content.min.css'
+		resource url: 'js/tinymce/skins/lightgray/skin.min.css'
+		
+    }
 }
 
 //db migration
