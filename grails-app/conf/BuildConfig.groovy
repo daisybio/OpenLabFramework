@@ -32,6 +32,7 @@ def pluginDir = new File('modules')
 pluginDir.eachDir {
   grails.plugin.location."$it.name" = it.path
 }
+grails.plugin.location.prototype = "prototype"
 
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"

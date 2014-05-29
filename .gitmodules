@@ -20,4 +20,8 @@
 	branch = master
 [submodule "modules/OpenLabNotes"]
 	path = modules/OpenLabNotes
-	url = https://github.com/michaelfranz89/OpenLabNotes.git
+	url = git@github.com:NanoCAN/OpenLabNotes.git
+	branch = master
+[submodule "prototype"]
+	path = prototype
+	url = git@github.com:mlist/grails-prototype.git
