@@ -44,6 +44,8 @@ grails.project.dependency.resolution = {
     inherits( "global" ) {
         // uncomment to disable ehcache
         // excludes 'ehcache'
+        excludes "bcpg-jdk15", "bcprov-jdk15"
+
     }
     log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     repositories {                    l
@@ -69,6 +71,8 @@ grails.project.dependency.resolution = {
         runtime "hsqldb:hsqldb:1.8.0.10"
         runtime 'mysql:mysql-connector-java:5.1.16'
         compile "org.cloudfoundry:cloudfoundry-runtime:0.8.4"
+        build 'org.bouncycastle:bcpg-jdk15on:1.50'
+        build 'org.bouncycastle:bcprov-jdk15on:1.50'
     }
 
     plugins{

@@ -20,7 +20,7 @@
 	branch = master
 [submodule "modules/OpenLabNotes"]
 	path = modules/OpenLabNotes
-	url = git@github.com:NanoCAN/OpenLabNotes.git
+	url = https://github.com/NanoCAN/OpenLabNotes
 	branch = master
 [submodule "prototype"]
 	path = prototype
