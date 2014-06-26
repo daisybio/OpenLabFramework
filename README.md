@@ -21,7 +21,7 @@ https://github.com/NanoCAN/OpenLabFramework/wiki
 
 For more information about our center, as well as for contact details: http://www.nanocan.org
 
-_Important note_: OpenLabFramework has been developed on grails 2.2.x and is only guaranteed to work with this version. Hint: Use [gvmtool](http://gvmtool.net) if you need to conveniently install and use several grails versions in parallel.
+__Important note__: OpenLabFramework has been developed on grails 2.2.x and is only guaranteed to work with this version. Hint: Use [gvmtool](http://gvmtool.net) if you need to conveniently install and use several grails versions in parallel.
 
 Browser compatibility: OLF should work on all modern browsers that support javascript, but has only been tested on 
 * Chrome (31.0.1650.63)
