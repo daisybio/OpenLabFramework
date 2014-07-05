@@ -19,6 +19,8 @@ administrators, and software developers:
 
 https://github.com/NanoCAN/OpenLabFramework/wiki
 
+A demo is available at http://www.nanocan.dk/openlabframework/demo (user: admin, password: demo0815)
+
 For more information about our center, as well as for contact details: http://www.nanocan.org
 
 __Important note__: OpenLabFramework has been developed on grails 2.2.x and is only guaranteed to work with this version. Hint: Use [gvmtool](http://gvmtool.net) if you need to conveniently install and use several grails versions in parallel.
