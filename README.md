@@ -30,6 +30,8 @@ Browser compatibility: OLF should work on all modern browsers that support javas
 * Firefox (26.0)
 
 Release Notes:
+* v. 1.3.0 Code cleanup and bugfixes in storage / attachment plug-ins. new restful web service that allows you to access data in OpenLabFramework with other applications. AppAccessTokens limit access to 
+allowed applications only 
 * v. 1.2.3 Search functionality is now more efficient. performance was severly degrading for several thousand entries
 * v. 1.2.2 Upgrade to grails 2.2.5, upgrade of spring-mobile to 0.5.1, completely restructured code base with git submodules. All plug-ins are from now on dynamically loaded from the subfolder modules.
 * v. 1.2.1 Upgrade to grails 2.2.4, smaller bug fixes, code cleaning, wiki updates und enhanced select
