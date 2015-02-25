@@ -182,6 +182,7 @@ class BootStrap {
     def initSecurity() {
         /* create requestmaps to enable url security */
         if (Requestmap.list().size() == 0) {
+
             def requestMap = new Requestmap(url: "/error/**", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
             requestMap.save()
 
@@ -222,6 +223,15 @@ class BootStrap {
             requestMap.save()
 
             requestMap = new Requestmap(url: "/settings/**", configAttribute: "ROLE_ADMIN")
+            requestMap.save()
+        }
+
+        if(!Requestmap.findByUrl("/restful/**")){
+            def requestMap = new Requestmap(url: "/restful/**", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
+            requestMap.save()
+        }
+        if(!Requestmap.findByUrl("/appAccessToken/**")) {
+            def requestMap = new Requestmap(url: "/appAccessToken/**", configAttribute: "ROLE_ADMIN")
             requestMap.save()
         }
     }

@@ -27,18 +27,13 @@
  *
  * ############################################################################
  */
-beans = {
+package security
 
-    /*dataSource(org.apache.commons.dbcp.BasicDataSource) {
-        driverClassName = "com.mysql.jdbc.Driver"
-        //url = "jdbc:mysql://b2b607b271d99e:adde1932@us-cdbr-east-04.cleardb.com:3306/ad_08fc40faf37cc76"
-        //username = "b2b607b271d99e"
-        //password = "adde1932"
-        properties{
-            initialSize = 3
-            maxActive = 3
-            maxIdle = 1
-        }
-    }   */
+import grails.plugins.springsecurity.Secured
+import org.openlab.security.AppAccessToken
+
+class AppAccessTokenController {
+
+    def scaffold = AppAccessToken
 
 }

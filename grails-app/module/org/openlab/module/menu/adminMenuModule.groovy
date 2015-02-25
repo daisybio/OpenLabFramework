@@ -61,6 +61,7 @@ class adminMenuModule implements MenuModule{
 					menuitem(controller: 'laboratory', action: 'list', label: 'Manage Laboratories')
 					menuitem(controller: 'user', action: action, label: 'Manage Users')
 					menuitem(controller: 'dataSource', action: 'show', label: 'Show Database Configuration')
+                    menuitem(controller: 'appAccessToken', action: 'list', label: 'Manage App Access Tokens')
 				}
 			}
 		

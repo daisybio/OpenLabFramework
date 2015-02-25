@@ -55,8 +55,8 @@ public class RperationsServiceTests extends GrailsUnitTestCase {
 	
 	void testReConnect(){
 		def rSession = c.detach()
-		println rSession.host
-		println rSession.port
+		log.debug rSession.host
+		log.debug rSession.port
 		rSession.port = 6311
 		c = new RConnection(rSession)
 		def x = c.eval("R.version.string").asString()

@@ -55,6 +55,7 @@ grails.project.dependency.resolution = {
         grailsCentral()
         mavenCentral()
         mavenRepo "http://maven.springframework.org/milestone/"
+        mavenRepo "http://repo.grails.org/grails/repo/"
 
         // uncomment the below to enable remote dependency resolution
         // from public Maven repositories
@@ -70,6 +71,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         runtime "hsqldb:hsqldb:1.8.0.10"
         runtime 'mysql:mysql-connector-java:5.1.16'
+        runtime "net.sourceforge.jtds:jtds:1.3.1" //MS-SQL
         compile "org.cloudfoundry:cloudfoundry-runtime:0.8.4"
         build 'org.bouncycastle:bcpg-jdk15on:1.50'
         build 'org.bouncycastle:bcprov-jdk15on:1.50'
@@ -103,7 +105,10 @@ grails.project.dependency.resolution = {
         compile (":richui:0.8"){
             excludes 'yui'
         }
+        compile ":ajax-uploader:1.1"
+        compile ":bubbling:2.1.4"
+        compile ":export:1.5"
+        compile ":joda-time:1.4"
+        compile ":quartz:0.4.2"
     }
-
 }
-
