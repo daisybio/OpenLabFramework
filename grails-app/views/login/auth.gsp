@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div id='login'>
+<div id='login' style="padding:50px;">
     <g:if test="${!mobile}">
         <div>
             <img src="<g:resource dir="images" file="welcome_logo.jpg"/>"/>

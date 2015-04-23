@@ -46,7 +46,6 @@ class DataSourceController {
         {
             if (dataSource instanceof org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy) {
                 def baseDataSource = dataSource.targetDataSource
-                println baseDataSource.properties
                 [url: baseDataSource.url, driverClassName: baseDataSource.driverClassName, username: baseDataSource.username]
             }
 

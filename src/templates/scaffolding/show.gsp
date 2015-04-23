@@ -79,7 +79,7 @@
                                 <g:hiddenField name="bodyOnly" value="\${true}"/>
                                 <g:hiddenField name="propertyName" value="${p.name}"  />
                                 <g:hiddenField name="referencedClassName" value="${p.referencedDomainClass?.fullName}"/>
-                                <g:select from="\${${p.referencedDomainClass?.fullName}.list()}" name="selectAddTo" optionKey="id"/>
+                                <g:select class="select2" from="\${${p.referencedDomainClass?.fullName}.list()}" name="selectAddTo" optionKey="id"/>
                                 <g:hiddenField name="id" value="\${${propertyName}?.id}"/>
                                 <g:submitToRemote action="addOneToMany" update="[success:'body',failure:'body']" value="Add" />
                             </g:form>
@@ -111,7 +111,7 @@
                         <g:form name="addToProject">
                             <g:hiddenField name="bodyOnly" value="\${true}"/>
                             <g:hiddenField name="referencedClassName" value="${p.referencedDomainClass?.fullName}"/>
-                            <g:select from="\${${p.referencedDomainClass?.fullName}.list()}" name="selectAddTo" optionKey="id"/>
+                            <g:select class="select2" from="\${${p.referencedDomainClass?.fullName}.list()}" name="selectAddTo" optionKey="id"/>
                             <g:hiddenField name="id" value="\${${propertyName}?.id}"/>
                             <g:submitToRemote action="addManyToMany" update="[success:'body',failure:'body']" value="Add to" />
                         </g:form>
@@ -141,7 +141,7 @@
                     <span class="property-value" aria-labelledby="${p.name}-label">
                         <g:set var="myInList" value="\${${propertyName}?.constraints.${p.name}.inList}"/>
                         <g:if test="\${myInList}">
-                           <g:select from="\${myInList}" name="${p.name}Select" value="\${fieldValue(bean: ${propertyName}, field: '${p.name}')}"
+                           <g:select class="select2" from="\${myInList}" name="${p.name}Select" value="\${fieldValue(bean: ${propertyName}, field: '${p.name}')}"
                                      onChange="\${g.remoteFunction(action:'editInList',id: ${propertyName}?.id, params: '"${p.name}=" + this.value', onFailure:'alert("Could not save property change");')}"/>
                         </g:if>
                         <g:else>

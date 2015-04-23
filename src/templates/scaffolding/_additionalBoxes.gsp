@@ -1,6 +1,6 @@
        	<% import grails.persistence.Event %>
 		<%=packageName%>
-        <%	excludedProps = Event.allEvents.toList() << 'version' << 'attachable'  << 'id' << 'acl' %>
+        <%	excludedProps = Event.allEvents.toList() << 'version' << 'attachable'  << 'id' << 'acl' << 'accessLevel' %>
     	<% historyProps = [] << 'creator' << 'dateCreated' << 'lastModifier' << 'lastUpdate' %>
         <div style="padding-right:20px; padding-top: 20px; position:absolute; right:0;">
         	<% props = domainClass.properties.findAll { !excludedProps.contains(it.name) && historyProps.contains(it.name)}

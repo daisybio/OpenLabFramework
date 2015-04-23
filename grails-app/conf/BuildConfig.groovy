@@ -48,7 +48,7 @@ grails.project.dependency.resolution = {
 
     }
     log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
-    repositories {                    l
+    repositories {
         inherits true
         grailsPlugins()
         grailsHome()
@@ -75,6 +75,8 @@ grails.project.dependency.resolution = {
         compile "org.cloudfoundry:cloudfoundry-runtime:0.8.4"
         build 'org.bouncycastle:bcpg-jdk15on:1.50'
         build 'org.bouncycastle:bcprov-jdk15on:1.50'
+        compile "org.docx4j:docx4j-ImportXHTML:3.2.2"
+        compile "net.sf.jtidy:jtidy:r938"
     }
 
     plugins{

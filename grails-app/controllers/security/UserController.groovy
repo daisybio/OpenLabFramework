@@ -134,11 +134,8 @@ class UserController {
             return
         }
 
-        def oldPassword = person.password
         person.properties = params
-        if (!params.password.equals(oldPassword)) {
-            person.password = springSecurityService.encodePassword(params.password)
-        }
+
         if (person.save()) {
             UserRole.removeAll(person)
             addRoles(person)
@@ -160,7 +157,6 @@ class UserController {
 
         def person = new User()
         person.properties = params
-        person.password = springSecurityService.encodePassword(params.password)
         params.bodyOnly = true
         if (person.save()) {
             addRoles(person)

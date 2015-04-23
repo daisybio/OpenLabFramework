@@ -29,6 +29,7 @@
  */
 package org.openlab.content
 
+import org.hibernate.criterion.CriteriaSpecification
 import org.openlab.main.*;
 import org.openlab.security.*;
 
@@ -58,13 +59,25 @@ class DashboardController {
         }
 
 		def lastModifiedMax = params.lastModifiedMax?:10
-		
+        //get user
+        def username = springSecurityService?.getPrincipal().username
+
 		//get last modified by anyone
-		def lastModifiedByAny = DataObject.list(max: lastModifiedMax, sort: "lastUpdate", order: "desc")
-		
-		//get user
-		def username = springSecurityService?.getPrincipal().username
-		
+		def lastModifiedByAny = DataObject.withCriteria {
+            createAlias("shared", "sh", CriteriaSpecification.LEFT_JOIN)
+            createAlias("creator", "cr", CriteriaSpecification.LEFT_JOIN)
+            or{
+                eq("cr.username", username)
+                isNull("accessLevel")
+                eq("accessLevel", "open")
+                eq 'sh.username', username
+
+            }
+            maxResults lastModifiedMax
+            order "lastUpdate", "desc"
+        }
+
+
 		//get last modified by user
 		def lastModifiedByUser = DataObject.withCriteria{
             lastModifier{
