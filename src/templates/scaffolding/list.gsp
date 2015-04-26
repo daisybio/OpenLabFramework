@@ -31,15 +31,15 @@
                     Results per page: <g:select name="max" value="\${params.max?:10}" from="\${10..100}" class="range"/>
                     <% if (domainClass.properties.find{ it.name == 'creator'}){%>
                     Creator: <g:select name="creatorFilter" from="\${org.openlab.security.User.list().collect{it.username}}"
-                                       value="\${params.creatorFilter?:''}" noSelection="['':'']"/>
+                                       value="\${params.creatorFilter?:''}" noSelection="['':'']" class="select2 many-to-many"/>
                     <% } %>
                     <% if (domainClass.properties.find{ it.name == 'lastModifier'}){%>
                     Last Modifier: <g:select name="lastModifierFilter" from="\${org.openlab.security.User.list().collect{it.username}}"
-                                             value="\${params.lastModifierFilter?:''}" noSelection="['':'']"/>
+                                             value="\${params.lastModifierFilter?:''}" noSelection="['':'']" class="select2 many-to-many"/>
                     <% } %>
                     <% if (domainClass.properties.find{ it.name == 'projects'}){%>
                     Project: <g:select name="projectFilter" from="\${org.openlab.main.Project.list().collect{it.name}}"
-                                       value="\${params.projectFilter?:''}" noSelection="['':'']"/>
+                                       value="\${params.projectFilter?:''}" noSelection="['':'']" class="select2 many-to-many"/>
                     <% } %>
                     <g:submitButton name="Filter"/>
                 </g:formRemote>
@@ -49,7 +49,7 @@
 			<table>
 				<thead>
 					<tr>
-					<%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
+					<%  excludedProps = Event.allEvents.toList() << 'id' << 'version' << 'accessLevel' << 'shared'
 						allowedNames = domainClass.persistentProperties*.name << 'dateCreated' << 'lastUpdated'
 						props = domainClass.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) && it.type != null && !Collection.isAssignableFrom(it.type) }
 						Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))

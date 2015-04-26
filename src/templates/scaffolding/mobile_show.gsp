@@ -16,7 +16,7 @@
 			</g:if>
 			<div class="ui-grid-a">
                 <% historyProps = [] << 'creator' << 'dateCreated' << 'lastModifier' << 'lastUpdate' %>
-                <%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
+                <%  excludedProps = Event.allEvents.toList() << 'id' << 'version' << 'accessLevel'
 				allowedNames = domainClass.persistentProperties*.name
 				props = domainClass.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) && !historyProps.contains(it.name)}
 				Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))

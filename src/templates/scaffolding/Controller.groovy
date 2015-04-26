@@ -84,7 +84,7 @@ class ${className}Controller {
             response.contentType = grailsApplication.config.grails.mime.types[params.format]
             response.setHeader("Content-disposition", "attachment; filename=${propertyName}.\${params.extension}")
 
-            def notallowed = ["dbName", "springSecurityService", "typeLabel", "beforeInsert", "beforeUpdate"]
+            def notallowed = ["dbName", "springSecurityService", "typeLabel", "beforeInsert", "beforeUpdate", "methods"]
             def fields = new DefaultGrailsDomainClass(${className}.class).persistentProperties.findAll{ !notallowed.contains(it.name) }.collect{it.name}
 
             exportService.export(params.format, response.outputStream, ${propertyName}List, fields?:[], [:], [:], [:])

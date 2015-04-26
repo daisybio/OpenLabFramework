@@ -73,10 +73,10 @@ grails.project.dependency.resolution = {
         runtime 'mysql:mysql-connector-java:5.1.16'
         runtime "net.sourceforge.jtds:jtds:1.3.1" //MS-SQL
         compile "org.cloudfoundry:cloudfoundry-runtime:0.8.4"
-        build 'org.bouncycastle:bcpg-jdk15on:1.50'
-        build 'org.bouncycastle:bcprov-jdk15on:1.50'
-        compile "org.docx4j:docx4j-ImportXHTML:3.2.2"
-        compile "net.sf.jtidy:jtidy:r938"
+        runtime 'org.bouncycastle:bcpg-jdk15on:1.50'
+        runtime 'org.bouncycastle:bcprov-jdk15on:1.50'
+        runtime "org.docx4j:docx4j-ImportXHTML:3.2.2"
+        runtime "net.sf.jtidy:jtidy:r938"
     }
 
     plugins{

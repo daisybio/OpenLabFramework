@@ -95,10 +95,9 @@ class LoginController {
      */
     def authAjax = {
         // CAS redirect
-        println "authAjax"
         def newParams = params
         newParams.bodyOnly = true
-        redirect(controller: "login", action: "auth", params: newParams)
+        redirect(controller: "login", action: "auth", params: params)
 
         //response.setHeader 'Location', SpringSecurityUtils.securityConfig.auth.ajaxLoginFormUrl
         //response.sendError HttpServletResponse.SC_UNAUTHORIZED

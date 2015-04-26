@@ -27,7 +27,7 @@
 			</g:if>
 			<ol class="property-list ${domainClass.propertyName}">
                 <% historyProps = [] << 'creator' << 'dateCreated' << 'lastModifier' << 'lastUpdate' %>
-                <%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
+                <%  excludedProps = Event.allEvents.toList() << 'id' << 'version' << 'accessLevel' << 'shared'
 				allowedNames = domainClass.persistentProperties*.name
 				props = domainClass.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) && !historyProps.contains(it.name)}
 				Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
