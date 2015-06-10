@@ -30,6 +30,8 @@ Browser compatibility: OLF should work on all modern browsers that support javas
 * Firefox (26.0)
 
 Release Notes:
+* v. 1.3.2 Bugfixes and further improvements following changes in 1.3.1
+* v. 1.3.1 Full inclusion of OpenLabNotes and restricted access option for DataObjects
 * v. 1.3.0 Code cleanup and bugfixes in storage / attachment plug-ins. new restful web service that allows you to access data in OpenLabFramework with other applications. AppAccessTokens limit access to 
 allowed applications only 
 * v. 1.2.3 Search functionality is now more efficient. performance was severly degrading for several thousand entries
