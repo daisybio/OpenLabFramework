@@ -34,7 +34,6 @@ ENV PATH $GRAILS_HOME/bin:$PATH
 WORKDIR /
 RUN mkdir /app
 COPY . /app
-RUN git pull --recurse-submodules
 WORKDIR /app
 
 # Clean up APT.
