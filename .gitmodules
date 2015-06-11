@@ -1,27 +1,27 @@
 [submodule "modules/OpenLabBackend"]
 	path = modules/OpenLabBackend
-	url = git@github.com:NanoCAN/OpenLabBackend.git
+	url = https://github.com/NanoCAN/OpenLabBackend.git
 	branch = master
 [submodule "modules/OpenLabStorage"]
 	path = modules/OpenLabStorage
-	url = git@github.com:NanoCAN/OpenLabStorage.git
+	url = https://github.com/NanoCAN/OpenLabStorage.git
 	branch = master
 [submodule "modules/OpenLabGeneTracker"]
 	path = modules/OpenLabGeneTracker
-	url = git@github.com:NanoCAN/OpenLabGeneTracker.git
+	url = https://github.com/NanoCAN/OpenLabGeneTracker.git
 	branch = master
 [submodule "modules/OpenLabBarcode"]
 	path = modules/OpenLabBarcode
-	url = git@github.com:NanoCAN/OpenLabBarcode.git
+	url = https://github.com/NanoCAN/OpenLabBarcode.git
 	branch = master
 [submodule "modules/OpenLabAttachments"]
 	path = modules/OpenLabAttachments
-	url = git@github.com:NanoCAN/OpenLabAttachments.git
+	url = https://github.com/NanoCAN/OpenLabAttachments.git
 	branch = master
 [submodule "modules/OpenLabNotes"]
 	path = modules/OpenLabNotes
-	url = https://github.com/NanoCAN/OpenLabNotes
+	url = https://github.com/NanoCAN/OpenLabNotes.git
 	branch = master
 [submodule "prototype"]
 	path = prototype
-	url = git@github.com:mlist/grails-prototype.git
+	url = https://github.com/mlist/grails-prototype.git
