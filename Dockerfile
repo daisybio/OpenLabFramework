@@ -37,6 +37,7 @@ COPY . /app
 WORKDIR /app
 
 # Compile grails app
+RUN grails refresh-dependencies
 RUN grails compile
 
 # Clean up APT.
