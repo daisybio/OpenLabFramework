@@ -77,11 +77,13 @@ grails.project.dependency.resolution = {
         runtime 'org.bouncycastle:bcprov-jdk15on:1.50'
         runtime "org.docx4j:docx4j-ImportXHTML:3.2.2"
         runtime "net.sf.jtidy:jtidy:r938"
+        compile "org.quartz-scheduler:quartz:1.7.3"
     }
 
     plugins{
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.7.1"
+        runtime ":jquery-ui:1.8.24"
         runtime ":resources:1.1.6"
         //runtime ":database-migration:1.3.2"
         build ":tomcat:$grailsVersion"
@@ -111,6 +113,5 @@ grails.project.dependency.resolution = {
         compile ":bubbling:2.1.4"
         compile ":export:1.5"
         compile ":joda-time:1.4"
-        compile ":quartz:0.4.2"
     }
 }
