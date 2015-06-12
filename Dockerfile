@@ -36,6 +36,9 @@ RUN mkdir /app
 COPY . /app
 WORKDIR /app
 
+# Compile grails app
+RUN grails compile
+
 # Clean up APT.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
