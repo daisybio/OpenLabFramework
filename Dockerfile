@@ -3,7 +3,7 @@ MAINTAINER Markus List <mlist@health.sdu.dk>
 #adapted from https://raw.githubusercontent.com/mozart-analytics/grails-docker/master/Dockerfile
 
 # Set customizable env vars defaults.
-ENV GRAILS_VERSION 2.2.5
+ENV GRAILS_VERSION 2.5.0
 
 # Set phusion/baseimage's correct settings.
 ENV HOME /root
