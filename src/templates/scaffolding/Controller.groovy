@@ -1,38 +1,13 @@
-/*
- * Copyright (C) 2013 
- * Center for Excellence in Nanomedicine (NanoCAN)
- * Molecular Oncology
- * University of Southern Denmark
- * ###############################################
- * Written by:	Markus List
- * Contact: 	mlist'at'health'.'sdu'.'dk
- * Web:		http://www.nanocan.org
- * ###########################################################################
- *	
- *	This file is part of OpenLabFramework.
- *
- *  OpenLabFramework is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *   along with this program. It can be found at the root of the project page.
- *	If not, see <http://www.gnu.org/licenses/>.
- *
- * ############################################################################
- */
-<%=packageName ? "package ${packageName}\n\n" : ''%>import org.springframework.dao.DataIntegrityViolationException
+<%=packageName ? "package ${packageName}\n\n" : ''%>
+
+import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
 import org.codehaus.groovy.grails.commons.DefaultGrailsDomainClass
 
+@Transactional(readOnly = true)
 class ${className}Controller {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def exportService
     def grailsApplication
@@ -53,12 +28,12 @@ class ${className}Controller {
         exportParams.max = ${className}.count()
 
         if(params.Filter == "Filter"){
-           ${propertyName}List = ${className}.list()
-           if(!params.offset) params.offset = 0
+            ${propertyName}List = ${className}.list()
+            if(!params.offset) params.offset = 0
 
-           ${propertyName}Criteria = ${className}.createCriteria()
+            ${propertyName}Criteria = ${className}.createCriteria()
 
-           ${propertyName}List = ${propertyName}Criteria.list(max: params.format?${className}.count():params.max, offset: params.format?0:params.offset) {
+            ${propertyName}List = ${propertyName}Criteria.list(max: params.format?${className}.count():params.max, offset: params.format?0:params.offset) {
                 if(params.creatorFilter) creator{
                     eq('username', params.creatorFilter)
                 }
@@ -70,7 +45,7 @@ class ${className}Controller {
                 }
                 if(params.sort) order(params.sort, params.order)
             }
-           ${propertyName}Total = ${propertyName}List.totalCount
+            ${propertyName}Total = ${propertyName}List.totalCount
         }
         else{
             ${propertyName}List = ${className}.list(params)
@@ -81,7 +56,7 @@ class ${className}Controller {
             ${propertyName}List = ${className}.list(exportParams)
             ${propertyName}Total = ${className}.count()
 
-            response.contentType = grailsApplication.config.grails.mime.types[params.format]
+            response.contentType = grails.util.Holders.config.grails.mime.types[params.format]
             response.setHeader("Content-disposition", "attachment; filename=${propertyName}.\${params.extension}")
 
             def notallowed = ["dbName", "springSecurityService", "typeLabel", "beforeInsert", "beforeUpdate", "methods"]
@@ -93,99 +68,100 @@ class ${className}Controller {
         [${propertyName}List: ${propertyName}List, ${propertyName}Total: ${propertyName}Total?:0, params: params]
     }
 
+
+    def show(${className} ${propertyName}) {
+        //def ${propertyName} = ${className}.get(params.id)
+        if (!${propertyName}) {
+            flash.message = "Just click on a property to change it."
+            //flash.message = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
+            redirect(action: "list")
+            return
+        }
+
+        [${propertyName}: ${propertyName}]
+    }
+
     def create() {
-        [${propertyName}: new ${className}(params)]
+        respond new ${className}(params)
     }
 
-    def save() {
-        def bodyOnly = params.bodyOnly
-        def ${propertyName} = new ${className}(params)
-        if (!${propertyName}.save(flush: true)) {
-            render(view: "create", model: [${propertyName}: ${propertyName}])
+    @Transactional
+    def save(${className} ${propertyName}) {
+        if (${propertyName} == null) {
+            notFound()
             return
         }
 
-		flash.message = message(code: 'default.created.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), ${propertyName}.id])
-        redirect(action: "show", id: ${propertyName}.id, params: [bodyOnly: bodyOnly?:false])
-    }
-
-    def show() {
-
-        def ${propertyName} = ${className}.get(params.id)
-        if (!${propertyName}) {
-			flash.message = "Just click on a property to change it."
-			//flash.message = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
-            redirect(action: "list")
+        if (${propertyName}.hasErrors()) {
+            respond ${propertyName}.errors, view:'create'
             return
         }
 
-        [${propertyName}: ${propertyName}]
-    }
+        ${propertyName}.save flush:true
 
-    def edit() {
-        def ${propertyName} = ${className}.get(params.id)
-        if (!${propertyName}) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
-            redirect(action: "list")
-            return
-        }
-
-        [${propertyName}: ${propertyName}]
-    }
-
-    def update() {
-        def ${propertyName} = ${className}.get(params.id)
-        if (!${propertyName}) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
-            redirect(action: "list", params: [bodyOnly: params.bodyOnly?:false])
-            return
-        }
-
-        if (params.version) {
-            def version = params.version.toLong()
-            if (${propertyName}.version > version) {<% def lowerCaseName = grails.util.GrailsNameUtils.getPropertyName(className) %>
-                ${propertyName}.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: '${domainClass.propertyName}.label', default: '${className}')] as Object[],
-                          "Another user has updated this ${className} while you were editing")
-                render(view: "edit", model: [${propertyName}: ${propertyName}])
-                return
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), ${propertyName}.id])
+                redirect ${propertyName}
             }
-        }
-
-        ${propertyName}.properties = params
-
-        if (!${propertyName}.save(flush: true)) {
-            render(view: "edit", model: [${propertyName}: ${propertyName}])
-            return
-        }
-
-		flash.message = message(code: 'default.updated.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), ${propertyName}.id])
-        redirect(action: "show", id: ${propertyName}.id, params: [bodyOnly: params.bodyOnly?:false])
-    }
-
-    def delete() {
-        def ${propertyName} = ${className}.get(params.id)
-        if (!${propertyName}) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
-            redirect(action: "list", params: [bodyOnly: params.bodyOnly?:false])
-            return
-        }
-
-        try {
-            ${propertyName}.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
-            redirect(action: "list", params: [bodyOnly: params.bodyOnly?:false])
-        }
-        catch (DataIntegrityViolationException e) {
-			flash.message = message(code: 'default.not.deleted.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
-            redirect(action: "show", id: params.id, params: [bodyOnly: params.bodyOnly?:false])
+            '*' { respond ${propertyName}, [status: CREATED] }
         }
     }
 
-    def createAdditionalContent = {
-        def ${propertyName} = new ${className}()
-        ${propertyName}.properties = params
-        return [${propertyName}: ${propertyName}]
+    def edit(${className} ${propertyName}) {
+        respond ${propertyName}
+    }
+
+    @Transactional
+    def update(${className} ${propertyName}) {
+        if (${propertyName} == null) {
+            notFound()
+            return
+        }
+
+        if (${propertyName}.hasErrors()) {
+            respond ${propertyName}.errors, view:'edit'
+            return
+        }
+
+        ${propertyName}.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: '${className}.label', default: '${className}'), ${propertyName}.id])
+                redirect ${propertyName}
+            }
+            '*'{ respond ${propertyName}, [status: OK] }
+        }
+    }
+
+    @Transactional
+    def delete(${className} ${propertyName}) {
+
+        if (${propertyName} == null) {
+            notFound()
+            return
+        }
+
+        ${propertyName}.delete flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.deleted.message', args: [message(code: '${className}.label', default: '${className}'), ${propertyName}.id])
+                redirect action:"index", method:"GET"
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+
+    protected void notFound() {
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
+                redirect action: "index", method: "GET"
+            }
+            '*'{ render status: NOT_FOUND }
+        }
     }
 
     //TODO Think of a better solution than splitting '_' to get rid of id (additional param?)
@@ -198,7 +174,7 @@ class ${className}Controller {
      *  The method updates the domain object that has been modified, saves the new state and renders
      *  the new value back to the page.
      */
-    def editField = {
+    def editField(){
         // Retrieve member
         def ${propertyName} = ${className}.get(params.id)
         if(${propertyName})
@@ -219,7 +195,7 @@ class ${className}Controller {
         }
     }
 
-    def editBoolean = {
+    def editBoolean(){
         def ${propertyName} = ${className}.get(params.id)
         if(${propertyName})
         {
@@ -233,7 +209,7 @@ class ${className}Controller {
         else response.sendError(404)
     }
 
-    def editInList = {
+    def editInList(){
         def ${propertyName} = ${className}.get(params.id)
         if(${propertyName})
         {
@@ -248,7 +224,7 @@ class ${className}Controller {
     }
 
 
-    def editCollectionField = {
+    def editCollectionField(){
         def ${propertyName} = ${className}.get(params.id)
         if(${propertyName})
         {
@@ -266,7 +242,7 @@ class ${className}Controller {
         }
     }
 
-    def addManyToMany = {
+    def addManyToMany(){
 
         def project = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.selectAddTo)
         def dataObj = ${className}.get(params.id)
@@ -277,21 +253,21 @@ class ${className}Controller {
         redirect(action: "show", id: params.id, params: [bodyOnly: params.bodyOnly?:false])
     }
 
-    def removeManyToMany = {
+    def removeManyToMany(){
 
-       def project = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.associatedId)
-       def dataObj = ${className}.get(params.id)
-       def isOk
+        def project = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.associatedId)
+        def dataObj = ${className}.get(params.id)
+        def isOk
 
-       if(dataObj && project)isOk = project.removeFromObject(dataObj).save(flush:true)
+        if(dataObj && project)isOk = project.removeFromObject(dataObj).save(flush:true)
 
-       if(!isOk) flash.message = "Could not remove \${dataObj} from \${project}."
+        if(!isOk) flash.message = "Could not remove \${dataObj} from \${project}."
 
-       redirect(action: "show", id: params.id, params: [bodyOnly: params.bodyOnly?:false])
+        redirect(action: "show", id: params.id, params: [bodyOnly: params.bodyOnly?:false])
     }
 
 
-    def addOneToMany = {
+    def addOneToMany(){
 
         println params
         def associatedObj = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.selectAddTo)
@@ -302,7 +278,7 @@ class ${className}Controller {
         redirect(action: "show", id: params.id, params: [bodyOnly: params.bodyOnly?:false])
     }
 
-    def removeOneToMany = {
+    def removeOneToMany(){
 
         def dataObj = ${className}.get(params.id)
         def associatedObj = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.associatedId)
@@ -315,7 +291,7 @@ class ${className}Controller {
     /**
      * render modalbox to edit m:n associations
      */
-    def editMany = {
+    def editMany(){
         def property = params.property
         def ${propertyName} = ${className}.get(params.id)
 
@@ -329,7 +305,7 @@ class ${className}Controller {
     /**
      * called when editMany has been submitted. attention: works only if owning class uses "object" to map child class.
      */
-    def changeProperty = {
+    def changeProperty(){
 
         def ${propertyName} = ${className}.get(params.id)
 
@@ -357,33 +333,27 @@ class ${className}Controller {
         redirect(action: show, params: params)
     }
 
-    def updateEditable = {
-        println params
+    def updateEditable(){
         def currentValue = ${className}.get(params.id)?."\${params.propertyName}"
-        println currentValue
         def domainClassList = grailsApplication.getDomainClass(params.referencedClassName).newInstance().list().sort{it.toString()}
 
         render(template: "/layouts/editCollection", model: [currentValue: currentValue, targetController: params.controllerName, targetUpdate: params.propertyName + "Editable", propertyName: params.propertyName,
-                thisClassName: params.thisClassName, referencedClassName: params.referencedClassName, id: params.id, domainClassList: domainClassList])
+                                                            thisClassName: params.thisClassName, referencedClassName: params.referencedClassName, id: params.id, domainClassList: domainClassList])
     }
 
-    def saveEditable = {
-        println params
+    def saveEditable(){
         def dcInstance = ${className}.get(params.id)
         def rcInstance = grailsApplication.getDomainClass(params.referencedClassName).newInstance().get(params.selected)
-        println rcInstance
-        println dcInstance
 
         dcInstance."\${params.propertyName}" = rcInstance
         dcInstance.save(flush:true, failOnError: true)
 
         render template:  "/layouts/showCollection", model: [referencedClassName: params.referencedClassName,
-                id: params.id, propertyName: params.propertyName, newValue: rcInstance]
+                                                             id: params.id, propertyName: params.propertyName, newValue: rcInstance]
 
     }
 
-    def updateLink = {
-        println "updateLink:"+params
+    def updateLink(){
 
         def ${propertyName} = ${className}.get(params.id)
 
@@ -391,4 +361,5 @@ class ${className}Controller {
 
         render g.remoteLink(action: "show", controller: params.refController, id: id, update: "body", params: [bodyOnly:true]){"Show"}
     }
+
 }

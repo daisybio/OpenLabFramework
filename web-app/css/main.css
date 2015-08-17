@@ -42,9 +42,9 @@ body {
 	color: #333333;
 	margin: 0 auto;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-	   -moz-box-shadow: 0 0 0.3em #255b17;
-	-webkit-box-shadow: 0 0 0.3em #255b17;
-	        box-shadow: 0 0 0.3em #255b17;
+	   -moz-box-shadow: 0 0 0.3em #19425b;
+	-webkit-box-shadow: 0 0 0.3em #19425b;
+	        box-shadow: 0 0 0.3em #19425b;
 }
 
 #grailsLogo {
@@ -74,7 +74,7 @@ body {
 .ie6 body,
 .ie7 body,
 .ie8 body {
-	border-color: #255b17;
+	border-color: #19425b;
 	border-style: solid;
 	border-width: 0 1px;
 }

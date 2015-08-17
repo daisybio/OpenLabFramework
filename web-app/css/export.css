@@ -1,0 +1,44 @@
+.export {
+    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    border-style: solid;	
+    margin-top: 5px;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.menuButton a.csv {
+    background: url(../images/skin/csv.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+
+.menuButton a.excel {
+    background: url(../images/skin/excel.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+
+.menuButton a.pdf {
+    background: url(../images/skin/pdf.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+
+.menuButton a.xml {
+    background: url(../images/skin/xml.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+
+.menuButton a.rtf {
+    background: url(../images/skin/rtf.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+
+.menuButton a.ods {
+    background: url(../images/skin/ods.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}

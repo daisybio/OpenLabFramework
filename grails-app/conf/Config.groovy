@@ -1,5 +1,3 @@
-import org.cloudfoundry.runtime.env.CloudEnvironment
-import org.cloudfoundry.runtime.env.RedisServiceInfo
 import org.apache.log4j.DailyRollingFileAppender
 import org.apache.log4j.Priority
 import org.apache.log4j.ConsoleAppender
@@ -44,7 +42,7 @@ import org.apache.log4j.ConsoleAppender
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-grails.tomcat.jvmArgs= ["-Xms256m",  "-Xmx1024m", "-XX:PermSize=512m", "-XX:MaxPermSize=512m"]
+grails.tomcat.jvmArgs= ["-Xms256m",  "-Xmx1024m"]
 
 def olfLogLevel = "ERROR"
 def olfLogPattern = "%d{yyyy-MM-dd/HH:mm:ss.SSS} [%t] %x %-5p %c{2} - %m%n"
@@ -77,7 +75,7 @@ else {
 }
 
 /* */
-cgrails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
+grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
 grails.mime.types = [html: ['text/html', 'application/xhtml+xml'],
         xml: ['text/xml', 'application/xml'],
@@ -192,6 +190,11 @@ grails.plugins.springsecurity.securityConfigType = 'Requestmap'
 
 //resource plugin
 //grails.resources.debug=true
+//grails.databinding.useSpringBinder = true
+
+// What URL patterns should be processed by the resources plugin
+grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
+grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**']
 
 grails.resources.modules = {
     labelPrinter{
@@ -251,3 +254,6 @@ grails.views.javascript.library="prototype"
 grails.plugins.springsecurity.secureChannel.definition = [
         '/restful/**' : 'REQUIRES_SECURE_CHANNEL'
 ]
+
+//restore default data binding behaviour we knew from grails 2.2, i.e. empty strings are not converted to NULL anymore
+grails.databinding.convertEmptyStringsToNull = false

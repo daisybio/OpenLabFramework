@@ -29,8 +29,6 @@
  */
 package openlabframework
 
-import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
-
 class CleanTempJob {
     def static triggers = {
 		cron name: 'myTrigger', cronExpression: "0 0 4 * * ?" 
@@ -39,7 +37,7 @@ class CleanTempJob {
 
     def execute() {
 		
-		def directoryName = CH?.config?.openlab?.temp?.dir
+		def directoryName = grails.util.Holders.config?.openlab?.temp?.dir
 		
 		if(directoryName != null)
 		{

@@ -36,7 +36,7 @@ package org.openlab.datasource
  */
 class DataSourceController {
 
-    def dataSource
+    def grailsApplication
 
     def index = {
         redirect action: show
@@ -44,15 +44,9 @@ class DataSourceController {
 
     def show =
         {
-            if (dataSource instanceof org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy) {
-                def baseDataSource = dataSource.targetDataSource
-                [url: baseDataSource.url, driverClassName: baseDataSource.driverClassName, username: baseDataSource.username]
-            }
+            def ds = grailsApplication.config.dataSource
 
-            else {
-                [url: dataSource.jdbcUrl, driverClassName: dataSource.driverClass, username: dataSource.user]
-            }
-
+            [url: ds.url, driverClassName: ds.driverClassName, username: ds.username]
         }
 
 

@@ -44,8 +44,13 @@ class DashboardController {
             return
         }
 
-		[:]
-	}
+        if(!springSecurityService?.loggedIn){
+            redirect(action: "auth", controller: "login", params: [bodyOnly:false])
+            return
+        }
+
+        [:]
+    }
 	
 	def dashboard = {
         if(!springSecurityService?.loggedIn){

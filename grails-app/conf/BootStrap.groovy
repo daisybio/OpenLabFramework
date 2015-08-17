@@ -27,7 +27,6 @@
  *
  * ############################################################################
  */
-import grails.util.GrailsUtil
 import org.openlab.barcode.BarcodeDataObject
 import org.openlab.barcode.BarcodeLabel
 import org.openlab.barcode.BarcodeSite
@@ -41,30 +40,22 @@ import org.openlab.storage.Box
 import org.openlab.storage.Compartment
 import org.openlab.storage.Freezer
 import org.openlab.storage.StorageLocation
-import org.openlab.genetracker.Recombinant
-import org.openlab.genetracker.Gene
 
 class BootStrap {
 
-    //def moduleHandlerService
-    //def applicationHandlerService
-    //def addinHandlerService
     def settingsService
-    def grailsApplication
-    def springSecurityService
     def searchableService
-    def dataSource
 
     def init = { servletContext ->
 
-        println "Database name: " + grailsApplication.config.openlab.database.name
+        println "Database name: " + grails.util.Holders.config.openlab.database.name
 
         initSettings()
         initUserbase()
         initData()
         initSecurity()
 
-        switch (GrailsUtil.environment) {
+        switch (grails.util.Environment) {
             case "development":
 
                 //initDummyData()
@@ -101,13 +92,6 @@ class BootStrap {
         if (BarcodeLabel.list().size() == 0)
             def barcodeLabel = new BarcodeLabel(name: "Label", parameters: "", barcodeType: "QR", xml: "").save()
 
-        /*
-             * Create data from original geneTracker
-             *
-            def fileName = "/home/markus/genetrackerData.xls" //"C:\\temp\\genetrackerData.xls"
-            def importer = new org.openlab.dataimport.GeneTrackerImporter(fileName)
-            importer.createAll()
-            //importer.createOnlyMasterData()*/
     }
 
     def initSearchablePlugin() {
@@ -232,6 +216,10 @@ class BootStrap {
         }
         if(!Requestmap.findByUrl("/appAccessToken/**")) {
             def requestMap = new Requestmap(url: "/appAccessToken/**", configAttribute: "ROLE_ADMIN")
+            requestMap.save()
+        }
+        if(!Requestmap.findByUrl("/dashboard/**")) {
+            def requestMap = new Requestmap(url: "/dashboard/**", configAttribute: "IS_AUTHENTICATED_ANONYMOUSLY")
             requestMap.save()
         }
     }

@@ -26,6 +26,7 @@
     <r:require modules="myyui"/>
     <r:require module="fileuploader" />
     <r:require module="select2"/>
+    <r:require module="jquery-ui"/>
     <r:require module="tinymce"/>
     <!-- custom event handling -->
     <r:script disposition="head">
@@ -42,14 +43,15 @@
 
     </r:script>
 
-    <!-- Layout head (Sitemesh) -->
-    <g:layoutHead/>
-
     <!-- Set javascript provider to prototype -->
     <r:require module="prototypeManual"/>
 
     <!-- include dymo label printer js library -->
     <r:require module="labelPrinter"/>
+
+    <!-- Layout head (Sitemesh) -->
+    <g:layoutHead/>
+
 
     <r:layoutResources/>
     <!-- Main CSS at the end to make sure it is effective -->

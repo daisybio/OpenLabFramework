@@ -1,6 +1,3 @@
-import org.cloudfoundry.runtime.env.CloudEnvironment
-import org.cloudfoundry.runtime.env.RdbmsServiceInfo
-
 /*
 * Copyright (C) 2013
 * Center for Excellence in Nanomedicine (NanoCAN)
@@ -41,7 +38,7 @@ hibernate {
 }
 
 // set per-environment serverURL stem for creating absolute links
-def cloudEnv = new CloudEnvironment()
+// def cloudEnv = new CloudEnvironment()
 
 environments {
     production {
@@ -51,7 +48,7 @@ environments {
     test {
         grails.serverURL = "http://localhost:8080/${appName}"
     }
-    cloud {
+    /*cloud {
         dataSource {
 
             dbCreate = "update"
@@ -84,18 +81,18 @@ environments {
         }
         openlab.database.name = 'cloud mySQL instance'
         grails.serverURL = "http://www.openlabframework.cfapps.io"
-    }
+    } */
     standalone {
         dataSource {
             pooled = true
-            driverClassName = "org.h2.Driver"
+            driverClassName = 'org.hsqldb.jdbcDriver'
+            url = 'jdbc:hsqldb:file:standaloneDB'
             username = "sa"
             password = ""
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:file:olfDB;MVCC=TRUE"
         }
         openlab.upload.dir = "upload/"
-        openlab.database.name = 'H2 SQL instance'
+        openlab.database.name = 'HSQLDB SQL instance'
     }
 
 }
