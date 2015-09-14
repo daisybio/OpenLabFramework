@@ -21,11 +21,11 @@
 			<table>
 			<thead>
 				<tr>
-					<g:sortableColumn property="id" title="Id" />
-					<g:sortableColumn property="username" title="Login Name" />
-					<g:sortableColumn property="userRealName" title="Full Name" />
-					<g:sortableColumn property="email" title="E-Mail" />
-					<g:sortableColumn property="enabled" title="Enabled" />
+					<g:remoteSortableColumn property="id" title="Id" />
+					<g:remoteSortableColumn property="username" title="Login Name" />
+					<g:remoteSortableColumn property="userRealName" title="Full Name" />
+					<g:remoteSortableColumn property="email" title="E-Mail" />
+					<g:remoteSortableColumn property="enabled" title="Enabled" />
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
