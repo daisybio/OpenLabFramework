@@ -71,7 +71,8 @@ else {
     dataSource.dbCreate = 'update'
     grails.plugins.springsecurity.cas.active = false
     openlab.database.name = 'fileHSQLDB'
-    grails.serverURL = 'http://localhost:8080/OpenLabFramework'
+    grails.app.context = '/'
+    //grails.serverURL = 'http://localhost:8080/OpenLabFramework'
 }
 
 /* */
