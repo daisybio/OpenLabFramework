@@ -21,4 +21,4 @@ EXPOSE 8080
 
 # Start grails app
 ENTRYPOINT ["/sbin/my_init", "grails"]
-CMD ["prod", "run-war"]
+CMD ["prod", "-Dapp.context=/", "run-war"]
