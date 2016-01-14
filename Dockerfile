@@ -16,6 +16,9 @@ ENV PATH $JAVA_HOME/bin:$PATH
 # Compile grails app
 RUN grails refresh-dependencies; grails compile
 
+# Expose port to outside world
+EXPOSE 8080
+
 # Start grails app
 ENTRYPOINT ["/sbin/my_init", "grails"]
 CMD ["prod", "run-war"]
