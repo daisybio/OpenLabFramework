@@ -23,13 +23,12 @@ A demo is available at http://www.nanocan.dk/openlabframework/demo (user: admin,
 
 For more information about our center, as well as for contact details: http://www.nanocan.org
 
-__Important note__: The latest version of OpenLabFramework was only tested on grails 2.5.x. For grails < 2.3.x use OLF v.1.3.2. Hint: Use [gvmtool](http://gvmtool.net) if you need to conveniently install and use several grails versions in parallel.
+__Important note__: The latest version of OpenLabFramework was only tested on grails 2.5.x. For grails < 2.3.x use OLF v.1.3.2. Hint: Use [sdkman](http://gvmtool.net) if you need to conveniently install and use several grails versions in parallel.
 
-Browser compatibility: OLF should work on all modern browsers that support javascript, but has only been tested on 
-* Chrome (31.0.1650.63)
-* Firefox (26.0)
+Browser compatibility: OLF should work on all modern browsers that support javascript.
 
 Release Notes:
+* v. 1.4.1 Upgrade to grails 2.5.3
 * v. 1.4.0 Upgrade to grails 2.5.0
 * v. 1.3.2 Bugfixes and further improvements following changes in 1.3.1
 * v. 1.3.1 Full inclusion of OpenLabNotes and restricted access option for DataObjects
