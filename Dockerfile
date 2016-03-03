@@ -1,4 +1,4 @@
-FROM mlist/grails:2.5.0
+FROM mlist/grails:2.5.3
 MAINTAINER Markus List <mlist@mpi-inf.mpg.de>
 
 # Create App Directory
@@ -18,6 +18,7 @@ RUN grails refresh-dependencies; grails compile
 
 # Expose port to outside world
 EXPOSE 8080
+EXPOSE 41951-41960 #For printing barcode labels with DYMO
 
 # Start grails app
 ENTRYPOINT ["/sbin/my_init", "grails"]
