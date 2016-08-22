@@ -32,6 +32,7 @@ import org.openlab.barcode.BarcodeLabel
 import org.openlab.barcode.BarcodeSite
 import org.openlab.main.Laboratory
 import org.openlab.main.Project
+import org.openlab.security.AppAccessToken
 import org.openlab.security.Requestmap
 import org.openlab.security.Role
 import org.openlab.security.User
@@ -164,6 +165,22 @@ class BootStrap {
     }
 
     def initSecurity() {
+
+        /* create defaul app access toekn */
+        if(AppAccessToken.list().size() == 0){
+
+            if(grails.util.Holders.config?.default?.app?.access?.token) {
+                def appAccessToken = new AppAccessToken(applicationName: "Default Token",
+                dateCreated: new Date(),
+                expires: false,
+                expiryDate: null,
+                lastUpdated: new Date(),
+                token: grails.util.Holders.config.default.app.access.token)
+
+                appAccessToken.save()
+            }
+        }
+
         /* create requestmaps to enable url security */
         if (Requestmap.list().size() == 0) {
 
