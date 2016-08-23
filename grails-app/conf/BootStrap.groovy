@@ -169,13 +169,13 @@ class BootStrap {
         /* create defaul app access toekn */
         if(AppAccessToken.list().size() == 0){
 
-            if(grails.util.Holders.config?.default?.app?.access?.token) {
+            if(grails.util.Holders.config?.openlab?.app?.access?.token) {
                 def appAccessToken = new AppAccessToken(applicationName: "Default Token",
                 dateCreated: new Date(),
                 expires: false,
                 expiryDate: null,
                 lastUpdated: new Date(),
-                token: grails.util.Holders.config.default.app.access.token)
+                token: grails.util.Holders.config.openlab.app.access.token)
 
                 appAccessToken.save()
             }
